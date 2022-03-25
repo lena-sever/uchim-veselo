@@ -6,7 +6,7 @@ use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class CourseRewiewsTableSeeder extends Seeder
+class CourseReviewsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class CourseRewiewsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('course_rewiews')->insert($this->getData());
+        DB::table('course_reviews')->insert($this->getData());
     }
     private function getData(): array
 	{
@@ -26,9 +26,9 @@ class CourseRewiewsTableSeeder extends Seeder
 
 		for($i=0; $i < 15; $i++) {
 			$data[] = [
+				'text' => $faker->text(mt_rand(50, 200)),
                 'course_id' => $faker->randomElement($course_id),
                 'user_id' => $faker->randomElement($user_id),
-				'text' => $faker->text(mt_rand(10, 30)),
                 'created_at' => $faker->dateTime('now','Europe/Moscow'),
 			];
 		}

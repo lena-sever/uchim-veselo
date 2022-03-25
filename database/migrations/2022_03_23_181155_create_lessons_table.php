@@ -15,11 +15,13 @@ class CreateLessonsTable extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('course_id')->constrained('courses')->cascadeOnDelete();
-            $table->foreignId('test_id')->constrained('tests')->cascadeOnDelete();
             $table->string('title');
             $table->string('description');
+            $table->text('text');
+            $table->foreignId('course_id')->constrained('courses')->cascadeOnDelete();
             $table->timestamps();
+
+            $table->softDeletes();
         });
     }
 
