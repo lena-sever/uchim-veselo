@@ -1,32 +1,22 @@
-import { Provider } from "react-redux";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-
-import Cours from "./components/Cours";
-import { store } from "./reduxe/store";
-import logo from "./logo.svg";
 import "./App.css";
+import { BrowserRouter } from "react-router-dom";
+import Courses from "./components/Сourses/Courses";
+import Header from "./components/Header/Header";
+import Router from "./components/Routing/Router";
+import Footer from "./components/Footer/Footer";
 
 function App() {
-    return (
-        <Provider store={store}>
-            <BrowserRouter>
-                <div className="App">
-                    <header className="App-header">
-                        <img src={logo} className="App-logo" alt="logo" />
-                        <p>
-                            Edit <code>src/App.js</code> and save to reload.
-                        </p>
-                        <button className="App-link">
-                            <Link to="/courses">Go to Cours</Link>
-                        </button>
-                    </header>
-                </div>
-                <Routes>
-                    <Route path="/courses" element={<Cours />} />
-                </Routes>
-            </BrowserRouter>
-        </Provider>
-    );
+  return (
+    <div className="App">
+      <BrowserRouter>
+        <Header/>
+        <div className="main">
+          <Router/>
+        </div>
+        <Footer/>
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;

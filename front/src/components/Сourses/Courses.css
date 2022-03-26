@@ -1,0 +1,14 @@
+.courser-wrapper {
+
+  padding: 20px;
+}
+
+.courses-wrapp {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.MuiCardMedia-img {
+  height: 200px;
+}
