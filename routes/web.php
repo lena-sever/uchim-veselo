@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CourseController as CourseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
+->name('home');
+
+Route::get('/',[CourseController::class,'index'])
+->name('course.index');
+Route::get('/{course}',[CourseController::class, 'show'])
+->where('course', '\d+')
+->name('course.show');
