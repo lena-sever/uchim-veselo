@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CourseController as CourseController;
+use App\Http\Controllers\CourseController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,11 +21,8 @@ use App\Http\Controllers\CourseController as CourseController;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
-->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/',[CourseController::class,'index'])
-->name('course.index');
-Route::get('/{course}',[CourseController::class, 'show'])
-->where('course', '\d+')
-->name('course.show');
+Route::get('/',[CourseController::class,'index'])->name('course.index');
+Route::get('course/{course}',[CourseController::class, 'show'])->where('course', '\d+')->name('course.show');
+

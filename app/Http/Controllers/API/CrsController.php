@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
-use App\Models\{Course,Lesson};
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Course;
 
-class CourseController extends Controller
+class CrsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +15,9 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::all();
-
-        return view('course.index',[
-            'courses' => $courses
-        ]);
+        return Course::all();
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -30,7 +28,6 @@ class CourseController extends Controller
     {
         //
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -46,28 +43,22 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Course  $course
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show(Course $course)
     {
+        return $course;
 
-        $lessons = Lesson::all()
-        ->where('course_id' , "=",$course->id);
-
-        return view('course.show',[
-            'course' => $course,
-            'lessons' => $lessons
-        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Course  $course
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Course $course)
+    public function edit($id)
     {
         //
     }
@@ -76,10 +67,10 @@ class CourseController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Course  $course
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Course $course)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -87,10 +78,10 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Course  $course
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Course $course)
+    public function destroy($id)
     {
         //
     }
