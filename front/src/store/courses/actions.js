@@ -1,4 +1,4 @@
-import { urlCourses } from "../../constants/url";
+import {coursesAPI} from '../../api/api'
 
 export const COURSES_LOADING = "COURSES::COURSES_LOADING";
 export const COURSES_FAILURE = "COURSES::COURSES_FAILURE";
@@ -21,7 +21,8 @@ export const getCoursesSuccess = (courses) => ( {
 export const getCourses = () => async(dispatch) => {
   dispatch( getCoursesLoading() );
   try {
-    const response = await fetch( urlCourses );
+    const response = await coursesAPI.getCourses();
+    
     if( !response.ok ) {
       throw new Error( "Some mistake has occurred. We are already working on it" );
     }

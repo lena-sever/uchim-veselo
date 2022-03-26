@@ -1,10 +1,12 @@
 import axios from "axios";
 
+import {urlCourses} from "../constants/url";
+
 export const coursesAPI = {
-    coursesAPI() {
-        // return axios.get("url").then((response) => response);
-        return {
-            data: [{ name: "course3" }, { name: "course3" }],
-        };
-    }
+    getCourses() {
+        debugger;
+        return axios.get(urlCourses)
+        .then((response) => response)
+        .catch((err) => err);
+    },
 };
