@@ -12,7 +12,7 @@ function CoursesItem({ course }) {
         <CardMedia
           component="img"
           height="140"
-          image={ course.src }
+          image={ course.img }
           alt="Изображение курса"
         />
         <CardContent>
