@@ -1,4 +1,4 @@
-function Home() {
+function Subscribe() {
   return (
     <>
       <section class="design-wrp">
@@ -14,4 +14,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Subscribe;

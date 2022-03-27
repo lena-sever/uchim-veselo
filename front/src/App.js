@@ -4,7 +4,6 @@ import { Provider } from "react-redux";
 
 import { store } from "./store/store";
 import Header from "./components/Header/Header";
-import Courses_copy from "./components/Courses_copy/Courses_copy";
 import Router from "./components/Routing/Router";
 import Footer from "./components/Footer/Footer";
 
@@ -14,7 +13,6 @@ function App() {
           <div className="App">
               <BrowserRouter>
                   <Header />
-                  <Courses_copy />
                   <div className="main">
                       <Router />
                   </div>
