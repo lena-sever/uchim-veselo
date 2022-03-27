@@ -4,10 +4,18 @@ import "./Navigation.css";
 function Navigation() {
 
   return (
-    <nav className="nav">
-      <li><NavLink to="/" className="nav__links">Home</NavLink></li>
-      <li><NavLink to="/courses" className="nav__links">Courses</NavLink></li>
-    </nav>
+      <>
+          <NavLink to="/" className="home">
+              Учим-весело
+          </NavLink>
+
+          <NavLink to="/courses" className="home">
+              Courses
+          </NavLink>
+          <a href="#" class="home">
+              <div>Contacts</div>
+          </a>
+      </>
   );
 }
 

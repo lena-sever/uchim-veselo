@@ -22,15 +22,12 @@ export const getCourses = () => async(dispatch) => {
   dispatch( getCoursesLoading() );
   try {
     const response = await coursesAPI.getCourses();
-    
-    if( !response.ok ) {
+    if( !response.data  ) {
       throw new Error( "Some mistake has occurred. We are already working on it" );
     }
     // const result = await response.text();
-    const result = await response.json();
     // console.log( result );
-    dispatch( getCoursesSuccess( result ) );
-
+    dispatch(getCoursesSuccess(response.data));
   } catch( err ) {
     console.log( err );
     dispatch( getCoursesFailure( err.message ) );
