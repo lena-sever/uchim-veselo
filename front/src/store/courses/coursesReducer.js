@@ -22,7 +22,6 @@ export const coursesReducer = (state = initialCourses, { type, payload }) => {
       };
 
     case COURSES_SUCCESS:
-      console.log( payload );
       return {
         ...state,
         courses: payload,
