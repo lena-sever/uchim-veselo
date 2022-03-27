@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Courses from "../Сourses/Courses";
-import Home from "../Home/Home";
+import Home from "../Subscribe/Subscribe";
 import Lessons from "../Lessons/Lessons";
 
 
