@@ -17,6 +17,7 @@ class Course extends Model
 		'title',
 		'description',
 		'text',
+        'back_img',
         'img',
 	];
 
