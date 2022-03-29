@@ -7,8 +7,8 @@ const InfoPage = () => {
     return (
         <section>
             <div class="header__content-wrp">
-                <div class="header-title">Учим весело</div>
-                <div class="header-title__react">
+                <div class="header-title title">Учим весело</div>
+                <div class="header-title__react subtitle">
                     Образовательная платформа для детей
                 </div>
                 <Link className="try-btn" to="/courses">

@@ -3,6 +3,7 @@ import "./Navigation.css";
 
 import logo from '../../img/logo.png';
 
+
 function Navigation() {
     return (
         <>
@@ -17,7 +18,6 @@ function Navigation() {
             </NavLink>
         </>
     );
-
 }
 
 export default Navigation;
