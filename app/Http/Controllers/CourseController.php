@@ -54,8 +54,6 @@ class CourseController extends Controller
     {
         $lessons = $course->lessons()->get();
         $reviews = $course->courseReviews()->get();
-        // $reviews = CourseReview::all()
-        // ->where('course_id' , "=",$course->id);
 
         return view('course.show',[
             'course' => $course,
