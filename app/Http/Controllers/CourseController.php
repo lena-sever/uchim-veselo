@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\{Course, CourseReview, Lesson};
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CourseController extends Controller
 {
@@ -51,11 +52,10 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-
-        $lessons = Lesson::all()
-        ->where('course_id' , "=",$course->id);
-        $reviews = CourseReview::all()
-        ->where('course_id' , "=",$course->id);
+        $lessons = $course->lessons()->get();
+        $reviews = $course->courseReviews()->get();
+        // $reviews = CourseReview::all()
+        // ->where('course_id' , "=",$course->id);
 
         return view('course.show',[
             'course' => $course,
