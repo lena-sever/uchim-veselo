@@ -6,7 +6,7 @@
 <div class="container">
   @if ($course)
 
-  <img src="{{$course->img}}" width="350" height="350" alt="" class="cart-img-top">
+  <img src="{{$course->back_img}}" width="350" height="350" alt="" class="cart-img-top">
   <h1 class="display-3">{{$course->title}}</h1>
   <p>{{$course->text}}</p>
 
@@ -22,7 +22,7 @@
       <h1>Уроков нет</h1>
       @endforelse
     </div>
-
+cd 
     <hr>
 
   </div> <!-- /container -->
