@@ -48,8 +48,14 @@ class CrsController extends Controller
      */
     public function show(Course $course)
     {
-        return $course;
 
+        $lessons = $course->lessons()->get();
+        $reviews = $course->courseReviews()->get();
+        $course->lessons =  $lessons;
+        $course->reviews =  $reviews;
+        $course = json_encode($course);
+
+        return $course;
     }
 
     /**
