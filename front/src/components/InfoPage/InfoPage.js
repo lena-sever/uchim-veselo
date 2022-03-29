@@ -1,6 +1,8 @@
 import React from "react";
 import Subscribe from "../Subscribe/Subscribe";
 import "./InfoPage.css";
+import { Link } from "react-router-dom";
+
 const InfoPage = () => {
     return (
         <section>
@@ -9,9 +11,9 @@ const InfoPage = () => {
                 <div class="header-title__react subtitle">
                     Образовательная платформа для детей
                 </div>
-                <a class="try-btn" target="_blank" href="#">
+                <Link className="try-btn" to="/courses">
                     Учиться
-                </a>
+                </Link>
             </div>
             <Subscribe />
         </section>
