@@ -1,0 +1,23 @@
+.nav {
+  display: flex;
+  list-style: none;
+
+}
+
+.nav__links {
+  display: inline-block;
+  padding: 10px;
+  color: blueviolet;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav__links:hover {
+  background-color: rgba(182, 134, 227, 0.62);
+  border-radius: 3px;
+  /*text-decoration: underline;*/
+}
+
+.header__img {
+  width: 200px
+}

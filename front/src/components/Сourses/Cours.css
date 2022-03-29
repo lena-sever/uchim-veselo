@@ -1,0 +1,14 @@
+.cours__img {
+    width: 300px;
+}
+.cours__text {
+    font-size: 20px;
+    line-height: 1.5em;
+}
+.cours__wrp {
+    width: 80%;
+    margin: 0 auto 30px;
+}
+.cours__btn-wrp {
+    margin-top: 30px;
+}
