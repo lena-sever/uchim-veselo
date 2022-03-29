@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\LessonController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 /*
@@ -24,5 +25,9 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/',[CourseController::class,'index'])->name('course.index');
-Route::get('course/{course}',[CourseController::class, 'show'])->where('course', '\d+')->name('course.show');
+Route::get('course/{course}',[CourseController::class, 'show'])->where('course', '\d+')
+->name('course.show');
 
+Route::get('/lesson',[LessonController::class,'index'])->name('lesson.index');
+Route::get('lesson/{lesson}',[LessonController::class, 'show'])->where('lesson', '\d+')
+->name('lesson.show');

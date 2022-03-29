@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Course, CourseReview, Lesson};
+use App\Models\CourseReview;
 use Illuminate\Http\Request;
 
-class CourseController extends Controller
+class CourseReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +14,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::all();
-
-        return view('course.index',[
-            'courses' => $courses
-        ]);
+        return CourseReview::all();
     }
 
     /**
@@ -30,7 +26,6 @@ class CourseController extends Controller
     {
         //
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -46,31 +41,21 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Course  $course
+     * @param  \App\Models\CourseReview  $courseReview
      * @return \Illuminate\Http\Response
      */
-    public function show(Course $course)
+    public function show(CourseReview $courseReview)
     {
-
-        $lessons = Lesson::all()
-        ->where('course_id' , "=",$course->id);
-        $reviews = CourseReview::all()
-        ->where('course_id' , "=",$course->id);
-
-        return view('course.show',[
-            'course' => $course,
-            'lessons' => $lessons,
-            'reviews' => $reviews
-        ]);
+        return $courseReview;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Course  $course
+     * @param  \App\Models\CourseReview  $courseReview
      * @return \Illuminate\Http\Response
      */
-    public function edit(Course $course)
+    public function edit(CourseReview $courseReview)
     {
         //
     }
@@ -79,10 +64,10 @@ class CourseController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Course  $course
+     * @param  \App\Models\CourseReview  $courseReview
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Course $course)
+    public function update(Request $request, CourseReview $courseReview)
     {
         //
     }
@@ -90,10 +75,10 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Course  $course
+     * @param  \App\Models\CourseReview  $courseReview
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Course $course)
+    public function destroy(CourseReview $courseReview)
     {
         //
     }
