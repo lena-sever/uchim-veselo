@@ -22,7 +22,7 @@
       <h1>Уроков нет</h1>
       @endforelse
     </div>
-        <p><a class="btn btn-primary" href="{{ route('course.index') }}" role="button">Назад</a></p>
+        <p><a class="btn btn-primary" href="{{ route('course.index') }}" role="button">Назад ко всем Курсам</a></p>
     <hr>
   </div> <!-- /container -->
   @else

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LessonController;
+use App\Http\Controllers\Admin\CourseController as AdminCourseController;
+use App\Http\Controllers\Admin\LessonController as AdminLessonController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 /*
@@ -16,18 +18,40 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-/*Route::get('/', function () {
+Route::get('/', function () {
     return view('welcome');
-});*/
+});
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+/*Route::get('/home', [HomeController::class, 'index'])->name('home');*/
 
-Route::get('/',[CourseController::class,'index'])->name('course.index');
-Route::get('course/{course}',[CourseController::class, 'show'])->where('course', '\d+')
+
+Route::group(['as' => 'admin.', 'prefix' => 'admin'], function() {
+    Route::view('/', 'admin.index')->name('index');
+
+    Route::resource('/course',AdminCourseController::class);
+    Route::get('/course/destroy/{id}', [AdminCourseController::class, 'destroy'])
+	->where('id', '\d+')
+	->name('course.destroy');
+    Route::resource('/lesson',AdminLessonController::class);
+    Route::get('/lesson/destroy/{id}', [AdminLessonController::class, 'destroy'])
+	->where('id', '\d+')
+	->name('lesson.destroy');
+});
+
+
+Route::get('/course',[CourseController::class,'index'])
+->name('course.index');
+
+Route::get('course/{course}',[CourseController::class, 'show'])
+->where('course', '\d+')
 ->name('course.show');
 
-Route::get('/lesson',[LessonController::class,'index'])->name('lesson.index');
-Route::get('lesson/{lesson}',[LessonController::class, 'show'])->where('lesson', '\d+')
+
+Route::get('/lesson',[LessonController::class,'index'])
+->name('lesson.index');
+
+Route::get('lesson/{lesson}',[LessonController::class, 'show'])
+->where('lesson', '\d+')
 ->name('lesson.show');

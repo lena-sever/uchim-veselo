@@ -10,7 +10,7 @@
   <h1 class="display-3">{{$lesson->title}}</h1>
   <p>{{$lesson->text}}</p>
 
-  <p><a class="btn btn-primary" href="{{ route('lesson.index') }}" role="button">Назад</a></p>
+  <p><a class="btn btn-primary" href="{{ route('lesson.index') }}" role="button">Назад ко всем Урокам</a></p>
 
   <p><a href="{{route('course.show',['course' => $lesson->course_id])}}" class="btn btn-primary">Перейти к Курсу</a></p>
   @else
