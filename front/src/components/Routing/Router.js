@@ -1,7 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import Courses from "../Сourses/Courses";
-import InfoPage from "../InfoPage/InfoPage";
 import Lessons from "../Lessons/Lessons";
+import InfoPage from "../InfoPage/InfoPage";
+import CoursPage from "../Сourses/CoursPage";
+
 
 function Router() {
     return (
@@ -9,9 +11,8 @@ function Router() {
             <Route path="/" element={<InfoPage />} />
             <Route path="/courses">
                 <Route index element={<Courses />} />
-                <Route path=":courseId" element={<Lessons />} />
+                <Route path=":coursId" element={<CoursPage />} />
             </Route>
-
             {/*<Route path="*" element={ <Error/> }/>*/}
         </Routes>
     );
