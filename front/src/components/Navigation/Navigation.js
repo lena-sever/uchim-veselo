@@ -1,22 +1,23 @@
 import { NavLink } from "react-router-dom";
 import "./Navigation.css";
 
+import logo from '../../img/logo.png';
+
 function Navigation() {
     return (
         <>
             <NavLink to="/" className="home">
-                Учим-весело
-            </NavLink>
-
+              <img className="header__img" src={logo} />
+          </NavLink>
             <NavLink to="/courses" className="home">
                 Courses
             </NavLink>
-            {/* Реализиовал переход на страницу "Contacts" */}
             <NavLink to="/contacts" className="home">
                 Contacts
             </NavLink>
         </>
     );
+
 }
 
 export default Navigation;
