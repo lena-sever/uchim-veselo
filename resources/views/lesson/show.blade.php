@@ -9,8 +9,11 @@
 
   <h1 class="display-3">{{$lesson->title}}</h1>
   <p>{!!$lesson->text!!}</p>
+
+
   <p><a href="{{route('course.show',['course' => $lesson->course_id])}}" class="btn btn-primary">Список всех уроков курса "{{ $lesson->course->title }}"" </a></p>
- @else
+  @else
+
   <h1>Такого урока нет</h1>
   @endif
 
