@@ -1,10 +1,7 @@
 @extends('layouts.app')
-
 @section('title', 'Список курсов')
-
 @section('content')
 <div class="container">
-
   <div class="row">
     @forelse($courses as $coursesItem)
     <div class="col-md-4">
@@ -17,8 +14,10 @@
     <h1>Курсов нет</h1>
     @endforelse
   </div>
-
   <hr>
-
 </div>
 @endsection
+
+
+
+

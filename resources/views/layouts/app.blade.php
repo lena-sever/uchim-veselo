@@ -37,7 +37,7 @@
                             <a class="nav-link" href="{{ route('course.index') }}">ВСЕ КУРСЫ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('lesson.index') }}">ВСЕ УРОКИ</a>
+                            <a class="nav-link" href="{{ route('admin.index') }}">АДМИНКА</a>
                         </li>
                     </ul>
 
