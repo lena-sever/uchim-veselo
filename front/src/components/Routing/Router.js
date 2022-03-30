@@ -4,6 +4,7 @@ import Lessons from "../Lessons/Lessons";
 import InfoPage from "../InfoPage/InfoPage";
 import CoursPage from "../Сourses/CoursPage";
 import Contacts from "../Contacts/Contacts";
+import Login from "../Login/Login";
 
 function Router() {
     return (
@@ -14,6 +15,7 @@ function Router() {
                 <Route path=":coursId" element={<CoursPage />} />
             </Route>
             <Route path="/contacts" element={<Contacts />}></Route>
+            <Route path="/login" element={<Login />}></Route>
             {/*<Route path="*" element={ <Error/> }/>*/}
         </Routes>
     );
