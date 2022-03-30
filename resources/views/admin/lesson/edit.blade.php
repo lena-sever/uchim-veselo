@@ -37,17 +37,12 @@
             <br>
             <button type="submit"  value="Изменить" class="btn btn-success" style="float: right;">Изменить</button>
         </form>
-        <a href="{{ route('admin.lesson.index') }}" type="button" class="btn btn-sm btn-outline-secondary">
+        <a href="{{ route('admin.course.show', ['course' => $lesson->course_id]) }}" type="button" class="btn btn-sm btn-outline-secondary">
         Назад</a>
     </div>
 
 @endsection
-@push('js')
-    <script>
-        ClassicEditor
-            .create( document.querySelector( '#description' ) )
-            .catch( error => {
-                console.error( error );
-            } );
-    </script>
-@endpush
+
+<?php
+//dd($lesson->course_id)
+?>

@@ -6,7 +6,7 @@
 <div class="container">
   @if ($course)
 
-  <img src="{{$course->back_img}}" width="350" height="350" alt="" class="cart-img-top">
+  <img src="{{$course->img}}" width="350" height="350" alt="" class="cart-img-top">
   <h1 class="display-3">{{$course->title}}</h1>
   <p>{{$course->text}}</p>
 
@@ -14,8 +14,7 @@
     <h2>Список уроков этого курса:</h2>
     <div class="row">
       @forelse($lessons as $lessonsItem)
-      <h5>{{$lessonsItem->title}}
-      <p><a class="btn btn-primary" href="{{route('lesson.show', ['lesson' => $lessonsItem])}}">Подробнее</a></p>
+      <h5>{{ $loop->iteration }}. {{$lessonsItem->title}} <a href="{{route('lesson.show', ['lesson' => $lessonsItem])}}">Подробнее</a>
       </h5>
 
       @empty

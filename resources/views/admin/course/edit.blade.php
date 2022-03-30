@@ -25,9 +25,10 @@
                 @error('text') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
+                <!--пока не работает-->
                 <label for="image">Изображение</label>
-                <img  src="{{ Storage::disk('public')->url($course->back_img) }}""> &nbsp;
-                <button name="_method" value="delete" class="delete btn btn-sm btn-outline-danger">X</button>
+                <img width="100" height="auto" src="{{ $course->img }}""> &nbsp;
+                <button disabled name="_method" value="delete" class="delete btn btn-sm btn-outline-danger">X</button>
                 <input type="file" class="form-control" id="image" name="image" >
             </div>
             <br>
@@ -38,12 +39,4 @@
     </div>
 
 @endsection
-@push('js')
-    <script>
-        ClassicEditor
-            .create( document.querySelector( '#description' ) )
-            .catch( error => {
-                console.error( error );
-            } );
-    </script>
-@endpush
+

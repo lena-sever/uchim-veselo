@@ -19,12 +19,7 @@ class LessonController extends Controller
      */
     public function index()
     {
-        $lessons = Lesson::all();
-        $message = "";
-        return view('admin.lesson.index',[
-            'lessons' => $lessons,
-            'message' => $message
-        ]);
+
     }
 
     /**
@@ -35,9 +30,13 @@ class LessonController extends Controller
     public function create()
     {
         $courses = Course::all();
+        $course_id = $_SERVER['HTTP_REFERER']; //http://uchim/admin/course/6
+        $course_id = explode("course/", $course_id);
+        $course_id = end($course_id);
 
         return view('admin.lesson.create',[
-            'courses' => $courses
+            'courses' => $courses,
+            'course_id' => $course_id
         ]);
     }
 
@@ -100,7 +99,7 @@ class LessonController extends Controller
         $updated = $lesson->fill($validated)->save();
 
         if($updated) {
-            return redirect()->route('admin.lesson.index')
+            return redirect()->route('admin.course.show',['course' => $lesson->course_id])
                 ->with('success', 'Запись успешно обновлена');
         }
 
@@ -118,7 +117,8 @@ class LessonController extends Controller
     {
         try{
             $lesson->delete();
-            return response()->json('ok');
+            return redirect()->route('admin.course.show',['course' => $lesson->course_id])
+            ->with('success', 'Запись успешно удалена');
         }catch(\Exception $e){
             Log::error("Ошибка удаления");
         }

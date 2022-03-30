@@ -30,10 +30,8 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        $lessons = Lesson::all()
-        ->where('course_id' , "=",$course->id);
-        $reviews = CourseReview::all()
-        ->where('course_id' , "=",$course->id);
+        $lessons = $course->lessons()->get();
+        $reviews = $course->courseReviews()->get();
 
         return view('course.show',[
             'course' => $course,

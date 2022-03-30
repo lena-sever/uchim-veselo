@@ -65,6 +65,14 @@ class CourseController extends Controller
     public function show(Course $course)
     {
 
+        $lessons = $course->lessons()->get();
+        $reviews = $course->courseReviews()->get();
+
+        return view('admin.course.show',[
+            'course' => $course,
+            'lessons' => $lessons,
+            'reviews' => $reviews
+        ]);
     }
 
     /**
@@ -90,6 +98,13 @@ class CourseController extends Controller
     public function update(EditRequest $request, Course $course)
     {
         $validated = $request->validated();
+
+		/*if($request->hasFile('image')) {
+			$validated['image'] = app(UploadService::class)->start($request->file('image'));
+
+            //dd($validated['image'],$updated);
+        }*/
+
         $updated = $course->fill($validated)->save();
 
         if($updated) {
@@ -111,7 +126,8 @@ class CourseController extends Controller
     {
         try{
             $course->delete();
-            return response()->json('ok');
+            return redirect()->route('admin.course.index')
+            ->with('success', 'Запись успешно удалена');
         }catch(\Exception $e){
             Log::error("Ошибка удаления");
         }

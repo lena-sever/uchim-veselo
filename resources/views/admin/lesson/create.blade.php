@@ -5,7 +5,7 @@
 @section('content')
 
 @include('inc.message')
-<div class="col-md-9 col-lg-10 px-md-4">
+<div class="col-md-9 ms-sm-5 col-lg-10 px-md-2">
         <form method="post" action="{{ route('admin.lesson.store') }}">
         @csrf
             <div class="form-group">
@@ -27,7 +27,7 @@
                 <label for="course_id">Курс</label>
                 <select class="form-control" id="course_id" name="course_id">
                     @foreach($courses as $course)
-                        <option value="{{ $course->id }}"> {{ $course->title }}</option>
+                        <option value="{{ $course->id }}"  @if($course->id == $course_id) selected @endif> {{ $course->title }}</option>
                     @endforeach
                 </select>
                 @error('course_id') <strong style="color:red;">{{ $message }}</strong> @enderror
@@ -35,20 +35,12 @@
             <br>
             <button type="submit"  value="Добавить" class="btn btn-success" style="float: right;">Добавить</button>
         </form>
-        <a href="{{ route('admin.lesson.index') }}" type="button" class="btn btn-sm btn-outline-secondary">
+        <a href="{{ route('admin.course.show', ['course' => $course_id]) }}" type="button" class="btn btn-sm btn-outline-secondary">
         Назад</a>
     </div>
 @endsection
-@push('js')
-    <script>
-        ClassicEditor
-            .create( document.querySelector( '#description' ) )
-            .catch( error => {
-                console.error( error );
-            } );
-    </script>
-@endpush
+
 
 <?php
-//dd($course->id,$course->title);
+//dd($courses,$course->id,$course_id)
 ?>

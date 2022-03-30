@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\CourseReview;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class CourseReviewController extends Controller
 {
@@ -80,6 +82,11 @@ class CourseReviewController extends Controller
      */
     public function destroy(CourseReview $courseReview)
     {
-        //
+        try{
+            $courseReview->delete();
+            return redirect()->route('admin.course.show',['course' => $courseReview->course_id]);
+        }catch(\Exception $e){
+            Log::error("Ошибка удаления");
+        }
     }
 }

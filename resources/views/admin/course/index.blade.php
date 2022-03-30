@@ -33,13 +33,13 @@
                     <td>{{ $coursesItem->id }}</td>
                     <td>{{ $coursesItem->title }}</td>
                     <td></td>
-                    <td><img src="{{$coursesItem->back_img}}" width="150" height="150" alt="" class="cart-img-top"></td>
+                    <td><img src="{{$coursesItem->img}}" width="100" height="100" alt="" class="cart-img-top"></td>
                     <td>{!! $coursesItem->description !!}</td>
                     <td>
                         <p class="btn-group">
-                            <a class="btn btn-secondary" href="{{ route('course.show', ['course' => $coursesItem]) }}" role="button">Подробнее</a>&nbsp;
-                            <a class="btn btn-sm btn-primary" href="{{ route('admin.course.edit', ['course' => $coursesItem]) }}">Редактировать</a> &nbsp;
-                            <button class="delete btn btn-sm btn-danger" rel="{{$coursesItem->id}}">Удалить</button>
+                            <a class="btn btn-secondary" href="{{ route('admin.course.show', ['course' => $coursesItem->id]) }}" role="button">Подробнее</a>&nbsp;
+                            <a class="btn  btn-primary" href="{{ route('admin.course.edit', ['course' => $coursesItem]) }}">Редактировать</a> &nbsp;
+                            <a class="delete btn  btn-danger" href="{{ route('admin.course.destroy', ['course' => $coursesItem]) }}">Удалить</a>
                         </p>
                     </td>
                 </tr>
@@ -51,31 +51,6 @@
     </div>
   </div>
 </div>
-<script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const el = document.querySelectorAll(".delete");
-             el.forEach(function (e, k) {
-                 e.addEventListener('click', function() {
-                    const id = e.getAttribute("rel");
-                    if (confirm("Подтверждаете удаление записи с #ID =" + id + " ?")) {
-                        send('/admin/course/' + id).then(() => {
-                            location.reload();
-                        });
-                    }
-                });
-            });
-        });
-        async function send(url) {
-            let response = await fetch(url, {
-                method: 'DELETE',
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                }
-            });
-            let result = await response.json();
-            return result.ok;
-        }
-</script>
 @endsection
 
 
