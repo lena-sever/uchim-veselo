@@ -26,6 +26,8 @@ Route::get('courses', [CrsController::class,'index'])->name('api.course.index');
  
 Route::get('courses/{course}', [CrsController::class,'show'])->name('api.course.show');
  
-Route::put('courses/{course}', [CrsController::class,'update'])->name('api.course.update');;
+Route::post('courses', [CrsController::class,'store'])->name('api.course.store');
+
+Route::put('courses/{course}', [CrsController::class,'update'])->name('api.course.update');
  
-Route::delete('courses/{course}', [CrsController::class,'destroy'])->name('api.course.destroy');;
+Route::delete('courses/{course}', [CrsController::class,'destroy'])->name('api.course.destroy');
