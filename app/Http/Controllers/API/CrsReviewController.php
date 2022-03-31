@@ -1,83 +1,38 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
 use App\Models\CourseReview;
 use Illuminate\Http\Request;
 
-class CourseReviewController extends Controller
+
+class CrsReviewController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return CourseReview::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $courseReview = CourseReview::create($request->all());
+        return response()->json($courseReview, 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\CourseReview  $courseReview
-     * @return \Illuminate\Http\Response
-     */
     public function show(CourseReview $courseReview)
     {
         return $courseReview;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\CourseReview  $courseReview
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(CourseReview $courseReview)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\CourseReview  $courseReview
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, CourseReview $courseReview)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\CourseReview  $courseReview
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(CourseReview $courseReview)
     {
         //
