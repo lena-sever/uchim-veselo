@@ -117,14 +117,8 @@
 
 .products_item_btn {
     display: none;
-    min-height: 44px;
-    min-width: 139px;
-    border: 1px solid #FFFFFF;
-    background: transparent;
-    text-align: center;
     font-size: 14px;
     line-height: 17px;
-    color: #FFFFFF;
     position: absolute;
     top: 180px;
     left: 110px;
@@ -134,12 +128,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.products_item:hover .products_item_btn {
-    background-color: #ccc;
-    color: rgb(19, 19, 19);
-    border: 1px solid #000;
 }
 
 .products_item:hover .products_item_btn:hover svg {
