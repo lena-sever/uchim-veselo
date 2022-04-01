@@ -28,7 +28,8 @@ class EditRequest extends FormRequest
         return [
 			'title' => ['required', 'string', 'min:5'],
             'description' => ['required', 'string', 'max:1000'],
-            'text' =>['required', 'string']
+            'text' =>['required', 'string'],
+            'img' => ['nullable', 'file', 'image', 'mimes:jpg,png'],
         ];
     }
 

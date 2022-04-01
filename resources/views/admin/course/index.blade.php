@@ -34,7 +34,8 @@
                     <td>{{ $coursesItem->title }}</td>
                     <td></td>
                     <td><img src="{{$coursesItem->img}}" width="100" height="100" alt="" class="cart-img-top"></td>
-                    <td>{!! $coursesItem->description !!}</td>
+                    <!--<td><img src="{{$coursesItem->img}}" width="100" height="100" alt="" class="cart-img-top"></td>
+-->  <td>{!! $coursesItem->description !!}</td>
                     <td>
                         <p class="btn-group">
                             <a class="btn btn-secondary" href="{{ route('admin.course.show', ['course' => $coursesItem->id]) }}" role="button">Подробнее</a>&nbsp;

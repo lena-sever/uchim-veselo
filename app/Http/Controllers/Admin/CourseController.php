@@ -7,6 +7,8 @@ use App\Models\{Course, CourseReview, Lesson};
 use App\Http\Requests\Course\EditRequest;
 use App\Http\Requests\Course\CreateRequest;
 use Illuminate\Support\Facades\Log;
+use App\Services\UploadService;
+use Illuminate\Support\Facades\Storage;
 
 class CourseController extends Controller
 {
@@ -45,7 +47,15 @@ class CourseController extends Controller
      */
     public function store(CreateRequest $request)
     {
-        $created = Course::create($request->validated());
+        $validated = $request->validated();
+
+		if($request->hasFile('image')) {
+            //добавление картинки локально
+			$validated['img'] = app(UploadService::class)->start($request->file('image'));
+            //добавление картинки в бд
+            $validated['img']='http://uchim-veselo.ru/'.$validated['img'];
+        }
+        $created = Course::create($validated);
 
 		if($created) {
 			return redirect()->route('admin.course.index')
@@ -99,12 +109,13 @@ class CourseController extends Controller
     {
         $validated = $request->validated();
 
-		/*if($request->hasFile('image')) {
-			$validated['image'] = app(UploadService::class)->start($request->file('image'));
+		if($request->hasFile('image')) {
+            //добавление картинки локально
+			$validated['img'] = app(UploadService::class)->start($request->file('image'));
+           //добавление картинки в бд
+            $validated['img']='http://uchim-veselo.ru/'.$validated['img'];
 
-            //dd($validated['image'],$updated);
-        }*/
-
+        }
         $updated = $course->fill($validated)->save();
 
         if($updated) {
@@ -124,12 +135,27 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        try{
-            $course->delete();
-            return redirect()->route('admin.course.index')
-            ->with('success', 'Запись успешно удалена');
-        }catch(\Exception $e){
-            Log::error("Ошибка удаления");
+        $page = $_SERVER['HTTP_REFERER'];
+        $page = explode("/", $page);
+        $page = end($page);
+
+        //удаление картинки при редактировании
+        if($page == "edit"){
+            $validated['img'] = null;
+            $file = explode('http://uchim-veselo.ru/',$course->img);
+            $file = end($file);
+            Storage::delete($file);
+            $updated = $course->fill($validated)->save();
+            return back();
+        }
+        else{
+            try{
+                $course->delete();
+                return redirect()->route('admin.course.index')
+                ->with('success', 'Запись успешно удалена');
+            }catch(\Exception $e){
+                Log::error("Ошибка удаления");
+            }
         }
     }
 }
