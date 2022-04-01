@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { Button } from "@mui/material";
 import { getLessons } from "../../store/lessons/actions";
 import { useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
@@ -36,13 +37,12 @@ function CoursesItem({ course }) {
 
     return (
         <div class="products_item">
-            <NavLink to={path} class="products_item_img onClick={ getLessonsList }"
+            <NavLink to={path} class="products_item_img onClick={ getLessonsList }">
                 <img
                     className="products_item_img_w"
                     src={ course.img }
                     alt="product_photo"
-<\
-                ></img>
+                />
             </NavLink>
             <div class="products_item_text_box">
                 <p class="text_box_header">{course.title}</p>
