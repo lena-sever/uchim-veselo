@@ -99,11 +99,11 @@ class CourseController extends Controller
     {
         $validated = $request->validated();
 
-		/*if($request->hasFile('image')) {
+		if($request->hasFile('image')) {
 			$validated['image'] = app(UploadService::class)->start($request->file('image'));
 
             //dd($validated['image'],$updated);
-        }*/
+        }
 
         $updated = $course->fill($validated)->save();
 
