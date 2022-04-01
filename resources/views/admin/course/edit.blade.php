@@ -5,8 +5,8 @@
 @section('content')
 
 @include('inc.message')
-    <div class="col-md-9 col-lg-10 px-md-4">
-        <form method="post" action="{{ route('admin.course.update',['course' => $course]) }}">
+    <div class="col-md-9 ms-sm-5 col-lg-10 px-md-2">
+        <form method="post" action="{{ route('admin.course.update',['course' => $course]) }}" enctype="multipart/form-data">
         @csrf
         @method('put')
             <div class="form-group">
@@ -25,10 +25,9 @@
                 @error('text') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
-                <!--пока не работает-->
                 <label for="image">Изображение</label>
-                <img width="100" height="auto" src="{{ $course->img }}""> &nbsp;
-                <button disabled name="_method" value="delete" class="delete btn btn-sm btn-outline-danger">X</button>
+                <img width="100" height="auto" src="{{ $course->img }}"> &nbsp;
+                <button name="_method" value="delete" class="delete btn btn-sm btn-outline-danger">X</button>
                 <input type="file" class="form-control" id="image" name="image" >
             </div>
             <br>
