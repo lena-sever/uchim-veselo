@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import {urlCourses} from "../constants/url";
+import { urlCourses } from "../constants/url";
 
 export const coursesAPI = {
     getCourses() {
@@ -14,5 +14,14 @@ export const coursesAPI = {
             .get(`${urlCourses}/${coursId}`)
             .then((response) => response)
             .catch((err) => err);
+    },
+};
+
+export const lessonsAPI = {
+    getCourse(courseId) {
+        return axios
+            .get( `${ urlCourses }/${ courseId }` )
+            .then( (response) => response )
+            .catch( (err) => err );
     },
 };

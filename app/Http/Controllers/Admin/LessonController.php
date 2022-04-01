@@ -30,7 +30,7 @@ class LessonController extends Controller
     public function create()
     {
         $courses = Course::all();
-        $course_id = $_SERVER['HTTP_REFERER']; //http://uchim/admin/course/6
+        $course_id = $_SERVER['HTTP_REFERER'];
         $course_id = explode("course/", $course_id);
         $course_id = end($course_id);
 
