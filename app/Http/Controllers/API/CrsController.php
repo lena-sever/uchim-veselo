@@ -30,7 +30,7 @@ class CrsController extends Controller
         $reviews = $course->courseReviews()->get();
         $course->lessons =  $lessons;
         $course->reviews =  $reviews;
-        $course = json_encode($course);
+        $course = json_encode($course, JSON_UNESCAPED_UNICODE);
 
         return $course;
     }
