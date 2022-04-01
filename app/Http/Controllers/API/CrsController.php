@@ -12,7 +12,8 @@ class CrsController extends Controller
 
     public function index()
     {
-        return Course::all();
+        $courses = Course::all();
+        return json_encode($courses, JSON_UNESCAPED_UNICODE);
     }
 
 
