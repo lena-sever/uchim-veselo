@@ -1,0 +1,52 @@
+{
+    "id": 2,
+    "title": "\u0410\u043d\u0433\u043b\u0438\u0439\u0441\u043a\u0438\u0439 \u0434\u043b\u044f \u0448\u043a\u043e\u043b\u044c\u043d\u0438\u043a\u043e\u0432",
+    "description": "Velit iure libero hic sit. Nulla blanditiis sit sit quia. Animi nam maxime corporis culpa.",
+    "text": "Est in iste aperiam vero beatae. Est neque ullam eaque et temporibus. Temporibus nemo harum ut maiores iusto expedita praesentium quas. Voluptatem itaque eos deserunt ipsam dolores exercitationem earum. Tenetur dicta quia sint illo. Quia nam et magni sunt quisquam eos. Ducimus eos deserunt facilis ab repellendus. Odio earum aut rerum fuga totam. Ab eum rem id voluptatem cupiditate nostrum.",
+    "img": "http://uchim-veselo.ru/img/2.png",
+    "created_at": null,
+    "updated_at": null,
+    "deleted_at": null,
+    "lessons": [
+        {
+            "id": 2,
+            "title": "Dolore voluptatum modi.",
+            "description": "Perferendis et.",
+            "text": "Dolorum natus commodi nemo et. Quo quam commodi ut nemo similique saepe ut. Dolor nemo accusamus aut expedita et. Dignissimos autem incidunt qui sed omnis. Magni mollitia eaque qui. Doloremque reiciendis vel ab. Nihil nihil praesentium perspiciatis nobis dicta eos assumenda. Et cum temporibus nisi. Fuga ut eos eius id ut consequatur. Voluptatibus quos dignissimos nisi nam hic.",
+            "course_id": 2,
+            "created_at": "2011-01-30T23:28:39.000000Z",
+            "updated_at": null,
+            "deleted_at": null
+        },
+        {
+            "id": 3,
+            "title": "Quasi repellat totam ut quia id voluptatem blanditiis provident.",
+            "description": "Eveniet ea at totam.",
+            "text": "Officia velit aut quaerat quibusdam labore debitis atque. Perferendis sapiente sapiente nostrum fugit est. Sit possimus ut pariatur enim voluptatum. Nihil suscipit quia ipsum eos. Sed omnis libero cum mollitia qui. Asperiores delectus dolor voluptatum est. Animi consequatur quas et cupiditate quia. Laborum fugiat ut at quo recusandae. Voluptatibus enim cumque numquam quo. Quia nesciunt error rerum maxime. Dolorem omnis eos quia dolor quibusdam praesentium.",
+            "course_id": 2,
+            "created_at": "1973-08-31T20:07:10.000000Z",
+            "updated_at": null,
+            "deleted_at": null
+        }
+    ],
+    "reviews": [
+        {
+            "id": 5,
+            "text": "Molestias assumenda sapiente autem magnam. Iure odit et voluptas quia. Sint aliquam impedit non iusto quis vero. Facere nam voluptas et alias quisquam.",
+            "course_id": 2,
+            "user_id": 2,
+            "created_at": "1983-06-28T08:57:37.000000Z",
+            "updated_at": null,
+            "deleted_at": null
+        },
+        {
+            "id": 7,
+            "text": "Voluptate minus facilis voluptate ut. Ut quos ullam nisi dignissimos ipsam tempore sed est. Nihil at totam neque illo vel.",
+            "course_id": 2,
+            "user_id": 3,
+            "created_at": "1976-08-19T09:09:18.000000Z",
+            "updated_at": null,
+            "deleted_at": null
+        }
+    ]
+}
