@@ -5,6 +5,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\Admin\CourseController as AdminCourseController;
 use App\Http\Controllers\Admin\LessonController as AdminLessonController;
+use App\Http\Controllers\Admin\TestController as AdminTestController;
 use App\Http\Controllers\Admin\CourseReviewController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
@@ -43,6 +44,10 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin'], function() {
     Route::get('/review/destroy/{courseReview}', [CourseReviewController::class, 'destroy'])
 	->where('courseReview', '\d+')
 	->name('review.destroy');
+    Route::resource('/test',AdminTestController::class);
+    Route::get('/test/destroy/{test}', [AdminTestController::class, 'destroy'])
+	->where('test', '\d+')
+	->name('test.destroy');
 
 });
 

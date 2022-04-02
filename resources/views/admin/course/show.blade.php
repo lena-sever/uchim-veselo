@@ -28,6 +28,7 @@
                     <td>{!! $lessonItem->description !!}</td>
                     <td>
                         <p class="btn-group">
+                            <a class="btn btn-sm btn-secondary" href="{{ route('admin.lesson.show', ['lesson' => $lessonItem]) }}">ТЕСТ</a> &nbsp;
                             <a class="btn btn-sm btn-primary" href="{{ route('admin.lesson.edit', ['lesson' => $lessonItem]) }}">Редактировать</a> &nbsp;
                             <a class="delete btn btn-sm btn-danger" href="{{ route('admin.lesson.destroy', ['lesson' => $lessonItem]) }}">Удалить</a>
                         </p>
