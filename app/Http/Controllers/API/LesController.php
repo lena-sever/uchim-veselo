@@ -15,7 +15,7 @@ class LessonController extends Controller
      */
     public function index()
     {
-       return Lesson::all();
+       return json_encode(Lesson::all(), JSON_UNESCAPED_UNICODE);
 
     }
 
@@ -48,7 +48,7 @@ class LessonController extends Controller
      */
     public function show(Lesson $lesson)
     {
-        return  $lesson;
+        return  json_encode($lesson, JSON_UNESCAPED_UNICODE);
     }
 
     /**

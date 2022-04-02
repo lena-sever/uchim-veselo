@@ -11,7 +11,7 @@ class CrsReviewController extends Controller
 {
     public function index()
     {
-        return CourseReview::all();
+        return json_encode(CourseReview::all(), JSON_UNESCAPED_UNICODE);
     }
 
 
@@ -23,7 +23,7 @@ class CrsReviewController extends Controller
 
     public function show(CourseReview $courseReview)
     {
-        return $courseReview;
+        return json_encode($courseReview, JSON_UNESCAPED_UNICODE);
     }
 
 
