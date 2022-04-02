@@ -1,5 +1,7 @@
-import { Button } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import { Button } from "@mui/material";
+import { getLessons } from "../../store/lessons/actions";
+import { useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import { styled } from "@mui/material/styles";
 import { purple, common } from "@mui/material/colors";
@@ -28,17 +30,19 @@ const ColorButtonOutlined = styled(Button)(({ theme }) => ({
 function CoursesItem({ course }) {
     const classes = useStyles();
     const path = `/courses/${course.id}`;
-    const getId = () => {
-        console.log(course.id);
+    const dispatch = useDispatch();
+    const getLessonsList = () => {
+        dispatch( getLessons( course.id ) );
     };
+
     return (
         <div class="products_item">
-            <NavLink to={path} class="products_item_img">
+            <NavLink to={path} class="products_item_img onClick={ getLessonsList }">
                 <img
-                    class="products_item_img_w"
-                    src={course.img}
+                    className="products_item_img_w"
+                    src={ course.img }
                     alt="product_photo"
-                ></img>
+                />
             </NavLink>
             <div class="products_item_text_box">
                 <p class="text_box_header">{course.title}</p>
@@ -48,7 +52,7 @@ function CoursesItem({ course }) {
                 as={NavLink}
                 to={path}
                 size="small"
-                onClick={getId}
+                onClick={ getLessonsList }
                 className={`products_item_btn ${classes.btn}`}
             >
                 НАЧАТЬ УЧИТЬСЯ

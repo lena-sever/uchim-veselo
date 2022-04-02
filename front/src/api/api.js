@@ -1,6 +1,8 @@
 import axios from "axios";
 
+
 import {urlCourses, urlAuth} from "../constants/url";
+
 
 export const coursesAPI = {
     getCourses() {
@@ -13,12 +15,6 @@ export const coursesAPI = {
         return axios
             .get(`${urlCourses}/${coursId}`)
             .then((response) => response)
-            .catch((err) => err);
-    },
-    getLessons(coursId) {
-        return axios
-            .get(`${urlCourses}/${coursId}`)
-            .then((response) => response.data.lessons)
             .catch((err) => err);
     },
 };
@@ -36,4 +32,13 @@ export const auth = {
             .then(() => "ok")
             .catch((err) => err);
     }
-}
+};
+
+export const lessonsAPI = {
+    getCourse(courseId) {
+        return axios
+            .get( `${ urlCourses }/${ courseId }` )
+            .then( (response) => response )
+            .catch( (err) => err );
+    },
+};

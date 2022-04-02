@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getCourses } from "../../store/courses/actions";
 import { useEffect } from "react";
-import { CircularProgress } from "@mui/material";
+
 import {
     selectCourses,
     selectCoursesError,
@@ -9,23 +9,26 @@ import {
 } from "../../store/courses/coursesSelectors";
 import CoursesItem from "./CoursesItem";
 import "./Courses.css";
+import CircularProgress from "../curcularProgress/CircularProgress";
 
 function Courses() {
     const dispatch = useDispatch();
     const courses = useSelector(selectCourses);
     const isLoading = useSelector(selectCoursesLoading);
     const error = useSelector(selectCoursesError);
+
     const requestCourses = async () => {
         dispatch(getCourses());
     };
 
     useEffect(() => {
-        requestCourses();
+         requestCourses();
     }, []);
+
     return (
         <>
             <h1>Выберите курс:</h1>
-            <section class="products">
+            <section className="products">
                 {isLoading ? (
                     <CircularProgress />
                 ) : error ? (
