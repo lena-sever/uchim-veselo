@@ -6,7 +6,7 @@ import InfoPage from "../InfoPage/InfoPage";
 import CoursPage from "../Сourses/CoursPage";
 import Contacts from "../Contacts/Contacts";
 import Error_404 from "../Error_404/Error_404";
-
+import Login from "../Login/Login";
 
 function Router() {
     return (
@@ -21,7 +21,8 @@ function Router() {
             </Route>
             <Route path="/contacts" element={<Contacts />}></Route>
             <Route path="/error_404" element={<Error_404 />}></Route>
-            
+            <Route path="/login" element={<Login />}></Route>
+            {/*<Route path="*" element={ <Error/> }/>*/}
         </Routes>
     );
 }
