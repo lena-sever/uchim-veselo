@@ -1,3 +1,8 @@
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { reghMe } from "../../store/auth/action";
+import { selectLogin } from "../../store/auth/authSelector";
+import { useNavigate } from "react-router-dom";
 import { FormControl } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
@@ -27,15 +32,46 @@ const useStyles = makeStyles((theme) => ({
 
 const RegForm = () => {
     const classes = useStyles();
+    const dispatch = useDispatch();
+    let navigate = useNavigate();
+    const loginUser = useSelector(selectLogin);
+    const [login, setLogin] = useState("");
+    const [password, setPassword] = useState("");
+    const [repeatPassword, setRepeatPassword] = useState("");
+    const [error, setError] = useState("");
+
+    if (loginUser) {
+        navigate("/courses", { replace: true });
+    }
+
+    const submitForm = () => {
+        if (password === repeatPassword) {
+            dispatch(
+                reghMe({
+                    login: login,
+                    password: password,
+                })
+            );
+        }
+    };
+
     return (
-        <div>
+        <form
+            onSubmit={(e) => {
+                e.preventDefault();
+                submitForm();
+            }}
+        >
             <FormControl fullWidth margin="normal" className="login__wrp">
                 <TextField
                     required
                     margin="normal"
                     id="outlined-required"
                     label="Логин"
-                    defaultValue="Hello World"
+                    value={login}
+                    onChange={(e) => {
+                        setLogin(e.target.value);
+                    }}
                 />
                 <TextField
                     required
@@ -44,20 +80,32 @@ const RegForm = () => {
                     label="Пароль"
                     type="password"
                     autoComplete="current-password"
+                    value={password}
+                    onChange={(e) => {
+                        setPassword(e.target.value);
+                    }}
                 />
                 <TextField
                     required
+                    error={password !== repeatPassword}
                     margin="normal"
                     id="outlined-password-input"
                     label="Повторите пароль"
                     type="password"
                     autoComplete="current-password"
+                    value={repeatPassword}
+                    helperText={
+                        password !== repeatPassword ? "пароли не совпадают" : ""
+                    }
+                    onChange={(e) => {
+                        setRepeatPassword(e.target.value);
+                    }}
                 />
                 <ColorButton type="submit" size="large" className={classes.btn}>
                     Регистрация
                 </ColorButton>
             </FormControl>
-        </div>
+        </form>
     );
 };
 

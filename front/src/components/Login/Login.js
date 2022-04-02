@@ -1,14 +1,11 @@
 import React from "react";
-import { FormControl } from "@mui/material";
-import TextField from "@mui/material/TextField";
-import { Button } from "@mui/material";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { makeStyles } from "@material-ui/core/styles";
-import { styled } from "@mui/material/styles";
-import { purple } from "@mui/material/colors";
+
 import "./Login.css";
 import LoginForm from "./LoginForm";
+import RegForm from "./RegForm";
 
 const useStyles = makeStyles((theme) => ({
     btn: {
@@ -19,14 +16,6 @@ const useStyles = makeStyles((theme) => ({
     },
     btnGroup: {
         display: "block",
-    },
-}));
-
-const ColorButton = styled(Button)(({ theme }) => ({
-    color: theme.palette.getContrastText(purple[500]),
-    backgroundColor: purple[500],
-    "&:hover": {
-        backgroundColor: purple[700],
     },
 }));
 
@@ -51,7 +40,7 @@ const Login = () => {
                 <ToggleButton value={true}>Вход</ToggleButton>
                 <ToggleButton value={false}>Регистрация</ToggleButton>
             </ToggleButtonGroup>
-            {alignment ? <LoginForm/> : <></>}
+            {alignment ? <LoginForm/> : <RegForm/>}
         </div>
     );
 };
