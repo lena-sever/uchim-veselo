@@ -8,19 +8,19 @@ import Router from "./components/Routing/Router";
 import Footer from "./components/Footer/Footer";
 
 function App() {
-  return (
-      <Provider store={store}>
-          <div className="App">
-              <BrowserRouter>
-                  <Header />
-                  <div className="main">
-                      <Router />
-                  </div>
-                  <Footer />
-              </BrowserRouter>
-          </div>
-      </Provider>
-  );
+    return (
+        <Provider store={store}>
+            <div className="App">
+                <BrowserRouter>
+                    <Header />
+                    <div className="main">
+                        <Router />
+                    </div>
+                    <Footer />
+                </BrowserRouter>
+            </div>
+        </Provider>
+    );
 }
 
 export default App;

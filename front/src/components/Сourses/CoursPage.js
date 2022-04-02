@@ -2,9 +2,12 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Button } from "@mui/material";
+
 import { NavLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { styled } from "@mui/material/styles";
+
+
 import { purple, common } from "@mui/material/colors";
 import { getCours } from "../../store/courses/actions";
 import { selectCours } from "../../store/courses/coursesSelectors";

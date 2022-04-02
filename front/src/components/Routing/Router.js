@@ -5,6 +5,7 @@ import LessonsItem from "../Lessons/LessonsItem";
 import InfoPage from "../InfoPage/InfoPage";
 import CoursPage from "../Сourses/CoursPage";
 import Contacts from "../Contacts/Contacts";
+import Login from "../Login/Login";
 
 
 function Router() {
@@ -19,6 +20,7 @@ function Router() {
 
             </Route>
             <Route path="/contacts" element={<Contacts />}></Route>
+            <Route path="/login" element={<Login />}></Route>
             {/*<Route path="*" element={ <Error/> }/>*/}
         </Routes>
     );
