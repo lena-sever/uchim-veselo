@@ -17,12 +17,10 @@ function Router() {
                 <Route path=":courseId" element={<Lessons />} />
                 <Route path=":courseId/:lessonId" element={<LessonsItem />} />
                 <Route path=":coursId" element={<CoursPage />} />
-
             </Route>
             <Route path="/contacts" element={<Contacts />}></Route>
-            <Route path="/error_404" element={<Error_404 />}></Route>
             <Route path="/login" element={<Login />}></Route>
-            {/*<Route path="*" element={ <Error/> }/>*/}
+            <Route path="*" element={<Error_404 />}></Route>
         </Routes>
     );
 }
