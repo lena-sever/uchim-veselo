@@ -12,13 +12,13 @@ function Lessons() {
     const isLoading = useSelector( selectLessonsLoading );
     const error = useSelector( selectCoursesError );
 
-    if( !courses[ courseId ] ) {
+    if( !courses[ courseId - 1 ] ) {
         return <Navigate replace to="/courses"/>;
     }
 
     return (
         <>
-            <h2>{ courses[ courseId ].title } </h2>
+            <h2>{ courses[ courseId - 1 ].title } </h2>
             <NavLink to="/courses">
                 Вернуться к списку курсов
             </NavLink>
