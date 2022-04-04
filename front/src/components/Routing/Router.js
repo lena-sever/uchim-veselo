@@ -5,7 +5,8 @@ import LessonsItem from "../Lessons/LessonsItem";
 import InfoPage from "../InfoPage/InfoPage";
 import CoursPage from "../Сourses/CoursPage";
 import Contacts from "../Contacts/Contacts";
-
+import Error_404 from "../Error_404/Error_404";
+import Login from "../Login/Login";
 
 function Router() {
     return (
@@ -16,10 +17,10 @@ function Router() {
                 <Route path=":courseId" element={<Lessons />} />
                 <Route path=":courseId/:lessonId" element={<LessonsItem />} />
                 <Route path=":coursId" element={<CoursPage />} />
-
             </Route>
             <Route path="/contacts" element={<Contacts />}></Route>
-            {/*<Route path="*" element={ <Error/> }/>*/}
+            <Route path="/login" element={<Login />}></Route>
+            <Route path="*" element={<Error_404 />}></Route>
         </Routes>
     );
 }
