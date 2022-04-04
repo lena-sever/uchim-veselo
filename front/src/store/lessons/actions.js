@@ -28,7 +28,6 @@ export const getLessons = (courseId) => async(dispatch) => {
                 "Some mistake has occurred. We are already working on it"
             );
         }
-
         dispatch( getLessonsSuccess( response.data.lessons ) );
     } catch( err ) {
         console.log( err );

@@ -7,7 +7,10 @@ function LessonsItem() {
     const { courseId } = useParams();
     const { lessonId } = useParams();
     const lessons = useSelector( selectLessons );
-    let lesson = lessons.find(less => less.id == lessonId)
+    
+    let lesson = lessons.find(less => {
+        debugger
+        return less.id == lessonId})
 
     // if( !lesson.lessonId ) {
     //     return <Navigate replace to={`/courses/${ courseId }`}/>;
