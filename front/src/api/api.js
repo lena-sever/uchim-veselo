@@ -1,8 +1,6 @@
 import axios from "axios";
 
-
-import {urlCourses, urlAuth} from "../constants/url";
-
+import { urlCourses, urlAuth, urlReviews } from "../constants/url";
 
 export const coursesAPI = {
     getCourses() {
@@ -31,14 +29,23 @@ export const auth = {
             .post(`${urlAuth}`, payload)
             .then(() => "ok")
             .catch((err) => err);
-    }
+    },
 };
 
 export const lessonsAPI = {
     getCourse(courseId) {
         return axios
-            .get( `${ urlCourses }/${ courseId }` )
-            .then( (response) => response )
-            .catch( (err) => err );
+            .get(`${urlCourses}/${courseId}`)
+            .then((response) => response)
+            .catch((err) => err);
+    },
+};
+
+export const reviewsAPI = {
+    getReviews() {
+        return axios
+            .get(urlReviews)
+            .then((res) => res)
+            .catch((err) => err);
     },
 };
