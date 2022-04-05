@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./Reviews.module.css";
 
 const Review = (props) => {
-    debugger;
     return (
         <>
             <div className={styles.review}>
