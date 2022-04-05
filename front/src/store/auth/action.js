@@ -37,7 +37,7 @@ export const reghMe = (payload) => async (dispatch) => {
                 "Some mistake has occurred. We are already working on it"
             );
         } else {
-            dispatch(authSuccess(payload.login));
+            dispatch(authSuccess(payload.email));
         }
     } catch {}
 };
