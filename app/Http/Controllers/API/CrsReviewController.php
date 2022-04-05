@@ -11,7 +11,10 @@ class CrsReviewController extends Controller
 {
     public function index()
     {
-        return json_encode(CourseReview::all(), JSON_UNESCAPED_UNICODE);
+        
+        $courseReview = CourseReview::with('user', 'course')->get();
+
+        return json_encode($courseReview, JSON_UNESCAPED_UNICODE);
     }
 
 
@@ -23,6 +26,10 @@ class CrsReviewController extends Controller
 
     public function show(CourseReview $courseReview)
     {
+        
+        $courseReview->user_name = $courseReview->user->name;
+        $courseReview->course_title = $courseReview->course->title;
+
         return json_encode($courseReview, JSON_UNESCAPED_UNICODE);
     }
 
