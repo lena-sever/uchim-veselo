@@ -20,19 +20,27 @@ const ReviewsContainer = () => {
     }, []);
 
     let reviewElem = reviews.map((review) => {
-        debugger;
-        return <Review key={review.id} review={review} />;
+        return (
+            <Review
+                key={review.id}
+                text={review.text}
+                course={review.course}
+                user={review.user}
+            />
+        );
     });
 
+    const style = {
+        display: "flex",
+        justifyContent: "space-around",
+        flexWrap: "wrap",
+    };
+
     return (
-        <>
-            <div>
-                <h1>Отзывы</h1>
-            </div>
-            {reviewElem}
-            {/* <div>{error ? <h1>{error}</h1> : { reviewElem }}</div> */}
-            {/* <div>{error}</div> */}
-        </>
+        <div>
+            <h1>Отзывы</h1>
+            <div style={style}>{reviewElem}</div>
+        </div>
     );
 };
 
