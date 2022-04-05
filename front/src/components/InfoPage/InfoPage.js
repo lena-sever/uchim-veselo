@@ -2,6 +2,7 @@ import React from "react";
 import Subscribe from "../Subscribe/Subscribe";
 import "./InfoPage.css";
 import { Link } from "react-router-dom";
+import ReviewsContainer from "../Reviews/ReviewsContainer";
 
 const InfoPage = () => {
     return (
@@ -15,6 +16,7 @@ const InfoPage = () => {
                     Учиться
                 </Link>
             </div>
+            <ReviewsContainer />
             <Subscribe />
         </section>
     );

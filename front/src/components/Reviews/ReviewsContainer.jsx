@@ -1,0 +1,39 @@
+import React from "react";
+import Review from "./Review";
+import { getReviewsTC } from "../../store/reviews/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import {
+    selectReviews,
+    selectError,
+} from "../../store/reviews/reviewsSelector";
+
+const ReviewsContainer = () => {
+    const reviews = useSelector(selectReviews);
+    const error = useSelector(selectError);
+    const dispatch = useDispatch();
+    const requestReviews = async () => {
+        dispatch(getReviewsTC());
+    };
+    useEffect(() => {
+        requestReviews();
+    }, []);
+
+    let reviewElem = reviews.map((review) => {
+        debugger;
+        return <Review key={review.id} review={review} />;
+    });
+
+    return (
+        <>
+            <div>
+                <h1>Отзывы</h1>
+            </div>
+            {reviewElem}
+            {/* <div>{error ? <h1>{error}</h1> : { reviewElem }}</div> */}
+            {/* <div>{error}</div> */}
+        </>
+    );
+};
+
+export default ReviewsContainer;
