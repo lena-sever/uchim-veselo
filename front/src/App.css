@@ -326,6 +326,7 @@ body {
     align-items: center;
     background-color: #3e2b40;
     margin-bottom: 100px;
+    border-radius: 50px 50px 50px 50px;
 }
 
 .design-title {
@@ -362,6 +363,7 @@ body {
 }
 
 .design__form-input {
+    border-radius: 50px 50px 50px 50px;
     max-width: 521px;
     width: 100%;
     height: 79px;

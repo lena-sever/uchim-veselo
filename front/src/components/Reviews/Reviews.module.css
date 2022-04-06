@@ -6,11 +6,12 @@
 
 .review {
     display: flex;
-    background-color: #fff2f3;
+    background-color: #fafafa;
     min-width: 1249px;
     margin: 0 0 25px 0;
     box-shadow: 4px 4px 11px 6px rgb(34 60 80 / 20%);
     transition: transform 1s;
+    border-radius: 30px 30px 30px 30px;
 }
 .rev_wrp {
     display: flex;
