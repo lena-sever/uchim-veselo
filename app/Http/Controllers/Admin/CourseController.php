@@ -20,11 +20,9 @@ class CourseController extends Controller
     public function index()
     {
         $courses = Course::all();
-        $message = "";
 
         return view('admin.course.index',[
-            'courses' => $courses,
-            'message' => $message
+            'courses' => $courses
         ]);
     }
 

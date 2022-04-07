@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_admin'
     ];
 
     protected $hidden = [
@@ -31,10 +32,14 @@ class User extends Authenticatable
 
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'is_admin' => 'boolean'
     ];
 
     public function courseReviews() {
         return $this->hasMany(CourseReview::class);
     }
 
+    public function scopeAdmins($query){
+        $query->where('is_admin',true);
+    }
 }
