@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Test;
 use App\Http\Requests\Test\EditRequest;
 use App\Http\Requests\Test\CreateRequest;
+use App\Models\Lesson;
 use Illuminate\Support\Facades\Log;
 
 class TestController extends Controller
@@ -29,7 +30,12 @@ class TestController extends Controller
      */
     public function create()
     {
-        return view('admin.test.create');
+        $courses = Course::all();
+        $lessons = Lesson::all();
+        return view('admin.test.create',[
+            'courses'=>$courses,
+            'lessons'=>$lessons,
+        ]);
     }
 
     /**
@@ -71,8 +77,13 @@ class TestController extends Controller
      */
     public function edit(Test $test)
     {
+        $courses = Course::all();
+        $lessons = Lesson::all();
+
         return view('admin.test.edit',[
-            'test' => $test
+            'test' => $test,
+            'courses' => $courses,
+            'lessons' => $lessons
         ]);
     }
 

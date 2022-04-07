@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-<h1 class="h2">Список тестов по уроку: {{$lesson->title}}</h1>
+<h1 class="h2">Список тестов по главе: {{$lesson->title}}</h1>
 <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group me-2">
         <a href="{{ route('admin.test.create') }}"

@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\TestController as AdminTestController;
 use App\Http\Controllers\Admin\CourseReviewController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Account\IndexController as AccountController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,27 +29,36 @@ Auth::routes();
 
 /*Route::get('/home', [HomeController::class, 'index'])->name('home');*/
 
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/account', AccountController::class)
+        ->name('account');
 
-Route::group(['as' => 'admin.', 'prefix' => 'admin'], function() {
-    Route::view('/', 'admin.index')->name('index');
+    Route::get('/logout', function() {
+        Auth::logout();
+        return redirect()->route('login');
+    })->name('account.logout');
 
-    Route::resource('/course',AdminCourseController::class);
-    Route::get('/course/destroy/{course}', [AdminCourseController::class, 'destroy'])
-	->where('course', '\d+')
-	->name('course.destroy');
-    Route::resource('/lesson',AdminLessonController::class);
-    Route::get('/lesson/destroy/{lesson}', [AdminLessonController::class, 'destroy'])
-	->where('lesson', '\d+')
-	->name('lesson.destroy');
-    Route::resource('/courseReview',CourseReviewController::class);
-    Route::get('/review/destroy/{courseReview}', [CourseReviewController::class, 'destroy'])
-	->where('courseReview', '\d+')
-	->name('review.destroy');
-    Route::resource('/test',AdminTestController::class);
-    Route::get('/test/destroy/{test}', [AdminTestController::class, 'destroy'])
-	->where('test', '\d+')
-	->name('test.destroy');
+    Route::group(['as' => 'admin.', 'prefix' => 'admin'], function() {
+        Route::view('/', 'admin.index')->name('index');
 
+        Route::resource('/course',AdminCourseController::class);
+        Route::get('/course/destroy/{course}', [AdminCourseController::class, 'destroy'])
+        ->where('course', '\d+')
+        ->name('course.destroy');
+        Route::resource('/lesson',AdminLessonController::class);
+        Route::get('/lesson/destroy/{lesson}', [AdminLessonController::class, 'destroy'])
+        ->where('lesson', '\d+')
+        ->name('lesson.destroy');
+        Route::resource('/courseReview',CourseReviewController::class);
+        Route::get('/review/destroy/{courseReview}', [CourseReviewController::class, 'destroy'])
+        ->where('courseReview', '\d+')
+        ->name('review.destroy');
+        Route::resource('/test',AdminTestController::class);
+        Route::get('/test/destroy/{test}', [AdminTestController::class, 'destroy'])
+        ->where('test', '\d+')
+        ->name('test.destroy');
+
+    });
 });
 
 

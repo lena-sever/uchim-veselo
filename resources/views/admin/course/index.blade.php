@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Список курсов')
+@section('title', 'Список историй')
 
 @section('content')
 
@@ -10,7 +10,7 @@
     <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group me-2">
         <a href="{{ route('admin.course.create') }}"
-               type="button" class="btn btn-sm btn-secondary">Добавить курс
+               type="button" class="btn btn-sm btn-secondary">Добавить историю
             </a>
         </div>
     </div>
@@ -21,7 +21,7 @@
                <tr>
                    <th>#ID</th>
                    <th>Заголовок</th>
-                   <th>Количество уроков</th>
+                   <th>Количество глав</th>
                    <th>Изображение</th>
                    <th>Описание</th>
                    <th>Опции</th>
