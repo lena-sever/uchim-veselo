@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Course;
 
 use App\Http\Controllers\Controller;
+use App\Models\Test;
+use App\Http\Requests\Test\EditRequest;
+use App\Http\Requests\Test\CreateRequest;
 use App\Models\Lesson;
-use App\Http\Requests\Lesson\EditRequest;
-use App\Http\Requests\Lesson\CreateRequest;
 use Illuminate\Support\Facades\Log;
 
-class LessonController extends Controller
+class TestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,13 +31,10 @@ class LessonController extends Controller
     public function create()
     {
         $courses = Course::all();
-        $course_id = $_SERVER['HTTP_REFERER'];
-        $course_id = explode("course/", $course_id);
-        $course_id = end($course_id);
-
-        return view('admin.lesson.create',[
-            'courses' => $courses,
-            'course_id' => $course_id
+        $lessons = Lesson::all();
+        return view('admin.test.create',[
+            'courses'=>$courses,
+            'lessons'=>$lessons,
         ]);
     }
 
@@ -49,10 +47,10 @@ class LessonController extends Controller
     public function store(CreateRequest $request)
     {
 
-        $created = Lesson::create($request->validated());
+        $created = Test::create($request->validated());
 
 		if($created) {
-			return redirect()->route('admin.lesson.index')
+			return redirect()->route('admin.lesson.show')
 				     ->with('success', 'Запись успешно добавлена');
 		}
 
@@ -63,31 +61,29 @@ class LessonController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Lesson  $lesson
+     * @param  \App\Models\Test  $test
      * @return \Illuminate\Http\Response
      */
-    public function show(Lesson $lesson)
+    public function show(Test $test)
     {
-        $tests = $lesson->tests()->get();
 
-        return view('admin.lesson.show',[
-            'tests' => $tests,
-            'lesson' => $lesson
-        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Lesson  $lesson
+     * @param  \App\Models\Test  $test
      * @return \Illuminate\Http\Response
      */
-    public function edit(Lesson $lesson)
+    public function edit(Test $test)
     {
         $courses = Course::all();
-        return view('admin.lesson.edit',[
-            'lesson' => $lesson,
-            'courses' => $courses
+        $lessons = Lesson::all();
+
+        return view('admin.test.edit',[
+            'test' => $test,
+            'courses' => $courses,
+            'lessons' => $lessons
         ]);
     }
 
@@ -95,16 +91,16 @@ class LessonController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Lesson  $lesson
+     * @param  \App\Models\Test  $test
      * @return \Illuminate\Http\Response
      */
-    public function update(EditRequest $request, Lesson $lesson)
+    public function update(EditRequest $request, Test $test)
     {
         $validated = $request->validated();
-        $updated = $lesson->fill($validated)->save();
+        $updated = $test->fill($validated)->save();
 
         if($updated) {
-            return redirect()->route('admin.course.show',['course' => $lesson->course_id])
+            return redirect()->route('admin.lesson.show',['lesson' => $test->lesson_id])
                 ->with('success', 'Запись успешно обновлена');
         }
 
@@ -115,14 +111,14 @@ class LessonController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Lesson  $lesson
+     * @param  \App\Models\Test  $test
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Lesson $lesson)
+    public function destroy(Test $test)
     {
         try{
-            $lesson->delete();
-            return redirect()->route('admin.course.show',['course' => $lesson->course_id])
+            $test->delete();
+            return redirect()->route('admin.lesson.show',['lesson' => $test->lesson_id])
             ->with('success', 'Запись успешно удалена');
         }catch(\Exception $e){
             Log::error("Ошибка удаления");

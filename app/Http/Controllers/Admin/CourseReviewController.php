@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\CourseReview;
-use Illuminate\Http\Request;
+use App\Http\Requests\Review\CreateRequest;
 use Illuminate\Support\Facades\Log;
 
 class CourseReviewController extends Controller
@@ -24,9 +24,9 @@ class CourseReviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(CreateRequest $request)
     {
-        //
+
     }
 
     /**
@@ -35,9 +35,19 @@ class CourseReviewController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        $created = CourseReview::create($validated);
+
+        if($created) {
+            return redirect()->route('admin.course.show',['course' => $validated['course_id']])
+                    ->with('success', 'Запись успешно добавлена');
+        }
+
+        return back()->with('error', 'Не удалось добавить запись')
+            ->withInput();
     }
 
     /**
@@ -48,7 +58,7 @@ class CourseReviewController extends Controller
      */
     public function show(CourseReview $courseReview)
     {
-        //
+
     }
 
     /**
@@ -69,7 +79,7 @@ class CourseReviewController extends Controller
      * @param  \App\Models\CourseReview  $courseReview
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CourseReview $courseReview)
+    public function update( $request, CourseReview $courseReview)
     {
         //
     }

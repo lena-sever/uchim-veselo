@@ -31,7 +31,9 @@ class CourseController extends Controller
     public function show(Course $course)
     {
         $lessons = $course->lessons()->get();
-        $reviews = $course->courseReviews()->get();
+        $reviews = $course->courseReviews()
+        ->with('user', 'course')
+        ->get();
 
         return view('course.show',[
             'course' => $course,
