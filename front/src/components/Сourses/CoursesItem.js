@@ -6,7 +6,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import { styled } from "@mui/material/styles";
 import { purple, common } from "@mui/material/colors";
 
-
 const useStyles = makeStyles((theme) => ({
     btn: {
         textDecoration: "none",
@@ -26,21 +25,25 @@ const ColorButtonOutlined = styled(Button)(({ theme }) => ({
     },
 }));
 
-
 function CoursesItem({ course }) {
     const classes = useStyles();
     const path = `/courses/${course.id}`;
     const dispatch = useDispatch();
     const getLessonsList = () => {
-        dispatch( getLessons( course.id ) );
+        dispatch(getLessons(course.id));
     };
 
     return (
         <div class="products_item">
-            <NavLink to={path} class="products_item_img onClick={ getLessonsList }">
+
+            <NavLink
+                to={path}
+                class="products_item_img"
+                onClick={getLessonsList}
+            >
                 <img
                     className="products_item_img_w"
-                    src={ course.img }
+                    src={course.img}
                     alt="product_photo"
                 />
             </NavLink>
@@ -52,7 +55,7 @@ function CoursesItem({ course }) {
                 as={NavLink}
                 to={path}
                 size="small"
-                onClick={ getLessonsList }
+                onClick={getLessonsList}
                 className={`products_item_btn ${classes.btn}`}
             >
                 НАЧАТЬ УЧИТЬСЯ

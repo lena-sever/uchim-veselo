@@ -7,6 +7,7 @@ import {
     selectReviews,
     selectError,
 } from "../../store/reviews/reviewsSelector";
+import styles from "./Reviews.module.css";
 
 const ReviewsContainer = () => {
     const reviews = useSelector(selectReviews);
@@ -38,8 +39,8 @@ const ReviewsContainer = () => {
 
     return (
         <div>
-            <h1>Отзывы</h1>
-            <div style={style}>{reviewElem}</div>
+            <h1 className={styles.rev_head}>Отзывы о курсах</h1>
+            <div className={styles.rev_wrp}>{reviewElem}</div>
         </div>
     );
 };
