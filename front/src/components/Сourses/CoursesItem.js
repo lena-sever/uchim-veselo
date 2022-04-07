@@ -37,7 +37,7 @@ function CoursesItem({ course }) {
 
     return (
         <div class="products_item">
-            <NavLink to={path} class="products_item_img onClick={ getLessonsList }">
+            <NavLink to={path} class="products_item_img" onClick={ getLessonsList }>
                 <img
                     className="products_item_img_w"
                     src={ course.img }

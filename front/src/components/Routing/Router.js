@@ -9,6 +9,8 @@ import Error_404 from "../Error_404/Error_404";
 import Login from "../Login/Login";
 import SliderContainer from "../common/Slider/Slider";
 
+import {sliderList} from "../../constants/forSlider/forSlider";
+
 function Router() {
     return (
         <Routes>
@@ -21,7 +23,10 @@ function Router() {
             </Route>
             <Route path="/contacts" element={<Contacts />}></Route>
             <Route path="/login" element={<Login />}></Route>
-            <Route path="/slider" element={<SliderContainer />}></Route>
+            <Route
+                path="/slider"
+                element={<SliderContainer sliderList={sliderList} />}
+            ></Route>
             <Route path="*" element={<Error_404 />}></Route>
         </Routes>
     );

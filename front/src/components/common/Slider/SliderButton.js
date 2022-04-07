@@ -1,16 +1,18 @@
 import React from "react";
+import IconButton from "@mui/material/IconButton";
+import Circle from "@mui/icons-material/Circle";
 
-const SliderButton = ({ nextSlider, prewSlider, buttonsActive, numb, togleSlide }) => {
+const SliderButton = ({ nextSlider, prewSlider, buttonsActive, numb, togleSlide, active }) => {
     return (
         <>
-            <button
-            // disabled={!buttonsActive.next}
-            onClick={() => {
-                togleSlide(numb - 1);
-            }}
+            <IconButton
+                aria-label="togle slider"
+                onClick={() => {
+                    togleSlide(numb - 1);
+                }}
             >
-                {numb}
-            </button>
+                <Circle color={active ? "secondary" : "primary"} />
+            </IconButton>
         </>
     );
 };
