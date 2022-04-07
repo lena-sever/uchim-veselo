@@ -1,4 +1,4 @@
-import { COURSES_FAILURE, COURSES_LOADING, COURSES_SUCCESS } from "./actions";
+import { COURSES_FAILURE, COURSES_LOADING, COURSES_SUCCESS, GET_COURS } from "./actions";
 import { STATUS } from "../../constants/status";
 
 const initialCourses = {
@@ -39,7 +39,24 @@ export const coursesReducer = (state = initialCourses, { type, payload }) => {
                 },
             };
 
-        default:
-            return state;
-    }
+    case COURSES_FAILURE:
+      return {
+        ...state,
+        request: {
+          error: payload,
+          status: STATUS.FAILURE
+        }
+      };
+    case GET_COURS:
+      return {
+          ...state,
+          cours: payload,
+          request: {
+              error: "",
+              status: STATUS.SUCCESS,
+          },
+      };
+    default:
+      return state;
+  }
 };

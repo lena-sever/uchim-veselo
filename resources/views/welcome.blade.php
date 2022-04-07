@@ -419,7 +419,16 @@
             @endauth
         </div>
         @endif
-        <h1>Заготовка для проекта GB</h1>
+        <h1>
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('lesson.index') }}">САЙТ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.index') }}">АДМИНКА</a>
+            </li>
+        </ul>
+        </h1>
 
     </div>
 </body>

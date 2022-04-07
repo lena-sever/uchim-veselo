@@ -1,18 +1,22 @@
 import React from "react";
 import Subscribe from "../Subscribe/Subscribe";
 import "./InfoPage.css";
+import { Link } from "react-router-dom";
+import ReviewsContainer from "../Reviews/ReviewsContainer";
+
 const InfoPage = () => {
     return (
         <section>
             <div class="header__content-wrp">
-                <div class="header-title">Учим весело</div>
-                <div class="header-title__react">
+                <div class="header-title title">Учим весело</div>
+                <div class="header-title__react subtitle">
                     Образовательная платформа для детей
                 </div>
-                <a class="try-btn" target="_blank" href="#">
+                <Link className="try-btn" to="/courses">
                     Учиться
-                </a>
+                </Link>
             </div>
+            <ReviewsContainer />
             <Subscribe />
         </section>
     );
