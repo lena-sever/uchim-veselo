@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddLastLoginField extends Migration
+class CreateTestStepsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,14 @@ class AddLastLoginField extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dateTime('last_login_at')->nullable();
+        Schema::create('test_steps', function (Blueprint $table) {
+            $table->id();
+            $table->string('test_steps_title');
+
+            $table->timestamps();
+            $table->softDeletes();
+
+            
         });
     }
 
@@ -25,8 +31,6 @@ class AddLastLoginField extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('last_login_at');
-        });
+        Schema::dropIfExists('test_steps');
     }
 }

@@ -15,12 +15,13 @@ class CreateTestsTable extends Migration
     {
         Schema::create('tests', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 100)->comment('название');
-            $table->string('description', 255)->comment('описание');
-            $table->text('questions')->comment('вопросы');
             $table->foreignId('lesson_id')->constrained('lessons')->cascadeOnDelete();
+            $table->foreignId('test_step_id')->constrained('test_steps')->cascadeOnDelete();
+            $table->foreignId('test_type_id')->constrained('test_types')->cascadeOnDelete();
+            $table->string('test_title')->comment('название');
+            $table->text('description')->comment('описание');
+            $table->text('questions')->comment('вопросы');
             $table->timestamps();
-
             $table->softDeletes();
         });
     }

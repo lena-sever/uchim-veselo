@@ -18,22 +18,59 @@ class TestsSeeder extends Seeder
         DB::table('tests')->insert($this->getData());
     }
     private function getData(): array
-	{
-		$faker = Factory::create();
-		$data = [];
-        $lesson_id = DB::table('lessons')->pluck('id');
+    {
+        $faker = Factory::create();
+        $data = [];
+        // $lesson_id = DB::table('lessons')->pluck('id');
 
-		for($i=0; $i < 15; $i++) {
-			$data[] = [
-                'title' => $faker->sentence(mt_rand(3,10)),
-                'description' => $faker->text(mt_rand(50, 150)),
-                'questions' => $faker->text(mt_rand(300, 500)),
-                'lesson_id' => $faker->randomElement($lesson_id),
-                'created_at' => $faker->dateTime('now','Europe/Moscow'),
+        $lessons = DB::table('lessons')->get();
+
+        foreach ($lessons as $item) {
+            $data[] = [
+                'lesson_id' => $item->id,
+                'test_step_id' => 1,
+                'test_type_id' => 1,
+                'test_title' => 'Помогите герою, выберите правильне значение слова ' . $faker->text(mt_rand(5, 20)),
+                'description' => $faker->text(mt_rand(10, 30)),
+                'questions' => $faker->text(mt_rand(10, 30)),
+                'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
             ];
-		}
+
+            for ($i = 0; $i < 10; $i++) {
+                $data[] = [
+                    'lesson_id' => $item->id,
+                    'test_step_id' => 2,
+                    'test_type_id' => 2,
+                    'test_title' => 'Составьте предложение ' . $faker->sentence(mt_rand(3, 10)),
+                    'description' => 'Нажимайте на слова так, чтобы получилось предложение',
+                    'questions' => $faker->text(mt_rand(10, 30)),
+                    'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
+                ];
+            }
+
+            $data[] = [
+                'lesson_id' => $item->id,
+                'test_step_id' => 3,
+                'test_type_id' => 1,
+                'test_title' => 'Посмотрете происхождение слова ' . $faker->text(mt_rand(5, 20)),
+                'description' => $faker->sentence(mt_rand(3, 10)),
+                'questions' => 'Напишите это слово, чтобы открыть герою путь!',
+                'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
+            ];
+
+        }
 
 
-		return $data;
-	}
+        // for($i=0; $i < 15; $i++) {
+        // 	$data[] = [
+        //         'title' => $faker->sentence(mt_rand(3,10)),
+        //         'description' => $faker->text(mt_rand(50, 150)),
+        //         'questions' => $faker->text(mt_rand(300, 500)),
+        //         'lesson_id' => $faker->randomElement($lesson_id),
+        //     ];
+        // }
+
+
+        return $data;
+    }
 }

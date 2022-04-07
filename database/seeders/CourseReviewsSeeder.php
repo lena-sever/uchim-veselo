@@ -18,22 +18,34 @@ class CourseReviewsSeeder extends Seeder
         DB::table('course_reviews')->insert($this->getData());
     }
     private function getData(): array
-	{
-		$faker = Factory::create();
-		$data = [];
+    {
+        $faker = Factory::create();
+        $data = [];
+
         $user_id = DB::table('users')->pluck('id');
-        $course_id = DB::table('courses')->pluck('id');
+        // $course_id = DB::table('courses')->pluck('id');
+        $courses = DB::table('courses')->get();
 
-		for($i=0; $i < 15; $i++) {
-			$data[] = [
-				'text' => $faker->text(mt_rand(50, 200)),
-                'course_id' => $faker->randomElement($course_id),
-                'user_id' => $faker->randomElement($user_id),
-                'created_at' => $faker->dateTime('now','Europe/Moscow'),
-			];
-		}
+        foreach ($courses as $item) {
+            for ($i = 1; $i < 3; $i++) {
+                $data[] = [
+                    'text' => 'Отзыв  ' . $i . '. к курсу: ' . $item->title,
+                    'user_id' => $faker->randomElement($user_id),
+                    'course_id' => $item->id,
+                    'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
+                ];
+            }
+        }
+        // for($i=0; $i < 15; $i++) {
+        // 	$data[] = [
+        // 		'text' => $faker->text(mt_rand(50, 200)),
+        //         'course_id' => $faker->randomElement($course_id),
+        //         'user_id' => $faker->randomElement($user_id),
+        //         'created_at' => $faker->dateTime('now','Europe/Moscow'),
+        // 	];
+        // }
 
 
-		return $data;
-	}
+        return $data;
+    }
 }
