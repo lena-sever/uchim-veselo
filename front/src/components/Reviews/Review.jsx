@@ -9,9 +9,9 @@ const Review = (props) => {
                     <img src={props.course.img} className={styles.img_course} />
                 </div>
                 <div>
-                    <h3>{props.course.title}</h3>
-                    <p>{props.user.name}</p>
-                    <p>{props.text}</p>
+                    <h3 className={styles.rev_head_item}>{props.course.title}</h3>
+                    <p className={styles.rev_name}>{props.user.name}</p>
+                    <p className={styles.rev_text}>{props.text}</p>
                 </div>
             </div>
         </>
