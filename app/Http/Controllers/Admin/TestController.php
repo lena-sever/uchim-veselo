@@ -9,6 +9,8 @@ use App\Models\Test;
 use App\Http\Requests\Test\EditRequest;
 use App\Http\Requests\Test\CreateRequest;
 use App\Models\Lesson;
+use App\Models\TestStep;
+use App\Models\TestType;
 use Illuminate\Support\Facades\Log;
 
 class TestController extends Controller
@@ -32,9 +34,18 @@ class TestController extends Controller
     {
         $courses = Course::all();
         $lessons = Lesson::all();
+        $test_steps = TestStep::all();
+        $test_type = TestType::all();
+
+        $lesson_id = explode("/", $_SERVER['HTTP_REFERER']);
+        $lesson_id = end($lesson_id);
+//dd($test_steps,$test_type);
         return view('admin.test.create',[
             'courses'=>$courses,
             'lessons'=>$lessons,
+            'test_steps'=> $test_steps,
+            'test_type'=> $test_type,
+            'lesson_id'=> $lesson_id    //нужно для кнопки назад
         ]);
     }
 
@@ -79,11 +90,15 @@ class TestController extends Controller
     {
         $courses = Course::all();
         $lessons = Lesson::all();
+        $test_steps = TestStep::all();
+        $test_type = TestType::all();
 
         return view('admin.test.edit',[
             'test' => $test,
             'courses' => $courses,
-            'lessons' => $lessons
+            'lessons' => $lessons,
+            'test_steps'=> $test_steps,
+            'test_type'=> $test_type,
         ]);
     }
 

@@ -58,6 +58,11 @@ Route::group(['middleware' => 'auth'], function() {
         ->where('test', '\d+')
         ->name('test.destroy');
 
+       /* Route::resource('/mail',AdminMailController::class);
+        Route::get('/mail/destroy/{mail}', [AdminMailController::class, 'destroy'])
+        ->where('mail', '\d+')
+        ->name('mail.destroy');*/
+
     });
 });
 

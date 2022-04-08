@@ -70,7 +70,6 @@
                     <td>{!! $reviewItem->text !!}</td>
                     <td>
                         <p class="btn-group">
-                            <button disabled class="btn btn-sm btn-primary" rel="#">Ответить</button> &nbsp;
                             <a class="delete btn btn-sm btn-danger" href="{{ route('admin.review.destroy', ['courseReview' => $reviewItem]) }}">Удалить</a>
                         </p>
                     </td>

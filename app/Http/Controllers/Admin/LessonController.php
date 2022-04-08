@@ -68,7 +68,8 @@ class LessonController extends Controller
      */
     public function show(Lesson $lesson)
     {
-        $tests = $lesson->tests()->get();
+        $tests = $lesson->tests()
+        ->with('test_step','test_type')->get();
 
         return view('admin.lesson.show',[
             'tests' => $tests,

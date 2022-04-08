@@ -30,8 +30,26 @@
                 @error('lesson_id') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
+                <label for="test_step_id">Шаг</label>
+                <select class="form-control" id="test_step_id" name="test_step_id">
+                    @foreach($test_steps as $steps)
+                        <option value="{{ $steps->id }}" @if($steps->id === $test->test_step_id) selected @endif > {{ $steps->test_steps_title }}</option>
+                    @endforeach
+                </select>
+                @error('test_step_id') <strong style="color:red;">{{ $message }}</strong> @enderror
+            </div>
+            <div class="form-group">
+                <label for="test_type_id">Тип</label>
+                <select class="form-control" id="test_type_id" name="test_type_id">
+                    @foreach($test_type as $type)
+                        <option value="{{ $type->id }}"  @if($steps->id === $test->test_type_id) selected @endif> {{ $type->test_type_title }}</option>
+                    @endforeach
+                </select>
+                @error('test_type_id') <strong style="color:red;">{{ $message }}</strong> @enderror
+            </div>
+            <div class="form-group">
                 <label for="title">Наименование теста</label>
-                <input type="text" class="form-control" id="title" name="title" value="{{ $test->title }}">
+                <input type="text" class="form-control" id="title" name="title" value="{{ $test->test_title }}">
                 @error('title') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
@@ -40,9 +58,9 @@
                 @error('description') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
-                <label for="text">Задания теста</label>
-                <textarea class="form-control" name="text" id="text">{!! $test->text !!}</textarea>
-                @error('text') <strong style="color:red;">{{ $message }}</strong> @enderror
+                <label for="questions">Задания теста</label>
+                <textarea class="form-control" name="questions" id="questions">{!! $test->questions !!}</textarea>
+                @error('questions') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <br>
             <button type="submit"  value="Изменить" class="btn btn-success" style="float: right;">Изменить</button>

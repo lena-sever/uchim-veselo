@@ -7,6 +7,7 @@
 <h1 class="h2">Список тестов по главе: {{$lesson->title}}</h1>
 <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group me-2">
+        <a href="{{ route('admin.course.show',['course' => $lesson->course_id]) }}" type="button" class="btn btn-secondary">Назад</a> &nbsp;
         <a href="{{ route('admin.test.create') }}"
                type="button" class="btn btn-secondary">Добавить тест
             </a>
@@ -20,6 +21,8 @@
                    <th>#ID</th>
                    <th>Название</th>
                    <th>Описание</th>
+                   <th>Шаг</th>
+                   <th>Тип</th>
                    <th>Вопросы</th>
                    <th>Опции</th>
                </tr>
@@ -28,7 +31,9 @@
             @forelse($tests as $testsItem)
                 <tr id="{{$testsItem->id}}">
                     <td>{{ $testsItem->id }}</td>
-                    <td>{{ $testsItem->title }}</td>
+                    <td>{{ $testsItem->test_title }}</td>
+                    <td>{{$testsItem->test_step->test_steps_title}}</td>
+                    <td>{{$testsItem->test_type->test_type_title}}</td>
                     <td>{{ $testsItem->questions }}</td>
                     <td>{!! $testsItem->description !!}</td>
                     <td>

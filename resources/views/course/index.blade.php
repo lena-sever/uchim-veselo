@@ -14,10 +14,38 @@
     <h1>Курсов нет</h1>
     @endforelse
   </div>
-  <hr>
+  <hr class="my-4">
+<div class="px-3">
+<form method="post" action="#">
+        @csrf
+            <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="name" class="form-label">Имя</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="" value="" >
+              @error('name') <strong style="color:red;">{{ $message }}</strong> @enderror
+            </div>
+
+            <div class="col-sm-6">
+              <label for="email" class="form-label">Email</label>
+              <input type="text" class="form-control" id="email" name="email" placeholder="" value="" >
+              @error('email') <strong style="color:red;">{{ $message }}</strong> @enderror
+            </div>
+
+            <div class="col-12">
+              <label for="message" class="form-label">Ваше Сообщение</label>
+              <textarea type="text" class="form-control" name="message" id="message" placeholder="" ></textarea>
+              @error('message') <strong style="color:red;">{{ $message }}</strong> @enderror
+            </div>
+
+          <button class="w-25 btn btn-primary btn-lg" type="submit">Отправить</button>
+        </form>
+
+
+</div>
 </div>
 @endsection
 
 
 
-
+<?php
+?>
