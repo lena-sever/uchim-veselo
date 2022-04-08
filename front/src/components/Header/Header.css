@@ -7,6 +7,8 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    background-color: #b458bf;
+    min-height: 125px;
 }
 
 .header__nav-wrp {
@@ -15,7 +17,7 @@
     width: 100%;
     background-color: #b458bf;
     mix-blend-mode: normal;
-    margin: 0 0 50px 0;
+    /* margin: 0 0 50px 0; */
     display: flex;
     justify-content: space-around;
     align-items: center;
