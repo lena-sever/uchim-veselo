@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Faker\Factory;
 use Illuminate\Support\Facades\DB;
 
 class TestTypeSeeder extends Seeder
@@ -15,21 +14,23 @@ class TestTypeSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('test_type')->insert($this->getData());
+        DB::table('test_types')->insert($this->getData());
     }
     private function getData(): array
 	{
-		$faker = Factory::create();
 		$data = [];
 
-		for($i=0; $i < 2; $i++) {
 			$data[] = [
-                'title' => $faker->sentence(mt_rand(3,10)),
-                'created_at' => $faker->dateTime('now','Europe/Moscow'),
+                'test_type_title' => 'радио',
             ];
-		}
+			$data[] = [
+                'test_type_title' => 'последовательность',
+            ];
 
-
+			$data[] = [
+                'test_type_title' => 'текстовое поле (точно ввести текст)',
+            ];            
+            
 		return $data;
 	}
 }

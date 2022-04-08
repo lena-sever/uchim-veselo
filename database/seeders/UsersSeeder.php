@@ -27,12 +27,22 @@ class UsersSeeder extends Seeder
 		for($i=0; $i < 5; $i++) {
 			$data[] = [
                 'name' => $faker->name(),
+                'is_admin' => 0,
                 'email' => $faker->unique()->safeEmail(),
                 'email_verified_at' => now(),
                 'password' => Hash::make($faker->text(mt_rand(10, 30))),
-                'remember_token' => Str::random(10),            ];
+                'remember_token' => Str::random(10),            
+            ];
 		}
 
+        $data[] = [
+            'name' => 'Админ Вася',
+            'email' => 'admin@mail.ru',
+            'is_admin' => 1,
+            'email_verified_at' => now(),
+            'password' => Hash::make('12345678'),
+            'remember_token' => Str::random(10),            
+        ];        
 
 		return $data;
 	}

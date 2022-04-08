@@ -14,13 +14,24 @@ class Test extends Model
     protected $table = 'tests';
 
 	protected $fillable = [
-        'title',
+        'lesson_id',
+        'test_step_id',
+        'test_type_id',
+        'test_title',
         'description',
         'questions',
-        'lesson_id'
 	];
 
     public function course() {
         return $this->belongsTo(Course::class);
     }
+
+    public function test_type() {
+        return $this->belongsTo(TestType::class);
+    }
+
+    public function test_step() {
+        return $this->belongsTo(TestStep::class);
+    }
+
 }

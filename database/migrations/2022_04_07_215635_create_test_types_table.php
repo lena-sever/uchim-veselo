@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddTypeFieldTestsTable extends Migration
+class CreateTestTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class AddTypeFieldTestsTable extends Migration
      */
     public function up()
     {
-        Schema::table('tests', function (Blueprint $table) {
-            $table->integer('type')
-                ->after('id')->default(1);
+        Schema::create('test_types', function (Blueprint $table) {
+            $table->id();
+            $table->string('test_type_title');
+
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -26,8 +29,6 @@ class AddTypeFieldTestsTable extends Migration
      */
     public function down()
     {
-        Schema::table('tests', function (Blueprint $table) {
-            $table->dropColumn('type');
-        });
+        Schema::dropIfExists('test_types');
     }
 }
