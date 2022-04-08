@@ -326,6 +326,12 @@ body {
     background-color: #3e2b40;
     margin-bottom: 100px;
     border-radius: 50px 50px 50px 50px;
+    position: relative;
+}
+.bird {
+    position: absolute;
+    left: 56px;
+    top: 185px;
 }
 
 .design-title {
