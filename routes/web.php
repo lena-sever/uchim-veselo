@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CourseController as AdminCourseController;
 use App\Http\Controllers\Admin\LessonController as AdminLessonController;
 use App\Http\Controllers\Admin\TestController as AdminTestController;
 use App\Http\Controllers\Admin\CourseReviewController;
+use App\Http\Controllers\Admin\MailController as AdminMailController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Account\IndexController as AccountController;
@@ -58,10 +59,10 @@ Route::group(['middleware' => 'auth'], function() {
         ->where('test', '\d+')
         ->name('test.destroy');
 
-       /* Route::resource('/mail',AdminMailController::class);
+        Route::resource('/mail',AdminMailController::class);
         Route::get('/mail/destroy/{mail}', [AdminMailController::class, 'destroy'])
         ->where('mail', '\d+')
-        ->name('mail.destroy');*/
+        ->name('mail.destroy');
 
     });
 });

@@ -20,13 +20,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                <h3 style="text-align: center;" class="mb-0"><a style="text-decoration: none;" href="#">Почта</a></h3>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 @endsection

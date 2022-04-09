@@ -22,8 +22,7 @@ class CourseController extends Controller
         $courses = Course::all();
 
         return view('admin.course.index',[
-            'courses' => $courses,
-            //'count_lessons'=>
+            'courses' => $courses
         ]);
     }
 
