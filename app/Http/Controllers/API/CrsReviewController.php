@@ -24,6 +24,7 @@ class CrsReviewController extends Controller
                 'users.name as user_name',
                 'course_reviews.course_id',
                 'courses.title as course_title',
+                'courses.img',
             )
             ->get();
         //  $courseReview = CourseReview::with('user', 'course')->get();
@@ -53,6 +54,7 @@ class CrsReviewController extends Controller
                 'users.name as user_name',
                 'course_reviews.course_id',
                 'courses.title as course_title',
+                'courses.img',
             )
             ->first();
         
