@@ -23,12 +23,13 @@ const ReviewsContainer = () => {
     }, []);
 
     let reviewElem = reviews.map((review) => {
+        debugger
         return (
             <Review
                 key={review.id}
                 text={review.text}
-                course={review.course}
-                user={review.user}
+                title={review.course_title}
+                user={review.user_name}
             />
         );
     });

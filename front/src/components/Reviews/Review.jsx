@@ -5,12 +5,12 @@ const Review = (props) => {
     return (
         <>
             <div className={styles.review}>
-                <div>
+                {/* <div>
                     <img src={props.course.img} className={styles.img_course} />
-                </div>
+                </div> */}
                 <div>
-                    <h3 className={styles.rev_head_item}>{props.course.title}</h3>
-                    <p className={styles.rev_name}>{props.user.name}</p>
+                    <h3 className={styles.rev_head_item}>{props.title}</h3>
+                    <p className={styles.rev_name}>{props.user}</p>
                     <p className={styles.rev_text}>{props.text}</p>
                 </div>
             </div>
