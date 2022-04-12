@@ -27,9 +27,9 @@ class CreateRequest extends FormRequest
         return [
 
 			'title' => ['required', 'string', 'min:5'],
-            'description' => ['required', 'string', 'max:1000'],
-            'text' => ['required', 'string'],
-            'course_id' => ['required' ],
+            'description' => ['required', 'string',  'min:20', 'max:255'],
+            'text' =>['required', 'string', 'min:20'],
+            'course_id' => ['required', 'integer' ],
         ];
     }
 
@@ -43,10 +43,10 @@ class CreateRequest extends FormRequest
 	public function  attributes(): array
 	{
 		return [
-			'title' => 'Наименование урока',
-			'description' => 'Описание урока',
-            'text' => 'Задания урока',
-            'course_id' => 'Курс'
+			'title' => 'Наименование главы',
+			'description' => 'Краткое описание главы',
+            'text' => 'Полное описание главы',
+            'course_id' => 'История'
 		];
 	}
 }

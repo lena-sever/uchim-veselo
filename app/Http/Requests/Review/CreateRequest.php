@@ -25,9 +25,9 @@ class CreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'text' => ['required', 'string','max:1000'],
-            'course_id' => ['required' ],
-            'user_id' => ['required' ],
+            'text' => ['required', 'string'],
+            'course_id' => ['required', 'integer' ],
+            'user_id' => ['required', 'integer' ],
         ];
     }
 
@@ -42,7 +42,7 @@ class CreateRequest extends FormRequest
 	{
 		return [
             'text' => 'Ваш Отзыв',
-            'course_id' => 'Курс',
+            'course_id' => 'История',
             'user_id' => 'Пользователь'
 		];
 	}
