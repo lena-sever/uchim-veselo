@@ -10,9 +10,7 @@ export const getReviewsTC = () => {
     return (dispatch) => {
         reviewsAPI
             .getReviews()
-            .then((res) => {
-                dispatch(getReviewsAC(res.data));
-            })
+            .then((res) => dispatch(getReviewsAC(res.data)))
             .catch((err) => dispatch(errorAC(err.message)));
     };
 };
