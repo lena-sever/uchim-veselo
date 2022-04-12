@@ -43,9 +43,6 @@ export const lessonsAPI = {
 
 export const reviewsAPI = {
     getReviews() {
-        return axios
-            .get(urlReviews)
-            .then((res) => res)
-            .catch((err) => err);
+        return axios.get(urlReviews).then((res) => res);
     },
 };
