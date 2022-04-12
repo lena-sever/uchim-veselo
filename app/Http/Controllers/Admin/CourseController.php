@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\{Course, CourseReview, Lesson};
+use App\Models\Course;
 use App\Http\Requests\Course\EditRequest;
 use App\Http\Requests\Course\CreateRequest;
 use Illuminate\Support\Facades\Log;
