@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
-use App\Models\Mail;
-use App\Http\Requests\Mail\EditRequest;
-use App\Http\Requests\Mail\CreateRequest;
+use App\Models\Messenges;
+use App\Http\Requests\Messenges\EditRequest;
+use App\Http\Requests\Messenges\CreateRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
-class MailController extends Controller
+class SiteMessagesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,9 +20,9 @@ class MailController extends Controller
      */
     public function index()
     {
-        $mail = Mail::all();
-        return view('admin.mail.index',[
-            'mail' => $mail
+        $messenges = Messenges::all();
+        return view('admin.messenger.index',[
+            'messenges' => $messenges
         ]);
     }
 
@@ -32,7 +33,7 @@ class MailController extends Controller
      */
     public function create()
     {
-        return view('admin.mail.create');
+        //return view('admin.messenger.create');
     }
 
     /**
@@ -45,7 +46,7 @@ class MailController extends Controller
     {
         $validated = $request->validated();
 
-        $created = Mail::create($validated);
+        $created = Messenges::create($validated);
 
 		if($created) {
 			return redirect()->route('course.index')
@@ -59,10 +60,10 @@ class MailController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Mail  $mail
+     * @param  \App\Models\messenges  $messenges
      * @return \Illuminate\Http\Response
      */
-    public function show(Mail  $mail)
+    public function show(Messenges  $messenges)
     {
         //
     }
@@ -70,13 +71,13 @@ class MailController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Mail  $mail
+     * @param  \App\Models\messenges  $messenges
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mail  $mail)
+    public function edit(Messenges  $messenges)
     {
-        /*return view('admin.mail.edit',[
-            'mail' => $mail
+        /*return view('admin.messenger.edit',[
+            'messenges' => $messenges
         ]);*/
     }
 
@@ -84,35 +85,35 @@ class MailController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Mail  $mail
+     * @param  \App\Models\messenges  $messenges
      * @return \Illuminate\Http\Response
      */
-    public function update(EditRequest $request, Mail $mail)
+    public function update(EditRequest $request, Messenges $messenges)
     {
         $validated = $request->validated();
-        $updated = $mail->fill($validated)->save();
+        $updated = $messenges->fill($validated)->save();
 
         if($updated) {
-            return redirect()->route('admin.mail.index')
-                ->with('success', 'Запись успешно обновлена');
+            return redirect()->route('admin.messenger.index')
+                ->with('success', 'Ответ отправлен');
         }
 
-        return back()->with('error', 'Не удалось обновить запись')
+        return back()->with('error', 'Не удалось отправить ответ')
             ->withInput();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Mail  $mail
+     * @param  \App\Models\messenges  $messenges
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mail  $mail)
+    public function destroy(Messenges  $messenges)
     {
         try{
-            $mail->delete();
-            return redirect()->route('admin.mail.index')
-            ->with('success', 'Сообщение успешно удалена');
+            $messenges->delete();
+            return redirect()->route('admin.messenger.index')
+            ->with('success', 'Сообщение успешно удалено');
         }catch(\Exception $e){
             Log::error("Ошибка удаления");
         }

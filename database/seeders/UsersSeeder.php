@@ -31,7 +31,7 @@ class UsersSeeder extends Seeder
                 'email' => $faker->unique()->safeEmail(),
                 'email_verified_at' => now(),
                 'password' => Hash::make($faker->text(mt_rand(10, 30))),
-                'remember_token' => Str::random(10),            
+                'remember_token' => Str::random(10),
             ];
 		}
 
@@ -41,8 +41,8 @@ class UsersSeeder extends Seeder
             'is_admin' => 1,
             'email_verified_at' => now(),
             'password' => Hash::make('12345678'),
-            'remember_token' => Str::random(10),            
-        ];        
+            'remember_token' => Str::random(10),
+        ];
 
 		return $data;
 	}

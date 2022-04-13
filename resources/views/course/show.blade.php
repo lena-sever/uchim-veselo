@@ -21,11 +21,12 @@
       <h1>Глав нет</h1>
       @endforelse
     </div>
-        <p><a class="btn btn-primary" href="{{ route('course.index') }}" role="button">Назад ко всем Историям</a></p>
     <hr>
-  </div> <!-- /container -->
+        <p><a class="btn btn-primary" href="{{ route('course.index') }}" role="button">Назад ко всем Историям</a></p>
+
+  </div>
   @else
-  <h1>Такого курса нет</h1>
+  <h1>Такой истории нет</h1>
   @endif
 </div>
 <div class="container">

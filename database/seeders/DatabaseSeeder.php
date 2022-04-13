@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             TestTypeSeeder::class,
             TestStepSeeder::class,
             TestsSeeder::class,
+            SlidersSeeder::class
         ]);
     }
 }

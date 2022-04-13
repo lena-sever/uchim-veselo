@@ -27,4 +27,8 @@ class Lesson extends Model
     public function tests() {
         return $this->hasMany(Test::class);
     }
+
+    public function sliders() {
+        return $this->hasMany(Slider::class);
+    }
 }

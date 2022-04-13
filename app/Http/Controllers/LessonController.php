@@ -31,8 +31,13 @@ class LessonController extends Controller
      */
     public function show(Lesson $lesson)
     {
+        $tests = $lesson->tests()->get();
+        $sliders = $lesson->sliders()->get();
+
         return view('lesson.show',[
-            'lesson' => $lesson
+            'lesson' => $lesson,
+            'tests' => $tests,
+            'sliders' => $sliders
         ]);
     }
 

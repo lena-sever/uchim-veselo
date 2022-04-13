@@ -42,15 +42,19 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.index') }}">АДМИНКА</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.messenger.index') }}">СООБЩЕНИЯ С САЙТА</a>
+                        </li>
                         @else
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('account') }}">ПРОФИЛЬ</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.messenger.index') }}">СООБЩЕНИЯ С САЙТА</a>
+                        </li>
                         @endif
                         @endguest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.mail.index') }}">ПОЧТА</a>
-                        </li>
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->

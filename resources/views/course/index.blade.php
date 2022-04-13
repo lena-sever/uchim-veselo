@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Список курсов')
+@section('title', 'Список историй')
 @section('content')
 @include('inc.message')
 <div class="container">
@@ -12,12 +12,12 @@
       <p><a class="btn btn-secondary" href="{{ route('course.show', ['course' => $coursesItem]) }}" role="button">Подробнее</a></p>
     </div>
     @empty
-    <h1>Курсов нет</h1>
+    <h1>Историй нет</h1>
     @endforelse
   </div>
   <hr class="my-4">
 <div class="px-3">
-<form method="post" action="{{route('admin.mail.store')}}">
+<form method="post" action="{{route('admin.messenger.store')}}">
         @csrf
             <div class="row g-3">
             <div class="col-sm-6">
