@@ -28,7 +28,7 @@ class LessonsSeeder extends Seeder
         foreach ($courses as $item) {
             for($i=1; $i < 5; $i++) {
                 $data[] = [
-                    'title' => 'Урок '.$i.'. Курс: '.$item->title,
+                    'title' => 'Глава '.$i.'. История: '.$item->title,
                     'description' => $faker->text(mt_rand(10, 30)),
                     'text' => $faker->text(mt_rand(350, 550)),
                     'course_id' => $item->id,

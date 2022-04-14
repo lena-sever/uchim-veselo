@@ -27,7 +27,7 @@ function Courses() {
 
     return (
         <>
-            <h1>Выберите курс:</h1>
+            <h1 className="head">Выберите историю:</h1>
             <section className="products">
                 {isLoading ? (
                     <CircularProgress />

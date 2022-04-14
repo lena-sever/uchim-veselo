@@ -29,7 +29,7 @@ class CourseReviewsSeeder extends Seeder
         foreach ($courses as $item) {
             for ($i = 1; $i < 3; $i++) {
                 $data[] = [
-                    'text' => 'Отзыв  ' . $i . '. к курсу: ' . $item->title,
+                    'text' => 'Отзыв  ' . $i . '. к истории: ' . $item->title,
                     'user_id' => $faker->randomElement($user_id),
                     'course_id' => $item->id,
                     'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
