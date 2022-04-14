@@ -14,7 +14,7 @@
     <h2>Список глав этого истории:</h2>
     <div class="row">
       @forelse($lessons as $lessonsItem)
-      <h5>{{ $loop->iteration }}. {{$lessonsItem->title}} <a href="{{route('lesson.show', ['lesson' => $lessonsItem])}}">Подробнее</a>
+      <h5>{{$lessonsItem->title}} <a href="{{route('lesson.show', ['lesson' => $lessonsItem])}}">Подробнее</a>
       </h5>
 
       @empty

@@ -9,7 +9,6 @@ use App\Http\Requests\Messenges\EditRequest;
 use App\Http\Requests\Messenges\CreateRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
 
 class SiteMessagesController extends Controller
 {
@@ -33,7 +32,7 @@ class SiteMessagesController extends Controller
      */
     public function create()
     {
-        //return view('admin.messenger.create');
+        return view('admin.messenger.create');
     }
 
     /**
@@ -53,14 +52,14 @@ class SiteMessagesController extends Controller
 				     ->with('success', 'Сообщение успешно отправленно');
 		}
 
-		return back()->with('error', 'Не удалось отправитьсообщение')
+		return back()->with('error', 'Не удалось отправить сообщение')
 			->withInput();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\messenges  $messenges
+     * @param  \App\Models\Messenges  $messenges
      * @return \Illuminate\Http\Response
      */
     public function show(Messenges  $messenges)
@@ -71,7 +70,7 @@ class SiteMessagesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\messenges  $messenges
+     * @param  \App\Models\Messenges  $messenges
      * @return \Illuminate\Http\Response
      */
     public function edit(Messenges  $messenges)
@@ -85,7 +84,7 @@ class SiteMessagesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\messenges  $messenges
+     * @param  \App\Models\Messenges  $messenges
      * @return \Illuminate\Http\Response
      */
     public function update(EditRequest $request, Messenges $messenges)
@@ -105,7 +104,7 @@ class SiteMessagesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\messenges  $messenges
+     * @param  \App\Models\Messenges  $messenges
      * @return \Illuminate\Http\Response
      */
     public function destroy(Messenges  $messenges)

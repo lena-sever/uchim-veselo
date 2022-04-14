@@ -10,18 +10,18 @@
   <h1 class="display-3">{{$lesson->title}}</h1>
   <p>{!!$lesson->text!!}</p>
   <hr>
-  <div class="row">
-      <ul>
-         <h2>Слайдер</h2>
+  <div class="table-responsive">
+  <h2>Слайдер</h2>
+        <dl class="dl-horizontal">
         @forelse($sliders as $slidersItem)
-        <li><h4>{{$slidersItem->text}} </h4></li>
-        <li><img src="{{$slidersItem->img}}" alt="" width="100px" height="auto"></li>
-        <li><audio controls><source src="{{$slidersItem->music}}" type="audio/mpeg"></audio></li>
+        <dd><h4>{{$slidersItem->text}} </h4></dd>
+        <dd><img src="{{$slidersItem->img}}" alt="" width="300px" height="auto"></dd>
+        <dd><audio controls><source src="{{$slidersItem->music}}" type="audio/mpeg"></audio></dd>
+        </dl>
         @empty
         <h1>Глав нет</h1>
         @endforelse
-      </ul>
-
+{{$sliders->links()}}
     </div>
 <hr>
 
