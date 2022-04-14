@@ -23,53 +23,53 @@ class CoursesSeeder extends Seeder
 		$data = [];
 
 			$data[] = [
-                'title' => 'Английский для дошкольников',
+                'title' => 'Приключение в лесу',
                 'description' => $faker->text(mt_rand(100, 150)),
                 'text' => $faker->text(mt_rand(300, 500)),
-                'img' => 'http://uchim-veselo.ru/img/1.png',
+                'img' => 'http://uchim-veselo.ru/img/1.jpg',
 
 			];
 			$data[] = [
-                'title' => 'Английский для школьников',
+                'title' => 'Набег на школу',
                 'description' => $faker->text(mt_rand(100, 150)),
                 'text' => $faker->text(mt_rand(300, 500)),
-                'img' => 'http://uchim-veselo.ru/img/2.png',
+                'img' => 'http://uchim-veselo.ru/img/2.jpg',
 			];
 			$data[] = [
-                'title' => 'Английский для взрослых',
+                'title' => 'Взрослые проказы',
                 'description' => $faker->text(mt_rand(100, 150)),
                 'text' => $faker->text(mt_rand(300, 500)),
-                'img' => 'http://uchim-veselo.ru/img/3.png',
+                'img' => 'http://uchim-veselo.ru/img/3.jpg',
 			];
 			$data[] = [
-                'title' => 'Программирование для школьников',
+                'title' => 'Это не интересно',
                 'description' => $faker->text(mt_rand(100, 150)),
                 'text' => $faker->text(mt_rand(300, 500)),
                 'img' => 'http://uchim-veselo.ru/img/4.png',
 			];
 			$data[] = [
-                'title' => 'Программирование для взрослых',
+                'title' => 'Забег по кругу',
                 'description' => $faker->text(mt_rand(100, 150)),
                 'text' => $faker->text(mt_rand(300, 500)),
-                'img' => 'http://uchim-veselo.ru/img/5.png',
+                'img' => 'http://uchim-veselo.ru/img/5.jpg',
 			];
 			$data[] = [
-                'title' => 'Математика',
+                'title' => 'В Африке тоже весело',
                 'description' => $faker->text(mt_rand(100, 150)),
                 'text' => $faker->text(mt_rand(300, 500)),
                 'img' => 'http://uchim-veselo.ru/img/6.png',
 			];
 			$data[] = [
-                'title' => 'Литература',
+                'title' => 'Джунгли в деревне',
                 'description' => $faker->text(mt_rand(100, 150)),
                 'text' => $faker->text(mt_rand(300, 500)),
-                'img' => 'http://uchim-veselo.ru/img/7.png',
+                'img' => 'http://uchim-veselo.ru/img/7.jpg',
 			];            
 			$data[] = [
-                'title' => 'Разработка игр для детей',
+                'title' => 'Прятки днём',
                 'description' => $faker->text(mt_rand(100, 150)),
                 'text' => $faker->text(mt_rand(300, 500)),
-                'img' => 'http://uchim-veselo.ru/img/8.png',
+                'img' => 'http://uchim-veselo.ru/img/8.jpg',
 			];            
             
 		return $data;

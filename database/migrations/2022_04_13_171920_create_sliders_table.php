@@ -20,6 +20,7 @@ class CreateSlidersTable extends Migration
             $table->string('img')->nullable();
             $table->string('music')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
