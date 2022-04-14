@@ -7,6 +7,8 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+
 
 class UsersSeeder extends Seeder
 {
@@ -23,11 +25,14 @@ class UsersSeeder extends Seeder
 	{
 		$faker = Factory::create();
 		$data = [];
+        $img = Storage::allFiles('photo_profile');
+
 
 		for($i=0; $i < 5; $i++) {
 			$data[] = [
                 'name' => $faker->name(),
                 'is_admin' => 0,
+                'photo' => '/' .$faker->randomElement($img),
                 'email' => $faker->unique()->safeEmail(),
                 'email_verified_at' => now(),
                 'password' => Hash::make($faker->text(mt_rand(10, 30))),
@@ -37,8 +42,9 @@ class UsersSeeder extends Seeder
 
         $data[] = [
             'name' => 'Админ Вася',
-            'email' => 'admin@mail.ru',
             'is_admin' => 1,
+            'email' => 'admin@mail.ru',
+            'photo' => '/' .$faker->randomElement($img),
             'email_verified_at' => now(),
             'password' => Hash::make('12345678'),
             'remember_token' => Str::random(10),
