@@ -28,7 +28,7 @@ class UsersSeeder extends Seeder
         $img = Storage::allFiles('photo_profile');
 
 
-		for($i=0; $i < 5; $i++) {
+		for($i=0; $i < 10; $i++) {
 			$data[] = [
                 'name' => $faker->name(),
                 'is_admin' => 0,

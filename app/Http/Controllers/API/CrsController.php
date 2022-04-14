@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Course;
 
+
 class CrsController extends Controller
 {
 
@@ -27,32 +28,24 @@ class CrsController extends Controller
     public function show(Course $course)
     {
         $lessons = $course->lessons()->get();
-        $reviews = $course->courseReviews()->get();
+        $reviews =  $course->courseReviews()
+                ->with('user')
+                ->get();
         $course->lessons =  $lessons;
         $course->reviews =  $reviews;
+
         $course = json_encode($course, JSON_UNESCAPED_UNICODE);
 
         return $course;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         //
