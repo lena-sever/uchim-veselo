@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMessengesTable extends Migration
+class CreateMessengersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMessengesTable extends Migration
      */
     public function up()
     {
-        Schema::create('messenges', function (Blueprint $table) {
+        Schema::create('messengers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('email')->comment('почта пользователя');
@@ -31,6 +31,6 @@ class CreateMessengesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('messenges');
+        Schema::dropIfExists('messengers');
     }
 }
