@@ -76,7 +76,6 @@ class MessengerController extends Controller
     public function update(EditRequest $request, Messenger $messenger)
     {
 
-        dd($messenges->id);
         $validated = $request->validated();
         $updated = $messenger->fill($validated)->save();
 
