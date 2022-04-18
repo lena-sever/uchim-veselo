@@ -97,13 +97,8 @@ class MessengerController extends Controller
      */
     public function destroy(Messenger $messenger)
     {
-<<<<<<< HEAD:app/Http/Controllers/Admin/SiteMessagesController.php
-        try {
-            $messenges->delete();
-=======
         try{
             $messenger->delete();
->>>>>>> ddf474eecce84db31762f5eca0dddd46d26b0162:app/Http/Controllers/Admin/MessengerController.php
             return redirect()->route('admin.messenger.index')
                 ->with('success', 'Сообщение успешно удалено');
         } catch (\Exception $e) {
