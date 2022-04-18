@@ -34,30 +34,29 @@
             </thead>
             <tbody>
             @if(Auth::user()->is_admin)
-              @forelse($messenges as $messengesItem)
-                <tr id="{{$messengesItem->id}}">
-                    <td>{{ $messengesItem->id }}</td>
-                    <td>{{ $messengesItem->user_id }}</td>
-                    <td>{{ $messengesItem->email }}</td>
-                    <td>{!! $messengesItem->message !!}</td>
+              @forelse($messengers as $messengersItem)
+                <tr id="{{$messengersItem->id}}">
+                    <td>{{ $messengersItem->id }}</td>
+                    <td>{{ $messengersItem->user_id }}</td>
+                    <td>{{ $messengersItem->email }}</td>
+                    <td>{!! $messengersItem->message !!}</td>
                     <td>
-                        @if($messengesItem->answer == "Напишите ответ!")
-                        <form action="{{ route('admin.messenger.update',['messenger' => $messengesItem]) }}" method="post">
-                            {{-- @dd($messengesItem) --}}
+                        @if($messengersItem->answer == "Напишите ответ!")
+                        <form action="{{route('admin.messenger.update',['messenger' => $messengersItem->id])}}" method="post">
                             @csrf
                             @method('put')
-                            <input hidden type="text" name="user_id" id="user_id" value="{{ $messengesItem->user_id }}">
-                            <input hidden type="text" name="email" id="email" value="{{ $messengesItem->email }}">
-                            <input hidden type="text" name="message" id="text" value="{{ $messengesItem->message }}">
-                            <input class="w-75" type="text" name="answer" id="answer" value="{!! $messengesItem->answer !!}">
+                            <input hidden type="text" name="user_id" id="user_id" value="{{ $messengersItem->user_id }}">
+                            <input hidden type="text" name="email" id="email" value="{{ $messengersItem->email }}">
+                            <input hidden type="text" name="message" id="message" value="{{ $messengersItem->message }}">
+                            <input class="w-75" type="text" name="answer" id="answer" value="{!! $messengersItem->answer !!}">
                             <button type="submit" style="margin-left: 15px;" value="Ответить" class="btn btn-success" >Ответить</button>
                         </form>
                         @else
-                            {!! $messengesItem->answer !!}
+                            {!! $messengersItem->answer !!}
                         @endif
                     </td>
                     <td>
-                        <a class="delete btn  btn-danger" href="{{route('admin.messenger.destroy',['messenger' => $messengesItem->id])}}">Удалить</a>
+                        <a class="delete btn  btn-danger" href="{{route('admin.messenger.destroy',['messenger' => $messengersItem])}}">Удалить</a>
                     </td>
                 </tr>
               @empty
@@ -65,16 +64,16 @@
               @endforelse
             @else
 
-            @forelse($messenges as $messengesItem)
-                @if(Auth::user()->id == $messengesItem->user_id)
-                <tr id="{{$messengesItem->id}}">
-                    <td>{{ $messengesItem->id }}</td>
-                    <td>{{ $messengesItem->user_id }}</td>
-                    <td>{{ $messengesItem->email }}</td>
-                    <td>{!! $messengesItem->message !!}</td>
-                    <td>@if($messengesItem->answer == "Напишите ответ!") @else {!! $messengesItem->answer !!} @endif</td>
+            @forelse($messengers as $messengersItem)
+                @if(Auth::user()->id == $messengersItem->user_id)
+                <tr id="{{$messengersItem->id}}">
+                    <td>{{ $messengersItem->id }}</td>
+                    <td>{{ $messengersItem->user_id }}</td>
+                    <td>{{ $messengersItem->email }}</td>
+                    <td>{!! $messengersItem->message !!}</td>
+                    <td>@if($messengersItem->answer == "Напишите ответ!") @else {!! $messengersItem->answer !!} @endif</td>
                     <td>
-                        <a class="delete btn  btn-danger" href="{{route('admin.messenger.destroy',['messenger' => $messengesItem->id])}}">Удалить</a>
+                        <a class="delete btn  btn-danger" href="{{route('admin.messenger.destroy',['messenger' => $messengersItem])}}">Удалить</a>
                     </td>
                 </tr>
                 @endif

@@ -45,4 +45,7 @@ export const reviewsAPI = {
     getReviews() {
         return axios.get(urlReviews).then((res) => res);
     },
+    getReview(courseId) {
+        return axios.get(`${urlCourses}/${courseId}`).then((res) => res);
+    },
 };

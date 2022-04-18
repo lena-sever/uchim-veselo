@@ -1,28 +1,26 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
-
-use App\Models\Messenges;
-use App\Http\Requests\Messenges\EditRequest;
-use App\Http\Requests\Messenges\CreateRequest;
+use App\Models\Messenger;
+use App\Http\Requests\Messenger\EditRequest;
+use App\Http\Requests\Messenger\CreateRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
 
-class SiteMessagesController extends Controller
+class MessengerController extends Controller
 {
     public function index()
     {
-        $messenges = Messenges::all();
-        return view('admin.messenger.index', [
-            'messenges' => $messenges
+        $messengers = Messenger::all();
+        return view('admin.messenger.index',[
+            'messengers' => $messengers
         ]);
     }
 
     public function create()
     {
-        return view('admin.messenger.create');
+        //
     }
 
     /**
@@ -35,7 +33,7 @@ class SiteMessagesController extends Controller
     {
         $validated = $request->validated();
 
-        $created = Messenges::create($validated);
+        $created = Messenger::create($validated);
 
         if ($created) {
             return redirect()->route('course.index')
@@ -49,10 +47,10 @@ class SiteMessagesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Messenges  $messenges
+     * @param  \App\Models\Messenger  $messenger
      * @return \Illuminate\Http\Response
      */
-    public function show(Messenges  $messenges)
+    public function show(Messenger $messenger)
     {
         //
     }
@@ -60,30 +58,32 @@ class SiteMessagesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Messenges  $messenges
+     * @param  \App\Models\Messenger  $messenger
      * @return \Illuminate\Http\Response
      */
-    public function edit(Messenges  $messenges)
+    public function edit(Messenger $messenger)
     {
-        /*return view('admin.messenger.edit',[
-            'messenges' => $messenges
-        ]);*/
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Messenges  $messenges
+     * @param  \App\Models\Messenger  $messenger
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD:app/Http/Controllers/Admin/SiteMessagesController.php
     public function update(EditRequest $request, Messenges $messenges)
 
+=======
+    public function update(EditRequest $request, Messenger $messenger)
+>>>>>>> ddf474eecce84db31762f5eca0dddd46d26b0162:app/Http/Controllers/Admin/MessengerController.php
     {
 
         dd($messenges->id);
         $validated = $request->validated();
-        $updated = $messenges->fill($validated)->save();
+        $updated = $messenger->fill($validated)->save();
 
         if ($updated) {
             return redirect()->route('admin.messenger.index')
@@ -97,13 +97,18 @@ class SiteMessagesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Messenges  $messenges
+     * @param  \App\Models\Messenger  $messenger
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Messenges  $messenges)
+    public function destroy(Messenger $messenger)
     {
+<<<<<<< HEAD:app/Http/Controllers/Admin/SiteMessagesController.php
         try {
             $messenges->delete();
+=======
+        try{
+            $messenger->delete();
+>>>>>>> ddf474eecce84db31762f5eca0dddd46d26b0162:app/Http/Controllers/Admin/MessengerController.php
             return redirect()->route('admin.messenger.index')
                 ->with('success', 'Сообщение успешно удалено');
         } catch (\Exception $e) {
