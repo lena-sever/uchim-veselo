@@ -60,6 +60,7 @@ Route::group(['middleware' => 'auth'], function() {
         ->name('test.destroy');
 
         Route::resource('/messenger',SiteMessagesController::class);
+        
         Route::get('/messenger/destroy/{messenger}', [SiteMessagesController::class, 'destroy'])
         ->where('messenger', '\d+')
         ->name('messenger.destroy');

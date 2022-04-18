@@ -42,7 +42,8 @@
                     <td>{!! $messengesItem->message !!}</td>
                     <td>
                         @if($messengesItem->answer == "Напишите ответ!")
-                        <form action="{{route('admin.messenger.update',['messenger' => $messengesItem->id])}}" method="post">
+                        <form action="{{ route('admin.messenger.update',['messenger' => $messengesItem]) }}" method="post">
+                            {{-- @dd($messengesItem) --}}
                             @csrf
                             @method('put')
                             <input hidden type="text" name="user_id" id="user_id" value="{{ $messengesItem->user_id }}">

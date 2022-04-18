@@ -12,24 +12,14 @@ use Illuminate\Support\Facades\Log;
 
 class SiteMessagesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $messenges = Messenges::all();
-        return view('admin.messenger.index',[
+        return view('admin.messenger.index', [
             'messenges' => $messenges
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('admin.messenger.create');
@@ -47,13 +37,13 @@ class SiteMessagesController extends Controller
 
         $created = Messenges::create($validated);
 
-		if($created) {
-			return redirect()->route('course.index')
-				     ->with('success', 'Сообщение успешно отправленно');
-		}
+        if ($created) {
+            return redirect()->route('course.index')
+                ->with('success', 'Сообщение успешно отправленно');
+        }
 
-		return back()->with('error', 'Не удалось отправить сообщение')
-			->withInput();
+        return back()->with('error', 'Не удалось отправить сообщение')
+            ->withInput();
     }
 
     /**
@@ -88,11 +78,14 @@ class SiteMessagesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(EditRequest $request, Messenges $messenges)
+
     {
+
+        dd($messenges->id);
         $validated = $request->validated();
         $updated = $messenges->fill($validated)->save();
 
-        if($updated) {
+        if ($updated) {
             return redirect()->route('admin.messenger.index')
                 ->with('success', 'Ответ отправлен');
         }
@@ -109,11 +102,11 @@ class SiteMessagesController extends Controller
      */
     public function destroy(Messenges  $messenges)
     {
-        try{
+        try {
             $messenges->delete();
             return redirect()->route('admin.messenger.index')
-            ->with('success', 'Сообщение успешно удалено');
-        }catch(\Exception $e){
+                ->with('success', 'Сообщение успешно удалено');
+        } catch (\Exception $e) {
             Log::error("Ошибка удаления");
         }
     }
