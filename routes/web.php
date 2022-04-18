@@ -60,11 +60,7 @@ Route::group(['middleware' => 'auth'], function() {
         ->where('test', '\d+')
         ->name('test.destroy');
 
-<<<<<<< HEAD
-        Route::resource('/messenger',SiteMessagesController::class);
-        
-        Route::get('/messenger/destroy/{messenger}', [SiteMessagesController::class, 'destroy'])
-=======
+
         /*Route::resource('/mail',MailController::class);
         Route::get('/mail/destroy/{mail}', [MailController::class, 'destroy'])
         ->where('mail', '\d+')
@@ -72,7 +68,6 @@ Route::group(['middleware' => 'auth'], function() {
 
         Route::resource('/messenger',MessengerController::class);
         Route::get('/messenger/destroy/{messenger}', [MessengerController::class, 'destroy'])
->>>>>>> ddf474eecce84db31762f5eca0dddd46d26b0162
         ->where('messenger', '\d+')
         ->name('messenger.destroy');
 
