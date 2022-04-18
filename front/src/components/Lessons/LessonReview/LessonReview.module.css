@@ -1,0 +1,31 @@
+.img_course {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+.review {
+    display: flex;
+    text-align: start;
+}
+
+.rev_head {
+    color: #b458bf;
+    font-size: 50px;
+}
+
+.rev_name {
+    font-weight: 600;
+    font-style: inherit;
+    color: #ec615b;
+    font-size: 20px;
+    margin: 0;
+    padding-top: 20px;
+}
+.rev_text {
+    font-style: italic;
+    margin: 0;
+}
+
+.rev_head_item {
+    color: #7532d5;
+}

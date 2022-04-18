@@ -60,6 +60,7 @@ Route::group(['middleware' => 'auth'], function() {
         ->where('test', '\d+')
         ->name('test.destroy');
 
+
         /*Route::resource('/mail',MailController::class);
         Route::get('/mail/destroy/{mail}', [MailController::class, 'destroy'])
         ->where('mail', '\d+')
