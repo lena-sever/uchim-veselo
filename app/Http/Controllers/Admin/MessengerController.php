@@ -73,12 +73,7 @@ class MessengerController extends Controller
      * @param  \App\Models\Messenger  $messenger
      * @return \Illuminate\Http\Response
      */
-<<<<<<< HEAD:app/Http/Controllers/Admin/SiteMessagesController.php
-    public function update(EditRequest $request, Messenges $messenges)
-
-=======
     public function update(EditRequest $request, Messenger $messenger)
->>>>>>> ddf474eecce84db31762f5eca0dddd46d26b0162:app/Http/Controllers/Admin/MessengerController.php
     {
 
         dd($messenges->id);
