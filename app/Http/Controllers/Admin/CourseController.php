@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\{Course, CourseReview, Lesson};
+use App\Models\Course;
 use App\Http\Requests\Course\EditRequest;
 use App\Http\Requests\Course\CreateRequest;
 use Illuminate\Support\Facades\Log;
@@ -20,11 +20,9 @@ class CourseController extends Controller
     public function index()
     {
         $courses = Course::all();
-        $message = "";
 
         return view('admin.course.index',[
-            'courses' => $courses,
-            'message' => $message
+            'courses' => $courses
         ]);
     }
 
@@ -53,8 +51,9 @@ class CourseController extends Controller
             //добавление картинки локально
 			$validated['img'] = app(UploadService::class)->start($request->file('image'));
             //добавление картинки в бд
-            $validated['img']='http://uchim-veselo.ru/'.$validated['img'];
+            $validated['img']='/'.$validated['img'];
         }
+
         $created = Course::create($validated);
 
 		if($created) {
@@ -113,7 +112,7 @@ class CourseController extends Controller
             //добавление картинки локально
 			$validated['img'] = app(UploadService::class)->start($request->file('image'));
            //добавление картинки в бд
-            $validated['img']='http://uchim-veselo.ru/'.$validated['img'];
+            $validated['img']='/'.$validated['img'];
 
         }
         $updated = $course->fill($validated)->save();
@@ -135,16 +134,13 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        $page = $_SERVER['HTTP_REFERER'];
-        $page = explode("/", $page);
+        $page = explode("/", $_SERVER['HTTP_REFERER']);
         $page = end($page);
 
         //удаление картинки при редактировании
         if($page == "edit"){
             $validated['img'] = null;
-            $file = explode('http://uchim-veselo.ru/',$course->img);
-            $file = end($file);
-            Storage::delete($file);
+            Storage::delete($course->img);
             $updated = $course->fill($validated)->save();
             return back();
         }

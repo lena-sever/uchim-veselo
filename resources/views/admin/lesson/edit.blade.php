@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Редактировать урок')
+@section('title', 'Редактировать главу')
 
 @section('content')
 
@@ -10,23 +10,8 @@
         @csrf
         @method('put')
             <div class="form-group">
-                <label for="title">Наименование урока</label>
-                <input type="text" class="form-control" id="title" name="title" value="{{ $lesson->title }}">
-                @error('title') <strong style="color:red;">{{ $message }}</strong> @enderror
-            </div>
-            <div class="form-group">
-                <label for="description">Описание урока</label>
-                <textarea class="form-control" name="description" id="description">{!! $lesson->description !!}</textarea>
-                @error('description') <strong style="color:red;">{{ $message }}</strong> @enderror
-            </div>
-            <div class="form-group">
-                <label for="text">Задания урока</label>
-                <textarea class="form-control" name="text" id="text">{!! $lesson->text !!}</textarea>
-                @error('text') <strong style="color:red;">{{ $message }}</strong> @enderror
-            </div>
-            <div class="form-group">
-                <label for="course_id">Курс</label>
-                <select class="form-control" id="course_id" name="course_id">
+                <label for="course_id">История</label>
+                <select disabled class="form-control" id="course_id" name="course_id">
                     @foreach($courses as $course)
                         <option value="{{ $course->id }}"
                         @if($course->id === $lesson->course_id) selected @endif>{{ $course->title }}</option>
@@ -34,15 +19,27 @@
                 </select>
                 @error('course_id') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
+            <div class="form-group">
+                <label for="title">Наименование главы</label>
+                <input type="text" class="form-control" id="title" name="title" value="{{ $lesson->title }}">
+                @error('title') <strong style="color:red;">{{ $message }}</strong> @enderror
+            </div>
+            <div class="form-group">
+                <label for="description">Краткое описание главы</label>
+                <textarea class="form-control" name="description" id="description">{!! $lesson->description !!}</textarea>
+                @error('description') <strong style="color:red;">{{ $message }}</strong> @enderror
+            </div>
+            <div class="form-group">
+                <label for="text">Полное описание главы</label>
+                <textarea class="form-control" name="text" id="text">{!! $lesson->text !!}</textarea>
+                @error('text') <strong style="color:red;">{{ $message }}</strong> @enderror
+            </div>
             <br>
             <button type="submit"  value="Изменить" class="btn btn-success" style="float: right;">Изменить</button>
         </form>
-        <a href="{{ route('admin.course.show', ['course' => $lesson->course_id]) }}" type="button" class="btn btn-sm btn-outline-secondary">
+        <a href="{{ route('admin.course.show', ['course' =>  $lesson->course_id]) }}" type="button" class="btn btn-sm btn-outline-secondary">
         Назад</a>
     </div>
 
 @endsection
 
-<?php
-//dd($lesson->course_id)
-?>

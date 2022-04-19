@@ -8,11 +8,6 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $courses = Course::all();
@@ -22,16 +17,12 @@ class CourseController extends Controller
         ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Course  $course
-     * @return \Illuminate\Http\Response
-     */
     public function show(Course $course)
     {
         $lessons = $course->lessons()->get();
-        $reviews = $course->courseReviews()->get();
+        $reviews = $course->courseReviews()
+        ->with('user', 'course')
+        ->get();
 
         return view('course.show',[
             'course' => $course,

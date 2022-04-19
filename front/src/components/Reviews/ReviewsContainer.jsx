@@ -1,5 +1,6 @@
 import React from "react";
-import Review from "./Review";
+import Review from "./Review/Review";
+import ReviewForm from "./ReviewForm/ReviewForm";
 import { getReviewsTC } from "../../store/reviews/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -7,7 +8,9 @@ import {
     selectReviews,
     selectError,
 } from "../../store/reviews/reviewsSelector";
-import styles from "./Reviews.module.css";
+import styles from "./Review/Review.module.css";
+import AliceCarousel from "react-alice-carousel";
+import "react-alice-carousel/lib/alice-carousel.css";
 
 const ReviewsContainer = () => {
     const reviews = useSelector(selectReviews);
@@ -21,26 +24,41 @@ const ReviewsContainer = () => {
     }, []);
 
     let reviewElem = reviews.map((review) => {
-        return (
-            <Review
-                key={review.id}
-                text={review.text}
-                course={review.course}
-                user={review.user}
-            />
-        );
+        return <Review key={review.id} review={review} />;
     });
 
     const style = {
-        display: "flex",
-        justifyContent: "space-around",
-        flexWrap: "wrap",
+        maxWidth: "1577px",
+        margin: "0 auto",
+    };
+
+    const responsive = {
+        0: { items: 1 },
+        568: { items: 2 },
+        1024: { items: 3 },
     };
 
     return (
-        <div>
-            <h1 className={styles.rev_head}>Отзывы о курсах</h1>
-            <div className={styles.rev_wrp}>{reviewElem}</div>
+        <div style={style}>
+            <h1 className={styles.rev_head}>Отзывы</h1>
+            {error ? (
+                <h1>{error}</h1>
+            ) : (
+                <div>
+                    <AliceCarousel
+                        items={reviewElem}
+                        autoPlay
+                        autoPlayInterval="2000"
+                        animationType="fadeout"
+                        disableButtonsControls
+                        infinite
+                        responsive={responsive}
+                    />
+                </div>
+            )}
+            {/* <div>
+                <ReviewForm></ReviewForm>
+            </div> */}
         </div>
     );
 };

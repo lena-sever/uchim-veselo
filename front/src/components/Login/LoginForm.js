@@ -1,7 +1,7 @@
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { FormControl } from "@mui/material";
+import { useFormik } from "formik";
+import * as yup from "yup";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import { makeStyles } from "@material-ui/core/styles";
@@ -10,6 +10,17 @@ import { purple } from "@mui/material/colors";
 
 import { authMe } from "../../store/auth/action";
 import { selectLogin } from "../../store/auth/authSelector";
+
+const validationSchema = yup.object({
+    email: yup
+        .string("Введите свой email")
+        .email("Email не корректный")
+        .required("Вы не ввели email"),
+    password: yup
+        .string("Введите свой пароль")
+        .min(6, "Минимальная длина пароля 6 символов")
+        .required("Вы не ввели пароль"),
+});
 
 const ColorButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(purple[500]),
@@ -36,56 +47,62 @@ const LoginForm = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const loginUser = useSelector(selectLogin);
-    const [login, setLogin] = useState("");
-    const [password, setPassword] = useState("");
+
+    const formik = useFormik({
+        initialValues: {
+            email: "",
+            password: "",
+        },
+        validationSchema: validationSchema,
+        onSubmit: async (values) => {
+            dispatch(authMe(values));
+        },
+    });
 
     if (loginUser) {
         navigate("/courses", { replace: true });
     }
 
-    const submitForm = async () => {
-        dispatch(
-            authMe({
-                login: login,
-                password: password,
-            })
-        );
-    };
-
     return (
-        <form
-            onSubmit={(e) => {
-                e.preventDefault();
-                submitForm();
-            }}
-        >
-            <FormControl fullWidth margin="normal" className="login__wrp">
+        <form onSubmit={formik.handleSubmit}>
+            <div className="login__wrp">
                 <TextField
-                    required
                     margin="normal"
-                    id="outlined-required"
-                    label="Логин"
-                    value={login}
-                    onChange={(e) => {
-                        setLogin(e.target.value);
-                    }}
+                    fullWidth
+                    id="email"
+                    name="email"
+                    label="Email"
+                    value={formik.values.email}
+                    onChange={formik.handleChange}
+                    error={formik.touched.email && Boolean(formik.errors.email)}
+                    helperText={formik.touched.email && formik.errors.email}
                 />
                 <TextField
-                    required
                     margin="normal"
-                    id="outlined-password-input"
-                    label="Пароль"
+                    fullWidth
+                    id="password"
+                    name="password"
+                    label="Password"
                     type="password"
-                    autoComplete="current-password"
-                    value={password}
-                    onChange={(e) => {
-                        setPassword(e.target.value);
-                    }}
+                    value={formik.values.password}
+                    onChange={formik.handleChange}
+                    error={
+                        formik.touched.password &&
+                        Boolean(formik.errors.password)
+                    }
+                    helperText={
+                        formik.touched.password && formik.errors.password
+                    }
                 />
-                <ColorButton type="submit" size="large" className={classes.btn}>
+                <ColorButton
+                    fullWidth
+                    type="submit"
+                    size="large"
+                    className={classes.btn}
+                >
                     Вход
                 </ColorButton>
-            </FormControl>
+            </div>
         </form>
     );
 };
