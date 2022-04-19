@@ -19,10 +19,7 @@ class MailController extends Controller
      */
     public function index()
     {
-        $mail = Mail::all();
-        return view('admin.mail.index',[
-            'mail' => $mail
-        ]);
+
     }
 
     /**
@@ -32,7 +29,7 @@ class MailController extends Controller
      */
     public function create()
     {
-        return view('admin.mail.create');
+
     }
 
     /**
@@ -43,26 +40,16 @@ class MailController extends Controller
      */
     public function store(CreateRequest $request)
     {
-        $validated = $request->validated();
 
-        $created = Mail::create($validated);
-
-		if($created) {
-			return redirect()->route('course.index')
-				     ->with('success', 'Сообщение успешно отправленно');
-		}
-
-		return back()->with('error', 'Не удалось отправитьсообщение')
-			->withInput();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Mail  $mail
+     * @param  \App\Models\Mail  $mails
      * @return \Illuminate\Http\Response
      */
-    public function show(Mail  $mail)
+    public function show($mail)
     {
         //
     }
@@ -73,11 +60,9 @@ class MailController extends Controller
      * @param  \App\Models\Mail  $mail
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mail  $mail)
+    public function edit($mail)
     {
-        /*return view('admin.mail.edit',[
-            'mail' => $mail
-        ]);*/
+
     }
 
     /**
@@ -87,18 +72,9 @@ class MailController extends Controller
      * @param  \App\Models\Mail  $mail
      * @return \Illuminate\Http\Response
      */
-    public function update(EditRequest $request, Mail $mail)
+    public function update($mail)
     {
-        $validated = $request->validated();
-        $updated = $mail->fill($validated)->save();
 
-        if($updated) {
-            return redirect()->route('admin.mail.index')
-                ->with('success', 'Запись успешно обновлена');
-        }
-
-        return back()->with('error', 'Не удалось обновить запись')
-            ->withInput();
     }
 
     /**
@@ -107,14 +83,8 @@ class MailController extends Controller
      * @param  \App\Models\Mail  $mail
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mail  $mail)
+    public function destroy($mail)
     {
-        try{
-            $mail->delete();
-            return redirect()->route('admin.mail.index')
-            ->with('success', 'Сообщение успешно удалена');
-        }catch(\Exception $e){
-            Log::error("Ошибка удаления");
-        }
+
     }
 }

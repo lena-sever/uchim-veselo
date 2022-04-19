@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Navigate, NavLink, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
     selectCourses,
     selectCoursesError,
@@ -10,6 +10,10 @@ import {
     selectLessonsLoading,
 } from "../../store/lessons/lessonsSelectors";
 import CircularProgress from "../curcularProgress/CircularProgress";
+import { selectReview, selectError } from "../../store/reviews/reviewsSelector";
+import { useEffect } from "react";
+import { getReviewTC } from "../../store/reviews/actions";
+import LessonReview from "./LessonReview/LessonReview";
 
 function Lessons() {
     const { courseId } = useParams();
@@ -18,9 +22,28 @@ function Lessons() {
     const isLoading = useSelector(selectLessonsLoading);
     const error = useSelector(selectCoursesError);
 
+    const reviewCourse = useSelector(selectReview);
+    // const error_review = useSelector(selectError);
+    const dispatch = useDispatch();
+    const requestReview = async (courseId) => {
+        dispatch(getReviewTC(courseId));
+    };
+    useEffect(() => {
+        requestReview(courseId);
+    }, []);
+
+    let reviewElem = reviewCourse.map((review) => {
+        return <LessonReview key={review.id} review={review} />;
+    });
+
     if (!courses[courseId - 1]) {
         return <Navigate replace to="/courses" />;
     }
+
+    const style = {
+        maxWidth: "1249px",
+        margin: "0 auto",
+    };
 
     return (
         <>
@@ -46,6 +69,10 @@ function Lessons() {
                     })
                 )}
             </div>
+            <div>
+                <h2>Отзывы</h2>
+            </div>
+            <div style={style}>{reviewElem}</div>
         </>
     );
 }

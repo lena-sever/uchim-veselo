@@ -5,13 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Course;
 
 use App\Http\Controllers\Controller;
-use App\Models\Test;
 use App\Http\Requests\Test\EditRequest;
 use App\Http\Requests\Test\CreateRequest;
 use App\Models\Lesson;
-use App\Models\TestStep;
-use App\Models\TestType;
+use App\Models\FirstTest;
+use App\Models\SecondTest;
+use App\Models\ThirdTest;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;
+
 
 class TestController extends Controller
 {
@@ -34,8 +36,7 @@ class TestController extends Controller
     {
         $courses = Course::all();
         $lessons = Lesson::all();
-        $test_steps = TestStep::all();
-        $test_type = TestType::all();
+        $first_test = FirstTest::all();
 
         $lesson_id = explode("/", $_SERVER['HTTP_REFERER']);
         $lesson_id = end($lesson_id);
@@ -43,8 +44,6 @@ class TestController extends Controller
         return view('admin.test.create',[
             'courses'=>$courses,
             'lessons'=>$lessons,
-            'test_steps'=> $test_steps,
-            'test_type'=> $test_type,
             'lesson_id'=> $lesson_id    //нужно для кнопки назад
         ]);
     }
@@ -58,7 +57,7 @@ class TestController extends Controller
     public function store(CreateRequest $request)
     {
 
-        $created = Test::create($request->validated());
+        $created = FirstTest::create($request->validated());
 
 		if($created) {
 			return redirect()->route('admin.lesson.show')
@@ -75,7 +74,7 @@ class TestController extends Controller
      * @param  \App\Models\Test  $test
      * @return \Illuminate\Http\Response
      */
-    public function show(Test $test)
+    public function show( $test)
     {
 
     }
@@ -86,19 +85,16 @@ class TestController extends Controller
      * @param  \App\Models\Test  $test
      * @return \Illuminate\Http\Response
      */
-    public function edit(Test $test)
+    public function edit( $test)
     {
         $courses = Course::all();
         $lessons = Lesson::all();
-        $test_steps = TestStep::all();
-        $test_type = TestType::all();
+
 
         return view('admin.test.edit',[
             'test' => $test,
             'courses' => $courses,
             'lessons' => $lessons,
-            'test_steps'=> $test_steps,
-            'test_type'=> $test_type,
         ]);
     }
 
@@ -109,7 +105,7 @@ class TestController extends Controller
      * @param  \App\Models\Test  $test
      * @return \Illuminate\Http\Response
      */
-    public function update(EditRequest $request, Test $test)
+    public function update(EditRequest $request,  $test)
     {
         $validated = $request->validated();
         $updated = $test->fill($validated)->save();
@@ -129,7 +125,7 @@ class TestController extends Controller
      * @param  \App\Models\Test  $test
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Test $test)
+    public function destroy($test)
     {
         try{
             $test->delete();
@@ -138,5 +134,23 @@ class TestController extends Controller
         }catch(\Exception $e){
             Log::error("Ошибка удаления");
         }
+    }
+
+    public function answer(FirstTest $first_test,Request $request){
+        $lesson_id = $first_test->where('id','=',$request->test)
+        ->value('lesson_id');
+        //выбор правильного ответа в тесте по id
+        $right_answer = $first_test->where('id','=',$request->test)
+        ->value('right_answer');
+        //сравнение выбора пользователя и правильного ответа
+        if ($request->right_answer == $right_answer){
+            return redirect()->route('lesson.show',['lesson' => $lesson_id])
+            ->with('success', 'Правильно');
+        }
+        else{
+            return redirect()->route('lesson.show',['lesson' => $lesson_id])
+            ->with('error', 'Неверно');
+        }
+
     }
 }

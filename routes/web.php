@@ -7,7 +7,8 @@ use App\Http\Controllers\Admin\CourseController as AdminCourseController;
 use App\Http\Controllers\Admin\LessonController as AdminLessonController;
 use App\Http\Controllers\Admin\TestController as AdminTestController;
 use App\Http\Controllers\Admin\CourseReviewController;
-use App\Http\Controllers\Admin\MailController as AdminMailController;
+use App\Http\Controllers\Admin\MessengerController;
+use App\Http\Controllers\Admin\MailController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Account\IndexController as AccountController;
@@ -58,11 +59,19 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/test/destroy/{test}', [AdminTestController::class, 'destroy'])
         ->where('test', '\d+')
         ->name('test.destroy');
+        Route::get('/test/answer/{test}', [AdminTestController::class, 'answer'])
+        ->where('test', '\d+')
+        ->name('test.answer');
 
-        Route::resource('/mail',AdminMailController::class);
-        Route::get('/mail/destroy/{mail}', [AdminMailController::class, 'destroy'])
+        /*Route::resource('/mail',MailController::class);
+        Route::get('/mail/destroy/{mail}', [MailController::class, 'destroy'])
         ->where('mail', '\d+')
-        ->name('mail.destroy');
+        ->name('mail.destroy');*/
+
+        Route::resource('/messenger',MessengerController::class);
+        Route::get('/messenger/destroy/{messenger}', [MessengerController::class, 'destroy'])
+        ->where('messenger', '\d+')
+        ->name('messenger.destroy');
 
     });
 });

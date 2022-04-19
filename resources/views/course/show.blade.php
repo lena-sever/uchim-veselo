@@ -14,18 +14,19 @@
     <h2>Список глав этого истории:</h2>
     <div class="row">
       @forelse($lessons as $lessonsItem)
-      <h5>{{ $loop->iteration }}. {{$lessonsItem->title}} <a href="{{route('lesson.show', ['lesson' => $lessonsItem])}}">Подробнее</a>
+      <h5>{{$lessonsItem->title}} <a href="{{route('lesson.show', ['lesson' => $lessonsItem])}}">Подробнее</a>
       </h5>
 
       @empty
       <h1>Глав нет</h1>
       @endforelse
     </div>
-        <p><a class="btn btn-primary" href="{{ route('course.index') }}" role="button">Назад ко всем Историям</a></p>
     <hr>
-  </div> <!-- /container -->
+        <p><a class="btn btn-primary" href="{{ route('course.index') }}" role="button">Назад ко всем Историям</a></p>
+
+  </div>
   @else
-  <h1>Такого курса нет</h1>
+  <h1>Такой истории нет</h1>
   @endif
 </div>
 <div class="container">
