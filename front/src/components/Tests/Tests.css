@@ -1,9 +1,13 @@
-.test__right {
-    display: none;
+.test__correct {
+    /*display: none;*/
     color: #017272;
 }
 
+/*.text__correct {   */
+/*    color: #017272;*/
+/*}*/
+
 .test__error {
-    display: none;
+    /*display: none;*/
     color:darkred;
 }

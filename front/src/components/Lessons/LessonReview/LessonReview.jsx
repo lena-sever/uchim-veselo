@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./LessonReview.module.css";
 
 const LessonReview = (props) => {
-    debugger;
+    // debugger;
     return (
         <div className={styles.review}>
             <div>

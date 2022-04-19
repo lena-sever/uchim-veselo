@@ -10,6 +10,11 @@ import Login from "../Login/Login";
 import SliderContainer from "../common/Slider/Slider";
 
 import {sliderList} from "../../constants/forSlider/forSlider";
+import Test1 from "../Tests/Test1";
+import Test2 from "../Tests/Test2";
+import Test3 from "../Tests/Test3";
+import Test4 from "../Tests/Test4";
+import Tests from "../Tests/Tests";
 
 function Router() {
     return (
@@ -21,13 +26,18 @@ function Router() {
                 <Route path=":courseId/:lessonId" element={<LessonsItem />} />
                 <Route path=":coursId" element={<CoursPage />} />
             </Route>
-            <Route path="/contacts" element={<Contacts />}></Route>
-            <Route path="/login" element={<Login />}></Route>
+            <Route path="/contacts" element={<Contacts />} />
+            <Route path="/login" element={<Login />} />
             <Route
                 path="/slider"
                 element={<SliderContainer sliderList={sliderList} />}
-            ></Route>
-            <Route path="*" element={<Error_404 />}></Route>
+             />
+            <Route path="/tests" element={ <Tests/> }/>
+            <Route path="/test1" element={ <Test1/> }/>
+            <Route path="/test2" element={ <Test2/> }/>
+            <Route path="/test3" element={ <Test3/> }/>
+            <Route path="/test4" element={ <Test4/> }/>
+            <Route path="*" element={<Error_404 />} />
         </Routes>
     );
 }

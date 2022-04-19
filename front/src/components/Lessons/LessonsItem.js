@@ -7,9 +7,9 @@ function LessonsItem() {
     const { courseId } = useParams();
     const { lessonId } = useParams();
     const lessons = useSelector( selectLessons );
-    
+
     let lesson = lessons.find(less => {
-        debugger
+        // debugger
         return less.id == lessonId})
 
     // if( !lesson.lessonId ) {
@@ -25,6 +25,12 @@ function LessonsItem() {
                 <h3>{ lesson.title }</h3>
                 <p>{ lesson.text }</p>
             </div>
+            {
+                ( lessonId == lessons.length ) ?
+                    <p><NavLink to="/tests">Пройти тест</NavLink></p>
+                    : null
+            }
+
         </>
     );
 }
