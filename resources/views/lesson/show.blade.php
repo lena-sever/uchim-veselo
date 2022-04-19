@@ -3,6 +3,8 @@
 @section('title', $lesson->title)
 
 @section('content')
+
+
 <div class="container">
   @if ($lesson)
 
@@ -25,12 +27,38 @@
     </div>
 <hr>
 
-  <h2>Пройти тесты:</h2>
+  <h2>Пройти первый тест:</h2>
   <div class="row">
-      @forelse($tests as $testsItem)
-      <h5>{{ $loop->iteration }}. {{$testsItem->test_title}} <a href="#">Подробнее</a>
-      </h5>
-
+  @include('inc.message')
+  <dl class="dl-horizontal">
+      @forelse($first_tests as $testsItem)
+      <dd><h5>{{$testsItem->test_title}} <span style="color: red;">{{$testsItem->word}}</span></h5></dd>
+    <form method="post" action="{{route('admin.test.answer',['test' => $testsItem])}}">
+        @csrf
+        @method('get')
+        <dd>
+            <input type="radio" value="{{$testsItem->answer_1}}" id="answer_1" name="right_answer" checked>
+            <label class="custom-control-label" for="answer_1">{{$testsItem->answer_1}}</label>
+        </dd>
+        <dd>
+            <input type="radio" value="{{$testsItem->answer_2}}" id="answer_2" name="right_answer" >
+            <label class="custom-control-label" for="answer_2">{{$testsItem->answer_2}}</label>
+        </dd>
+        <dd>
+            <input type="radio" value="{{$testsItem->answer_3}}" id="answer_3" name="right_answer" >
+            <label class="custom-control-label" for="answer_3">{{$testsItem->answer_3}}</label>
+        </dd>
+        <dd>
+            <input type="radio" value="{{$testsItem->answer_4}}" id="answer_4" name="right_answer" >
+            <label class="custom-control-label" for="answer_4">{{$testsItem->answer_4}}</label>
+        </dd>
+        <dd>
+            <input type="radio" value="{{$testsItem->answer_5}}" id="answer_5" name="right_answer" >
+            <label class="custom-control-label" for="answer_5">{{$testsItem->answer_5}}</label>
+        </dd>
+        <input class="btn btn btn-secondary" type="submit" value="Выбрать">
+    </form>
+    </dl>
       @empty
       <h1>Глав нет</h1>
       @endforelse

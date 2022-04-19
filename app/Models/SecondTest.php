@@ -6,18 +6,22 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class TestType extends Model
+class SecondTest extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
-    protected $table = 'test_types';
+    protected $table = 'second_tests';
 
     protected $fillable = [
-        'test_type_title',
-    ];    
+        'lesson_id',
+        'test_title',
+        'description',
+        'questions',
+    ];
 
-    public function tests() {
-        return $this->hasMany(Test::class);
+    public function lesson() {
+        return $this->hasMany(Lesson::class);
     }
+
 }
