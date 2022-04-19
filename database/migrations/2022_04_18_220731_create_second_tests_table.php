@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTestStepsTable extends Migration
+class CreateSecondTestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,16 @@ class CreateTestStepsTable extends Migration
      */
     public function up()
     {
-        Schema::create('test_steps', function (Blueprint $table) {
+        Schema::create('second_tests', function (Blueprint $table) {
             $table->id();
-            $table->string('test_steps_title');
-
+            $table->foreignId('lesson_id')->constrained('lessons')->cascadeOnDelete();
+            $table->string('test_title');
+            $table->string('description');
+            $table->string('questions');
             $table->timestamps();
             $table->softDeletes();
 
-            
+
         });
     }
 
@@ -31,6 +33,6 @@ class CreateTestStepsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('test_steps');
+        Schema::dropIfExists('second_tests');
     }
 }
