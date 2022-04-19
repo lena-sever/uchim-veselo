@@ -1,0 +1,9 @@
+.test__right {
+    display: none;
+    color: #017272;
+}
+
+.test__error {
+    display: none;
+    color:darkred;
+}
