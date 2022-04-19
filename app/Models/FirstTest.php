@@ -23,6 +23,7 @@ class FirstTest extends Model
         'answer_4',
         'answer_5',
         'right_answer',
+        'description'
 	];
 
     public function lesson() {
