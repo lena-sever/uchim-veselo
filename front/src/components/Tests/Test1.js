@@ -9,7 +9,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 function Test1({ test }) {
-    const [ value, setValue ] = useState( 1 );
+    const [ value, setValue ] = useState( "" );
     const [ disabled, setDisabled ] = useState( false );
 
     function changeValue(event) {
@@ -41,14 +41,14 @@ function Test1({ test }) {
             </FormControl>
 
             {
-                ( value == test.answer_5 ) ? (
+                ( value == test.right_answer ) ? (
                     <div className="test__correct">
                         <p>
                             Молодец! Ты выбрал правильное решение.
                         </p>
                         <p><NavLink to="/courses">Вернуться к истории</NavLink></p>
                     </div>
-                ) : ( value == test.answer_1 || value == test.answer_2 || value == test.answer_3 || value == test.answer_4 ) ? (
+                ) : ( value != test.right_answer && value != "" ) ? (
                     <div className="test__error">
                         <p>
                             К сожалению, это не верный выбор. Давай вместе разберем значение этого слова.
