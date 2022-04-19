@@ -31,8 +31,8 @@ class SlidersSeeder extends Seeder
             for ($i = 1; $i < 5; $i++) {
                 $data[] = [
                     'lesson_id' => $item->id,
-                    'img' => '/' .$faker->randomElement($img),
-                    'music' => '/' .$faker->randomElement($music),
+                    'img' => 'http://uchim-veselo.ru/' .$faker->randomElement($img),
+                    'music' => 'http://uchim-veselo.ru/' .$faker->randomElement($music),
                     'text' => $faker->text(mt_rand(10, 30)),
                     'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
                 ];
