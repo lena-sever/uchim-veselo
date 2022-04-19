@@ -59,7 +59,9 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/test/destroy/{test}', [AdminTestController::class, 'destroy'])
         ->where('test', '\d+')
         ->name('test.destroy');
-
+        Route::get('/test/answer/{test}', [AdminTestController::class, 'answer'])
+        ->where('test', '\d+')
+        ->name('test.answer');
 
         /*Route::resource('/mail',MailController::class);
         Route::get('/mail/destroy/{mail}', [MailController::class, 'destroy'])
