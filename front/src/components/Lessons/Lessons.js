@@ -48,7 +48,7 @@ function Lessons() {
     return (
         <>
             <h2>{courses[courseId - 1].title} </h2>
-            <NavLink to="/courses">Вернуться к списку курсов</NavLink>
+            <NavLink to="/courses">Вернуться к списку историй</NavLink>
 
             <div sx={{ width: "100%", maxWidth: 600 }}>
                 {isLoading ? (

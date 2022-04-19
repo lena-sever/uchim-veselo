@@ -154,6 +154,10 @@
     height: 180px;
     object-fit: cover;
 }
+.head {
+    color:#b458bf;
+
+}
 
 @media screen and (max-width: 1346px) {
     .feature__products_images-wrp {

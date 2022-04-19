@@ -30,7 +30,7 @@ const Contacts = (props) => {
           <p className={styles.name_input}>Email</p> <input className={styles.input} type="email" placeholder="    Введите электронную почту"/><br/>
           <p className={styles.name_input}>Сообщение</p> <br/>
           <textarea className={styles.input} id="Message" cols="50" rows="30" placeholder="    Введите текст сообщения"></textarea> <br/>
-          <button className={styles.button_submit} type="submit">submit</button>
+          <button className={styles.button_submit} type="submit">Отправить</button>
         </div>
       </form>
             </div>

@@ -19,7 +19,7 @@ function LessonsItem() {
     return (
         <>
             <NavLink to={ `/courses/${ courseId }` }>
-                Вернуться к списку уроков
+                Вернуться к списку глав
             </NavLink>
             <div>
                 <h3>{ lesson.title }</h3>

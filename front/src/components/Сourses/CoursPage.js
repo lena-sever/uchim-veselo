@@ -68,7 +68,7 @@ const CoursPage = () => {
                             size="large"
                             className={classes.btn}
                         >
-                            Начать курс
+                            Начать историю
                         </ColorButton>
 
                         <ColorButtonOutlined
@@ -77,7 +77,7 @@ const CoursPage = () => {
                             to="/courses"
                             size="large"
                         >
-                            Другие курсы
+                            Другие истории
                         </ColorButtonOutlined>
                     </div>
                 </>
