@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 
 import { store } from "./store/store";
@@ -11,13 +11,13 @@ function App() {
     return (
         <Provider store={store}>
             <div className="App">
-                <BrowserRouter>
+                <HashRouter>
                     <Header />
                     <div className="main">
                         <Router />
                     </div>
                     <Footer />
-                </BrowserRouter>
+                </HashRouter>
             </div>
         </Provider>
     );
