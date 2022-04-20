@@ -34,7 +34,6 @@ class LessonController extends Controller
         $first_tests = $lesson->first_tests()->get();
         $sliders = $lesson->sliders()->paginate(1);
 
-
         return view('lesson.show',[
             'lesson' => $lesson,
             'first_tests' => $first_tests,

@@ -5,8 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Course;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Test\EditRequest;
-use App\Http\Requests\Test\CreateRequest;
+use App\Http\Requests\Test\First\EditRequest as FirstEditRequest;
+use App\Http\Requests\Test\First\CreateRequest as FirstCreateRequest;
+use App\Http\Requests\Test\Second\EditRequest as SecondEditRequest;
+use App\Http\Requests\Test\Second\CreateRequest as SecondCreateRequest;
+use App\Http\Requests\Test\Third\EditRequest as ThirdEditRequest;
+use App\Http\Requests\Test\Third\CreateRequest as ThirdCreateRequest;
 use App\Models\Lesson;
 use App\Models\FirstTest;
 use App\Models\SecondTest;
@@ -24,7 +28,25 @@ class TestController extends Controller
      */
     public function index()
     {
+        //получаем id главы
+        $lesson_id = $_REQUEST['lesson'];
 
+        $course_id = explode("course/", $_SERVER['HTTP_REFERER']);
+        $course_id = end($course_id);
+
+        $lessons = Lesson::all();
+        $first_tests = FirstTest::all();
+        $second_tests = SecondTest::all();
+        $third_tests = ThirdTest::all();
+
+        return view('admin.test.index',[
+            'lessons' => $lessons,
+            'lesson_id' => $lesson_id,
+            'course_id' => $course_id,
+            'first_tests' => $first_tests,
+            'second_tests' => $second_tests,
+            'third_tests' => $third_tests
+        ]);
     }
 
     /**
@@ -36,14 +58,24 @@ class TestController extends Controller
     {
         $courses = Course::all();
         $lessons = Lesson::all();
-        $first_test = FirstTest::all();
+        $first_tests = FirstTest::all();
+        $second_tests = SecondTest::all();
+        $third_tests = ThirdTest::all();
+        $course_id = explode("course/", $_SERVER['HTTP_REFERER']);
+        $course_id = end($course_id);
+        $options = [1,2,3];
 
         $lesson_id = explode("/", $_SERVER['HTTP_REFERER']);
         $lesson_id = end($lesson_id);
-//dd($test_steps,$test_type);
+
         return view('admin.test.create',[
             'courses'=>$courses,
             'lessons'=>$lessons,
+            'first_tests'=>$first_tests,
+            'second_tests'=>$second_tests,
+            'third_tests'=>$third_tests,
+            'course_id'=>$course_id,
+            'options' => $options,
             'lesson_id'=> $lesson_id    //нужно для кнопки назад
         ]);
     }
@@ -51,16 +83,29 @@ class TestController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateRequest  $request
+     * @param  FirstCreateRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateRequest $request)
+    public function store(FirstCreateRequest $request)
     {
-
-        $created = FirstTest::create($request->validated());
+        $validated = $request->validated();
+        switch($request->test_type_id){
+            case 1:
+                //костыль!
+                $validated['lesson_id'] = 3;
+                $created = FirstTest::create($validated);
+                break;
+            case 2:
+               // $created = SecondTest::create($validated);
+                break;
+            case 3:
+                //$created = ThirdTest::create($validated);
+                break;
+        }
 
 		if($created) {
-			return redirect()->route('admin.lesson.show')
+            //нужен правльный ридерект!
+			return redirect()->route('admin.course.index')
 				     ->with('success', 'Запись успешно добавлена');
 		}
 
@@ -85,16 +130,23 @@ class TestController extends Controller
      * @param  \App\Models\Test  $test
      * @return \Illuminate\Http\Response
      */
-    public function edit( $test)
+    public function edit($test)
     {
+        //пока не работает!
         $courses = Course::all();
         $lessons = Lesson::all();
+        $first_tests = FirstTest::all();
+        $second_tests = SecondTest::all();
+        $third_tests = ThirdTest::all();
 
+        $options = [1,2,3];
+        dd($test,$_SERVER['HTTP_REFERER']);
 
         return view('admin.test.edit',[
             'test' => $test,
             'courses' => $courses,
             'lessons' => $lessons,
+            'options' => $options
         ]);
     }
 
@@ -105,7 +157,7 @@ class TestController extends Controller
      * @param  \App\Models\Test  $test
      * @return \Illuminate\Http\Response
      */
-    public function update(EditRequest $request,  $test)
+    public function update( $request,  $test)
     {
         $validated = $request->validated();
         $updated = $test->fill($validated)->save();
@@ -137,19 +189,27 @@ class TestController extends Controller
     }
 
     public function answer(FirstTest $first_test,Request $request){
+
+
         $lesson_id = $first_test->where('id','=',$request->test)
         ->value('lesson_id');
+
         //выбор правильного ответа в тесте по id
         $right_answer = $first_test->where('id','=',$request->test)
         ->value('right_answer');
+
+        //выбор описания для слова в тесте по id
+        $description = $first_test->where('id','=',$request->test)
+        ->value('description');
+
         //сравнение выбора пользователя и правильного ответа
         if ($request->right_answer == $right_answer){
             return redirect()->route('lesson.show',['lesson' => $lesson_id])
-            ->with('success', 'Правильно');
+            ->with('success', 'Верно');
         }
         else{
             return redirect()->route('lesson.show',['lesson' => $lesson_id])
-            ->with('error', 'Неверно');
+            ->with('error', 'Неверно. Прочитет описание слова: '.$description);
         }
 
     }

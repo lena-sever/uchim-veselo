@@ -1,12 +1,11 @@
 <?php
-
 declare(strict_types=1);
 
-namespace App\Http\Requests\Test;
+namespace App\Http\Requests\Test\Third;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EditRequest extends FormRequest
+class CreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

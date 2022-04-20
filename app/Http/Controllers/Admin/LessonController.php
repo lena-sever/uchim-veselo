@@ -20,8 +20,7 @@ class LessonController extends Controller
     public function create()
     {
         $courses = Course::all();
-        $course_id = $_SERVER['HTTP_REFERER'];
-        $course_id = explode("course/", $course_id);
+        $course_id = explode("course/", $_SERVER['HTTP_REFERER']);
         $course_id = end($course_id);
 
         return view('admin.lesson.create',[
@@ -47,12 +46,10 @@ class LessonController extends Controller
     public function show(Lesson $lesson)
     {
         $first_tests = $lesson->first_tests()->get();
-        $sliders = $lesson->sliders()->paginate(1);
 
-        return view('lesson.show',[
+        return view('admin.lesson.show',[
             'lesson' => $lesson,
             'first_tests' => $first_tests,
-            'sliders' => $sliders
         ]);
     }
 
