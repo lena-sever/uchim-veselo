@@ -30,6 +30,10 @@ Auth::routes();
 
 /*Route::get('/home', [HomeController::class, 'index'])->name('home');*/
 
+    Route::get('/', [HomeController::class, 'index'])
+    ->name('home');
+
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/account', AccountController::class)
         ->name('account');
@@ -73,17 +77,5 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
-Route::get('/', [CourseController::class, 'index'])
-    ->name('course.index');
-
-Route::get('course/{course}', [CourseController::class, 'show'])
-    ->where('course', '\d+')
-    ->name('course.show');
 
 
-/*Route::get('/lesson',[LessonController::class,'index'])
-->name('lesson.index');*/
-
-Route::get('lesson/{lesson}', [LessonController::class, 'show'])
-    ->where('lesson', '\d+')
-    ->name('lesson.show');
