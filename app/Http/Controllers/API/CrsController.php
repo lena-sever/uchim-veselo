@@ -56,4 +56,20 @@ class CrsController extends Controller
         return json_encode($first_slider, JSON_UNESCAPED_UNICODE);
 
     }
+
+    
+    public function show_last_slider(Course $course)
+    {
+        $id = $course->id;
+        //получим номер первого урока этого курса
+        $les_id = DB::table('lessons')->where('course_id', $id)->orderBy('id', 'desc')->first();
+        $les_id = $les_id-> id;
+
+        $first_slider = DB::table('sliders')
+            ->where('lesson_id', $les_id)
+            ->get();
+
+        return json_encode($first_slider, JSON_UNESCAPED_UNICODE);
+
+    }
 }

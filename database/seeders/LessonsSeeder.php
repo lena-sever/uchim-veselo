@@ -26,7 +26,7 @@ class LessonsSeeder extends Seeder
         $courses = DB::table('courses')->get();
 
         foreach ($courses as $item) {
-            for($i=1; $i < 5; $i++) {
+            for($i=1; $i < 3; $i++) {
                 $data[] = [
 
                     'title' => 'Глава '.$i.'. истории: '.$item->title,

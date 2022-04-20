@@ -27,7 +27,8 @@ Route::get('courses', [CrsController::class,'index'])->name('api.course.index');
 Route::get('courses/{course}', [CrsController::class,'show'])->name('api.course.show');
 // первый слайдер истории
 Route::get('courses/first_slider/{course}', [CrsController::class,'show_first_slider']);
-
+// последний слайдер истории
+Route::get('courses/last_slider/{course}', [CrsController::class,'show_last_slider']);
 
 
 Route::get('course_reviews', [CrsReviewController::class,'index']);
