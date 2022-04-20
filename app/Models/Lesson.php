@@ -28,14 +28,4 @@ class Lesson extends Model
         return $this->hasMany(Slider::class);
     }
 
-    public function first_tests() {
-        return $this->hasMany(FirstTest::class);
-    }
-    public function second_tests() {
-        return $this->hasMany(SecondTest::class);
-    }
-    public function third_tests() {
-        return $this->hasMany(ThirdTest::class);
-    }
-
 }

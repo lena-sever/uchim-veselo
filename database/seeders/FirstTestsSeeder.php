@@ -21,12 +21,11 @@ class FirstTestsSeeder extends Seeder
     {
         $faker = Factory::create();
         $data = [];
-        // $lesson_id = DB::table('lessons')->pluck('id');
 
-        $lessons = DB::table('lessons')->get();
+        $courses = DB::table('courses')->get();
 
         $data[] = [
-            'lesson_id' => 1,
+            'course_id' => 1,
             'test_title' => 'Помогите герою, выберите правильне значение слова',
             'word' => 'Нитки',
             'answer_1' => 'это длинное изделие из металла',
@@ -37,10 +36,11 @@ class FirstTestsSeeder extends Seeder
             'right_answer' => 'это длинные, тонко скрученные волокна, предназначенные для изготовления тканей, шитья, вязания',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
-        foreach ($lessons as $item) {
+        foreach ($courses as $item) {
+            if ($item->id == 1) continue;
             $data[] = [
-                'lesson_id' => $item->id,
-                'test_title' => 'Помогите герою, выберите правильне значение слова ' . $faker->text(mt_rand(5, 20)),
+                'course_id' => $item->id,
+                'test_title' => 'Помогите герою, выберите правильное значение слова ',
                 'word' => $faker->text(mt_rand(5, 10)),
                 'answer_1' => $faker->text(mt_rand(10, 20)),
                 'answer_2' => $faker->text(mt_rand(10, 20)),
