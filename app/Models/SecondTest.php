@@ -21,7 +21,7 @@ class SecondTest extends Model
     ];
 
     public function lesson() {
-        return $this->hasMany(Lesson::class);
+        return $this->belongsTo(Lesson::class);
     }
 
 }
