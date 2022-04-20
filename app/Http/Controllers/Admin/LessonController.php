@@ -12,21 +12,11 @@ use Illuminate\Support\Facades\Log;
 
 class LessonController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $courses = Course::all();
@@ -40,12 +30,6 @@ class LessonController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  CreateRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(CreateRequest $request)
     {
 
@@ -60,12 +44,6 @@ class LessonController extends Controller
 			->withInput();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Lesson  $lesson
-     * @return \Illuminate\Http\Response
-     */
     public function show(Lesson $lesson)
     {
         $tests = $lesson->tests()->get();
@@ -77,14 +55,7 @@ class LessonController extends Controller
             'sliders' => $sliders
         ]);
     }
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Lesson  $lesson
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Lesson $lesson)
     {
         $courses = Course::all();
@@ -94,13 +65,6 @@ class LessonController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Lesson  $lesson
-     * @return \Illuminate\Http\Response
-     */
     public function update(EditRequest $request, Lesson $lesson)
     {
         $validated = $request->validated();
@@ -115,12 +79,6 @@ class LessonController extends Controller
             ->withInput();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Lesson  $lesson
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Lesson $lesson)
     {
         try{
