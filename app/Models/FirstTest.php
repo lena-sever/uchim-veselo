@@ -15,7 +15,6 @@ class FirstTest extends Model
 
 	protected $fillable = [
         'lesson_id',
-        'test_title',
         'word',
         'answer_1',
         'answer_2',
@@ -23,6 +22,7 @@ class FirstTest extends Model
         'answer_4',
         'answer_5',
         'right_answer',
+        'description',
 	];
 
     public function lesson() {
