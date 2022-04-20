@@ -54,7 +54,6 @@ class CrsController extends Controller
             ->get();
 
         return json_encode($first_slider, JSON_UNESCAPED_UNICODE);
-
     }
 
     
@@ -70,6 +69,17 @@ class CrsController extends Controller
             ->get();
 
         return json_encode($first_slider, JSON_UNESCAPED_UNICODE);
-
     }
+
+    public function first_test(Course $course)
+    {
+        $id = $course->id;
+
+        $first_test = DB::table('first_tests')
+            ->where('course_id', $id)
+            ->get();
+
+        return json_encode($first_test, JSON_UNESCAPED_UNICODE);
+    }
+
 }
