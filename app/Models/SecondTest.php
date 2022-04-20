@@ -14,14 +14,13 @@ class SecondTest extends Model
     protected $table = 'second_tests';
 
     protected $fillable = [
-        'lesson_id',
+        'course_id',
         'test_title',
         'description',
         'questions',
     ];
 
-    public function lesson() {
-        return $this->belongsTo(Lesson::class);
+    public function course() {
+        return $this->belongsTo(Course::class);
     }
-
 }

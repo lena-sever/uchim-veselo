@@ -21,12 +21,11 @@ class ThirdTestsSeeder extends Seeder
 	{
         $faker = Factory::create();
         $data = [];
-        // $lesson_id = DB::table('lessons')->pluck('id');
 
-        $lessons = DB::table('lessons')->get();
-        foreach ($lessons as $item) {
+        $courses = DB::table('courses')->get();
+        foreach ($courses as $item) {
             $data[] = [
-                'lesson_id' => $item->id,
+                'course_id' => $item->id,
                 'test_title' => 'Посмотрете происхождение слова ' . $faker->text(mt_rand(5, 20)),
                 'description' => $faker->sentence(mt_rand(3, 10)),
                 'questions' => 'Напишите это слово, чтобы открыть герою путь!',

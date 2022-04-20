@@ -36,7 +36,7 @@ class MessengerController extends Controller
         $created = Messenger::create($validated);
 
         if ($created) {
-            return redirect()->route('course.index')
+            return redirect()->route('admin.course.index')
                 ->with('success', 'Сообщение успешно отправленно');
         }
 

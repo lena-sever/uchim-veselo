@@ -21,13 +21,12 @@ class SecondTestsSeeder extends Seeder
 	{
         $faker = Factory::create();
         $data = [];
-        // $lesson_id = DB::table('lessons')->pluck('id');
 
-        $lessons = DB::table('lessons')->get();
+        $courses = DB::table('courses')->get();
 
-        foreach ($lessons as $item) {
+        foreach ($courses as $item) {
             $data[] = [
-                'lesson_id' => $item->id,
+                'course_id' => $item->id,
                 'test_title' => 'Составьте предложение ' . $faker->sentence(mt_rand(3, 10)),
                 'description' => 'Нажимайте на слова так, чтобы получилось предложение',
                 'questions' => $faker->text(mt_rand(10, 30)),

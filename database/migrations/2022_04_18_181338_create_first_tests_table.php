@@ -15,7 +15,7 @@ class CreateFirstTestsTable extends Migration
     {
         Schema::create('first_tests', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('lesson_id')->constrained('lessons')->cascadeOnDelete();
+            $table->foreignId('course_id')->constrained('courses')->cascadeOnDelete();
             $table->string('test_title')->comment('название');
             $table->text('word')->comment('слово');
             $table->text('answer_1')->comment('ответ_1');
@@ -23,7 +23,8 @@ class CreateFirstTestsTable extends Migration
             $table->text('answer_3')->comment('ответ_3');
             $table->text('answer_4')->comment('ответ_4');
             $table->text('answer_5')->comment('ответ_5');
-            $table->text('right_answer')->comment('правильный ответ');
+            $table->integer('right_answer')->comment('правильный ответ');
+            $table->text('description')->comment('описание для следующей страницы');
             $table->timestamps();
             $table->softDeletes();
         });

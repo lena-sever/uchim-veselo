@@ -15,7 +15,7 @@ class CreateThirdTestsTable extends Migration
     {
         Schema::create('third_tests', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('lesson_id')->constrained('lessons')->cascadeOnDelete();
+            $table->foreignId('course_id')->constrained('courses')->cascadeOnDelete();
             $table->string('test_title');
             $table->string('description');
             $table->string('questions');

@@ -14,13 +14,13 @@ class ThirdTest extends Model
     protected $table = 'third_tests';
 
     protected $fillable = [
-        'lesson_id',
+        'course_id',
         'test_title',
         'description',
         'questions',
     ];
 
-    public function lesson() {
-        return $this->belongsTo(Lesson::class);
+    public function course() {
+        return $this->belongsTo(Course::class);
     }
 }

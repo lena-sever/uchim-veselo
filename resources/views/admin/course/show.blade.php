@@ -6,7 +6,7 @@
 
 @include('inc.message')
 <div class="container">
-<h1 class="h2">Список галв по истории: {{$course->title}}</h1>
+<h1 class="h2">Список глав по истории: {{$course->title}}</h1>
 <a href="{{ route('admin.course.index') }}" type="button" class="btn btn-sm btn-secondary">Назад</a> &nbsp;
   <a href="{{ route('admin.lesson.create') }}" type="button" class="btn btn-sm btn-secondary">Добавить урок</a>
   <div class="row">
