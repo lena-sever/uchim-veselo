@@ -26,7 +26,7 @@ class EditRequest extends FormRequest
     public function rules(): array
     {
         return [
-
+            'course_id' => ['required', 'int'],
 			'test_title' => ['required', 'string', 'min:5'],
             'word' => ['required', 'string', 'min:5'],
             'answer_1' => ['required', 'string', 'max:1000'],
@@ -49,6 +49,7 @@ class EditRequest extends FormRequest
 	public function  attributes(): array
 	{
 		return [
+            'course_id' => 'История',
 			'test_title' => 'Наименование теста',
             'word' => 'Слово',
             'answer_1' => 'Вопрос №1',

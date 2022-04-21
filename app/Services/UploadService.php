@@ -20,7 +20,7 @@ class UploadService
 	   $completedFile = $file->storeAs('img',$file->hashName());
 
        if(!$completedFile) {
-		   throw new \Exception("File wasn't upload");
+		   throw new \Exception("Файл не был загружен");
 	   }
 
 	   return $completedFile;

@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CourseController;
-use App\Http\Controllers\LessonController;
 use App\Http\Controllers\Admin\CourseController as AdminCourseController;
 use App\Http\Controllers\Admin\LessonController as AdminLessonController;
+use App\Http\Controllers\Admin\FirstTestController;
+use App\Http\Controllers\Admin\SecondTestController;
+use App\Http\Controllers\Admin\ThirdTestController;
 use App\Http\Controllers\Admin\TestController as AdminTestController;
 use App\Http\Controllers\Admin\CourseReviewController;
 use App\Http\Controllers\Admin\MessengerController;
@@ -50,7 +51,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/course/destroy/{course}', [AdminCourseController::class, 'destroy'])
             ->where('course', '\d+')
             ->name('course.destroy');
-            
+
         Route::resource('/lesson', AdminLessonController::class);
         Route::get('/lesson/destroy/{lesson}', [AdminLessonController::class, 'destroy'])
             ->where('lesson', '\d+')
@@ -61,13 +62,24 @@ Route::group(['middleware' => 'auth'], function () {
             ->where('courseReview', '\d+')
             ->name('review.destroy');
 
-        Route::resource('/test', AdminTestController::class);
-        Route::get('/test/destroy/{test}', [AdminTestController::class, 'destroy'])
-            ->where('test', '\d+')
-            ->name('test.destroy');
-        Route::get('/test/answer/{test}', [AdminTestController::class, 'answer'])
-            ->where('test', '\d+')
-            ->name('test.answer');
+        Route::get('/test/{course}', AdminTestController::class)
+        ->where('course', '\d+')
+        ->name('test');
+
+        Route::resource('/test_1', FirstTestController::class);
+        Route::get('/test_1/answer/{test_1}', [FirstTestController::class, 'answer'])
+            ->where('test_1', '\d+')
+            ->name('test_1.answer');
+
+        Route::resource('/test_2', SecondTestController::class);
+        Route::get('/test_2/answer/{test_2}', [SecondTestController::class, 'answer'])
+            ->where('test_2', '\d+')
+            ->name('test_2.answer');
+
+        Route::resource('/test_3', ThirdTestController::class);
+        Route::get('/test_3/answer/{test_3}', [ThirdTestController::class, 'answer'])
+            ->where('test_3', '\d+')
+            ->name('test_3.answer');
 
         Route::resource('/messenger', MessengerController::class);
         Route::get('/messenger/destroy/{messenger}', [MessengerController::class, 'destroy'])

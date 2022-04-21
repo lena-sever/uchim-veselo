@@ -25,8 +25,8 @@ class CreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-
-			'title' => ['required', 'string', 'min:5'],
+            'course_id' => ['required','int'],
+			'test_title' => ['required', 'string', 'min:5'],
             'description' => ['required', 'string', 'max:1000'],
             'questions' => ['required', 'string'],
         ];
@@ -42,7 +42,8 @@ class CreateRequest extends FormRequest
 	public function  attributes(): array
 	{
 		return [
-			'title' => 'Наименование теста',
+            'course_id' => 'История',
+			'test_title' => 'Наименование теста',
 			'description' => 'Описание теста',
             'questions' => 'Вопросы по тесту'
 		];

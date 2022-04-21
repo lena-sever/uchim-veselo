@@ -33,7 +33,7 @@ class FirstTestsSeeder extends Seeder
             'answer_3' => 'это верёвочка, через которую прыгают, вертя её и перекидывая через голову',
             'answer_4'=> 'это тонкий и гибкий шнур',
             'answer_5'=> 'это длинные, тонко скрученные волокна, предназначенные для изготовления тканей, шитья, вязания',
-            'right_answer' => 'это длинные, тонко скрученные волокна, предназначенные для изготовления тканей, шитья, вязания',
+            'right_answer' => 'answer_5',
             'description' => 'Существительное «нить» — славянское по происхождению и означает «тонко скрученную прядь, используемую для шитья и прочего». Слово закрепилось в лексике русского языка в XI в.',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
@@ -48,7 +48,8 @@ class FirstTestsSeeder extends Seeder
                 'answer_3' => $faker->text(mt_rand(10, 20)),
                 'answer_4'=> $faker->text(mt_rand(10, 20)),
                 'answer_5'=> $faker->text(mt_rand(10, 20)),
-                'right_answer' => $faker->text(mt_rand(10, 20)),
+                'right_answer' => $faker->randomElement(['answer_1','answer_2','answer_3','answer_4','answer_5']),
+                'description' => $faker->text(mt_rand(10, 30)),
                 'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
             ];
 
