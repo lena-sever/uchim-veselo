@@ -1,0 +1,52 @@
+@extends('layouts.app')
+
+@section('title', 'Панель администратора')
+
+@section('content')
+
+@include('inc.message')
+<div class="container">
+<h1 class="h2">Список слайдеров по главе: {{$lesson->title}}</h1>
+<a href="{{ route('admin.course.show',['course'=>$lesson->course_id]) }}" type="button" class="btn btn-sm btn-secondary">Назад</a> &nbsp;
+  <a href="#" type="button" class="btn btn-sm btn-secondary">Добавить слайдер</a>
+  <div class="row">
+    <div class="table-responsive">
+  <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Текст</th>
+                <th>Изображение</th>
+                <th>Музыка</th>
+                <th>Опции</th>
+                </tr>
+            @forelse($sliders as $slidersItem)
+            <tr id="{{$slidersItem->id}}">
+                <td>{{ $slidersItem->id }}</td>
+                <td>{!! $slidersItem->text !!}</td>
+                <td><img src="{{$slidersItem->img}}" width="100" height="100" alt="" class="cart-img-top"></td>
+                <td><audio controls src=""><source src="{{ $slidersItem->music }}"></audio></td>
+                <td>
+                    <p class="btn-group">
+                        <a class="btn btn-sm btn-primary" href="#">Редактировать</a> &nbsp;
+                        <a class="delete btn btn-sm btn-danger" href="#">Удалить</a>
+                    </p>
+                </td>
+		    </tr>
+              @empty
+                  <tr><td colspan="6">Записей нет</td> </tr>
+              @endforelse
+            </tbody>
+        </table>
+    </div>
+  </div>
+  <br>
+<hr>
+</div>
+@endsection
+
+
+
+
+
+
