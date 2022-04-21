@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {
     selectReviews,
-    selectError,
+    selectErrorReviews,
 } from "../../store/reviews/reviewsSelector";
 import styles from "./Review/Review.module.css";
 import AliceCarousel from "react-alice-carousel";
@@ -14,7 +14,7 @@ import "react-alice-carousel/lib/alice-carousel.css";
 
 const ReviewsContainer = () => {
     const reviews = useSelector(selectReviews);
-    const error = useSelector(selectError);
+    const error = useSelector(selectErrorReviews);
     const dispatch = useDispatch();
     const requestReviews = async () => {
         dispatch(getReviewsTC());

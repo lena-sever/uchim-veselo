@@ -10,7 +10,10 @@ import {
     selectLessonsLoading,
 } from "../../store/lessons/lessonsSelectors";
 import CircularProgress from "../curcularProgress/CircularProgress";
-import { selectReview, selectError } from "../../store/reviews/reviewsSelector";
+import {
+    selectReview,
+    selectErrorReview,
+} from "../../store/reviews/reviewsSelector";
 import { useEffect } from "react";
 import { getReviewTC } from "../../store/reviews/actions";
 import LessonReview from "./LessonReview/LessonReview";
@@ -23,7 +26,7 @@ function Lessons() {
     const error = useSelector(selectCoursesError);
 
     const reviewCourse = useSelector(selectReview);
-    // const error_review = useSelector(selectError);
+    const error_review = useSelector(selectErrorReview);
     const dispatch = useDispatch();
     const requestReview = async (courseId) => {
         dispatch(getReviewTC(courseId));
@@ -72,7 +75,11 @@ function Lessons() {
             <div>
                 <h2>Отзывы</h2>
             </div>
-            <div style={style}>{reviewElem}</div>
+            {error_review ? (
+                <h1>{error_review}</h1>
+            ) : (
+                <div style={style}>{reviewElem}</div>
+            )}
         </>
     );
 }
