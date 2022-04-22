@@ -7,7 +7,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: #b458bf;
+    background:  radial-gradient(110.67% 538.64% at 5.73% 50%, #b458bf 0%, #1A1A1C 100%), #352f4d;
     min-height: 125px;
 }
 
@@ -15,8 +15,7 @@
     max-width: 1577px;
     min-height: 125px;
     width: 100%;
-    background-color: #b458bf;
-    mix-blend-mode: normal;
+      mix-blend-mode: normal;
     /* margin: 0 0 50px 0; */
     display: flex;
     justify-content: space-around;
@@ -40,4 +39,15 @@
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
         sans-serif;
     padding: 0 0 0 25px;
+}
+
+@media screen and (max-width: 460px) {
+    .header__nav-wrp {
+flex-direction: column;
+    }
+
+    .header-wrp {
+        min-height: 210px;
+        margin-bottom: 0;
+    }
 }

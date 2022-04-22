@@ -58,7 +58,7 @@ function CoursesItem({ course }) {
                 onClick={getLessonsList}
                 className={`products_item_btn ${classes.btn}`}
             >
-                НАЧАТЬ УЧИТЬСЯ
+                НАЧАТЬ ИСТОРИЮ
             </ColorButtonOutlined>
         </div>
     );
