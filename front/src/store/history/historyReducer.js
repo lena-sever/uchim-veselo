@@ -38,8 +38,7 @@ export const getFirstHistory = (id) => async (dispatch) => {
             throw new Error(
                 "Some mistake has occurred. We are already working on it"
             );
-        }
-        dispatch(setFirstHistory(response.data));
+        } dispatch(setFirstHistory(response.data));
     } catch (err) {
         dispatch(serErr(err.message));
     }
@@ -48,13 +47,14 @@ export const getFirstHistory = (id) => async (dispatch) => {
 export const getLastHistory = (id) => async (dispatch) => {
     try {
         const response = await lessonsAPI.getLastPartHistory(id);
+        
         if (!response.data) {
             throw new Error(
                 "Some mistake has occurred. We are already working on it"
             );
-        }
-        dispatch(setLasttHistory(response.data));
+        } dispatch(setLasttHistory(response.data));
     } catch (err) {
+        
         dispatch(serErr(err.message));
     }
 };

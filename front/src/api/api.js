@@ -40,6 +40,7 @@ export const lessonsAPI = {
             .catch((err) => err);
     },
     getFistPartHistory(id) {
+        
         return axios 
             .get(`${firstPatgHistory}/${id}`)
             .then((response) => response)

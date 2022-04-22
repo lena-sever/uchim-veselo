@@ -1,6 +1,6 @@
 import { Navigate, NavLink, useParams } from "react-router-dom";
 import * as React from "react";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 import { selectLessons } from "../../store/lessons/lessonsSelectors";
 import {
     selectFirstHistory,
@@ -13,8 +13,11 @@ import { getLessons } from "../../store/lessons/actions";
 import { getFirstHistory } from "../../store/history/historyReducer";
 
 import SliderContainer from "../common/Slider/Slider";
+import styles from "./LessonReview/LessonReview.module.css";
 
 function LessonsItem() {
+    const {slider1} = useParams();
+    console.log(slider1)
     const { courseId, lessonId } = useParams();
     const dispatch = useDispatch();
     const lessons = useSelector(selectLessons);
@@ -22,28 +25,19 @@ function LessonsItem() {
     const lastHistoy = useSelector(selectLastHistory);
     const err = useSelector(selectErr);
 
-    const [isTestComplete, setIsTestComplite] = React.useState(false);
-    const [isTestActive, setIsTestActive] = React.useState(false);
-
     const requestCourses = async () => {
         dispatch(getLessons(courseId));
     };
 
     const requestHistory = async () => {
         dispatch(getFirstHistory(courseId));
+        
     };
 
     let lesson = lessons.find((less) => {
         return less.id == lessonId;
     });
 
-    const togleTest = () => {
-        setIsTestComplite(true);
-    };
-
-    const togleTestActive = () => {
-        setIsTestActive(true);
-    };
 
     React.useEffect(() => {
         requestHistory();
@@ -56,7 +50,6 @@ function LessonsItem() {
     if (lessons) {
         return (
             <>
-                
                 <div>
                     {
                         <SliderContainer
@@ -64,15 +57,13 @@ function LessonsItem() {
                                 ...firstHistoy,
                                 { music: "", text: "Начать тест", img: "" },
                             ]}
-                            togleTestActive={togleTestActive}
+                            path={""}
                         />
                     }
-                    {isTestActive&&<p>w</p>}
-                    {/* <h3>{lesson.title}</h3>
-                    <p>{lesson.text}</p>
-                    <p>{lessonId}</p>
-                    <p>{courseId}</p> */}
                 </div>
+                <Button as={NavLink} className={styles.btn_link} variant="contained" color="secondary" to="/courses">
+                    Назад к историям
+                </Button>
             </>
         );
     }
