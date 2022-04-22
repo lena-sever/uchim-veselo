@@ -3,6 +3,7 @@
     height: 200px;
     object-fit: contain;
 }
+
 .review {
     display: flex;
     text-align: start;
@@ -19,10 +20,29 @@
     color: #ec615b;
     font-size: 20px;
 }
+
 .rev_text {
     font-style: italic;
 }
 
 .rev_head_item {
     color: #7532d5;
+}
+
+.alice-carousel {
+    width: 1280px;
+}
+
+@media screen and (max-width: 460px) {
+    .rev_head {
+
+        font-size: 30px;
+    }
+
+    .img_course {
+        width: 125px;
+        height: 200px;
+        object-fit: contain;
+    }
+
 }
