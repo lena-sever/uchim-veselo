@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ThirdTestController;
 use App\Http\Controllers\Admin\TestController as AdminTestController;
 use App\Http\Controllers\Admin\CourseReviewController;
 use App\Http\Controllers\Admin\MessengerController;
+use App\Http\Controllers\Admin\SliderController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Account\IndexController as AccountController;
@@ -80,6 +81,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/test_3/answer/{test_3}', [ThirdTestController::class, 'answer'])
             ->where('test_3', '\d+')
             ->name('test_3.answer');
+
+        Route::resource('/slider', SliderController::class);
+        Route::get('/slider/destroy/{slider}', [SliderController::class, 'destroy'])
+        ->where('slider', '\d+')
+        ->name('slider.destroy');
 
         Route::resource('/messenger', MessengerController::class);
         Route::get('/messenger/destroy/{messenger}', [MessengerController::class, 'destroy'])

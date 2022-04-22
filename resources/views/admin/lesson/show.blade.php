@@ -6,9 +6,9 @@
 
 @include('inc.message')
 <div class="container">
-<h1 class="h2">Список слайдеров по главе: {{$lesson->title}}</h1>
+<h1 class="h2">Список слайдеров "{{$lesson->title}}"</h1>
 <a href="{{ route('admin.course.show',['course'=>$lesson->course_id]) }}" type="button" class="btn btn-sm btn-secondary">Назад</a> &nbsp;
-  <a href="#" type="button" class="btn btn-sm btn-secondary">Добавить слайдер</a>
+  <a href="{{route ('admin.slider.create')}}" type="button" class="btn btn-sm btn-secondary">Добавить слайдер</a>
   <div class="row">
     <div class="table-responsive">
   <table class="table table-bordered">
@@ -28,8 +28,8 @@
                 <td><audio controls src=""><source src="{{ $slidersItem->music }}"></audio></td>
                 <td>
                     <p class="btn-group">
-                        <a class="btn btn-sm btn-primary" href="#">Редактировать</a> &nbsp;
-                        <a class="delete btn btn-sm btn-danger" href="#">Удалить</a>
+                        <a class="btn btn-sm btn-primary" href="{{route ('admin.slider.edit',['slider'=>$slidersItem])}}">Редактировать</a> &nbsp;
+                        <a class="delete btn btn-sm btn-danger" href="{{route ('admin.slider.destroy',['slider'=>$slidersItem])}}">Удалить</a>
                     </p>
                 </td>
 		    </tr>
