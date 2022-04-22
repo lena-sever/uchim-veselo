@@ -8,9 +8,9 @@ import VolumeUpSharp from "@mui/icons-material/VolumeUpSharp";
 
 import './Slider.css'
 
-const SliderItem = ({ text, newAudio, title, img }) => {
+const SliderItem = ({ text, newAudio, title, img, isLastSlider }) => {
     const [mute, setMute] = React.useState(0.3);
-
+    console.log(isLastSlider)
     React.useEffect(() => {
         newAudio.autoplay = true;
     }, []);
@@ -71,7 +71,8 @@ const SliderItem = ({ text, newAudio, title, img }) => {
                     max={1}
                 />
             </div>
-            <h2>{title}</h2>
+            {/* <h2>{title}</h2> */}
+            {isLastSlider &&<p>!</p>}
             <img className="slider__img" src={img} />
 
             <div className="slider__text">{text}</div>

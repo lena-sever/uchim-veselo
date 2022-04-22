@@ -5,9 +5,10 @@ import SliderItem from "./SliderItem";
 import SliderButton from "./SliderButton";
 
 
-const SliderContainer = ({ sliderList }) => {
+const SliderContainer = ({ sliderList, togleTestActive }) => {
+
     const [slideItemId, setSliderItemId] = React.useState(0);
-    const newAudio = new Audio(sliderList[slideItemId].song);
+    const newAudio = new Audio(sliderList[slideItemId].music);
 
     React.useEffect(() => {
         newAudio.autoplay = true;
@@ -54,8 +55,10 @@ const SliderContainer = ({ sliderList }) => {
             <SliderItem
                 newAudio={newAudio}
                 text={sliderList[slideItemId].text}
-                title={sliderList[slideItemId].title}
+                // title={sliderList[slideItemId].title}
                 img={sliderList[slideItemId].img}
+                isLastSlider={slideItemId === sliderList.length - 1}
+                togleTestActive={togleTestActive}
             />
 
             {/* <SliderButtonsControl
