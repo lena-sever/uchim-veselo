@@ -7,11 +7,12 @@ import { NavLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { styled } from "@mui/material/styles";
 
-
+import { selectReview, selectError } from "../../store/reviews/reviewsSelector";
 import { purple, common } from "@mui/material/colors";
 import { getCours } from "../../store/courses/actions";
 import { selectCours } from "../../store/courses/coursesSelectors";
-
+import { getReviewTC } from "../../store/reviews/actions";
+import LessonReview from "../Lessons/LessonReview/LessonReview";
 import "./Cours.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -49,11 +50,24 @@ const CoursPage = () => {
         await dispatch(getCours(courseId));
     };
     const cours = useSelector(selectCours);
+    const reviewCourse = useSelector(selectReview);
     let { courseId } = useParams();
+    const requestReview = async (courseId) => {
+        dispatch(getReviewTC(courseId));
+    };
     React.useEffect(() => {
         console.log(courseId)
         requestCours(courseId);
+        requestReview(courseId)
     }, []);
+
+    let reviewElem = reviewCourse.map((review) => {
+        return <LessonReview key={review.id} review={review} />;
+    });
+    const style = {
+        maxWidth: "1249px",
+        margin: "0 auto",
+    };
     return (
         <div className="cours__wrp">
             {cours && (
@@ -81,6 +95,10 @@ const CoursPage = () => {
                             Другие истории
                         </ColorButtonOutlined>
                     </div>
+                    <div>
+                    <h2>Отзывы</h2>
+                </div>
+                <div style={style}>{reviewElem}</div>
                 </>
             )}
         </div>
