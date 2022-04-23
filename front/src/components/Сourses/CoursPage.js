@@ -45,13 +45,14 @@ const ColorButtonOutlined = styled(Button)(({ theme }) => ({
 const CoursPage = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
-    const requestCours = async (coursId) => {
-        await dispatch(getCours(coursId));
+    const requestCours = async (courseId) => {
+        await dispatch(getCours(courseId));
     };
     const cours = useSelector(selectCours);
-    let { coursId } = useParams();
+    let { courseId } = useParams();
     React.useEffect(() => {
-        requestCours(coursId);
+        console.log(courseId)
+        requestCours(courseId);
     }, []);
     return (
         <div className="cours__wrp">
@@ -64,7 +65,7 @@ const CoursPage = () => {
                     <div className="cours__btn-wrp">
                         <ColorButton
                             as={NavLink}
-                            to="/"
+                            to={`/courses/${courseId}/slider1`}
                             size="large"
                             className={classes.btn}
                         >
