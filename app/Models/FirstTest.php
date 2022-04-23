@@ -15,6 +15,7 @@ class FirstTest extends Model
 
 	protected $fillable = [
         'course_id',
+        'test_title',
         'word',
         'answer_1',
         'answer_2',

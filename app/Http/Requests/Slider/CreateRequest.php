@@ -1,12 +1,11 @@
 <?php
-
 declare(strict_types=1);
 
-namespace App\Http\Requests\Test\Second;
+namespace App\Http\Requests\Slider;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EditRequest extends FormRequest
+class CreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,10 +25,11 @@ class EditRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'course_id' => ['required','int'],
-			'test_title' => ['required', 'string', 'min:5'],
-            'description' => ['required', 'string', 'max:1000'],
-            'questions' => ['required', 'string'],
+
+            'text' => ['required', 'string', 'max:1000'],
+            'img' => ['nullable', 'file', 'image'],
+            'music' => ['nullable', 'file',],
+            'lesson_id' => ['required' ],
         ];
     }
 
@@ -43,10 +43,10 @@ class EditRequest extends FormRequest
 	public function  attributes(): array
 	{
 		return [
-            'course_id' => 'История',
-			'test_title' => 'Наименование теста',
-			'description' => 'Описание теста',
-            'questions' => 'Вопросы по тесту'
+			'text' => 'Текст',
+			'img' => 'Изображение',
+            'music' => 'Аудио файл',
+            'lesson_id' => 'Глава'
 		];
 	}
 }

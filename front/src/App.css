@@ -313,6 +313,7 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 50px;
+    padding: 0 20px;
 }
 
 .design {
@@ -323,7 +324,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #3e2b40;
+    background:  radial-gradient(110.67% 538.64% at 5.73% 50%, #422072 0%, #1A1A1C 100%), #352f4d;
     margin-bottom: 100px;
     border-radius: 50px 50px 50px 50px;
     position: relative;
@@ -447,10 +448,11 @@ body {
     font-size: 12px;
     border-radius: 5px;
 }
-
+/* 422072 */
+/* background:  radial-gradient(110.67% 538.64% at 5.73% 50%, #422072 0%, #1A1A1C 100%), #352f4d; */
 .footer {
     height: 111px;
-    background-color: #b458bf;
+    background:  radial-gradient(110.67% 538.64% at 5.73% 50%, #b458bf 0%, #1A1A1C 100%), #352f4d;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -526,6 +528,7 @@ body {
     color: #f16d7f;
 }
 
+
 @media screen and (max-width: 1282px) {
     .design-title {
         line-height: 32px;
@@ -535,11 +538,49 @@ body {
         padding: 0 30px 0 30px;
     }
 }
-
-@media screen and (max-width: 425px) {
-    .home {
+@media screen and (max-width: 1232px) {
+    .bird {
         display: none;
     }
+}
+
+@media screen and (max-width: 600px) {
+.design-title {
+    font-size: 20px;
+}
+.design {
+    padding: 45px 20px;
+}
+.design__form-btn {
+    font-size: 12px;
+    height: 45px;
+}
+    .design__form {
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .home {
+        font-size: 18px;
+    }
+   
+    
+    }
+
+@media screen and (max-width: 696px) {
+    .footer-wrp {
+        justify-content: center;
+    }
+}
+@media screen and (max-width: 1024px) {
+.design {
+    max-width: 950px;
+}
+}
+
+@media screen and (max-width: 425px) {
+    
 
     .provide__info-wrp {
         width: 320px;
@@ -576,11 +617,12 @@ body {
     }
 
     .design-title {
-        font-size: 30px;
+        font-size: 20px;
     }
 
     .design {
-        padding: 140px 20px;
+        padding: 45px 20px;
+        
     }
 
     .design__form {

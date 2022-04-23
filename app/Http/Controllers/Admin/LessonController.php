@@ -45,11 +45,10 @@ class LessonController extends Controller
 
     public function show(Lesson $lesson)
     {
-        $first_tests = $lesson->first_tests()->get();
-
+        $sliders = $lesson->sliders()->get();
         return view('admin.lesson.show',[
             'lesson' => $lesson,
-            'first_tests' => $first_tests,
+            'sliders' => $sliders,
         ]);
     }
 

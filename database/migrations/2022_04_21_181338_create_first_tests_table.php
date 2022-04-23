@@ -23,7 +23,7 @@ class CreateFirstTestsTable extends Migration
             $table->text('answer_3')->comment('ответ_3');
             $table->text('answer_4')->comment('ответ_4');
             $table->text('answer_5')->comment('ответ_5');
-            $table->integer('right_answer')->comment('правильный ответ');
+            $table->text('right_answer')->comment('правильный ответ');
             $table->text('description')->comment('описание для следующей страницы');
             $table->timestamps();
             $table->softDeletes();
