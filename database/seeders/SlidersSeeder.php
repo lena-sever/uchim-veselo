@@ -80,8 +80,10 @@ class SlidersSeeder extends Seeder
             ];
         }
 
-      /*  foreach ($lessons as $i => $item) {
-                for ($i = 1; $i < 2; $i++) {
+        foreach ($lessons as $i => $item) {
+            if ( $item->id == 1) continue;
+            if ( $item->id == 2) continue;
+                for ($i = 1; $i < 7; $i++) {
                     $data[] = [
                         'lesson_id' => $item->id,
                         'img' => 'http://uchim-veselo.ru/' .$faker->randomElement($img),
@@ -90,7 +92,7 @@ class SlidersSeeder extends Seeder
                         'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
                     ];
                 }
-        }*/
+        }
 
         return $data;
     }
