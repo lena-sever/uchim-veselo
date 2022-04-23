@@ -1,20 +1,28 @@
 import { Navigate, NavLink, useParams } from "react-router-dom";
 import * as React from "react";
 import { selectLessons } from "../../store/lessons/lessonsSelectors";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getFirstTest } from "../../store/tests/actions";
 
 function LessonsItem() {
     const { courseId } = useParams();
     const { lessonId } = useParams();
     const lessons = useSelector( selectLessons );
+    const dispatch = useDispatch();
 
-    let lesson = lessons.find(less => {
+
+    let lesson = lessons.find( less => {
         // debugger
-        return less.id == lessonId})
+        return less.id == lessonId;
+    } );
 
-    // if( !lesson.lessonId ) {
-    //     return <Navigate replace to={`/courses/${ courseId }`}/>;
-    // }
+    if( !lessonId ) {
+        return <Navigate replace to={`/courses/${ courseId }`}/>;
+    }
+
+    // const getTest = () => {
+    //     dispatch( getFirstTest( courseId ) );
+    // };
 
     return (
         <>
@@ -26,8 +34,14 @@ function LessonsItem() {
                 <p>{ lesson.text }</p>
             </div>
             {
-                ( lessonId == lessons.length ) ?
-                    <p><NavLink to="/tests">Пройти тест</NavLink></p>
+                ( lessonId == 2 ) ?
+                    <p>
+                        <NavLink to={ `/courses/${ courseId }/2/tests` }
+                                 // onClick={ getTest }
+                        >
+                        Пройти тест
+                        </NavLink>
+                    </p>
                     : null
             }
 

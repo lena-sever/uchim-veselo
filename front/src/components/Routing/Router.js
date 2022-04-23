@@ -24,7 +24,9 @@ function Router() {
                 <Route index element={<Courses />} />
                 <Route path=":courseId" element={<Lessons />} />
                 <Route path=":courseId/:lessonId" element={<LessonsItem />} />
+                <Route path=":courseId/2/tests" element={ <Tests/> }/>
                 <Route path=":coursId" element={<CoursPage />} />
+
             </Route>
             <Route path="/contacts" element={<Contacts />} />
             <Route path="/login" element={<Login />} />
@@ -32,11 +34,11 @@ function Router() {
                 path="/slider"
                 element={<SliderContainer sliderList={sliderList} />}
              />
-            <Route path="/tests" element={ <Tests/> }/>
-            <Route path="/test1" element={ <Test1/> }/>
-            <Route path="/test2" element={ <Test2/> }/>
-            <Route path="/test3" element={ <Test3/> }/>
-            <Route path="/test4" element={ <Test4/> }/>
+            {/*<Route path="/tests" element={ <Tests/> }/>*/}
+            {/*<Route path="/test1" element={ <Test1/> }/>*/}
+            {/*<Route path="/test2" element={ <Test2/> }/>*/}
+            {/*<Route path="/test3" element={ <Test3/> }/>*/}
+            {/*<Route path="/test4" element={ <Test4/> }/>*/}
             <Route path="*" element={<Error_404 />} />
         </Routes>
     );

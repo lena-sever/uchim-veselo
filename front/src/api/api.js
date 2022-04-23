@@ -49,3 +49,14 @@ export const reviewsAPI = {
         return axios.get(`${urlCourses}/${courseId}`).then((res) => res);
     },
 };
+
+export const testsAPI = {
+    getFirstTest(courseId) {
+        return axios
+            .get(`${urlCourses}/first_test/${courseId}`)
+            .then((response) => response)
+            .catch((err) => err);
+    },
+};
+// https://uchim-veselo.ru/api/courses/first_test/1
+    // "http://uchim-veselo.ru/api/courses";
