@@ -25,6 +25,7 @@
             <thead>
                <tr>
                    <th>#ID</th>
+                   <th>user_id</th>
                    <th>Имя</th>
                    <th>Email</th>
                    <th>Сообщение</th>
@@ -38,6 +39,7 @@
                 <tr id="{{$messengersItem->id}}">
                     <td>{{ $messengersItem->id }}</td>
                     <td>{{ $messengersItem->user_id }}</td>
+                    <td>{{ $messengersItem->name }}</td>
                     <td>{{ $messengersItem->email }}</td>
                     <td>{!! $messengersItem->message !!}</td>
                     <td>
@@ -46,6 +48,7 @@
                             @csrf
                             @method('put')
                             <input hidden type="text" name="user_id" id="user_id" value="{{ $messengersItem->user_id }}">
+                            <input hidden type="text" name="name" id="name" value="{{ $messengersItem->name }}">
                             <input hidden type="text" name="email" id="email" value="{{ $messengersItem->email }}">
                             <input hidden type="text" name="message" id="message" value="{{ $messengersItem->message }}">
                             <input class="w-75" type="text" name="answer" id="answer" value="{!! $messengersItem->answer !!}">

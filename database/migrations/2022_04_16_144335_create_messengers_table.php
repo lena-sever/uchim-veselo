@@ -15,7 +15,8 @@ class CreateMessengersTable extends Migration
     {
         Schema::create('messengers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnDelete();
+            $table->string('name')->comment('имя пользователя');
             $table->string('email')->comment('почта пользователя');
             $table->text('message')->comment('вопрос от пользователя');
             $table->text('answer')->comment('ответ от админа');

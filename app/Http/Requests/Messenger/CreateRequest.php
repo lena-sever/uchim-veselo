@@ -28,8 +28,9 @@ class CreateRequest extends FormRequest
 
             'message' => ['required', 'string', 'max:1000'],
             'answer' => ['required', 'string', 'max:1000'],
-            'email' => ['required', 'string'],
-            'user_id' => ['required' ],
+            'email' => ['required','string','email:rfc,dns'],
+            'name' => ['required', 'string'],
+            'user_id' => ['integer' ],
         ];
     }
 

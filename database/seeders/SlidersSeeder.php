@@ -151,8 +151,8 @@ class SlidersSeeder extends Seeder
         for ($i = 0; $i < 18; $i++) {
             $data[] = [
                 'lesson_id' => 1,
-                'img' => 'http://uchim-veselo.ru/' . $faker->randomElement($img),
-                'music' => 'http://uchim-veselo.ru/slider/music/' . $music_1[$i],
+                'img' => 'https://uchim-veselo.ru/' . $faker->randomElement($img),
+                'music' => 'https://uchim-veselo.ru/slider/music/' . $music_1[$i],
                 'text' => $slider_1[$i],
                 'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
             ];
@@ -161,8 +161,8 @@ class SlidersSeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
             $data[] = [
                 'lesson_id' => 2,
-                'img' => 'http://uchim-veselo.ru/' . $faker->randomElement($img),
-                'music' => 'http://uchim-veselo.ru/slider/music/' . $music_2[$i],
+                'img' => 'https://uchim-veselo.ru/' . $faker->randomElement($img),
+                'music' => 'https://uchim-veselo.ru/slider/music/' . $music_2[$i],
                 'text' => $slider_2[$i],
                 'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
 
@@ -175,8 +175,8 @@ class SlidersSeeder extends Seeder
             for ($i = 1; $i < 7; $i++) {
                 $data[] = [
                     'lesson_id' => $item->id,
-                    'img' => 'http://uchim-veselo.ru/' . $faker->randomElement($img),
-                    'music' => 'http://uchim-veselo.ru/' . $faker->randomElement($music),
+                    'img' => 'https://uchim-veselo.ru/' . $faker->randomElement($img),
+                    'music' => 'https://uchim-veselo.ru/' . $faker->randomElement($music),
                     'text' => $faker->text(mt_rand(10, 30)),
                     'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
                 ];

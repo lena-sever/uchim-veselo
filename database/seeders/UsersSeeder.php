@@ -32,7 +32,7 @@ class UsersSeeder extends Seeder
 			$data[] = [
                 'name' => $faker->name(),
                 'is_admin' => 0,
-                'photo' => 'http://uchim-veselo.ru/' .$faker->randomElement($img),
+                'photo' => 'https://uchim-veselo.ru/' .$faker->randomElement($img),
                 'email' => $faker->unique()->safeEmail(),
                 'email_verified_at' => now(),
                 'password' => Hash::make($faker->text(mt_rand(10, 30))),
@@ -44,7 +44,7 @@ class UsersSeeder extends Seeder
             'name' => 'Админ Вася',
             'is_admin' => 1,
             'email' => 'admin@mail.ru',
-            'photo' => 'http://uchim-veselo.ru/' .$faker->randomElement($img),
+            'photo' => 'https://uchim-veselo.ru/' .$faker->randomElement($img),
             'email_verified_at' => now(),
             'password' => Hash::make('12345678'),
             'remember_token' => Str::random(10),
