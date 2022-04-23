@@ -18,8 +18,8 @@ function Router() {
             <Route path="/courses">
                 <Route index element={<Courses />} />
                 <Route path=":courseId" element={<CoursPage />} />
-                <Route path=":courseId/slider1" element={<LessonsItem />} />
-                <Route path=":courseId/slider2" element={<LessonsItem />} />
+                <Route path=":courseId/:slider1" element={<LessonsItem />} />
+                <Route path=":courseId/:slider2" element={<LessonsItem />} />
             </Route>
             <Route path="/contacts" element={<Contacts />}></Route>
             <Route path="/login" element={<Login />}></Route>
