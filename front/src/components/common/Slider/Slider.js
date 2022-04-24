@@ -1,13 +1,12 @@
 import React from "react";
 
-// import SliderButtonsControl from "./SliderButtonsControl";
+import SliderButtonsControl from "./SliderButtonsControl";
 import SliderItem from "./SliderItem";
 import SliderButton from "./SliderButton";
 
-
-const SliderContainer = ({ sliderList }) => {
+const SliderContainer = ({ sliderList, togleTestActive }) => {
     const [slideItemId, setSliderItemId] = React.useState(0);
-    const newAudio = new Audio(sliderList[slideItemId].song);
+    const newAudio = new Audio(sliderList[slideItemId].music);
 
     React.useEffect(() => {
         newAudio.autoplay = true;
@@ -35,37 +34,38 @@ const SliderContainer = ({ sliderList }) => {
         );
     });
 
-    // const nextSlider = () => {
-    //     if (slideItemId < sliderList.length - 1) {
-    //         newAudio.muted = true;
-    //         setSliderItemId(slideItemId + 1);
-    //     }
-    // };
-    // const prewSlider = () => {
-    //     if (slideItemId > 0) {
-    //         newAudio.muted = true;
-    //         setSliderItemId(slideItemId - 1);
-    //     }
-    // };
+    const nextSlider = () => {
+        if (slideItemId < sliderList.length) {
+            newAudio.muted = true;
+            setSliderItemId(slideItemId + 1);
+        }
+    };
+    const prewSlider = () => {
+        if (slideItemId > 0) {
+            newAudio.muted = true;
+            setSliderItemId(slideItemId - 1);
+        }
+    };
 
     return (
         <div>
-            <div>{button}</div>
-            <SliderItem
-                newAudio={newAudio}
-                text={sliderList[slideItemId].text}
-                title={sliderList[slideItemId].title}
-                img={sliderList[slideItemId].img}
-            />
-
-            {/* <SliderButtonsControl
+            {/* <div>{button}</div> */}
+            <SliderButtonsControl
                 buttonsActive={{
                     next: slideItemId < sliderList.length - 1,
                     prew: slideItemId > 0,
                 }}
                 nextSlider={nextSlider}
                 prewSlider={prewSlider}
-            /> */}
+            />
+            <SliderItem
+                newAudio={newAudio}
+                text={sliderList[slideItemId].text}
+                // title={sliderList[slideItemId].title}
+                img={sliderList[slideItemId].img}
+                isLastSlider={slideItemId === sliderList.length - 1}
+                togleTestActive={togleTestActive}
+            />
         </div>
     );
 };

@@ -7,6 +7,8 @@ use App\Http\Requests\Messenger\EditRequest;
 use App\Http\Requests\Messenger\CreateRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendMessange;
 
 class MessengerController extends Controller
 {
@@ -32,11 +34,16 @@ class MessengerController extends Controller
     public function store(CreateRequest $request)
     {
         $validated = $request->validated();
+        // dd($validated);
 
         $created = Messenger::create($validated);
 
+        Mail::to("remont001@list.ru")
+        ->send(new SendMessange($validated['user_id'], $validated['name'], $validated['email'], $validated['message']));
+
+
         if ($created) {
-            return redirect()->route('course.index')
+            return redirect()->route('admin.course.index')
                 ->with('success', 'Сообщение успешно отправленно');
         }
 

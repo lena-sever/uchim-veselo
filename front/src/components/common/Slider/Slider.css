@@ -1,12 +1,28 @@
 .slider__img {
     max-width: 500px
 }
+
 .slider__text {
     padding-top: 50px;
     max-width: 500px;
     margin: 0 auto 50px;
 }
+
 .slider__volue {
     width: 100px;
-    
+
+}
+
+.btn__wrp {
+    min-width: 150px;
+    max-width: 300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 1024px) {
+    .slider__img {
+        width: 100%;
+    }
 }

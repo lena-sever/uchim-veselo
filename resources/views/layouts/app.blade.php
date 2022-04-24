@@ -34,23 +34,21 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('course.index') }}">ВСЕ ИСТОРИИ</a>
+                            <a class="nav-link" href="{{ route('admin.course.index') }}">ВСЕ ИСТОРИИ</a>
                         </li>
                         @guest
                         @else
                         @if(Auth::user()->is_admin)
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.index') }}">АДМИНКА</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.messenger.index') }}">СООБЩЕНИЯ С САЙТА</a>
                         </li>
-                        @else
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('account') }}">ПРОФИЛЬ</a>
                         </li>
+                        @else
+
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.messenger.index') }}">СООБЩЕНИЯ С САЙТА</a>
+                            <a class="nav-link" href="#">У ВАС НЕТ ДОСТУПА!</a>
                         </li>
                         @endif
                         @endguest

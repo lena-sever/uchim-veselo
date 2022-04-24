@@ -17,10 +17,11 @@ class UploadService
    public function start(UploadedFile $file): string
    {
 
-	   $completedFile = $file->storeAs('img',$file->hashName());
 
+	   $completedFile = $file->storeAs('img',$file->hashName());
+//dd($file,$completedFile);
        if(!$completedFile) {
-		   throw new \Exception("File wasn't upload");
+		   throw new \Exception("Файл не был загружен");
 	   }
 
 	   return $completedFile;

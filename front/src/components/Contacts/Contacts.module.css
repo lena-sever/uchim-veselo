@@ -1,18 +1,21 @@
 .contacts {
     color: black;
 }
+
 .main {
     display: flex;
     justify-content: center;
-  }
-  .left_content {
+}
+
+.left_content {
     margin-top: 80px;
     margin-left: 214px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-  }
-  .rigth_content {
+}
+
+.rigth_content {
     background: #FFFFFF;
     box-shadow: 5px 10px 50px rgba(16, 112, 177, 0.2);
     border-radius: 10px;
@@ -22,16 +25,18 @@
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 50px;
-  }
-  .rigth_content_h4 {
+}
+
+.rigth_content_h4 {
     font-weight: 500;
     font-size: 20px;
     line-height: 30px;
     letter-spacing: 0.04em;
     color: #1F3F68;
     margin-bottom: 48px;
-  }
-  .name_input {
+}
+
+.name_input {
     font-size: 16px;
     line-height: 30px;
     letter-spacing: 0.04em;
@@ -39,8 +44,9 @@
     opacity: 0.8;
     margin-bottom: 8px;
     margin-top: 32px;
-  }
-  .left_text_contact {
+}
+
+.left_text_contact {
     font-weight: 300;
     font-size: 16px;
     line-height: 26px;
@@ -48,9 +54,10 @@
     color: #1F3F68;
     opacity: 0.6;
     width: 300px;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  }
-  .left_content_h4 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.left_content_h4 {
     font-weight: 500;
     font-size: 20px;
     line-height: 30px;
@@ -59,8 +66,9 @@
     margin-top: 56px;
     margin-bottom: 24px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  }
-  .left_content_h4_phone {
+}
+
+.left_content_h4_phone {
     font-weight: 500;
     font-size: 20px;
     line-height: 30px;
@@ -68,9 +76,10 @@
     color: #b458bf;
     margin-top: 40px;
     margin-bottom: 24px;
-  
-  }
-  .left_ul_num {
+
+}
+
+.left_ul_num {
     font-weight: 300;
     font-size: 16px;
     line-height: 26px;
@@ -79,11 +88,13 @@
     list-style-image: url(img/phone.svg);
     /* list-style-position: inside; */
     padding: 0 30px 0;
-  }
-  .left_li {
+}
+
+.left_li {
     margin-bottom: 16px;
-  }
-  .left_li_web {
+}
+
+.left_li_web {
     font-size: 16px;
     line-height: 26px;
     letter-spacing: 0.05em;
@@ -92,12 +103,13 @@
     list-style-image: url(img/web.svg);
     list-style-position: inside;
     margin-left: -60px;
-  }
-  .web {
-      padding: 0;
-  }
-  
-  .left_li_mail {
+}
+
+.web {
+    padding: 0;
+}
+
+.left_li_mail {
     font-size: 16px;
     line-height: 26px;
     letter-spacing: 0.05em;
@@ -105,9 +117,10 @@
     margin-bottom: 16px;
     list-style-image: url(img/mail.svg);
     list-style-position: inside;
-    
-  }
-  .input {
+
+}
+
+.input {
     opacity: 0.4;
     border: 1px solid #b458bf;
     box-sizing: border-box;
@@ -115,8 +128,9 @@
     width: 428px;
     height: 72px;
     padding: 10px;
-  }
-  .button_submit {
+}
+
+.button_submit {
     background: #b458bf;
     box-shadow: 5px 20px 50 px rgba(16, 112, 177, 0.2);
     border-radius: 10px;
@@ -128,12 +142,93 @@
     text-transform: uppercase;
     margin-top: 72px;
     padding: 23px 183px;
-  }
-  .button_submit:hover {
-  background: #FFFFFF;
-  color: #b458bf;
-  }
-  .button_submit:active {
+}
+
+.button_submit:hover {
+    background: #FFFFFF;
+    color: #b458bf;
+}
+
+.button_submit:active {
     background: #b458bf;
     color: #FFFFFF;
+}
+
+@media screen and (max-width: 1330px) {
+    .rigth_content {
+        margin-left: 120px;
     }
+}
+
+@media screen and (max-width: 1230px) {
+    .rigth_content {
+        margin-left: 20px;
+    }
+}
+
+@media screen and (max-width: 1130px) {
+    .main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left_content {
+        margin-left: 0px;
+    }
+
+    .rigth_content {
+        margin-left: 0px;
+    }
+}
+
+@media screen and (max-width: 595px) {
+    .input {
+        max-width: 270px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .rigth_content {
+        padding: 0px 2px 30px 8px;
+    }
+
+    .left_content_h4 {
+        font-size: 17px;
+        margin-top: 32px;
+    }
+
+    .button_submit {
+        padding: 17px 90px;
+        margin-top: 14px;
+    }
+
+    .name_input {
+        margin-top: 0px;
+    }
+
+    .left_content {
+        margin: 50px 0 0 25px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .left_content {
+        margin: 50px 0 0 3px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .button_submit {
+        padding: 17px 90px;
+    }
+
+    .rigth_content {
+        padding: 0px 2px 30px 20px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .button_submit {
+        padding: 17px 90px;
+    }
+}
