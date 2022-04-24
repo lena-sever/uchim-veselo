@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\LessonController as AdminLessonController;
 use App\Http\Controllers\Admin\FirstTestController;
 use App\Http\Controllers\Admin\SecondTestController;
 use App\Http\Controllers\Admin\ThirdTestController;
-use App\Http\Controllers\Admin\TestController as AdminTestController;
+use App\Http\Controllers\Test\IndexController as TestController;
 use App\Http\Controllers\Admin\CourseReviewController;
 use App\Http\Controllers\Admin\MessengerController;
 use App\Http\Controllers\Admin\SliderController;
@@ -63,21 +63,30 @@ Route::group(['middleware' => 'auth'], function () {
             ->where('courseReview', '\d+')
             ->name('review.destroy');
 
-        Route::get('/test/{course}', AdminTestController::class)
+        Route::get('/test/{course}', TestController::class)
         ->where('course', '\d+')
         ->name('test');
 
         Route::resource('/test_1', FirstTestController::class);
+        Route::get('/test_1/destroy/{test_1}', [FirstTestController::class, 'destroy'])
+        ->where('test_1', '\d+')
+        ->name('test_1.destroy');
         Route::get('/test_1/answer/{test_1}', [FirstTestController::class, 'answer'])
             ->where('test_1', '\d+')
             ->name('test_1.answer');
 
         Route::resource('/test_2', SecondTestController::class);
+        Route::get('/test_2/destroy/{test_2}', [SecondTestController::class, 'destroy'])
+        ->where('test_2', '\d+')
+        ->name('test_2.destroy');
         Route::get('/test_2/answer/{test_2}', [SecondTestController::class, 'answer'])
             ->where('test_2', '\d+')
             ->name('test_2.answer');
 
         Route::resource('/test_3', ThirdTestController::class);
+        Route::get('/test_3/destroy/{test_3}', [ThirdTestController::class, 'destroy'])
+        ->where('test_3', '\d+')
+        ->name('test_3.destroy');
         Route::get('/test_3/answer/{test_3}', [ThirdTestController::class, 'answer'])
             ->where('test_3', '\d+')
             ->name('test_3.answer');

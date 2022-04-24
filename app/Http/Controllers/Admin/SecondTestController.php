@@ -78,16 +78,14 @@ class SecondTestController extends Controller
      * @param  \App\Models\SecondTest  $second_test
      * @return \Illuminate\Http\Response
      */
-    public function edit(SecondTest $second_test)
+    public function edit(SecondTest $test_2)
     {
-        //везде приходит null
+        $course_id = $test_2->course_id;
         $courses = Course::all();
         $options = 2;
-        $course_id = explode("/", $_SERVER['HTTP_REFERER']);
-        $course_id = end($course_id);
 
         return view('admin.test.edit',[
-            'second_test' => $second_test,
+            'second_test' => $test_2,
             'courses' => $courses,
             'course_id' => $course_id,
             'options' => $options
@@ -101,13 +99,13 @@ class SecondTestController extends Controller
      * @param  \App\Models\SecondTest  $second_test
      * @return \Illuminate\Http\Response
      */
-    public function update(EditRequest $request, SecondTest $second_test)
+    public function update(EditRequest $request, SecondTest $test_2)
     {
         $validated = $request->validated();
-        $updated = $second_test->fill($validated)->save();
+        $updated = $test_2->fill($validated)->save();
 
         if($updated) {
-            return redirect()->route('admin.test',['course' => $second_test->course_id])
+            return redirect()->route('admin.test',['course' => $test_2->course_id])
                 ->with('success', 'Запись успешно обновлена');
         }
 
@@ -121,11 +119,11 @@ class SecondTestController extends Controller
      * @param  \App\Models\SecondTest  $second_test
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SecondTest $second_test)
+    public function destroy(SecondTest $test_2)
     {
         try{
-            $second_test->delete();
-            return redirect()->route('admin.test',['course' => $second_test->course_id])
+            $test_2->delete();
+            return redirect()->route('admin.test',['course' => $test_2->course_id])
             ->with('success', 'Запись успешно удалена');
         }catch(\Exception $e){
             Log::error("Ошибка удаления");

@@ -41,7 +41,7 @@
                     <td rowspan="5">{{$testsItem->right_answer}}</td>
                     <td rowspan="5">
                         <p class="btn-group">
-                            <a class="btn btn-sm btn-primary" href="{{ route('admin.test_1.edit', ['test_1' => $testsItem]) }}">Редактировать</a> &nbsp;
+                            <a class="btn btn-sm btn-primary" href="{{ route('admin.test_1.edit',$testsItem) }}">Редактировать</a> &nbsp;
                             <a class="delete btn btn-sm btn-danger" href="{{ route('admin.test_1.destroy', ['test_1' => $testsItem]) }}">Удалить</a>
                         </p>
                     </td>

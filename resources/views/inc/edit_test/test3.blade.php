@@ -1,5 +1,6 @@
 <form method="post" action="{{ route('admin.test_3.update',['test_3'=>$third_test]) }}">
         @csrf
+        @method('put')
             <div class="form-group">
                 <label for="course_id">История</label>
                 <select disabled class="form-control" id="course_id" name="course_id">
@@ -25,7 +26,7 @@
                 @error('questions') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <br>
-    <button type="submit"  value="Добавить" class="btn btn-success" style="float: right;">Добавить</button>
+    <button type="submit"  value="Изменить" class="btn btn-success" style="float: right;">Изменить</button>
 </form>
 <a href="{{ route('admin.test', ['course' => $course_id]) }}" type="button" class="btn btn-sm btn-outline-secondary">
         Назад</a>

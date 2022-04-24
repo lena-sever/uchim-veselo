@@ -80,17 +80,14 @@ class ThirdTestController extends Controller
      * @param  \App\Models\ThirdTest  $third_test
      * @return \Illuminate\Http\Response
      */
-    public function edit(ThirdTest $third_test)
+    public function edit(ThirdTest $test_3)
     {
-        //пока null
-        //dd($third_test);
         $courses = Course::all();
         $options = 3;
-        $course_id = explode("/", $_SERVER['HTTP_REFERER']);
-        $course_id = end($course_id);
+        $course_id = $test_3->course_id;
 
         return view('admin.test.edit',[
-            'third_test' => $third_test,
+            'third_test' => $test_3,
             'courses' => $courses,
             'course_id' => $course_id,
             'options' => $options
@@ -101,16 +98,16 @@ class ThirdTestController extends Controller
      * Update the specified resource in storage.
      *
      * @param  EditRequest $request
-     * @param  \App\Models\ThirdTest  $third_test
+     * @param  \App\Models\ThirdTest  $test_3
      * @return \Illuminate\Http\Response
      */
-    public function update(EditRequest $request, ThirdTest $third_test)
+    public function update(EditRequest $request, ThirdTest $test_3)
     {
         $validated = $request->validated();
-        $updated = $third_test->fill($validated)->save();
+        $updated = $test_3->fill($validated)->save();
 
         if($updated) {
-            return redirect()->route('admin.test',['course' => $third_test->course_id])
+            return redirect()->route('admin.test',['course' => $test_3->course_id])
                 ->with('success', 'Запись успешно обновлена');
         }
 
@@ -121,14 +118,14 @@ class ThirdTestController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ThirdTest  $third_test
+     * @param  \App\Models\ThirdTest  $test_3
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ThirdTest $third_test)
+    public function destroy(ThirdTest $test_3)
     {
         try{
-            $third_test->delete();
-            return redirect()->route('admin.test',['course' => $third_test->course_id])
+            $test_3->delete();
+            return redirect()->route('admin.test',['course' => $test_3->course_id])
             ->with('success', 'Запись успешно удалена');
         }catch(\Exception $e){
             Log::error("Ошибка удаления");

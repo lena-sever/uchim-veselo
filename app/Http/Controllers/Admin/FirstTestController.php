@@ -78,19 +78,17 @@ class FirstTestController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\FirstTest $first_test
+     * @param  \App\Models\FirstTest $test_1
      * @return \Illuminate\Http\Response
      */
-    public function edit(FirstTest $first_test)
+    public function edit(FirstTest $test_1)
     {
-//приходит null -> $first_test
         $options = 1;
         $courses = Course::all();
-        $course_id = explode("/", $_SERVER['HTTP_REFERER']);
-        $course_id = end($course_id);
+        $course_id = $test_1->course_id;
 
         return view('admin.test.edit',[
-            'first_test' => $first_test,
+            'first_test' => $test_1,
             'courses' => $courses,
             'course_id' => $course_id,
             'options' => $options,
@@ -102,16 +100,16 @@ class FirstTestController extends Controller
      * Update the specified resource in storage.
      *
      * @param  EditRequest $request
-     * @param  \App\Models\FirstTest $first_test
+     * @param  \App\Models\FirstTest $test_1
      * @return \Illuminate\Http\Response
      */
-    public function update(EditRequest $request,FirstTest $first_test)
+    public function update(EditRequest $request,FirstTest $test_1)
     {
         $validated = $request->validated();
-        $updated = $first_test->fill($validated)->save();
+        $updated = $test_1->fill($validated)->save();
 
         if($updated) {
-            return redirect()->route('admin.test.show',['course' => $first_test->course_id])
+            return redirect()->route('admin.test.show',['course' => $test_1->course_id])
                 ->with('success', 'Запись успешно обновлена');
         }
 
@@ -122,15 +120,14 @@ class FirstTestController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\FirstTest $first_test
+     * @param  \App\Models\FirstTest $test_1
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FirstTest $first_test)
+    public function destroy(FirstTest $test_1)
     {
-        //null приходит((
         try{
-            $first_test->delete();
-            return redirect()->route('admin.test',['course' => $first_test->course_id])
+            $test_1->delete();
+            return redirect()->route('admin.test',['course' => $test_1->course_id])
             ->with('success', 'Запись успешно удалена');
         }catch(\Exception $e){
             Log::error("Ошибка удаления");
