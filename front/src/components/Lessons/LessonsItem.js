@@ -45,6 +45,7 @@ function LessonsItem() {
                                 { music: "", text: "Начать тест", img: "" },
                             ]}
                             path={""}
+                            // path={`/courses/${ courseId }/slider1/tests`}
                         />
                     )}
                     {slider1 === "slider2" && (

@@ -1,10 +1,10 @@
 // export const urlCourses = "http://lushenko-test1:8080/courses.php";
 // export const urlCourses = "http://test1.ru:8080/courses.php";
-export const urlCourses = "http://uchim-veselo.ru/api/courses";
+export const urlCourses = "https://uchim-veselo.ru/api/courses";
 export const firstPatgHistory = "https://uchim-veselo.ru/api/courses/first_slider";
 export const lastPatgHistory = "https://uchim-veselo.ru/api/courses/last_slider";
 export const urlLessons = "http://test1.ru:8080/lessons.php";
 export const urlAuth = "";
-export const urlReviews = "http://uchim-veselo.ru/api/course_reviews";
+export const urlReviews = "https://uchim-veselo.ru/api/course_reviews";
 // export const urlLessons = "http://uchim-veselo.ru/api/courses/courseId";
 // export const urlLessons = "http://lushenko-test1:8080/lessons.php";

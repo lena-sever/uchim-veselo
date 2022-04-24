@@ -40,13 +40,13 @@ export const lessonsAPI = {
             .catch((err) => err);
     },
     getFistPartHistory(id) {
-        
-        return axios 
+
+        return axios
             .get(`${firstPatgHistory}/${id}`)
             .then((response) => response)
     },
     getLastPartHistory(id) {
-        return axios 
+        return axios
             .get(`${lastPatgHistory}/${id}`)
             .then((response) => response)
     }
@@ -58,5 +58,15 @@ export const reviewsAPI = {
     },
     getReview(courseId) {
         return axios.get(`${urlCourses}/${courseId}`).then((res) => res);
+    },
+};
+
+
+export const testsAPI = {
+    getFirstTest(courseId) {
+        return axios
+            .get(`${urlCourses}/first_test/${courseId}`)
+            .then((response) => response)
+            .catch((err) => err);
     },
 };
