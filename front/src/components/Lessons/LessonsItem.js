@@ -17,12 +17,8 @@ function LessonsItem() {
     } );
 
     if( !lessonId ) {
-        return <Navigate replace to={`/courses/${ courseId }`}/>;
+        return <Navigate replace to={ `/courses/${ courseId }` }/>;
     }
-
-    // const getTest = () => {
-    //     dispatch( getFirstTest( courseId ) );
-    // };
 
     return (
         <>
@@ -37,9 +33,8 @@ function LessonsItem() {
                 ( lessonId == 2 ) ?
                     <p>
                         <NavLink to={ `/courses/${ courseId }/2/tests` }
-                                 // onClick={ getTest }
                         >
-                        Пройти тест
+                            Пройти тест
                         </NavLink>
                     </p>
                     : null

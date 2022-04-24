@@ -5,24 +5,13 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import * as React from "react";
-import { useEffect, useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { selectTests } from "../../store/tests/testsSelector";
-import { getFirstTes } from "../../store/tests/actions";
+import { useState } from "react";
+import { NavLink, } from "react-router-dom";
+
 
 function Test1({ test, getTestsHandler }) {
-    // const { courseId } = useParams();
     const [ value, setValue ] = useState( "" );
     const [ disabled, setDisabled ] = useState( false );
-    // const test = useSelector( selectTests )[0];
-    // const dispatch = useDispatch();
-
-
-    // useEffect( () => {
-    //     dispatch( getFirstTest( courseId ) );
-    //
-    // }, [] );
 
     function changeValue(event) {
         setValue( event.target.value );
@@ -31,7 +20,6 @@ function Test1({ test, getTestsHandler }) {
 
     return (
         <>
-
             <FormControl>
                 <FormLabel id="demo-radio-buttons-group-label">{ test.test_title } { test.word }</FormLabel>
                 <RadioGroup
@@ -66,10 +54,11 @@ function Test1({ test, getTestsHandler }) {
                             К сожалению, это неверный выбор. Давай вместе разберем значение этого слова.
                         </p>
                         <button
-                            onClick={ getTestsHandler(2) }
+                            onClick={ () => {
+                                getTestsHandler( 2 );
+                            } }
                         >Далее
                         </button>
-                        {/*<p><NavLink to="/test2">Далее </NavLink></p>*/ }
                     </div>
                 ) : null
             }
