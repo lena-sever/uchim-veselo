@@ -21,7 +21,7 @@ function Router() {
                 <Route path=":courseId" element={<CoursPage />} />
                 <Route path=":courseId/:slider1" element={<LessonsItem />} />
                 <Route path=":courseId/:slider2" element={<LessonsItem />} />
-                <Route path=":courseId/slider1/tests" element={ <Tests/> }/>
+                <Route path=":courseId/tests" element={ <Tests/> }/>
             </Route>
             <Route path="/contacts" element={<Contacts />} />
             <Route path="/login" element={<Login />} />
