@@ -84,12 +84,10 @@ class ThirdTestController extends Controller
     {
         $courses = Course::all();
         $options = 3;
-        $course_id = $test_3->course_id;
 
         return view('admin.test.edit',[
             'third_test' => $test_3,
             'courses' => $courses,
-            'course_id' => $course_id,
             'options' => $options
         ]);
     }

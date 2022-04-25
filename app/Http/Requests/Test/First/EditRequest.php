@@ -26,7 +26,7 @@ class EditRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'course_id' => ['required', 'int'],
+            'course_id' => ['required', 'integer'],
 			'test_title' => ['required', 'string', 'min:5'],
             'word' => ['required', 'string', 'min:5'],
             'answer_1' => ['required', 'string', 'max:1000'],

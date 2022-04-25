@@ -80,14 +80,12 @@ class SecondTestController extends Controller
      */
     public function edit(SecondTest $test_2)
     {
-        $course_id = $test_2->course_id;
         $courses = Course::all();
         $options = 2;
 
         return view('admin.test.edit',[
             'second_test' => $test_2,
             'courses' => $courses,
-            'course_id' => $course_id,
             'options' => $options
         ]);
     }

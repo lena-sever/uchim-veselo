@@ -3,11 +3,12 @@
         @method('put')
             <div class="form-group">
                 <label for="course_id">История</label>
-                <select disabled class="form-control" id="course_id" name="course_id">
-                    @foreach($courses as $course)
-                        <option value="{{ $course->id }}" @if($course->id == $course_id) selected @endif> {{ $course->title }}</option>
-                    @endforeach
-                </select>
+                @foreach($courses as $course)
+                    @if($course->id === $third_test->course_id)
+                    <input hidden type="text" class="form-control" id="course_id" name="course_id" value="{{ $third_test->course_id }}">
+                    <input disabled type="text" class="form-control" value="{{ $course->title }}">
+                    @endif
+                @endforeach
                 @error('course_id') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
@@ -28,5 +29,5 @@
             <br>
     <button type="submit"  value="Изменить" class="btn btn-success" style="float: right;">Изменить</button>
 </form>
-<a href="{{ route('admin.test', ['course' => $course_id]) }}" type="button" class="btn btn-sm btn-outline-secondary">
+<a href="{{ route('admin.test', ['course' => $third_test->course_id]) }}" type="button" class="btn btn-sm btn-outline-secondary">
         Назад</a>

@@ -85,12 +85,10 @@ class FirstTestController extends Controller
     {
         $options = 1;
         $courses = Course::all();
-        $course_id = $test_1->course_id;
 
         return view('admin.test.edit',[
             'first_test' => $test_1,
             'courses' => $courses,
-            'course_id' => $course_id,
             'options' => $options,
 
         ]);
@@ -109,7 +107,7 @@ class FirstTestController extends Controller
         $updated = $test_1->fill($validated)->save();
 
         if($updated) {
-            return redirect()->route('admin.test.show',['course' => $test_1->course_id])
+            return redirect()->route('admin.test',['course' => $test_1->course_id])
                 ->with('success', 'Запись успешно обновлена');
         }
 

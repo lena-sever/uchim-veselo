@@ -3,12 +3,12 @@
         @method('put')
             <div class="form-group">
                 <label for="course_id">История</label>
-                <select disabled class="form-control" id="course_id" name="course_id">
-                    @foreach($courses as $course)
-                        <option value="{{ $course->id }}"
-                        @if($course->id === $first_test->course_id) selected @endif>{{ $course->title }}</option>
-                    @endforeach
-                </select>
+                @foreach($courses as $course)
+                    @if($course->id === $first_test->course_id)
+                    <input hidden type="text" class="form-control" id="course_id" name="course_id" value="{{ $first_test->course_id }}">
+                    <input disabled type="text" class="form-control" value="{{ $course->title }}">
+                    @endif
+                @endforeach
                 @error('course_id') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
@@ -54,15 +54,15 @@
             <div class="form-group">
             <label style="margin-right: 15px;">Правильный ответ</label>
                 <div class="btn-group" role="group">
-                    <input type="radio" class="btn-check" value="answer_1" id="1" name="right_answer">
+                    <input type="radio" class="btn-check" value="answer_1" id="1" name="right_answer" @if($first_test->right_answer === 'answer_1') checked @endif>
                     <label class="btn btn-outline-primary" for="1">1</label>
-                    <input type="radio" class="btn-check" value="answer_2" id="2" name="right_answer" >
+                    <input type="radio" class="btn-check" value="answer_2" id="2" name="right_answer" @if($first_test->right_answer === 'answer_2') checked @endif>
                     <label class="btn btn-outline-primary" for="2">2</label>
-                    <input type="radio" class="btn-check" value="answer_3" id="3" name="right_answer" >
+                    <input type="radio" class="btn-check" value="answer_3" id="3" name="right_answer" @if($first_test->right_answer === 'answer_3') checked @endif>
                     <label class="btn btn-outline-primary" for="3">3</label>
-                    <input type="radio" class="btn-check" value="answer_4" id="4" name="right_answer">
+                    <input type="radio" class="btn-check" value="answer_4" id="4" name="right_answer" @if($first_test->right_answer === 'answer_4') checked @endif>
                     <label class="btn btn-outline-primary" for="4">4</label>
-                    <input type="radio" class="btn-check" value="answer_5" id="5" name="right_answer">
+                    <input type="radio" class="btn-check" value="answer_5" id="5" name="right_answer" @if($first_test->right_answer === 'answer_5') checked @endif>
                     <label class="btn btn-outline-primary" for="5">5</label>
                     @error('right_answer') <strong style="color:red;">{{ $message }}</strong> @enderror
                 </div>
@@ -71,5 +71,6 @@
     <br>
     <button type="submit"  value="Изменить" class="btn btn-success" style="float: right;">Изменить</button>
 </form>
-<a href="{{ route('admin.test', ['course' => $course_id]) }}" type="button" class="btn btn-sm btn-outline-secondary">
+<a href="{{ route('admin.test', ['course' => $first_test->course_id]) }}" type="button" class="btn btn-sm btn-outline-secondary">
         Назад</a>
+
