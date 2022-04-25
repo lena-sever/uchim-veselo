@@ -1,6 +1,5 @@
 import React from "react";
 import Review from "./Review/Review";
-import ReviewForm from "./ReviewForm/ReviewForm";
 import { getReviewsTC } from "../../store/reviews/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -56,9 +55,6 @@ const ReviewsContainer = () => {
                     />
                 </div>
             )}
-            {/* <div>
-                <ReviewForm></ReviewForm>
-            </div> */}
         </div>
     );
 };

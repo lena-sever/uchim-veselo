@@ -48,4 +48,8 @@ export const reviewsAPI = {
     getReview(courseId) {
         return axios.get(`${urlCourses}/${courseId}`).then((res) => res);
     },
+    addReview(review) {
+        debugger;
+        return axios.post(`${urlReviews}`, review).then(() => "ok");
+    },
 };

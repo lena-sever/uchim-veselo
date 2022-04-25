@@ -17,6 +17,7 @@ import {
 import { useEffect } from "react";
 import { getReviewTC } from "../../store/reviews/actions";
 import LessonReview from "./LessonReview/LessonReview";
+import ReviewForm from "./ReviewForm/ReviewForm";
 
 function Lessons() {
     const { courseId } = useParams();
@@ -73,8 +74,9 @@ function Lessons() {
                 )}
             </div>
             <div>
-                <h2>Отзывы</h2>
+                <ReviewForm courseId={courseId}></ReviewForm>
             </div>
+            <h2>Отзывы</h2>
             {error_review ? (
                 <h1>{error_review}</h1>
             ) : (

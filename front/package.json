@@ -27,6 +27,7 @@
     "redux-thunk": "^2.4.1",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4",
+    "yap": "0.0.2",
     "yup": "^0.32.11"
   },
   "scripts": {

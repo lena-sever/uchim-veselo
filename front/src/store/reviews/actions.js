@@ -30,3 +30,10 @@ export const getReviewTC = (courseId) => {
             .catch((err) => dispatch(errorReviewAC(err.message)));
     };
 };
+
+export const addReviewTC = (review) => {
+    return (dispatch) => {
+        debugger;
+        reviewsAPI.addReview(review).then(() => console.log("OK"));
+    };
+};
