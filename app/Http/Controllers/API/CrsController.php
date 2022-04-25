@@ -18,8 +18,6 @@ class CrsController extends Controller
         return json_encode($courses, JSON_UNESCAPED_UNICODE);
     }
 
-
-
     public function store(Request $request)
     {
         $course = Course::create($request->all());
