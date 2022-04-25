@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Models\Lesson;
+use App\Models\Slider;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
@@ -25,9 +27,15 @@ class UploadService
 	   return $completedFile;
    }
 
-   public function start_2(UploadedFile $file): string
+   public function start_slider_img(UploadedFile $file,$lesson_id): string
    {
-	   $completedFile = $file->storeAs('slider/slider_img',$file->hashName());
+        $last_slider_id = Slider::latest()->first()->id;
+        $last_slider_id=(int)$last_slider_id+1;
+        $newName= explode('.',(string)$file->getClientOriginalName());
+        $newName=end($newName);
+        $newName=   $lesson_id.'_'.$last_slider_id.'.'.$newName;
+
+        $completedFile = $file->storeAs('slider/slider_img',$newName);
 
        if(!$completedFile) {
 		   throw new \Exception("Файл не был загружен");
@@ -36,9 +44,15 @@ class UploadService
 	   return $completedFile;
    }
 
-   public function start_music(UploadedFile $file): string
+   public function start_music(UploadedFile $file,$lesson_id): string
    {
-	   $completedFile = $file->storeAs('slider/music',$file->hashName());
+        $last_slider_id = Slider::latest()->first()->id;
+        $last_slider_id=(int)$last_slider_id+1;
+        $newName= explode('.',(string)$file->getClientOriginalName());
+        $newName=end($newName);
+        $newName=   $lesson_id.'_'.$last_slider_id.'.'.$newName;
+
+	   $completedFile = $file->storeAs('slider/music',$newName);
 
        if(!$completedFile) {
 		   throw new \Exception("Файл не был загружен");

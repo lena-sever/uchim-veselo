@@ -52,12 +52,12 @@ class SliderController extends Controller
 
         //добавление локально пока не работает
 		if($request->hasFile('img')) {
-			$validated['img'] = app(UploadService::class)->start_2($request->file('img'));
+			$validated['img'] = app(UploadService::class)->start_slider_img($request->file('img'),$validated['lesson_id']);
             $validated['img']='/'.$validated['img'];
 
         }
         if ($request->hasFile('music')){
-            $validated['music'] = app(UploadService::class)->start_music($request->file('music'));
+            $validated['music'] = app(UploadService::class)->start_music($request->file('music'),$validated['lesson_id']);
             $validated['music']='/'.$validated['music'];
         }
 //dd($validated);
