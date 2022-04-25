@@ -52,13 +52,15 @@ class SliderController extends Controller
 
         //добавление локально пока не работает
 		if($request->hasFile('img')) {
-			$validated['img'] = app(UploadService::class)->start($request->file('img'));
-            //добавление в бд
-            $validated['music']='/slider/music/'.$validated['music'];
-            $validated['img']='/slider/slider_img/'.$validated['img'];
-        }
+			$validated['img'] = app(UploadService::class)->start_2($request->file('img'));
+            $validated['img']='/'.$validated['img'];
 
-        //dd($validated);
+        }
+        if ($request->hasFile('music')){
+            $validated['music'] = app(UploadService::class)->start_music($request->file('music'));
+            $validated['music']='/'.$validated['music'];
+        }
+//dd($validated);
         $created = Slider::create($validated);
 
 		if($created) {
@@ -109,14 +111,16 @@ class SliderController extends Controller
     {
         $validated = $request->validated();
 
-        //добавление картинки локально не работает
 		if($request->hasFile('img')) {
-			$validated['img'] = app(UploadService::class)->start($request->file('img'));
-           //добавление картинки в бд
-           $validated['music']='/slider/music/'.$validated['music'];
-           $validated['img']='/slider/slider_img/'.$validated['img'];
+			$validated['img'] = app(UploadService::class)->start_2($request->file('img'));
+            $validated['img']='/'.$validated['img'];
 
         }
+        if ($request->hasFile('music')){
+            $validated['music'] = app(UploadService::class)->start_music($request->file('music'));
+            $validated['music']='/'.$validated['music'];
+        }
+dd($validated);
         $updated = $slider->fill($validated)->save();
 
         if($updated) {
@@ -138,7 +142,7 @@ class SliderController extends Controller
     {
         $page = explode("/", $_SERVER['HTTP_REFERER']);
         $page = end($page);
-
+//dd($slider,$page);
         //удаление музыки или картинки при редактировании пока не работает
         if($page == "edit"){
             $validated['img'] = null;

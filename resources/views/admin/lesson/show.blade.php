@@ -25,7 +25,7 @@
                 <td>{{ $slidersItem->id }}</td>
                 <td>{!! $slidersItem->text !!}</td>
                 <td><img src="{{$slidersItem->img}}" width="100" height="100" alt="" class="cart-img-top"></td>
-                <td><audio controls src=""><source src="{{ $slidersItem->music }}"></audio></td>
+                <td><audio controls src="{{ $slidersItem->music }}"></audio></td>
                 <td>
                     <p class="btn-group">
                         <a class="btn btn-sm btn-primary" href="{{route ('admin.slider.edit',['slider'=>$slidersItem])}}">Редактировать</a> &nbsp;
