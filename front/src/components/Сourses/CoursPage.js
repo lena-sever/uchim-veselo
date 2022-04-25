@@ -9,8 +9,11 @@ import { styled } from "@mui/material/styles";
 
 import { selectReview, selectError } from "../../store/reviews/reviewsSelector";
 import { purple, common } from "@mui/material/colors";
-import { getCours } from "../../store/courses/actions";
-import { selectCours } from "../../store/courses/coursesSelectors";
+import { getCours, getCourses } from "../../store/courses/actions";
+import {
+    selectCours,
+    selectCourses,
+} from "../../store/courses/coursesSelectors";
 import { getReviewTC } from "../../store/reviews/actions";
 import LessonReview from "../Lessons/LessonReview/LessonReview";
 import "./Cours.css";
@@ -46,7 +49,9 @@ const ColorButtonOutlined = styled(Button)(({ theme }) => ({
 const CoursPage = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
+    const courses = useSelector(selectCourses);
     const requestCours = async (courseId) => {
+        await dispatch(getCourses());
         await dispatch(getCours(courseId));
     };
     const cours = useSelector(selectCours);
@@ -56,9 +61,9 @@ const CoursPage = () => {
         dispatch(getReviewTC(courseId));
     };
     React.useEffect(() => {
-        console.log(courseId)
+        console.log(courseId);
         requestCours(courseId);
-        requestReview(courseId)
+        requestReview(courseId);
     }, []);
 
     let reviewElem = reviewCourse.map((review) => {
@@ -68,7 +73,8 @@ const CoursPage = () => {
         maxWidth: "1249px",
         margin: "0 auto",
     };
-    return (
+
+    return courses.length > parseInt(courseId - 1) ? (
         <div className="cours__wrp">
             {cours && (
                 <>
@@ -96,12 +102,21 @@ const CoursPage = () => {
                         </ColorButtonOutlined>
                     </div>
                     <div>
-                    <h2>Отзывы</h2>
-                </div>
-                <div style={style}>{reviewElem}</div>
+                        <h2>Отзывы</h2>
+                    </div>
+                    <div style={style}>{reviewElem}</div>
                 </>
             )}
         </div>
+    ) : (
+        <ColorButtonOutlined
+            as={NavLink}
+            className={classes.btn}
+            to="/courses"
+            size="large"
+        >
+            Другие истории
+        </ColorButtonOutlined>
     );
 };
 
