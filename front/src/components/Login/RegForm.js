@@ -11,16 +11,20 @@ import { styled } from "@mui/material/styles";
 import { purple } from "@mui/material/colors";
 
 import { reghMe } from "../../store/auth/action";
-import { selectLogin } from "../../store/auth/authSelector";
+import { selectUser } from "../../store/auth/authSelector";
 
 const validationSchema = yup.object({
+    name: yup
+        .string("Введите свой email")
+        .min(2, "Минимальная длина имени 2 символа")
+        .required("Вы не ввели email"),
     email: yup
         .string("Введите свой email")
         .email("Email не корректный")
         .required("Вы не ввели email"),
     password: yup
         .string("Введите свой пароль")
-        .min(6, "Минимальная длина пароля 6 символов")
+        .min(7, "Минимальная длина пароля 6 символов")
         .required("Вы не ввели пароль"),
     confirmPassword: yup
         .string()
@@ -52,10 +56,11 @@ const RegForm = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
     let navigate = useNavigate();
-    const loginUser = useSelector(selectLogin);
+    const user = useSelector(selectUser);
 
     const formik = useFormik({
         initialValues: {
+            name: "",
             email: "",
             password: "",
             confirmPassword: "",
@@ -63,18 +68,29 @@ const RegForm = () => {
         validationSchema: validationSchema,
         onSubmit: async (values) => {
             dispatch(
-                reghMe({ email: values.email, password: values.password })
+                reghMe({ name: values.name ,email: values.email, password: values.password })
             );
         },
     });
 
-    if (loginUser) {
+    if (user.id) {
         navigate("/courses", { replace: true });
     }
 
     return (
         <form onSubmit={formik.handleSubmit}>
             <div className="login__wrp">
+            <TextField
+                    margin="normal"
+                    fullWidth
+                    id="name"
+                    name="name"
+                    label="Имя"
+                    value={formik.values.name}
+                    onChange={formik.handleChange}
+                    error={formik.touched.name && Boolean(formik.errors.name)}
+                    helperText={formik.touched.name && formik.errors.name}
+                />
                 <TextField
                     margin="normal"
                     fullWidth

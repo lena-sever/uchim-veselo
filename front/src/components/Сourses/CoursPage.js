@@ -89,7 +89,7 @@ const CoursPage = () => {
                             size="large"
                             className={classes.btn}
                         >
-                            Начать историю
+                            Начать читать историю
                         </ColorButton>
 
                         <ColorButtonOutlined

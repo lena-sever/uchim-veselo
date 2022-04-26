@@ -9,7 +9,7 @@ import { styled } from "@mui/material/styles";
 import { purple } from "@mui/material/colors";
 
 import { authMe } from "../../store/auth/action";
-import { selectLogin } from "../../store/auth/authSelector";
+import { selectUser } from "../../store/auth/authSelector";
 
 const validationSchema = yup.object({
     email: yup
@@ -46,7 +46,7 @@ const LoginForm = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const loginUser = useSelector(selectLogin);
+    const user = useSelector(selectUser);
 
     const formik = useFormik({
         initialValues: {
@@ -59,7 +59,7 @@ const LoginForm = () => {
         },
     });
 
-    if (loginUser) {
+    if (user.id) {
         navigate("/courses", { replace: true });
     }
 
