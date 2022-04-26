@@ -8,6 +8,7 @@ use App\Models\Lesson;
 use Illuminate\Support\Facades\Log;
 use App\Models\Slider;
 use App\Services\UploadService;
+use GuzzleHttp\Psr7\UploadedFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -52,15 +53,16 @@ class SliderController extends Controller
 
         //добавление локально пока не работает
 		if($request->hasFile('img')) {
-			$validated['img'] = app(UploadService::class)->start_slider_img($request->file('img'),$validated['lesson_id']);
+            $validated['img'] = app(UploadService::class)->rename($request->file('img'),$validated['lesson_id']);
+			$validated['img'] = app(UploadService::class)->start_slider_img($request->file('img'),$validated['img']);
             $validated['img']='/'.$validated['img'];
-
         }
         if ($request->hasFile('music')){
-            $validated['music'] = app(UploadService::class)->start_music($request->file('music'),$validated['lesson_id']);
+            $validated['music'] = app(UploadService::class)->rename($request->file('music'),$validated['lesson_id']);
+			$validated['music'] = app(UploadService::class)->start_music($request->file('music'),$validated['music']);
             $validated['music']='/'.$validated['music'];
         }
-//dd($validated);
+
         $created = Slider::create($validated);
 
 		if($created) {

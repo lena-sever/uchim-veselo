@@ -19,7 +19,6 @@ class UploadService
    public function start(UploadedFile $file): string
    {
 	   $completedFile = $file->storeAs('img',$file->hashName());
-//dd($file,$completedFile);
        if(!$completedFile) {
 		   throw new \Exception("Файл не был загружен");
 	   }
@@ -27,15 +26,19 @@ class UploadService
 	   return $completedFile;
    }
 
-   public function start_slider_img(UploadedFile $file,$lesson_id): string
+   public function rename($file,$lesson_id)
    {
-        $last_slider_id = Slider::latest()->first()->id;
-        $last_slider_id=(int)$last_slider_id+1;
-        $newName= explode('.',(string)$file->getClientOriginalName());
-        $newName=end($newName);
-        $newName=   $lesson_id.'_'.$last_slider_id.'.'.$newName;
+     $last_slider_id = Slider::latest()->first()->id;
+     $last_slider_id=(int)$last_slider_id+1;
+     $newName = explode('.',(string)$file->getClientOriginalName());
+     $newName = end($newName);
+     $newName = $lesson_id.'_'.$last_slider_id.'.'.$newName;
+     return $newName;
+   }
 
-        $completedFile = $file->storeAs('slider/slider_img',$newName);
+   public function start_slider_img(UploadedFile $file,$name): string
+   {
+        $completedFile = $file->storeAs('slider/slider_img',$name);
 
        if(!$completedFile) {
 		   throw new \Exception("Файл не был загружен");
@@ -44,15 +47,9 @@ class UploadService
 	   return $completedFile;
    }
 
-   public function start_music(UploadedFile $file,$lesson_id): string
+   public function start_music(UploadedFile $file,$name): string
    {
-        $last_slider_id = Slider::latest()->first()->id;
-        $last_slider_id=(int)$last_slider_id+1;
-        $newName= explode('.',(string)$file->getClientOriginalName());
-        $newName=end($newName);
-        $newName=   $lesson_id.'_'.$last_slider_id.'.'.$newName;
-
-	   $completedFile = $file->storeAs('slider/music',$newName);
+	   $completedFile = $file->storeAs('slider/music',$name);
 
        if(!$completedFile) {
 		   throw new \Exception("Файл не был загружен");
