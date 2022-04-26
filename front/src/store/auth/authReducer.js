@@ -1,22 +1,18 @@
 import { AUTH_SUCCESS, LOGOUT } from "./action";
 
 const initialCourses = {
-    login: ''
-}
+    name: "",
+    email: "",
+    id: "",
+};
 
 export const authReducer = (state = initialCourses, action) => {
-  switch (action.type) {
-      case AUTH_SUCCESS:
-          return {
-              ...state,
-              login: action.payload,
-          };
-      case LOGOUT:
-          return {
-              ...state,
-              login: '',
-          };
-      default:
-          return state;
-  }  
-}
+    switch (action.type) {
+        case AUTH_SUCCESS:
+            return action.payload;
+        case LOGOUT:
+            return initialCourses;
+        default:
+            return state;
+    }
+};

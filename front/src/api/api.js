@@ -1,6 +1,13 @@
 import axios from "axios";
 
-import { urlCourses, urlAuth, urlReviews, firstPatgHistory, lastPatgHistory } from "../constants/url";
+import {
+    urlCourses,
+    urlAuth,
+    urlReviews,
+    firstPatgHistory,
+    lastPatgHistory,
+    urlRegistration,
+} from "../constants/url";
 
 export const coursesAPI = {
     getCourses() {
@@ -26,8 +33,18 @@ export const auth = {
     },
     sigUp(payload) {
         return axios
-            .post(`${urlAuth}`, payload)
-            .then(() => "ok")
+            .post(`${urlRegistration}`, payload)
+            .then((data) => {
+                debugger
+                localStorage.setItem('id', data.data.id)
+                localStorage.setItem('name', data.data.name)
+                localStorage.setItem('email', data.data.email)
+                return {
+                    name: data.data.name,
+                    email: data.data.email,
+                    id: data.data.id,
+                };
+            })
             .catch((err) => err);
     },
 };
@@ -40,16 +57,15 @@ export const lessonsAPI = {
             .catch((err) => err);
     },
     getFistPartHistory(id) {
-
         return axios
             .get(`${firstPatgHistory}/${id}`)
-            .then((response) => response)
+            .then((response) => response);
     },
     getLastPartHistory(id) {
         return axios
             .get(`${lastPatgHistory}/${id}`)
-            .then((response) => response)
-    }
+            .then((response) => response);
+    },
 };
 
 export const reviewsAPI = {
@@ -69,4 +85,3 @@ export const testsAPI = {
             .catch((err) => err);
     },
 };
-

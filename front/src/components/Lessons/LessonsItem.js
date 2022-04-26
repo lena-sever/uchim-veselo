@@ -42,15 +42,32 @@ function LessonsItem() {
                         <SliderContainer
                             sliderList={[
                                 ...firstHistoy,
-                                { music: "", text: "Начать тест", img: "", path: `/courses/${courseId}/tests` },
+                                {
+                                    music: "",
+                                    text: "Начать тест",
+                                    img: "",
+                                    path: `/courses/${courseId}/tests`,
+                                },
                             ]}
                         />
                     )}
                     {slider1 === "slider2" && (
-                        <SliderContainer sliderList={[
+                        <SliderContainer
+                            sliderList={[
+                                {
+                                    music: "",
+                                    text: "Часть 2",
+                                    img: "",
+                                },
                                 ...lastHistoy,
-                                { music: "", text: "К следуещей истории", img: "", path: `/courses/${courseId*1+1}/slider1` },
-                            ]} />
+                                {
+                                    music: "",
+                                    text: "К следуещей истории",
+                                    img: "",
+                                    path: `/courses/${courseId * 1 + 1}`,
+                                },
+                            ]}
+                        />
                     )}
                 </div>
                 <Button
@@ -64,6 +81,6 @@ function LessonsItem() {
                 </Button>
             </>
         );
-    } else <>err</>
+    } else <>err</>;
 }
 export default LessonsItem;

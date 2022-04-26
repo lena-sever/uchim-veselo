@@ -1,3 +1,3 @@
 
 
-export const selectLogin = (state) => state.authReducer.login;
+export const selectUser = (state) => state.authReducer;
