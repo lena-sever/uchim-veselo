@@ -21,14 +21,14 @@ class UserController extends Controller
 
     public function store(CreateRequest $request)
     {
-
         $validated = $request->validated();
         $validated['password'] = Hash::make($validated['password']);
-        $validated['remember_token'] =  Str::random(60);
+        $validated['session_token'] =  Str::random(60);
 
         $user = User::create($validated);
-
-        return response()->json($user, 201);
+        if ($user) {
+            return json_encode($user, JSON_UNESCAPED_UNICODE);
+        } else return false;
     }
 
     public function login(Request $request)
@@ -41,29 +41,31 @@ class UserController extends Controller
 
         //получить id по email и сравнить с хешем пароля
         $user = DB::table('users')->where('email',  $validated['email'])->first();
-        if (password_verify($validated['email'], $user->password)) {
+        // dd($user);
+        if (password_verify($validated['password'], $user->password)) {
             return json_encode($user, JSON_UNESCAPED_UNICODE);
-        } else return false;
+        } else return 'неверный логин или пароль';
     }
 
     public function auth(Request $request)
     {
 
         $validated = $request->validate([
-            'remember_token' => 'required|string|min:7',
+            'session_token' => 'required|string|min:7',
         ]);
 
         //получить user по remember_token 
         $user = DB::table('users')
-            ->where('remember_token',  $validated['remember_token'])
+            ->where('session_token',  $validated['session_token'])
             ->select(
                 'id',
                 'name',
                 'email',
+                'session_token',
             )
             ->first();
         if ($user) {
             return json_encode($user, JSON_UNESCAPED_UNICODE);
-        } else return false;
+        } else return 'неверный токен сессии';
     }
 }

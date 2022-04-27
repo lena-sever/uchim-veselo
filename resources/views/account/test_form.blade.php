@@ -3,7 +3,7 @@
 @section('content')
 
 <h2>Регистрация</h2>
-<form method="post" action="api/user">
+<form method="post" action="user">
 
     <label>name</label>
     <input type="text" name="name" value="Имя">
@@ -20,7 +20,7 @@
 <hr>
 
 <h2>Логин</h2>
-<form method="post" action="api/user/login">
+<form method="post" action="user/login">
 
     <label>email</label>
     <input type="text" name="email" value="test@email.com">
@@ -34,14 +34,10 @@
 <hr>
 
 <h2>Аутентификация</h2>
-<form method="post" action="api/user/auth">
+<form method="post" action="user/auth">
 
-    <label>email</label>
-    <input type="text" name="email" value="test@email.com">
-
-    <label>password</label>
-    <input type="text" name="password" value="123456789">
-
+    <label>session_token</label>
+    <input type="text" name="session_token" value="06EhYd6sw4FZYXEdn88ghatZDrtUE0yOQbYlQ2pvjLBbJrY749znVZoXlnfn">
 
     <input type="submit" value="Отправить">
 </form><br><br>

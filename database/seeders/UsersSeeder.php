@@ -36,7 +36,7 @@ class UsersSeeder extends Seeder
                 'email' => $faker->unique()->safeEmail(),
                 'email_verified_at' => now(),
                 'password' => Hash::make($faker->text(mt_rand(10, 30))),
-                'remember_token' => Str::random(60),
+                'session_token' => Str::random(60),
             ];
 		}
 
@@ -47,7 +47,7 @@ class UsersSeeder extends Seeder
             'photo' => 'https://uchim-veselo.ru/' .$faker->randomElement($img),
             'email_verified_at' => now(),
             'password' => Hash::make('12345678'),
-            'remember_token' => Str::random(60),
+            'session_token' => Str::random(60),
         ];
 
 		return $data;
