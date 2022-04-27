@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
+    public function test_form()
+    {
+        return view('account.test_form', []);
+    }
+
+
     public function store(CreateRequest $request)
     {
 
