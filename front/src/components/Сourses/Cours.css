@@ -12,3 +12,18 @@
 .cours__btn-wrp {
     margin-top: 30px;
 }
+
+@media screen and (max-width: 682px) {
+    .cours__btn-wrp {
+        display: flex;
+    }  
+}
+
+@media screen and (max-width: 470px) {
+    .cours__btn-wrp {
+     flex-direction: column;
+    }  
+    .cours__img {
+        width: 100%;
+    }
+}

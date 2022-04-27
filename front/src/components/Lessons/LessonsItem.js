@@ -62,7 +62,7 @@ function LessonsItem() {
                                 ...lastHistoy,
                                 {
                                     music: "",
-                                    text: "К следуещей истории",
+                                    text: "К следующему комиксу",
                                     img: "",
                                     path: `/courses/${courseId * 1 + 1}`,
                                 },
@@ -77,7 +77,7 @@ function LessonsItem() {
                     color="secondary"
                     to="/courses"
                 >
-                    Назад к историям
+                    Назад к комиксам
                 </Button>
             </>
         );

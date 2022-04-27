@@ -89,7 +89,7 @@ const CoursPage = () => {
                             size="large"
                             className={classes.btn}
                         >
-                            Начать читать историю
+                            Начать читать комикс
                         </ColorButton>
 
                         <ColorButtonOutlined
@@ -98,7 +98,7 @@ const CoursPage = () => {
                             to="/courses"
                             size="large"
                         >
-                            Другие истории
+                            Другие комиксы
                         </ColorButtonOutlined>
                     </div>
                     <div>
@@ -115,7 +115,7 @@ const CoursPage = () => {
             to="/courses"
             size="large"
         >
-            Другие истории
+            Другие комиксы
         </ColorButtonOutlined>
     );
 };

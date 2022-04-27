@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Добавить историю')
+@section('title', 'Добавить комикс')
 
 @section('content')
 
@@ -9,17 +9,17 @@
         <form method="post" action="{{ route('admin.course.store') }}" enctype="multipart/form-data">
         @csrf
             <div class="form-group">
-                <label for="title">Наименование истории</label>
+                <label for="title">Наименование комикса</label>
                 <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
                 @error('title') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
-                <label for="description">Краткое описание истории</label>
+                <label for="description">Краткое описание комикс</label>
                 <textarea class="form-control" name="description" id="description">{!! old('description') !!}</textarea>
                 @error('description') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
-                <label for="text">Полное описание истории</label>
+                <label for="text">Полное описание комикса</label>
                 <textarea class="form-control" name="text" id="text">{!! old('text') !!}</textarea>
                 @error('text') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
