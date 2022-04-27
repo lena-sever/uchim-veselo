@@ -63,8 +63,6 @@ class SlidersSeeder extends Seeder
             'Дерево затрещало громче. «Что ещё нужно для плаща? Какой предмет? Может нитки? Я не знаю, что такое нитки!».',
             //1_17
             'Быстро помоги Климу понять, что такое нитки, если ты хочешь спасти его от сиренокубоголового.',
-            //1_18
-            'Спасибо!',
         ];
         $music_1 = [
             //1_1
@@ -101,8 +99,6 @@ class SlidersSeeder extends Seeder
             '1_16.mp3',
             //1_17
             '1_17.mp3',
-            //1_18
-            '1_18.mp3',
         ];
         $slider_2 = [
             //2_19
@@ -148,7 +144,7 @@ class SlidersSeeder extends Seeder
             //2_28
             '2_28.mp3',
         ];
-        for ($i = 0; $i < 18; $i++) {
+        for ($i = 0; $i < 17; $i++) {
             $data[] = [
                 'lesson_id' => 1,
                 'img' => 'https://uchim-veselo.ru/' . $faker->randomElement($img),

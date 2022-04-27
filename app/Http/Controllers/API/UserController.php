@@ -40,5 +40,24 @@ class UserController extends Controller
         } else return false;
     }
 
-    
+    public function auth(Request $request)
+    {
+
+        $validated = $request->validate([
+            'remember_token' => 'required|string|min:7',
+        ]);
+
+        //получить user по remember_token 
+        $user = DB::table('users')
+            ->where('remember_token',  $validated['remember_token'])
+            ->select(
+                'id',
+                'name',
+                'email',
+            )
+            ->first();
+        if ($user) {
+            return json_encode($user, JSON_UNESCAPED_UNICODE);
+        } else return false;
+    }
 }

@@ -62,4 +62,6 @@ Route::delete('course_reviews/{course_review}', [CrsReviewController::class,'des
 // регистрация
 Route::post('user', [UserController::class,'store']);
 // авторизация
-Route::post('user', [UserController::class,'login']);
+Route::post('user/login', [UserController::class,'login']);
+// auth
+Route::post('user/auth', [UserController::class,'auth']);
