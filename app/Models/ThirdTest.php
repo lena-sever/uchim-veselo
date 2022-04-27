@@ -16,11 +16,16 @@ class ThirdTest extends Model
     protected $fillable = [
         'course_id',
         'test_title',
-        'description',
-        'questions',
+        'right_sentence',
+        'wrong_sentence',
+        'words'
     ];
 
     public function course() {
         return $this->belongsTo(Course::class);
     }
+
+    protected $casts = [
+        'words' => 'array'
+    ];
 }
