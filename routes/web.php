@@ -79,9 +79,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/test_2/destroy/{test_2}', [SecondTestController::class, 'destroy'])
         ->where('test_2', '\d+')
         ->name('test_2.destroy');
-        Route::get('/test_2/answer/{test_2}', [SecondTestController::class, 'answer'])
-            ->where('test_2', '\d+')
-            ->name('test_2.answer');
 
         Route::resource('/test_3', ThirdTestController::class);
         Route::get('/test_3/destroy/{test_3}', [ThirdTestController::class, 'destroy'])

@@ -23,7 +23,7 @@ class IndexController extends Controller
         $first_tests = FirstTest::where('course_id','=',$course_id)->get();
         $second_tests = SecondTest::where('course_id','=',$course_id)->get();
         $third_tests = ThirdTest::where('course_id','=',$course_id)->get();
-       // dd($first_tests);
+
         return view('admin.test.index',[
             'course' => $course,
             'course_id' => $course_id,

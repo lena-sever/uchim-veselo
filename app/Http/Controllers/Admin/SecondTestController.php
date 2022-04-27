@@ -50,7 +50,17 @@ class SecondTestController extends Controller
      */
     public function store(CreateRequest $request)
     {
-        $created = SecondTest::create($request->validated());
+        $validated = $request->validated();
+        if(substr($validated['right_answer'],0,-1)==','){
+            $validated['right_answer']=substr($validated['right_answer'],0,-1);
+        }
+        if(substr($validated['right_answer'],0,-1)==','){
+        $validated['wrong_answer']=substr($validated['wrong_answer'],0,-1);
+        }
+        $validated['right_answer']=explode(',',$validated['right_answer']);
+        $validated['wrong_answer']=explode(',',$validated['wrong_answer']);
+
+        $created = SecondTest::create($validated);
 
 		if($created) {
 			return redirect()->route('admin.test',['course' => $request->course_id])
@@ -100,6 +110,11 @@ class SecondTestController extends Controller
     public function update(EditRequest $request, SecondTest $test_2)
     {
         $validated = $request->validated();
+        $validated['right_answer']=substr($validated['right_answer'],0,-1);
+        $validated['right_answer']=explode(',',$validated['right_answer']);
+        $validated['wrong_answer']=substr($validated['wrong_answer'],0,-1);
+        $validated['wrong_answer']=explode(',',$validated['wrong_answer']);
+
         $updated = $test_2->fill($validated)->save();
 
         if($updated) {
@@ -128,31 +143,4 @@ class SecondTestController extends Controller
         }
     }
 
-    public function answer(Request $request){
-
-       /* $course_id = explode("/", $_SERVER['HTTP_REFERER']);
-        $course_id = end($course_id);
-
-        $test_id = explode("/", $_SERVER['REQUEST_URI']);
-        $test_id = end($test_id);
-
-
-        $right_answer = SecondTest::where('id','=',$request->test)
-        ->value('right_answer');
-
-
-        $description = SecondTest::where('id','=',$request->test)
-        ->value('description');
-
-
-        if ($request->right_answer == $right_answer){
-            return redirect()->route('admin.test',['course' => $course_id])
-            ->with('success', 'Верно');
-        }
-        else{
-            return redirect()->route('admin.test',['course' => $course_id])
-            ->with('error', 'Неверно. Прочитет описание слова: '.$description);
-        }
-*/
-    }
 }

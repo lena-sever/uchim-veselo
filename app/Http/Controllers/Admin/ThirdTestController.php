@@ -51,6 +51,24 @@ class ThirdTestController extends Controller
      */
     public function store(CreateRequest $request)
     {
+        $validated = $request->validated();
+        $validated['right_sentence']="";
+        $validated['right_sentence'] = [
+            $request->sentence_1,
+            $request->sentence_2,
+            $request->sentence_3,
+            $request->sentence_4,
+            $request->sentence_5,
+            $request->sentence_6,
+            $request->sentence_7,
+            $request->sentence_8,
+            $request->sentence_9,
+            $request->sentence_10
+        ];
+$word_1 = explode(" ",$request->sentence_1);
+$word_1 = (array)shuffle($word_1);
+
+        dd($validated,$word_1);
         $created = ThirdTest::create( $request->validated());
 
 		if($created) {

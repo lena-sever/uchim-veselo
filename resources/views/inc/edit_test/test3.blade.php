@@ -17,14 +17,9 @@
                 @error('test_title') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
-                <label for="description">Описание</label>
-                <input type="text" class="form-control" id="description" name="description" value="{{ $third_test->description }}">
-                @error('description') <strong style="color:red;">{{ $message }}</strong> @enderror
-            </div>
-            <div class="form-group">
-                <label for="questions">Вопросы</label>
-                <textarea class="form-control" name="questions" id="questions">{!! $third_test->questions !!}</textarea>
-                @error('questions') <strong style="color:red;">{{ $message }}</strong> @enderror
+                <label for="right_sentence">Предложения</label>
+                <input type="text" class="form-control" id="right_sentence" name="right_sentence" value="{{ $third_test->right_sentence }}">
+                @error('right_sentence') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <br>
     <button type="submit"  value="Изменить" class="btn btn-success" style="float: right;">Изменить</button>

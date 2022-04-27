@@ -28,8 +28,7 @@ class EditRequest extends FormRequest
         return [
             'course_id' => ['required','int'],
 			'test_title' => ['required', 'string', 'min:5'],
-            'description' => ['required', 'string', 'max:1000'],
-            'questions' => ['required', 'string'],
+            'right_sentence' => ['required', 'string', 'max:1000'],
         ];
     }
 
@@ -45,8 +44,7 @@ class EditRequest extends FormRequest
 		return [
             'course_id' => 'История',
 			'test_title' => 'Наименование теста',
-			'description' => 'Описание теста',
-            'questions' => 'Вопросы по тесту'
+			'right_sentence' => 'Предложения',
 		];
 	}
 }

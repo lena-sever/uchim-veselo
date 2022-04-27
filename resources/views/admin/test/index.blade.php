@@ -111,8 +111,9 @@
             <tr>
                 <th>#ID</th>
                 <th>Название</th>
-                <th>Описание</th>
-                <th>Вопросы</th>
+                <th>Предложение</th>
+                <th>Правильные слова</th>
+                <th>Не правильные слова</th>
                 <th>Опции</th>
             </tr>
         </thead>
@@ -122,8 +123,9 @@
         <tr id="{{$testsItem->id}}">
         <td>{{ $testsItem->id }}</td>
         <td>{{ $testsItem->test_title }}</td>
-        <td>{{ $testsItem->description }}</td>
-        <td>{{$testsItem->questions}}</td>
+        <td>{{ $testsItem->sentence }}</td>
+        <td>@foreach($testsItem->right_answer as $word){{$word}},@endforeach</td>
+        <td>@foreach($testsItem->wrong_answer as $word){{$word}},@endforeach</td>
         <td>
                 <p class="btn-group">
                 <a class="btn btn-sm btn-primary" href="{{ route('admin.test_2.edit', ['test_2' => $testsItem]) }}">Редактировать</a> &nbsp;
@@ -144,8 +146,8 @@
             <tr>
                 <th>#ID</th>
                 <th>Название</th>
-                <th>Описание</th>
-                <th>Вопросы</th>
+                <th>Предложение</th>
+                <th>Слова</th>
                 <th>Опции</th>
             </tr>
         </thead>
@@ -155,8 +157,9 @@
         <tr id="{{$testsItem->id}}">
         <td>{{ $testsItem->id }}</td>
         <td>{{ $testsItem->test_title }}</td>
-        <td>{{ $testsItem->description }}</td>
-        <td>{{$testsItem->questions}}</td>
+        <td>{{ $testsItem->right_sentence }}</td>
+        <td>@foreach($testsItem->words as $word){{$word}}, @endforeach</td>
+
         <td>
                 <p class="btn-group">
                 <a class="btn btn-sm btn-primary" href="{{ route('admin.test_3.edit', ['test_3' => $testsItem]) }}">Редактировать</a> &nbsp;

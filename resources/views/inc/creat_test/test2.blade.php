@@ -11,18 +11,26 @@
             </div>
             <div class="form-group">
                 <label for="test_title">Наименование теста</label>
-                <input type="text" class="form-control" id="test_title" name="test_title" value="{{ old('test_title') }}">
+                <input type="text" class="form-control" id="test_title" name="test_title" value="Нажимайте на слова так, чтобы получилось предложение">
                 @error('test_title') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
-                <label for="description">Описание</label>
-                <input type="text" class="form-control" id="description" name="description" value="{{ old('description') }}">
-                @error('description') <strong style="color:red;">{{ $message }}</strong> @enderror
+                <label for="sentence">Предложение</label>
+                <input type="text" class="form-control" id="sentence" name="sentence" value="{{ old('sentence') }}">
+                @error('sentence') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
-                <label for="questions">Вопросы</label>
-                <textarea class="form-control" name="questions" id="questions">{!! old('questions') !!}</textarea>
-                @error('questions') <strong style="color:red;">{{ $message }}</strong> @enderror
+                <label for="right_answer">Правильные слова</label>
+                Напшите через запятую
+                <input type="text"class="form-control" name="right_answer" id="right_answer" value="{{old('right_answer')}}">
+                @error('right_answer') <strong style="color:red;">{{ $message }}</strong> @enderror
+
+            </div>
+            <div class="form-group">
+                <label for="wrong_answer">Не правильные слова</label>
+                Напшите через запятую
+                <input type="text"class="form-control" name="wrong_answer" id="wrong_answer" value="{{old('wrong_answer')}}">
+                @error('wrong_answer') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <br>
     <button type="submit"  value="Добавить" class="btn btn-success" style="float: right;">Добавить</button>

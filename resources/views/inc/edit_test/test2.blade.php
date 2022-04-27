@@ -17,14 +17,20 @@
                 @error('test_title') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
-                <label for="description">Описание</label>
-                <input type="text" class="form-control" id="description" name="description" value="{{ $second_test->description }}">
-                @error('description') <strong style="color:red;">{{ $message }}</strong> @enderror
+                <label for="sentence">Предложение</label>
+                <input type="text" class="form-control" id="sentence" name="sentence" value="{{ $second_test->sentence }}">
+                @error('sentence') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
-                <label for="questions">Вопросы</label>
-                <textarea class="form-control" name="questions" id="questions">{!! $second_test->questions !!}</textarea>
-                @error('questions') <strong style="color:red;">{{ $message }}</strong> @enderror
+                <label for="right_answer">Правильные слова</label>
+                <input type="text"class="form-control" name="right_answer" id="right_answer" value="@foreach($second_test->right_answer as $key => $word){{ $word }},@endforeach">
+                @error('right_answer') <strong style="color:red;">{{ $message }}</strong> @enderror
+
+            </div>
+            <div class="form-group">
+                <label for="wrong_answer">Не правильные слова</label>
+                <input type="text"class="form-control" name="wrong_answer" id="wrong_answer" value="@foreach($second_test->wrong_answer as  $key => $word){!! $word !!},@endforeach">
+                @error('wrong_answer') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <br>
     <button type="submit"  value="Изменить" class="btn btn-success" style="float: right;">Изменить</button>
