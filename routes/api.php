@@ -66,3 +66,5 @@ Route::post('user', [UserController::class,'store']);
 Route::post('user/login', [UserController::class,'login']);
 // auth
 Route::post('user/auth', [UserController::class,'auth']);
+// сообщение с сайта
+Route::post('messange', [UserController::class,'messange']);

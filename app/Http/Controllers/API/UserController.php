@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Messenger;
 use App\Http\Requests\User\CreateRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -28,12 +29,11 @@ class UserController extends Controller
         $user = User::create($validated);
         if ($user) {
             return json_encode($user, JSON_UNESCAPED_UNICODE);
-        } else return false;
+        } else return 'ошибка регистрации';
     }
 
     public function login(Request $request)
     {
-
         $validated = $request->validate([
             'email' => 'required|string|email:rfc,dns',
             'password' => 'required|string|min:7',
@@ -68,4 +68,21 @@ class UserController extends Controller
             return json_encode($user, JSON_UNESCAPED_UNICODE);
         } else return 'неверный токен сессии';
     }
+
+    public function messange(Request $request)
+    {
+        $validated = $request->validate([
+            'user_id' => '', 
+            'name' => 'required|string|min:2',
+            'email' => 'required|string|email:rfc,dns',
+            'message' => 'required|string|min:2',
+        ]);
+
+        $messange = Messenger::create($validated);
+        if ($messange) {
+            return json_encode($messange, JSON_UNESCAPED_UNICODE);
+        } else return 'ошибка отправки сообщения';
+    }
+
+
 }

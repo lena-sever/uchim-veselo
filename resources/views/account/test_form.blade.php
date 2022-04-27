@@ -43,4 +43,25 @@
 </form><br><br>
 <hr>
 
+<h2>Сообщение с сайта</h2>
+<form method="post" action="messange">
+
+    <label>user_id</label>
+    <input type="text" name="user_id" value="1">
+
+    <label>name</label>
+    <input type="text" name="name" value="Имя">
+
+    <label>email</label>
+    <input type="text" name="email" value="test@email.com">
+
+    <label>message</label>
+    <input type="text" name="message" value="Текст сообщения">
+
+
+    <input type="submit" value="Отправить">
+</form><br><br>
+<hr>
+
+
 @endsection
