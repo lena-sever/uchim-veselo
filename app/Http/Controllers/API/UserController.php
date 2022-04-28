@@ -41,10 +41,12 @@ class UserController extends Controller
 
         //получить id по email и сравнить с хешем пароля
         $user = DB::table('users')->where('email',  $validated['email'])->first();
-        // dd($user);
-        if (password_verify($validated['password'], $user->password)) {
-            return json_encode($user, JSON_UNESCAPED_UNICODE);
-        } else return 'неверный логин или пароль';
+        if ($user) {
+            // dd($user);
+            if (password_verify($validated['password'], $user->password)) {
+                return json_encode($user, JSON_UNESCAPED_UNICODE);
+            } else return 'неверный пароль';
+        } else return 'неверный email';
     }
 
     public function auth(Request $request)
@@ -72,7 +74,7 @@ class UserController extends Controller
     public function messange(Request $request)
     {
         $validated = $request->validate([
-            'user_id' => '', 
+            'user_id' => '',
             'name' => 'required|string|min:2',
             'email' => 'required|string|email:rfc,dns',
             'message' => 'required|string|min:2',
@@ -83,6 +85,4 @@ class UserController extends Controller
             return json_encode($messange, JSON_UNESCAPED_UNICODE);
         } else return 'ошибка отправки сообщения';
     }
-
-
 }
