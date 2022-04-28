@@ -8,12 +8,12 @@ import bg2 from "../InfoPage/img/bg3.png";
 const InfoPage = () => {
     return (
         <section>
-            <div class="header__content-wrp">
-                <div class="header-title title">Учим весело</div>
-                <div class="header-title__react subtitle">
+            <div className="header__content-wrp">
+                <div className="header-title title">Учим весело</div>
+                <div className="header-title__react subtitle">
                     Образовательная платформа для детей
                 </div>
-                 
+
                 <Link className="try-btn" to="/courses">
                     Учиться
                 </Link>

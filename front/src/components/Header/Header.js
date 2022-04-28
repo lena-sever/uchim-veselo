@@ -3,15 +3,15 @@ import "./Header.css";
 
 
 function Header() {
-  return (
-      <>
-          <header class="header-wrp">
-              <nav class="header__nav-wrp">
-                  <Navigation />
-              </nav>
-          </header>
-      </>
-  );
+    return (
+        <>
+            <header className="header-wrp">
+                <nav className="header__nav-wrp">
+                    <Navigation/>
+                </nav>
+            </header>
+        </>
+    );
 }
 
 export default Header;
