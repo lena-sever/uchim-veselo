@@ -145,6 +145,7 @@ const RegForm = () => {
                 >
                     Регистрация
                 </ColorButton>
+                {user.err && <p>{user.err}</p>}
             </div>
         </form>
     );

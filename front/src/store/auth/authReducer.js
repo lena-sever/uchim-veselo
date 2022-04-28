@@ -1,9 +1,10 @@
-import { AUTH_SUCCESS, LOGOUT } from "./action";
+import { AUTH_SUCCESS, LOGOUT, ERR } from "./action";
 
 const initialCourses = {
     name: "",
     email: "",
     id: "",
+    err: ''
 };
 
 export const authReducer = (state = initialCourses, action) => {
@@ -12,6 +13,8 @@ export const authReducer = (state = initialCourses, action) => {
             return action.payload;
         case LOGOUT:
             return initialCourses;
+        case ERR:
+            return {...state, err: action.payload};
         default:
             return state;
     }
