@@ -15,6 +15,7 @@ class Messenger extends Model
 
 	protected $fillable = [
         'user_id',
+        'name',
         'email',
         'message',
         'answer',

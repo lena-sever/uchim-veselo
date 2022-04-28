@@ -26,14 +26,17 @@ export const getReviewTC = (courseId) => {
     return (dispatch) => {
         reviewsAPI
             .getReview(courseId)
-            .then((res) => dispatch(getReviewAC(res.data.reviews)))
+            .then((res) => {
+                return dispatch(getReviewAC(res.data.reviews));
+            })
             .catch((err) => dispatch(errorReviewAC(err.message)));
     };
 };
 
 export const addReviewTC = (review) => {
     return (dispatch) => {
-        debugger;
-        reviewsAPI.addReview(review).then(() => console.log("OK"));
+        reviewsAPI
+            .addReview(review)
+            .then(() => dispatch(getReviewTC(review.course_id)));
     };
 };

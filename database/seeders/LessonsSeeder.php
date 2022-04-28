@@ -24,9 +24,18 @@ class LessonsSeeder extends Seeder
 		$data = [];
         // $course_id = DB::table('courses')->pluck('id');
         $courses = DB::table('courses')->get();
+        $data[] = [
+
+            'title' => 'Первая встреча с монстром',
+            'description' => $faker->text(mt_rand(10, 30)),
+            'text' => $faker->text(mt_rand(350, 550)),
+            'course_id' => 1,
+            'created_at' => $faker->dateTime('now','Europe/Moscow'),
+        ];
 
         foreach ($courses as $item) {
-            for($i=1; $i < 5; $i++) {
+            for($i=1; $i < 3; $i++) {
+                if ($item->id == 1 AND $i == 1) continue;
                 $data[] = [
                     'title' => 'Глава '.$i.'. истории: '.$item->title,
                     'description' => $faker->text(mt_rand(10, 30)),

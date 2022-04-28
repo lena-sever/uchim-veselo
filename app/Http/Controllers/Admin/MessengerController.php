@@ -7,14 +7,11 @@ use App\Http\Requests\Messenger\EditRequest;
 use App\Http\Requests\Messenger\CreateRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendMessange;
 
 class MessengerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $messengers = Messenger::all();
@@ -23,11 +20,6 @@ class MessengerController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
@@ -42,16 +34,21 @@ class MessengerController extends Controller
     public function store(CreateRequest $request)
     {
         $validated = $request->validated();
+        // dd($validated);
 
         $created = Messenger::create($validated);
 
-		if($created) {
-			return redirect()->route('course.index')
-				     ->with('success', 'Сообщение успешно отправленно');
-		}
+        Mail::to("remont001@list.ru")
+        ->send(new SendMessange($validated['user_id'], $validated['name'], $validated['email'], $validated['message']));
 
-		return back()->with('error', 'Не удалось отправить сообщение')
-			->withInput();
+
+        if ($created) {
+            return redirect()->route('admin.course.index')
+                ->with('success', 'Сообщение успешно отправленно');
+        }
+
+        return back()->with('error', 'Не удалось отправить сообщение')
+            ->withInput();
     }
 
     /**
@@ -85,10 +82,11 @@ class MessengerController extends Controller
      */
     public function update(EditRequest $request, Messenger $messenger)
     {
+
         $validated = $request->validated();
         $updated = $messenger->fill($validated)->save();
 
-        if($updated) {
+        if ($updated) {
             return redirect()->route('admin.messenger.index')
                 ->with('success', 'Ответ отправлен');
         }
@@ -108,8 +106,8 @@ class MessengerController extends Controller
         try{
             $messenger->delete();
             return redirect()->route('admin.messenger.index')
-            ->with('success', 'Сообщение успешно удалено');
-        }catch(\Exception $e){
+                ->with('success', 'Сообщение успешно удалено');
+        } catch (\Exception $e) {
             Log::error("Ошибка удаления");
         }
     }

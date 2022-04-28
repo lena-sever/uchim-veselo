@@ -4,6 +4,7 @@
     object-fit: contain;
     border-radius: 50%;
 }
+
 .review {
     display: flex;
     text-align: start;
@@ -22,6 +23,7 @@
     margin: 0;
     padding-top: 20px;
 }
+
 .rev_text {
     font-style: italic;
     margin: 0;
@@ -29,4 +31,10 @@
 
 .rev_head_item {
     color: #7532d5;
+}
+
+.btn_link {
+    text-decoration: none;
+    margin-bottom: 25px;
+    display: inline-block;
 }

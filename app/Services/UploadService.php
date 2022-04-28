@@ -16,11 +16,32 @@ class UploadService
 	 */
    public function start(UploadedFile $file): string
    {
-
 	   $completedFile = $file->storeAs('img',$file->hashName());
+//dd($file,$completedFile);
+       if(!$completedFile) {
+		   throw new \Exception("Файл не был загружен");
+	   }
+
+	   return $completedFile;
+   }
+
+   public function start_2(UploadedFile $file): string
+   {
+	   $completedFile = $file->storeAs('slider/slider_img',$file->hashName());
 
        if(!$completedFile) {
-		   throw new \Exception("File wasn't upload");
+		   throw new \Exception("Файл не был загружен");
+	   }
+
+	   return $completedFile;
+   }
+
+   public function start_music(UploadedFile $file): string
+   {
+	   $completedFile = $file->storeAs('slider/music',$file->hashName());
+
+       if(!$completedFile) {
+		   throw new \Exception("Файл не был загружен");
 	   }
 
 	   return $completedFile;

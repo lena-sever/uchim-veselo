@@ -73,14 +73,19 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-
+        $first_tests = $course->first_tests()->get();
+        $second_tests = $course->second_tests()->get();
+        $third_tests = $course->third_tests()->get();
         $lessons = $course->lessons()->get();
         $reviews = $course->courseReviews()->get();
 
         return view('admin.course.show',[
             'course' => $course,
             'lessons' => $lessons,
-            'reviews' => $reviews
+            'reviews' => $reviews,
+            'first_tests'=> $first_tests,
+            'second_tests'=> $second_tests,
+            'third_tests'=> $third_tests
         ]);
     }
 

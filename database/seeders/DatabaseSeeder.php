@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
             CoursesSeeder::class,
             CourseReviewsSeeder::class,
             LessonsSeeder::class,
-            TestTypeSeeder::class,
-            TestStepSeeder::class,
-            TestsSeeder::class,
+            FirstTestsSeeder::class,
+            SecondTestsSeeder::class,
+            ThirdTestsSeeder::class,
             SlidersSeeder::class
         ]);
     }

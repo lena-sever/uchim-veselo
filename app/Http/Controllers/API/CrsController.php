@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Course;
+use App\Models\Slider;
+use Illuminate\Support\Facades\DB;
 
 
 class CrsController extends Controller
@@ -29,8 +31,8 @@ class CrsController extends Controller
     {
         $lessons = $course->lessons()->get();
         $reviews =  $course->courseReviews()
-                ->with('user')
-                ->get();
+            ->with('user')
+            ->get();
         $course->lessons =  $lessons;
         $course->reviews =  $reviews;
 
@@ -40,25 +42,44 @@ class CrsController extends Controller
     }
 
 
-    public function edit($id)
+    public function show_first_slider(Course $course)
     {
-        //
+        $id = $course->id;
+        //получим номер первого урока этого курса
+        $les_id = DB::table('lessons')->where('course_id', $id)->orderBy('id')->first();
+        $les_id = $les_id-> id;
+
+        $first_slider = DB::table('sliders')
+            ->where('lesson_id', $les_id)
+            ->get();
+
+        return json_encode($first_slider, JSON_UNESCAPED_UNICODE);
     }
 
-
-    public function update(Request $request, $id)
+    
+    public function show_last_slider(Course $course)
     {
-        //
+        $id = $course->id;
+        //получим номер первого урока этого курса
+        $les_id = DB::table('lessons')->where('course_id', $id)->orderBy('id', 'desc')->first();
+        $les_id = $les_id-> id;
+
+        $first_slider = DB::table('sliders')
+            ->where('lesson_id', $les_id)
+            ->get();
+
+        return json_encode($first_slider, JSON_UNESCAPED_UNICODE);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function first_test(Course $course)
     {
-        //
+        $id = $course->id;
+
+        $first_test = DB::table('first_tests')
+            ->where('course_id', $id)
+            ->get();
+
+        return json_encode($first_test, JSON_UNESCAPED_UNICODE);
     }
+
 }

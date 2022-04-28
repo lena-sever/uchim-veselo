@@ -38,7 +38,6 @@ class CourseReviewController extends Controller
     public function store(CreateRequest $request)
     {
         $validated = $request->validated();
-
         $created = CourseReview::create($validated);
 
         if($created) {

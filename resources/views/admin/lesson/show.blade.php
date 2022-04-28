@@ -1,55 +1,52 @@
 @extends('layouts.app')
 
-@section('title', 'Тест')
+@section('title', 'Панель администратора')
 
 @section('content')
+
+@include('inc.message')
 <div class="container">
-<h1 class="h2">Список тестов по главе: {{$lesson->title}}</h1>
-<div class="btn-toolbar mb-2 mb-md-0">
-        <div class="btn-group me-2">
-        <a href="{{ route('admin.course.show',['course' => $lesson->course_id]) }}" type="button" class="btn btn-secondary">Назад</a> &nbsp;
-        <a href="{{ route('admin.test.create') }}"
-               type="button" class="btn btn-secondary">Добавить тест
-            </a>
-        </div>
-    </div>
+<h1 class="h2">Список слайдеров "{{$lesson->title}}"</h1>
+<a href="{{ route('admin.course.show',['course'=>$lesson->course_id]) }}" type="button" class="btn btn-sm btn-secondary">Назад</a> &nbsp;
+  <a href="{{route ('admin.slider.create')}}" type="button" class="btn btn-sm btn-secondary">Добавить слайдер</a>
   <div class="row">
-  <div class="table-responsive">
+    <div class="table-responsive">
   <table class="table table-bordered">
             <thead>
-               <tr>
-                   <th>#ID</th>
-                   <th>Название</th>
-                   <th>Шаг</th>
-                   <th>Тип</th>
-                   <th>Вопросы</th>
-                   <th>Описание</th>
-                   <th>Опции</th>
-               </tr>
-            </thead>
-            <tbody>
-            @forelse($tests as $testsItem)
-                <tr id="{{$testsItem->id}}">
-                    <td>{{ $testsItem->id }}</td>
-                    <td>{{ $testsItem->test_title }}</td>
-                    <td>{{$testsItem->test_step->test_steps_title}}</td>
-                    <td>{{$testsItem->test_type->test_type_title}}</td>
-                    <td>{{ $testsItem->questions }}</td>
-                    <td>{!! $testsItem->description !!}</td>
-                    <td>
-                        <p class="btn-group">
-                            <a class="btn btn-sm btn-primary" href="{{ route('admin.test.edit', ['test' => $testsItem]) }}">Редактировать</a> &nbsp;
-                            <a class="delete btn btn-sm btn-danger" href="{{ route('admin.test.destroy', ['test' => $testsItem]) }}">Удалить</a>
-                        </p>
-                    </td>
+            <tr>
+                <th>№</th>
+                <th>Текст</th>
+                <th>Изображение</th>
+                <th>Музыка</th>
+                <th>Опции</th>
                 </tr>
+            @forelse($sliders as $slidersItem)
+            <tr id="{{$slidersItem->id}}">
+                <td>{{ $slidersItem->id }}</td>
+                <td>{!! $slidersItem->text !!}</td>
+                <td><img src="{{$slidersItem->img}}" width="100" height="100" alt="" class="cart-img-top"></td>
+                <td><audio controls src="{{ $slidersItem->music }}"></audio></td>
+                <td>
+                    <p class="btn-group">
+                        <a class="btn btn-sm btn-primary" href="{{route ('admin.slider.edit',['slider'=>$slidersItem])}}">Редактировать</a> &nbsp;
+                        <a class="delete btn btn-sm btn-danger" href="{{route ('admin.slider.destroy',['slider'=>$slidersItem])}}">Удалить</a>
+                    </p>
+                </td>
+		    </tr>
               @empty
                   <tr><td colspan="6">Записей нет</td> </tr>
               @endforelse
             </tbody>
         </table>
-
+    </div>
   </div>
-  <hr>
+  <br>
+<hr>
 </div>
 @endsection
+
+
+
+
+
+

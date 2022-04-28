@@ -30,8 +30,9 @@ const ReviewForm = (props) => {
             let objReview = new Object();
             objReview.text = value.text;
             objReview.course_id = props.courseId;
-            objReview.user_id = getRandomId(100, 200);
-            debugger;
+            // objReview.user_id = getRandomId(100, 200);
+            // В будушем необходимо будет передавать настоящий userId зарегистрированного юзера
+            objReview.user_id = 5;
             dispatch(addReviewTC(objReview));
         },
     });

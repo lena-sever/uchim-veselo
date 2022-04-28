@@ -10,6 +10,7 @@ import Login from "../Login/Login";
 import SliderContainer from "../common/Slider/Slider";
 
 import {sliderList} from "../../constants/forSlider/forSlider";
+import Tests from "../Tests/Tests";
 
 function Router() {
     return (
@@ -17,17 +18,18 @@ function Router() {
             <Route path="/" element={<InfoPage />} />
             <Route path="/courses">
                 <Route index element={<Courses />} />
-                <Route path=":courseId" element={<Lessons />} />
-                <Route path=":courseId/:lessonId" element={<LessonsItem />} />
-                <Route path=":coursId" element={<CoursPage />} />
+                <Route path=":courseId" element={<CoursPage />} />
+                <Route path=":courseId/:slider1" element={<LessonsItem />} />
+                <Route path=":courseId/:slider2" element={<LessonsItem />} />
+                <Route path=":courseId/tests" element={ <Tests/> }/>
             </Route>
-            <Route path="/contacts" element={<Contacts />}></Route>
-            <Route path="/login" element={<Login />}></Route>
+            <Route path="/contacts" element={<Contacts />} />
+            <Route path="/login" element={<Login />} />
             <Route
                 path="/slider"
                 element={<SliderContainer sliderList={sliderList} />}
-            ></Route>
-            <Route path="*" element={<Error_404 />}></Route>
+             />
+            <Route path="*" element={<Error_404 />} />
         </Routes>
     );
 }

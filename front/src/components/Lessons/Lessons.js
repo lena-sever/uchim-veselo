@@ -16,6 +16,8 @@ import {
 } from "../../store/reviews/reviewsSelector";
 import { useEffect } from "react";
 import { getReviewTC } from "../../store/reviews/actions";
+import { getCourses } from "../../store/courses/actions";
+import { getLessons } from "../../store/lessons/actions";
 import LessonReview from "./LessonReview/LessonReview";
 import ReviewForm from "./ReviewForm/ReviewForm";
 
@@ -26,6 +28,11 @@ function Lessons() {
     const isLoading = useSelector(selectLessonsLoading);
     const error = useSelector(selectCoursesError);
 
+    const requestCourses = async () => {
+        dispatch(getCourses());
+        dispatch(getLessons(courseId));
+    };
+
     const reviewCourse = useSelector(selectReview);
     const error_review = useSelector(selectErrorReview);
     const dispatch = useDispatch();
@@ -33,6 +40,11 @@ function Lessons() {
         dispatch(getReviewTC(courseId));
     };
     useEffect(() => {
+        if (courses.length === 0) {
+            console.log(courseId);
+            requestCourses();
+            console.log(lessons);
+        }
         requestReview(courseId);
     }, []);
 
@@ -40,50 +52,47 @@ function Lessons() {
         return <LessonReview key={review.id} review={review} />;
     });
 
-    if (!courses[courseId - 1]) {
-        return <Navigate replace to="/courses" />;
-    }
-
     const style = {
         maxWidth: "1249px",
         margin: "0 auto",
     };
-
-    return (
-        <>
-            <h2>{courses[courseId - 1].title} </h2>
-            <NavLink to="/courses">Вернуться к списку курсов</NavLink>
-
-            <div sx={{ width: "100%", maxWidth: 600 }}>
-                {isLoading ? (
-                    <CircularProgress />
-                ) : error ? (
-                    <>{!!error && <h3>{error}</h3>}</>
-                ) : (
-                    Object.keys(lessons).map((i) => {
-                        return (
-                            <p key={i}>
-                                <NavLink
-                                    to={`/courses/${courseId}/${lessons[i].id}`}
-                                >
-                                    {lessons[i].title}
-                                </NavLink>
-                            </p>
-                        );
-                    })
-                )}
-            </div>
-            <div>
+    if (courses.length !== 0) {
+        console.log(lessons);
+        return (
+            <>
+                <h2>{courses[courseId - 1].title} </h2>
+                <NavLink to="/courses">Вернуться к списку историй</NavLink>
+                <NavLink to={`/courses/${courseId}/:slider1`}>
+                    Начать историю
+                </NavLink>
+                {/* <div sx={{ width: "100%", maxWidth: 600 }}>
+                    {isLoading ? (
+                        <CircularProgress />
+                    ) : error ? (
+                        <>{!!error && <h3>{error}</h3>}</>
+                    ) : (
+                        Object.keys(lessons).map((i) => {
+                            return (
+                                <p key={i}>
+                                    <NavLink
+                                        to={`/courses/${courseId}/${lessons[i].id}/:slider1`}
+                                    >
+                                        {lessons[i].title}
+                                    </NavLink>
+                                </p>
+                            );
+                        })
+                    )}
+                </div> */}
                 <ReviewForm courseId={courseId}></ReviewForm>
-            </div>
-            <h2>Отзывы</h2>
-            {error_review ? (
-                <h1>{error_review}</h1>
-            ) : (
+                <div>
+                    <h2>Отзывы</h2>
+                </div>
                 <div style={style}>{reviewElem}</div>
-            )}
-        </>
-    );
+            </>
+        );
+    }
+    return <CircularProgress />;
 }
 
 export default Lessons;
