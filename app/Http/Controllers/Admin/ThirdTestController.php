@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use App\Http\Requests\Test\Third\EditRequest;
 use App\Http\Requests\Test\Third\CreateRequest;
+use Illuminate\Support\Arr;
 
 class ThirdTestController extends Controller
 {
@@ -65,10 +66,15 @@ class ThirdTestController extends Controller
             $request->sentence_9,
             $request->sentence_10
         ];
-$word_1 = explode(" ",$request->sentence_1);
-$word_1 = (array)shuffle($word_1);
 
-        dd($validated,$word_1);
+        foreach ($validated['right_sentence'] as $sentence){
+            $sentence = explode(" ",$sentence);
+            shuffle($sentence);
+            join(" ",$sentence);
+            $validated['words'] = $sentence;
+            return $validated['words'] ;
+        }
+        dd($validated);
         $created = ThirdTest::create( $request->validated());
 
 		if($created) {
