@@ -1,3 +1,33 @@
+/*Убираем Header и center Footer*/
+.slider-wrap {
+    position: relative;
+    height: 100vh;
+    margin-top: -175px;
+    margin-bottom: -111px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+    z-index: 5;
+}
+
+/*Убираем Header и center Footer*/
+@media screen and (max-width: 460px) {
+    .slider-wrap {
+        margin-top: -210px;
+    }
+}
+
+.slider {
+    min-height: 500px;
+    max-height: 700px;
+    max-width: 1074px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+}
+
 .slider__img {
     max-width: 500px
 }
@@ -10,15 +40,23 @@
 
 .slider__volue {
     width: 100px;
-
 }
 
 .btn__wrp {
-    min-width: 150px;
-    max-width: 300px;
-    margin: 0 auto;
+    width: 300px;
+    margin-bottom: 2em;
     display: flex;
     justify-content: space-between;
+}
+
+.btn_link {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.btn_link a {
+    text-decoration: none;
 }
 
 @media (max-width: 1024px) {

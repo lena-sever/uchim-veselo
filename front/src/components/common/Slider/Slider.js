@@ -48,7 +48,7 @@ const SliderContainer = ({ sliderList, togleTestActive }) => {
     };
 
     return (
-        <div>
+        <div className="slider">
             {/* <div>{button}</div> */}
             <SliderButtonsControl
                 buttonsActive={{
@@ -64,6 +64,7 @@ const SliderContainer = ({ sliderList, togleTestActive }) => {
                 // title={sliderList[slideItemId].title}
                 img={sliderList[slideItemId].img}
                 isLastSlider={slideItemId === sliderList.length - 1}
+                path={sliderList[slideItemId].path}
                 togleTestActive={togleTestActive}
             />
         </div>

@@ -6,12 +6,13 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import * as React from "react";
 import { useState } from "react";
-import { NavLink, } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
-function Test1({ test, getTestsHandler }) {
+function Test1({ courseId, test, getTestsHandler }) {
     const [ value, setValue ] = useState( "" );
     const [ disabled, setDisabled ] = useState( false );
+    const path = `/courses/${ courseId }/slider2`;
 
     function changeValue(event) {
         setValue( event.target.value );
@@ -19,9 +20,9 @@ function Test1({ test, getTestsHandler }) {
     }
 
     return (
-        <>
+        <section className="test">
+            <h2 className="test__title">{ test.test_title } <span className="test__word">{ test.word }</span></h2>
             <FormControl>
-                <FormLabel id="demo-radio-buttons-group-label">{ test.test_title } { test.word }</FormLabel>
                 <RadioGroup
                     aria-labelledby="demo-radio-buttons-group-label"
                     defaultValue="female"
@@ -41,19 +42,19 @@ function Test1({ test, getTestsHandler }) {
             </FormControl>
 
             {
-                ( value == test.right_answer ) ? (
+                value == test.right_answer ? (
                     <div className="test__correct">
                         <p>
-                            Молодец! Ты выбрал правильное решение.
+                            Молодец! Ты выбрал правильное решение и помог нашему герою. Спасибо!
                         </p>
-                        <p><NavLink to="/courses">Вернуться к истории</NavLink></p>
+                        <p><NavLink to={ path }>Вернуться к истории</NavLink></p>
                     </div>
                 ) : ( value != test.right_answer && value != "" ) ? (
-                    <div className="test__error">
-                        <p>
+                    <div className="test__bottom">
+                        <p className="test__error">
                             К сожалению, это неверный выбор. Давай вместе разберем значение этого слова.
                         </p>
-                        <button
+                        <button className="test__btn"
                             onClick={ () => {
                                 getTestsHandler( 2 );
                             } }
@@ -64,7 +65,7 @@ function Test1({ test, getTestsHandler }) {
             }
 
 
-        </>
+        </section>
     );
 }
 

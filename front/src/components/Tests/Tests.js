@@ -21,7 +21,6 @@ function Tests() {
 
     const requestTests = async() => {
         dispatch( getFirstTest( courseId ) );
-        console.log( "dispatch" );
     };
 
     useEffect( () => {
@@ -36,6 +35,12 @@ function Tests() {
 
     function switchTests() {
         switch( renderTests ) {
+            case 1:
+                return <Test1
+                    courseId={courseId}
+                    test={ test }
+                    getTestsHandler={ getTestsHandler }/>;
+
 
             case 2:
                 return <Test2
@@ -54,6 +59,7 @@ function Tests() {
 
             default:
                 return <Test1
+                    courseId={courseId}
                     test={ test }
                     getTestsHandler={ getTestsHandler }
                 />;

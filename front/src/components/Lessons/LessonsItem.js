@@ -36,19 +36,21 @@ function LessonsItem() {
     }, []);
     if (!err) {
         return (
-            <>
-                <div>
+            <div className="slider-wrap">
+                <div >
                     {slider1 === "slider1" && (
                         <SliderContainer
                             sliderList={[
                                 ...firstHistoy,
-                                { music: "", text: "Начать тест", img: "" },
+                                { music: "", text: "Начать тест", img: "", path: `/courses/${courseId}/tests` },
                             ]}
-                            path={""}
                         />
                     )}
                     {slider1 === "slider2" && (
-                        <SliderContainer sliderList={lastHistoy} path={""} />
+                        <SliderContainer sliderList={[
+                            ...lastHistoy,
+                            { music: "", text: "К следуещей истории", img: "", path: `/courses/${courseId*1+1}/slider1` },
+                        ]} />
                     )}
                 </div>
                 <Button
@@ -60,7 +62,7 @@ function LessonsItem() {
                 >
                     Назад к историям
                 </Button>
-            </>
+            </div>
         );
     } else <>err</>
 }

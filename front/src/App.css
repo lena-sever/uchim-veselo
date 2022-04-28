@@ -564,8 +564,8 @@ body {
     .home {
         font-size: 18px;
     }
-   
-    
+
+
     }
 
 @media screen and (max-width: 696px) {
@@ -580,7 +580,12 @@ body {
 }
 
 @media screen and (max-width: 425px) {
-    
+    .title {
+        font-size: 35px;
+    }
+    .subtitle {
+        font-size: 25px;
+    }
 
     .provide__info-wrp {
         width: 320px;
@@ -622,7 +627,7 @@ body {
 
     .design {
         padding: 45px 20px;
-        
+
     }
 
     .design__form {

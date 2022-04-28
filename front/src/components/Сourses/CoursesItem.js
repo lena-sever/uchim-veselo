@@ -39,7 +39,7 @@ function CoursesItem({ course }) {
 
             <NavLink
                 to={ path }
-                class="products_item_img"
+                className="products_item_img"
                 onClick={ getLessonsList }
             >
                 <img
