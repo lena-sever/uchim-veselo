@@ -22,5 +22,7 @@ code {
 }
 
 .main {
+    
+    padding: 30px 30px;
     flex-grow: 1; /* прижимаем footer к низу страницы */
 }

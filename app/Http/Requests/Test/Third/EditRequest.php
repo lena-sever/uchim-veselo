@@ -42,7 +42,7 @@ class EditRequest extends FormRequest
 	public function  attributes(): array
 	{
 		return [
-            'course_id' => 'История',
+            'course_id' => 'Комикс',
 			'test_title' => 'Наименование теста',
 			'right_sentence' => 'Предложения',
 		];

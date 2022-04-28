@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Редактировать историю')
+@section('title', 'Редактировать комикс')
 
 @section('content')
 
@@ -10,17 +10,17 @@
         @csrf
         @method('put')
             <div class="form-group">
-                <label for="title">Наименование истории</label>
+                <label for="title">Наименование комикса</label>
                 <input type="text" class="form-control" id="title" name="title" value="{{ $course->title }}">
                 @error('title') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
-                <label for="description">Краткое описание истории</label>
+                <label for="description">Краткое описание комикса</label>
                 <textarea class="form-control" name="description" id="description">{!! $course->description !!}</textarea>
                 @error('description') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
-                <label for="text">Полное описание истории</label>
+                <label for="text">Полное описание комикса</label>
                 <textarea class="form-control" name="text" id="text">{!! $course->text !!}</textarea>
                 @error('text') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>

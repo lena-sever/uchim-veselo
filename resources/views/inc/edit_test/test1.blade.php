@@ -2,7 +2,7 @@
         @csrf
         @method('put')
             <div class="form-group">
-                <label for="course_id">История</label>
+                <label for="course_id">Комикс</label>
                 @foreach($courses as $course)
                     @if($course->id === $first_test->course_id)
                     <input hidden type="text" class="form-control" id="course_id" name="course_id" value="{{ $first_test->course_id }}">

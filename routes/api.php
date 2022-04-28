@@ -58,10 +58,13 @@ Route::put('course_reviews/{course_review}', [CrsReviewController::class,'update
 Route::delete('course_reviews/{course_review}', [CrsReviewController::class,'destroy']);
 
 
-
+// test user
+Route::get('user', [UserController::class,'test_form']);
 // регистрация
 Route::post('user', [UserController::class,'store']);
 // авторизация
 Route::post('user/login', [UserController::class,'login']);
 // auth
 Route::post('user/auth', [UserController::class,'auth']);
+// сообщение с сайта
+Route::post('messange', [UserController::class,'messange']);

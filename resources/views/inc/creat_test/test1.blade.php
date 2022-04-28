@@ -1,7 +1,7 @@
 <form method="post" action="{{ route('admin.test_1.store') }}">
         @csrf
             <div class="form-group">
-                <label for="course_id">История</label>
+                <label for="course_id">Комикс</label>
                 <select class="form-control" id="course_id" name="course_id">
                     @foreach($courses as $course)
                         <option value="{{ $course->id }}"  @if($course->id == $course_id) selected @endif> {{ $course->title }}</option>

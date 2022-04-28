@@ -97,6 +97,13 @@
     }
 }
 
+@media screen and (max-width: 500px) {
+    .design__form-input { 
+
+margin: 0 0 27px 0;
+    }
+}
+
 
 
 @media screen and (max-width: 1282px) {

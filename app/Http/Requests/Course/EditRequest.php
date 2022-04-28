@@ -44,9 +44,9 @@ class EditRequest extends FormRequest
 	public function  attributes(): array
 	{
 		return [
-			'title' => 'Наименование истории',
-			'description' => 'Краткое описание истории',
-            'text' => 'Полное описание истории'
+			'title' => 'Наименование комикса',
+			'description' => 'Краткое описание комикса',
+            'text' => 'Полное описание комикса'
 		];
 	}
 }

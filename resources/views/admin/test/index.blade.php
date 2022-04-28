@@ -7,7 +7,7 @@
 <div class="container">
 @forelse($course as $courseItem)
 @if($courseItem->id == $course_id)
-    <h1 class="h2">Список тестов по Истории: {{$courseItem->title}}</h1>
+    <h1 class="h2">Список тестов по Комиксу: {{$courseItem->title}}</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group me-2">
             <a href="{{ route('admin.course.show',['course' => $course_id]) }}" type="button" class="btn btn-secondary">Назад</a> &nbsp;

@@ -34,7 +34,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.course.index') }}">ВСЕ ИСТОРИИ</a>
+                            <a class="nav-link" href="{{ route('admin.course.index') }}">ВСЕ КОМИКСЫ</a>
                         </li>
                         @guest
                         @else

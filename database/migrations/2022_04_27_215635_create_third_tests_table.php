@@ -16,7 +16,6 @@ class CreateThirdTestsTable extends Migration
         Schema::create('third_tests', function (Blueprint $table) {
             $table->id();
             $table->foreignId('course_id')->constrained('courses')->cascadeOnDelete();
-            $table->string('test_title');
             $table->string('right_sentence');
             $table->json('words');
             $table->timestamps();
@@ -24,11 +23,6 @@ class CreateThirdTestsTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('third_tests');

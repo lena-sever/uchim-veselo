@@ -42,7 +42,7 @@ class CreateRequest extends FormRequest
 	{
 		return [
             'text' => 'Ваш Отзыв',
-            'course_id' => 'История',
+            'course_id' => 'Комикс',
             'user_id' => 'Пользователь'
 		];
 	}

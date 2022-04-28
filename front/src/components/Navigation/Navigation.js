@@ -21,7 +21,7 @@ function Navigation() {
                 <img className="header__img" src={logo} />
             </NavLink>
             <NavLink to="/courses" className="home">
-                Истории{" "}
+                Комиксы{" "}
             </NavLink>
             <NavLink to="/contacts" className="home">
                 Контакты

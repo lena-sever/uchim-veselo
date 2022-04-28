@@ -70,7 +70,7 @@ function Test1({ test, getTestsHandler, courseId }) {
                 <div className="test__correct">
                     <p>Молодец! Ты выбрал правильное решение.</p>
                     <p>
-                        <NavLink to={path}>Вернуться к истории</NavLink>
+                        <NavLink to={path}>Вернуться к комиксу</NavLink>
                     </p>
                 </div>
             ) : value != test.right_answer && value != "" ? (

@@ -3,6 +3,7 @@
 }
 
 .main {
+  
     display: flex;
     justify-content: center;
 }
@@ -170,6 +171,7 @@
     .main {
         flex-direction: column;
         align-items: center;
+        
     }
 
     .left_content {
@@ -216,6 +218,8 @@
         margin: 50px 0 0 3px;
     }
 }
+
+
 
 @media screen and (max-width: 425px) {
     .button_submit {

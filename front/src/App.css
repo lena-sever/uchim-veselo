@@ -324,11 +324,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background:  radial-gradient(110.67% 538.64% at 5.73% 50%, #422072 0%, #1A1A1C 100%), #352f4d;
+    background: radial-gradient(110.67% 538.64% at 5.73% 50%, #422072 0%, #1A1A1C 100%), #352f4d;
     margin-bottom: 100px;
     border-radius: 50px 50px 50px 50px;
     position: relative;
 }
+
 .bird {
     position: absolute;
     left: 56px;
@@ -341,7 +342,7 @@ body {
         "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
         "Helvetica Neue", sans-serif;
     font-size: 42px;
-    line-height: 24px;
+    line-height: 40px;
     font-weight: 700;
     letter-spacing: 0.025em;
     color: #ffffff;
@@ -448,11 +449,12 @@ body {
     font-size: 12px;
     border-radius: 5px;
 }
+
 /* 422072 */
 /* background:  radial-gradient(110.67% 538.64% at 5.73% 50%, #422072 0%, #1A1A1C 100%), #352f4d; */
 .footer {
     height: 111px;
-    background:  radial-gradient(110.67% 538.64% at 5.73% 50%, #b458bf 0%, #1A1A1C 100%), #352f4d;
+    background: radial-gradient(110.67% 538.64% at 5.73% 50%, #b458bf 0%, #1A1A1C 100%), #352f4d;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -538,49 +540,79 @@ body {
         padding: 0 30px 0 30px;
     }
 }
+
 @media screen and (max-width: 1232px) {
     .bird {
         display: none;
     }
 }
-
-@media screen and (max-width: 600px) {
-.design-title {
-    font-size: 20px;
-}
-.design {
-    padding: 45px 20px;
-}
-.design__form-btn {
-    font-size: 12px;
-    height: 45px;
-}
-    .design__form {
-        align-items: center;
+@media screen and (max-width: 1100px) {
+    .design-title {
+        font-size: 35px;
     }
 }
+@media screen and (max-width: 1024px) {
+    .design {
+        max-width: 950px;
+    }
+
+    
+}
+
 
 @media screen and (max-width: 768px) {
     .home {
         font-size: 18px;
     }
-   
-    
+    .title {
+       
+        font-size: 40px;
+        
     }
+}
 
 @media screen and (max-width: 696px) {
     .footer-wrp {
         justify-content: center;
     }
 }
-@media screen and (max-width: 1024px) {
-.design {
-    max-width: 950px;
+
+@media screen and (max-width: 600px) {
+    .design {
+        margin-bottom: 50px;
+    }
+    .design-title {
+        font-size: 20px;
+    }
+
+    .design {
+        padding: 45px 20px;
+    }
+
+    .design__form-btn {
+        font-size: 12px;
+        height: 45px;
+    }
+
+    .design__form {
+        align-items: center;
+    }
 }
+@media screen and (max-width: 500px) {
+    .design__form {
+       flex-direction: column;
+
+    }
 }
 
+
+
+
+
 @media screen and (max-width: 425px) {
-    
+    .design__form-btn {
+       width: 100%; 
+    }
 
     .provide__info-wrp {
         width: 320px;
@@ -622,7 +654,7 @@ body {
 
     .design {
         padding: 45px 20px;
-        
+
     }
 
     .design__form {
@@ -639,5 +671,13 @@ body {
 
     .footer-wrp {
         justify-content: center;
+    }
+}
+@media screen and (max-width: 350px) {
+    
+    .title {
+       
+        font-size: 30px;
+        
     }
 }
