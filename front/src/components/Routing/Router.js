@@ -14,7 +14,7 @@ import Tests from "../Tests/Tests";
 
 function Router() {
     return (
-        <Routes>
+        <Routes >
             <Route path="/" element={<InfoPage />} />
             <Route path="/courses">
                 <Route index element={<Courses />} />
@@ -28,7 +28,7 @@ function Router() {
             <Route
                 path="/slider"
                 element={<SliderContainer sliderList={sliderList} />}
-             />
+            />
             <Route path="*" element={<Error_404 />} />
         </Routes>
     );

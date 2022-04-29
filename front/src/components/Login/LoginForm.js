@@ -8,7 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { styled } from "@mui/material/styles";
 import { purple } from "@mui/material/colors";
 
-import { authMe } from "../../store/auth/action";
+import { login } from "../../store/auth/action";
 import { selectUser } from "../../store/auth/authSelector";
 
 const validationSchema = yup.object({
@@ -55,7 +55,7 @@ const LoginForm = () => {
         },
         validationSchema: validationSchema,
         onSubmit: async (values) => {
-            dispatch(authMe(values));
+            dispatch(login(values));
         },
     });
 
@@ -103,6 +103,7 @@ const LoginForm = () => {
                     Вход
                 </ColorButton>
             </div>
+            {user.err && <p>{user.err}</p>}
         </form>
     );
 };

@@ -68,6 +68,7 @@ const SliderContainer = ({ sliderList, togleTestActive }) => {
                 nextSlider={nextSlider}
                 prewSlider={prewSlider}
             />
+
         </div>
     );
 };

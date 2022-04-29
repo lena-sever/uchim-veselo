@@ -8,6 +8,7 @@ import * as React from "react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
+
 function Test1({ test, getTestsHandler, courseId }) {
     const [value, setValue] = useState("");
     const [disabled, setDisabled] = useState(false);
@@ -16,13 +17,10 @@ function Test1({ test, getTestsHandler, courseId }) {
         setValue(event.target.value);
         setDisabled(true);
     }
-
     return (
-        <>
+        <section className="test">
+            <h2 className="test__title">{ test.test_title } <span className="test__word">{ test.word }</span></h2>
             <FormControl>
-                <FormLabel id="demo-radio-buttons-group-label">
-                    {test.test_title} {test.word}
-                </FormLabel>
                 <RadioGroup
                     aria-labelledby="demo-radio-buttons-group-label"
                     defaultValue="female"
@@ -65,30 +63,31 @@ function Test1({ test, getTestsHandler, courseId }) {
                     />
                 </RadioGroup>
             </FormControl>
+            {
+                value == test.right_answer ? (
+                    <div className="test__correct">
+                        <p>
+                            Молодец! Ты выбрал правильное решение и помог нашему герою. Спасибо!
+                        </p>
+                        <p><NavLink to={ path }>Вернуться к истории</NavLink></p>
+                    </div>
+                ) : ( value != test.right_answer && value != "" ) ? (
+                    <div className="test__bottom">
+                        <p className="test__error">
+                            К сожалению, это неверный выбор. Давай вместе разберем значение этого слова.
+                        </p>
+                        <button className="test__btn"
+                            onClick={ () => {
+                                getTestsHandler( 2 );
+                            } }
+                        >Далее
+                        </button>
+                    </div>
+                ) : null
+            }
 
-            {value == test.right_answer ? (
-                <div className="test__correct">
-                    <p>Молодец! Ты выбрал правильное решение.</p>
-                    <p>
-                        <NavLink to={path}>Вернуться к комиксу</NavLink>
-                    </p>
-                </div>
-            ) : value != test.right_answer && value != "" ? (
-                <div className="test__error">
-                    <p>
-                        К сожалению, это неверный выбор. Давай вместе разберем
-                        значение этого слова.
-                    </p>
-                    <button
-                        onClick={() => {
-                            getTestsHandler(2);
-                        }}
-                    >
-                        Далее
-                    </button>
-                </div>
-            ) : null}
-        </>
+
+        </section>
     );
 }
 

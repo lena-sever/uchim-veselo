@@ -23,9 +23,9 @@ function Tests() {
     const [renderTests, setRenderTest] = useState(0);
     const dispatch = useDispatch();
 
-    const requestTests = async () => {
-        dispatch(getFirstTest(courseId));
-        console.log("dispatch");
+
+    const requestTests = async() => {
+        dispatch( getFirstTest( courseId ) );
     };
 
     useEffect(() => {
@@ -37,7 +37,12 @@ function Tests() {
     };
 
     function switchTests() {
-        switch (renderTests) {
+        switch( renderTests ) {
+            case 1:
+                return <Test1
+                    courseId={courseId}
+                    test={ test }
+                    getTestsHandler={ getTestsHandler }/>;
             case 2:
                 return <Test2 test={test} getTestsHandler={getTestsHandler} />;
 
@@ -48,13 +53,12 @@ function Tests() {
                 return <Test4 test={test} getTestsHandler={getTestsHandler} />;
 
             default:
-                return (
-                    <Test1
-                        test={test}
-                        courseId={courseId}
-                        getTestsHandler={getTestsHandler}
-                    />
-                );
+
+                return <Test1
+                    courseId={courseId}
+                    test={ test }
+                    getTestsHandler={ getTestsHandler }
+                />;
         }
     }
 

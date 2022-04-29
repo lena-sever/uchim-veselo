@@ -9,18 +9,14 @@ import Header from "./components/Header/Header";
 import Router from "./components/Routing/Router";
 import Footer from "./components/Footer/Footer";
 
-import { authSuccess } from "./store/auth/action";
+import { authMe } from "./store/auth/action";
 
 function App() {
     const dispatch = useDispatch();
     useEffect(() => {
-        if (localStorage.getItem("id")) {
+        if (localStorage.getItem("token")) {
             dispatch(
-                authSuccess({
-                    id: localStorage.getItem("id"),
-                    name: localStorage.getItem("name"),
-                    email: localStorage.getItem("email"),
-                })
+                authMe()
             );
         }
     }, []);
