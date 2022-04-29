@@ -42,7 +42,6 @@ export const auth = {
         return axios
             .post(`${urlLogin}`, payload)
             .then((data) => {
-                
                 localStorage.setItem("token", data.data.session_token);
                 return data.data;
             })
@@ -56,7 +55,7 @@ export const auth = {
                 Accept: "application/json",
                 "Content-Type": "application/json",
             })
-            .then((data) => { 
+            .then((data) => {
                 return data.data;
             })
             .catch((err) => err.message);
@@ -88,6 +87,9 @@ export const reviewsAPI = {
     },
     getReview(courseId) {
         return axios.get(`${urlCourses}/${courseId}`).then((res) => res);
+    },
+    addReview(review) {
+        return axios.post(`${urlReviews}`, review).then(() => "ok");
     },
 };
 

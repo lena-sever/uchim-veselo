@@ -10,12 +10,16 @@ import {
     selectLessonsLoading,
 } from "../../store/lessons/lessonsSelectors";
 import CircularProgress from "../curcularProgress/CircularProgress";
-import { selectReview, selectError } from "../../store/reviews/reviewsSelector";
+import {
+    selectReview,
+    selectErrorReview,
+} from "../../store/reviews/reviewsSelector";
 import { useEffect } from "react";
 import { getReviewTC } from "../../store/reviews/actions";
 import { getCourses } from "../../store/courses/actions";
 import { getLessons } from "../../store/lessons/actions";
 import LessonReview from "./LessonReview/LessonReview";
+import ReviewForm from "./ReviewForm/ReviewForm";
 
 function Lessons() {
     const { courseId } = useParams();
@@ -30,7 +34,7 @@ function Lessons() {
     };
 
     const reviewCourse = useSelector(selectReview);
-    // const error_review = useSelector(selectError);
+    const error_review = useSelector(selectErrorReview);
     const dispatch = useDispatch();
     const requestReview = async (courseId) => {
         dispatch(getReviewTC(courseId));
@@ -61,7 +65,6 @@ function Lessons() {
                 <NavLink to={`/courses/${courseId}/:slider1`}>
                     Начать комикс
                 </NavLink>
-
                 {/* <div sx={{ width: "100%", maxWidth: 600 }}>
                     {isLoading ? (
                         <CircularProgress />
@@ -81,6 +84,7 @@ function Lessons() {
                         })
                     )}
                 </div> */}
+                <ReviewForm courseId={courseId}></ReviewForm>
                 <div>
                     <h2>Отзывы</h2>
                 </div>
