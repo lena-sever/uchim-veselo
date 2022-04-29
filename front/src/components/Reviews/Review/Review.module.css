@@ -2,6 +2,7 @@
     width: 200px;
     height: 200px;
     object-fit: contain;
+    border-radius: 50%;
 }
 
 .review {
@@ -23,6 +24,7 @@
 
 .rev_text {
     font-style: italic;
+    max-width: 400px;
 }
 
 .rev_head_item {
@@ -35,7 +37,6 @@
 
 @media screen and (max-width: 460px) {
     .rev_head {
-
         font-size: 30px;
     }
 
@@ -44,5 +45,4 @@
         height: 200px;
         object-fit: contain;
     }
-
 }

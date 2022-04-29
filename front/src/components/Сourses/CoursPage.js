@@ -18,6 +18,9 @@ import { getReviewTC } from "../../store/reviews/actions";
 import LessonReview from "../Lessons/LessonReview/LessonReview";
 import "./Cours.css";
 
+import ReviewForm from "../Lessons/ReviewForm/ReviewForm";
+import { selectUser } from "../../store/auth/authSelector";
+
 const useStyles = makeStyles((theme) => ({
     btn: {
         margin: theme.spacing(2),
@@ -66,6 +69,8 @@ const CoursPage = () => {
         requestReview(courseId);
     }, []);
 
+    const user = useSelector(selectUser);
+
     let reviewElem = reviewCourse.map((review) => {
         return <LessonReview key={review.id} review={review} />;
     });
@@ -102,6 +107,10 @@ const CoursPage = () => {
                         </ColorButtonOutlined>
                     </div>
                     <div>
+                        <ReviewForm
+                            user={user}
+                            courseId={courseId}
+                        ></ReviewForm>
                         <h2>Отзывы</h2>
                     </div>
                     <div style={style}>{reviewElem}</div>
