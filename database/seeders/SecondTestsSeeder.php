@@ -24,12 +24,26 @@ class SecondTestsSeeder extends Seeder
 
         $courses = DB::table('courses')->get();
 
+        $data[] = [
+            'course_id' => 1,
+            'test_title' => 'Нажимайте на слова так, чтобы получилось предложение',
+            'sentence' => 'Нитка - это тонка длинная веревочка, с помощью которой делали ткань, шили одежду.',
+            'right_answer' => json_encode(['тонкая','веревочка','ткань','одежду']),
+            'wrong_answer' =>json_encode(['широкая','змея','помидоры','автомобиль']),
+            'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
+        ];
+
+
         foreach ($courses as $item) {
+            if ($item->id == 1) continue;
             $data[] = [
                 'course_id' => $item->id,
-                'test_title' => 'Составьте предложение ' . $faker->sentence(mt_rand(3, 10)),
-                'description' => 'Нажимайте на слова так, чтобы получилось предложение',
-                'questions' => $faker->text(mt_rand(10, 30)),
+                'test_title' => 'Нажимайте на слова так, чтобы получилось предложение ',
+                'sentence' => $faker->sentence($ndWords=6,$variableNbWords = true),
+                'right_answer' => json_encode($faker->randomElement([
+                    $faker->words($nb = 5, $asText = false)])),
+                'wrong_answer' =>json_encode($faker->randomElement([
+                    $faker->words($nb = 5, $asText = false)])),
                 'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
             ];
     }

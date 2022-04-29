@@ -6,7 +6,7 @@
 
 @include('inc.message')
 <div class="container">
-<h1 class="h2">Список глав по истории: {{$course->title}}</h1>
+<h1 class="h2">Список глав по комиксу: {{$course->title}}</h1>
 <a href="{{ route('admin.course.index') }}" type="button" class="btn btn-sm btn-secondary">Назад</a> &nbsp;
   <a href="{{ route('admin.lesson.create') }}" type="button" class="btn btn-sm btn-secondary">Добавить главу</a>
   <div class="row">
@@ -40,7 +40,7 @@
               @endforelse
             </tbody>
         </table>
-       <h1 class="h2">Список отзывов по истории: {{$course->title}}</h1>
+       <h1 class="h2">Список отзывов по комиксу: {{$course->title}}</h1>
         <form method="post" action="{{route('admin.courseReview.store')}}">
         @csrf
             <div class="row g-3">

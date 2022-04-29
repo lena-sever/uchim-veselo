@@ -19,7 +19,6 @@ export const reviewsReducer = (state = initialReviews, action) => {
         case ERROR_REVIEWS:
             return { ...state, errMessage: action.errMessage };
         case GET_REVIEW:
-            debugger;
             return { ...state, reviewCourse: action.review };
         case ERROR_REVIEW:
             return { ...state, errMessageReview: action.errMessageReview };

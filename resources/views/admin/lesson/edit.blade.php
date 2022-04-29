@@ -10,7 +10,7 @@
         @csrf
         @method('put')
             <div class="form-group">
-                <label for="course_id">История</label>
+                <label for="course_id">Комикс</label>
                 <select disabled class="form-control" id="course_id" name="course_id">
                     @foreach($courses as $course)
                         <option value="{{ $course->id }}"

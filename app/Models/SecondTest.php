@@ -16,11 +16,17 @@ class SecondTest extends Model
     protected $fillable = [
         'course_id',
         'test_title',
-        'description',
-        'questions',
+        'sentence',
+        'right_answer',
+        'wrong_answer',
     ];
 
     public function course() {
         return $this->belongsTo(Course::class);
     }
+
+    protected $casts = [
+        'right_answer' => 'array',
+        'wrong_answer' => 'array',
+    ];
 }

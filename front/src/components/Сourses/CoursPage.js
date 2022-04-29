@@ -19,6 +19,7 @@ import LessonReview from "../Lessons/LessonReview/LessonReview";
 import "./Cours.css";
 
 import ReviewForm from "../Lessons/ReviewForm/ReviewForm";
+import { selectUser } from "../../store/auth/authSelector";
 
 const useStyles = makeStyles((theme) => ({
     btn: {
@@ -68,6 +69,8 @@ const CoursPage = () => {
         requestReview(courseId);
     }, []);
 
+    const user = useSelector(selectUser);
+
     let reviewElem = reviewCourse.map((review) => {
         return <LessonReview key={review.id} review={review} />;
     });
@@ -91,7 +94,7 @@ const CoursPage = () => {
                             size="large"
                             className={classes.btn}
                         >
-                            Начать историю
+                            Начать читать комикс
                         </ColorButton>
 
                         <ColorButtonOutlined
@@ -100,11 +103,14 @@ const CoursPage = () => {
                             to="/courses"
                             size="large"
                         >
-                            Другие истории
+                            Другие комиксы
                         </ColorButtonOutlined>
                     </div>
                     <div>
-                        <ReviewForm courseId={courseId}></ReviewForm>
+                        <ReviewForm
+                            user={user}
+                            courseId={courseId}
+                        ></ReviewForm>
                         <h2>Отзывы</h2>
                     </div>
                     <div style={style}>{reviewElem}</div>
@@ -118,7 +124,7 @@ const CoursPage = () => {
             to="/courses"
             size="large"
         >
-            Другие истории
+            Другие комиксы
         </ColorButtonOutlined>
     );
 };

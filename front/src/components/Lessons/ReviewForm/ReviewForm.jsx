@@ -12,9 +12,6 @@ const style = {
     maxWidth: "350px",
     margin: "0 auto 10px",
 };
-const style_btn = {
-    // display: "block",
-};
 
 const ReviewForm = (props) => {
     const dispatch = useDispatch();
@@ -23,17 +20,13 @@ const ReviewForm = (props) => {
             text: "",
         },
         validationSchema: validationSchema,
-        onSubmit: (value) => {
-            function getRandomId(min, max) {
-                return Math.floor(Math.random() * (max - min + 1)) + min;
-            }
+        onSubmit: (value, actions) => {
             let objReview = new Object();
             objReview.text = value.text;
             objReview.course_id = props.courseId;
-            // objReview.user_id = getRandomId(100, 200);
-            // В будушем необходимо будет передавать настоящий userId зарегистрированного юзера
-            objReview.user_id = 5;
+            objReview.user_id = props.user.id;
             dispatch(addReviewTC(objReview));
+            actions.resetForm({ value: "" });
         },
     });
 
@@ -53,9 +46,7 @@ const ReviewForm = (props) => {
                         error={formik.errors.text}
                         helperText={formik.errors.text}
                     />
-                    <button style={style_btn} type="submit">
-                        Отправить
-                    </button>
+                    <button type="submit">Отправить</button>
                 </div>
             </form>
         </div>

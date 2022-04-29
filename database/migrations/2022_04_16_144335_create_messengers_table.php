@@ -19,7 +19,7 @@ class CreateMessengersTable extends Migration
             $table->string('name')->comment('имя пользователя');
             $table->string('email')->comment('почта пользователя');
             $table->text('message')->comment('вопрос от пользователя');
-            $table->text('answer')->comment('ответ от админа');
+            $table->text('answer')->comment('ответ от админа')->nullable()->default(NULL);
             $table->timestamps();
             $table->softDeletes();
         });

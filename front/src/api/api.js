@@ -6,6 +6,8 @@ import {
     urlReviews,
     firstPatgHistory,
     lastPatgHistory,
+    urlRegistration,
+    urlLogin,
 } from "../constants/url";
 
 export const coursesAPI = {
@@ -24,17 +26,39 @@ export const coursesAPI = {
 };
 
 export const auth = {
+    me() {
+        return axios
+            .post(urlAuth, {
+                session_token: localStorage.getItem("token"),
+            })
+            .then((data) => {
+                return data.data;
+            })
+            .catch((res) => {
+                return res;
+            });
+    },
     sigIn(payload) {
         return axios
-            .post(`${urlAuth}`, payload)
-            .then(() => "ok")
+            .post(`${urlLogin}`, payload)
+            .then((data) => {
+                localStorage.setItem("token", data.data.session_token);
+                return data.data;
+            })
             .catch((err) => err);
     },
     sigUp(payload) {
         return axios
-            .post(`${urlAuth}`, payload)
-            .then(() => "ok")
-            .catch((err) => err);
+            .post(`${urlRegistration}`, payload, {
+                credentials: "include",
+                "Access-Control-Allow-Origin": "*",
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            })
+            .then((data) => {
+                return data.data;
+            })
+            .catch((err) => err.message);
     },
 };
 

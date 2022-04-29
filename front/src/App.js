@@ -1,13 +1,25 @@
 import "./App.css";
+import { useEffect } from "react";
 import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { store } from "./store/store";
 import Header from "./components/Header/Header";
 import Router from "./components/Routing/Router";
 import Footer from "./components/Footer/Footer";
 
+import { authMe } from "./store/auth/action";
+
 function App() {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        if (localStorage.getItem("token")) {
+            dispatch(
+                authMe()
+            );
+        }
+    }, []);
     return (
         <Provider store={store}>
             <div className="App">

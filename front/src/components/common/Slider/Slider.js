@@ -50,14 +50,7 @@ const SliderContainer = ({ sliderList, togleTestActive }) => {
     return (
         <div className="slider">
             {/* <div>{button}</div> */}
-            <SliderButtonsControl
-                buttonsActive={{
-                    next: slideItemId < sliderList.length - 1,
-                    prew: slideItemId > 0,
-                }}
-                nextSlider={nextSlider}
-                prewSlider={prewSlider}
-            />
+            
             <SliderItem
                 newAudio={newAudio}
                 text={sliderList[slideItemId].text}
@@ -66,6 +59,14 @@ const SliderContainer = ({ sliderList, togleTestActive }) => {
                 isLastSlider={slideItemId === sliderList.length - 1}
                 path={sliderList[slideItemId].path}
                 togleTestActive={togleTestActive}
+            />
+            <SliderButtonsControl
+                buttonsActive={{
+                    next: slideItemId < sliderList.length - 1,
+                    prew: slideItemId > 0,
+                }}
+                nextSlider={nextSlider}
+                prewSlider={prewSlider}
             />
         </div>
     );

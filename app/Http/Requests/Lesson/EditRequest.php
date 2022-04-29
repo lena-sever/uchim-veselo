@@ -47,7 +47,7 @@ class EditRequest extends FormRequest
 			'title' => 'Наименование главы',
 			'description' => 'Краткое описание главы',
             'text' => 'Полное описание главы',
-            'course_id' => 'История'
+            'course_id' => 'Комикс'
 		];
 	}
 }

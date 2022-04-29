@@ -1,12 +1,11 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EditRequest extends FormRequest
+class CreateRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -16,9 +15,9 @@ class EditRequest extends FormRequest
     public function rules(): array
     {
         return [
-			'is_admin' => ['nullable', 'integer'],
 			'name' => ['required', 'string', 'min:2'],
-            'email' => ['required','string','email:rfc,dns']
+            'email' => ['required','string','email:rfc,dns'],
+            'password' => ['required', 'string', 'min:7'],
         ];
     }
 
@@ -34,6 +33,7 @@ class EditRequest extends FormRequest
 		return [
 			'name' => 'Ваше Имя',
 			'email' => 'Электронная почта',
+            'password' => 'Пароль',
 		];
 	}
 }
