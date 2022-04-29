@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory;
+use Illuminate\Support\Facades\Storage;
 
 class SecondTestsSeeder extends Seeder
 {
@@ -22,14 +23,26 @@ class SecondTestsSeeder extends Seeder
         $faker = Factory::create();
         $data = [];
 
+        $img = Storage::allFiles('img');
+
         $courses = DB::table('courses')->get();
 
         $data[] = [
             'course_id' => 1,
             'test_title' => 'Нажимайте на слова так, чтобы получилось предложение',
-            'sentence' => 'Нитка - это тонка длинная веревочка, с помощью которой делали ткань, шили одежду.',
-            'right_answer' => json_encode(['тонкая','веревочка','ткань','одежду']),
-            'wrong_answer' =>json_encode(['широкая','змея','помидоры','автомобиль']),
+            'img' => $img[0],
+            'part_sentence_1' => 'Нитка - это',
+            'right_word_1' => 'тонкая',
+            'wrong_word_1' =>'широкая',
+            'part_sentence_2'=> 'длинная,',
+            'right_word_2' => 'веревочка',
+            'wrong_word_2' =>'змея',
+            'part_sentence_3'=>'с помощью которой делали',
+            'right_word_3' =>'ткань',
+            'wrong_word_3' =>'помидоры',
+            'part_sentence_4'=>', шили',
+            'right_word_4' =>'одежду',
+            'wrong_word_4' =>'автомобиль',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
 
@@ -39,11 +52,19 @@ class SecondTestsSeeder extends Seeder
             $data[] = [
                 'course_id' => $item->id,
                 'test_title' => 'Нажимайте на слова так, чтобы получилось предложение ',
-                'sentence' => $faker->sentence($ndWords=6,$variableNbWords = true),
-                'right_answer' => json_encode($faker->randomElement([
-                    $faker->words($nb = 5, $asText = false)])),
-                'wrong_answer' =>json_encode($faker->randomElement([
-                    $faker->words($nb = 5, $asText = false)])),
+                'img'=>$img[$item->id],
+                'part_sentence_1' => $faker->sentence($ndWords=3,$variableNbWords = true),
+                'right_word_1' => $faker->word(),
+                'wrong_word_1' =>$faker->word(),
+                'part_sentence_2'=> $faker->sentence($ndWords=2,$variableNbWords = true),
+                'right_word_2' => $faker->word(),
+                'wrong_word_2' =>$faker->word(),
+                'part_sentence_3'=>$faker->sentence($ndWords=3,$variableNbWords = true),
+                'right_word_3' =>$faker->word(),
+                'wrong_word_3' =>$faker->word(),
+                'part_sentence_4'=>$faker->sentence($ndWords=2,$variableNbWords = true),
+                'right_word_4' =>$faker->word(),
+                'wrong_word_4' =>$faker->word(),
                 'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
             ];
     }

@@ -23,8 +23,14 @@
             </div>
             <div class="form-group">
                 <label for="description">Описание Слова</label>
-                <input type="text" class="form-control" id="description" name="description" value="{{ $first_test->description}}}">
+                <input type="text" class="form-control" id="description" name="description" value="{{ $first_test->description}}">
                 @error('description') <strong style="color:red;">{{ $message }}</strong> @enderror
+            </div>
+            <div class="form-group">
+                <label for="image">Изображение</label>
+                <img width="100" height="auto" src="{{ $first_test->img }}"> &nbsp;
+                <button name="_method" value="delete" class="delete btn btn-sm btn-outline-danger">X</button>
+                <input type="file" class="form-control" id="image" name="image" >
             </div>
             <div class="form-group">
                 <label for="answer_1">Вопрос №1</label>

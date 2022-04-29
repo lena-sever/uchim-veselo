@@ -12,17 +12,12 @@
                 @error('course_id') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
-                <label for="test_title">Наименование теста</label>
-                <input type="text" class="form-control" id="test_title" name="test_title" value="{{ $third_test->test_title }}">
-                @error('test_title') <strong style="color:red;">{{ $message }}</strong> @enderror
-            </div>
-            <div class="form-group">
                 <label for="right_sentence">Предложения</label>
                 <input type="text" class="form-control" id="right_sentence" name="right_sentence" value="{{ $third_test->right_sentence }}">
                 @error('right_sentence') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <br>
-    <button type="submit"  value="Изменить" class="btn btn-success" style="float: right;">Изменить</button>
+    <button type="submit" disabled  value="Изменить" class="btn btn-success" style="float: right;">Изменить</button>
 </form>
 <a href="{{ route('admin.test', ['course' => $third_test->course_id]) }}" type="button" class="btn btn-sm btn-outline-secondary">
         Назад</a>

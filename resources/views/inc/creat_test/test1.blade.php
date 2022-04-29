@@ -15,6 +15,11 @@
                 @error('test_title') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
+                <label for="img">Изображение</label>
+                <img width="100" height="auto" src="{{old('img') }}"> &nbsp;
+                <input type="file" class="form-control" id="img" name="img" >
+            </div>
+            <div class="form-group">
                 <label for="word">Слово</label>
                 <input type="text" class="form-control" id="word" name="word" value="{{ old('word') }}">
                 @error('word') <strong style="color:red;">{{ $message }}</strong> @enderror

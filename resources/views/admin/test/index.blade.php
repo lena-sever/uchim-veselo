@@ -22,6 +22,7 @@
                <tr>
                    <th>#ID</th>
                    <th>Название</th>
+                   <th>Изображение</th>
                    <th>Слово</th>
                    <th>Описание Слова</th>
                    <th>Ответы</th>
@@ -35,8 +36,9 @@
                 <tr id="{{$testsItem->id}}">
                     <td rowspan="5">{{ $testsItem->id }}</td>
                     <td rowspan="5">{{ $testsItem->test_title }}</td>
+                    <td rowspan="5"><img src="{{$testsItem->img}}" width="100" height="100" alt="" class="cart-img-top"></td>
                     <td rowspan="5">{{ $testsItem->word }}</td>
-                    <td rowspan="5">{{ $testsItem->description }}</td>
+                    <td rowspan="5">{!! $testsItem->description !!}</td>
                     <td>{{$testsItem->answer_1}}</td>
                     <td rowspan="5">{{$testsItem->right_answer}}</td>
                     <td rowspan="5">
@@ -111,6 +113,7 @@
             <tr>
                 <th>#ID</th>
                 <th>Название</th>
+                <th>Изображение</th>
                 <th>Предложение</th>
                 <th>Правильные слова</th>
                 <th>Не правильные слова</th>
@@ -123,9 +126,11 @@
         <tr id="{{$testsItem->id}}">
         <td>{{ $testsItem->id }}</td>
         <td>{{ $testsItem->test_title }}</td>
-        <td>{{ $testsItem->sentence }}</td>
-        <td>@foreach($testsItem->right_answer as $word){{$word}},@endforeach</td>
-        <td>@foreach($testsItem->wrong_answer as $word){{$word}},@endforeach</td>
+        <td><img src="{{$testsItem->img}}" width="100" height="100" alt="" class="cart-img-top"></td>
+        <td>{{$testsItem->part_sentence_1}} {{$testsItem->right_word_1}} {{$testsItem->part_sentence_2}} {{$testsItem->right_word_2}} {{$testsItem->part_sentence_3}} {{$testsItem->right_word_3}} {{$testsItem->part_sentence_4}} {{$testsItem->right_word_4}}
+        </td>
+        <td>{{$testsItem->right_word_1}},{{$testsItem->right_word_2}},{{$testsItem->right_word_3}},{{$testsItem->right_word_4}}</td>
+        <td>{{$testsItem->wrong_word_1}},{{$testsItem->wrong_word_2}},{{$testsItem->wrong_word_3}},{{$testsItem->wrong_word_4}}</td>
         <td>
                 <p class="btn-group">
                 <a class="btn btn-sm btn-primary" href="{{ route('admin.test_2.edit', ['test_2' => $testsItem]) }}">Редактировать</a> &nbsp;
@@ -145,7 +150,6 @@
         <a href="{{ route('admin.test_3.create') }}" type="button" class="btn btn-sm btn-outline-secondary">Добавить ThirdTest</a>&nbsp;
             <tr>
                 <th>#ID</th>
-                <th>Название</th>
                 <th>Предложение</th>
                 <th>Слова</th>
                 <th>Опции</th>
@@ -156,10 +160,8 @@
         @if($courseItem->id == $testsItem->course_id)
         <tr id="{{$testsItem->id}}">
         <td>{{ $testsItem->id }}</td>
-        <td>{{ $testsItem->test_title }}</td>
-        <td>{{ $testsItem->right_sentence }}</td>
-        <td>@foreach($testsItem->words as $word){{$word}}, @endforeach</td>
-
+        <td>{{$testsItem->right_sentence}}</td>
+        <td>{!!str_replace('|',', ',$testsItem->words)!!}</td>
         <td>
                 <p class="btn-group">
                 <a class="btn btn-sm btn-primary" href="{{ route('admin.test_3.edit', ['test_3' => $testsItem]) }}">Редактировать</a> &nbsp;

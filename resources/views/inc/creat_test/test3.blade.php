@@ -65,7 +65,7 @@
                 @error('sentence_10') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <br>
-    <button type="submit"  value="Добавить" class="btn btn-success" style="float: right;">Добавить</button>
+    <button type="submit" disabled value="Добавить" class="btn btn-success" style="float: right;">Добавить</button>
 </form>
 <a href="{{route('admin.test',['course'=>$course_id])}}" style="margin-top:15px;" type="button" class="btn btn-sm btn-outline-secondary">
         Назад</a>

@@ -54,8 +54,9 @@ class ThirdTestController extends Controller
     {
         $validated = $request->validated();
         $validated['right_sentence']="";
-        $validated['right_sentence'] = [
-            $request->sentence_1,
+
+
+/*            $request->sentence_1,
             $request->sentence_2,
             $request->sentence_3,
             $request->sentence_4,
@@ -64,8 +65,7 @@ class ThirdTestController extends Controller
             $request->sentence_7,
             $request->sentence_8,
             $request->sentence_9,
-            $request->sentence_10
-        ];
+            $request->sentence_10*/
 
         foreach ($validated['right_sentence'] as $sentence){
             $sentence = explode(" ",$sentence);

@@ -23,7 +23,4 @@ class ThirdTest extends Model
         return $this->belongsTo(Course::class);
     }
 
-    protected $casts = [
-        'words' => 'array'
-    ];
 }
