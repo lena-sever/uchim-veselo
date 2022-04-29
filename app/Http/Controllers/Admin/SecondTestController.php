@@ -7,7 +7,9 @@ use App\Http\Requests\Test\Second\CreateRequest;
 use App\Models\Course;
 use App\Models\SecondTest;
 use Illuminate\Support\Facades\Log;
+use App\Services\UploadService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SecondTestController extends Controller
 {
@@ -51,15 +53,13 @@ class SecondTestController extends Controller
     public function store(CreateRequest $request)
     {
         $validated = $request->validated();
-        if(substr($validated['right_answer'],0,-1)==','){
-            $validated['right_answer']=substr($validated['right_answer'],0,-1);
+		if($request->hasFile('img')) {
+            //добавление картинки локально
+			$validated['img'] = app(UploadService::class)->start($request->file('img'));
+            //добавление картинки в бд
+            $validated['img']='/'.$validated['img'];
         }
-        if(substr($validated['right_answer'],0,-1)==','){
-        $validated['wrong_answer']=substr($validated['wrong_answer'],0,-1);
-        }
-        $validated['right_answer']=explode(',',$validated['right_answer']);
-        $validated['wrong_answer']=explode(',',$validated['wrong_answer']);
-
+//dd($validated);
         $created = SecondTest::create($validated);
 
 		if($created) {
@@ -110,12 +110,15 @@ class SecondTestController extends Controller
     public function update(EditRequest $request, SecondTest $test_2)
     {
         $validated = $request->validated();
-        $validated['right_answer']=substr($validated['right_answer'],0,-1);
-        $validated['right_answer']=explode(',',$validated['right_answer']);
-        $validated['wrong_answer']=substr($validated['wrong_answer'],0,-1);
-        $validated['wrong_answer']=explode(',',$validated['wrong_answer']);
-
-        $updated = $test_2->fill($validated)->save();
+//пока не передает картинку
+		if($request->hasFile('img')) {
+            //добавление картинки локально
+			$validated['img'] = app(UploadService::class)->start($request->file('img'));
+            //добавление картинки в бд
+            $validated['img']='/'.$validated['img'];
+        }
+        dd($validated);
+        $updated=$test_2->fill($validated)->save();
 
         if($updated) {
             return redirect()->route('admin.test',['course' => $test_2->course_id])
@@ -134,6 +137,17 @@ class SecondTestController extends Controller
      */
     public function destroy(SecondTest $test_2)
     {
+        $page = explode("/", $_SERVER['HTTP_REFERER']);
+        $page = end($page);
+
+        //удаление картинки при редактировании
+        if($page == "edit"){
+            $validated['img'] = null;
+            Storage::delete($test_2->img);
+            $updated = $test_2->fill($validated)->save();
+            return back();
+        }
+        else{
         try{
             $test_2->delete();
             return redirect()->route('admin.test',['course' => $test_2->course_id])
@@ -141,6 +155,7 @@ class SecondTestController extends Controller
         }catch(\Exception $e){
             Log::error("Ошибка удаления");
         }
+    }
     }
 
 }

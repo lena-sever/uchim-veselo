@@ -26,12 +26,12 @@ class CreateRequest extends FormRequest
     {
         return [
             'course_id' => ['required','int'],
-			'test_title' => ['required', 'string', 'min:5'],
+			'test_title' => ['required', 'string'],
             'img' => ['nullable', 'file', 'image'],
-            'part_sentence_1' => ['required','string'],
-            'part_sentence_2' => ['required','string'],
-            'part_sentence_3' => ['required','string'],
-            'part_sentence_4' => ['required','string'],
+            'part_sentence_1' => ['required', 'string'],
+            'part_sentence_2' => ['required', 'string'],
+            'part_sentence_3' => ['required', 'string'],
+            'part_sentence_4' => ['required', 'string'],
             'right_word_1'=> ['required', 'string'],
             'right_word_2'=> ['required', 'string'],
             'right_word_3'=> ['required', 'string'],

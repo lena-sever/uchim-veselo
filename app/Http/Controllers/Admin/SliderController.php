@@ -122,7 +122,7 @@ class SliderController extends Controller
             $validated['music'] = app(UploadService::class)->start_music($request->file('music'));
             $validated['music']='/'.$validated['music'];
         }
-dd($validated);
+
         $updated = $slider->fill($validated)->save();
 
         if($updated) {

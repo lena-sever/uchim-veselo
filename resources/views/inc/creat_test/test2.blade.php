@@ -1,4 +1,4 @@
-<form method="post" action="{{ route('admin.test_2.store') }}">
+<form method="post" action="{{ route('admin.test_2.store') }}" enctype="multipart/form-data">
         @csrf
             <div class="form-group">
                 <label for="course_id">Комикс</label>

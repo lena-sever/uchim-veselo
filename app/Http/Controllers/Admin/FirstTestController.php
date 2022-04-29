@@ -11,6 +11,7 @@ use App\Models\FirstTest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class FirstTestController extends Controller
 {
@@ -53,7 +54,16 @@ class FirstTestController extends Controller
      */
     public function store(CreateRequest $request)
     {
-        $created = FirstTest::create($request->validated());
+        $validated = $request->validated();
+
+		if($request->hasFile('image')) {
+            //добавление картинки локально
+			$validated['img'] = app(UploadService::class)->start($request->file('image'));
+            //добавление картинки в бд
+            $validated['img']='/'.$validated['img'];
+        }
+
+        $created = FirstTest::create($validated);
 
 		if($created) {
 			return redirect()->route('admin.test',['course'=>$request->course_id])
@@ -104,7 +114,16 @@ class FirstTestController extends Controller
     public function update(EditRequest $request,FirstTest $test_1)
     {
         $validated = $request->validated();
-        $updated = $test_1->fill($validated)->save();
+//пока не передает картинку
+
+		if($request->hasFile('image')) {
+            //добавление картинки локально
+			$validated['img'] = app(UploadService::class)->start($request->file('image'));
+            //добавление картинки в бд
+            $validated['img']='/'.$validated['img'];
+        }
+        dd($validated);
+        $updated=$test_1->fill($validated)->save();
 
         if($updated) {
             return redirect()->route('admin.test',['course' => $test_1->course_id])
@@ -123,6 +142,17 @@ class FirstTestController extends Controller
      */
     public function destroy(FirstTest $test_1)
     {
+        $page = explode("/", $_SERVER['HTTP_REFERER']);
+        $page = end($page);
+
+        //удаление картинки при редактировании
+        if($page == "edit"){
+            $validated['img'] = null;
+            Storage::delete($test_1->img);
+            $updated = $test_1->fill($validated)->save();
+            return back();
+        }
+        else{
         try{
             $test_1->delete();
             return redirect()->route('admin.test',['course' => $test_1->course_id])
@@ -130,6 +160,7 @@ class FirstTestController extends Controller
         }catch(\Exception $e){
             Log::error("Ошибка удаления");
         }
+    }
     }
 
     public function answer(Request $request){

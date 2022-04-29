@@ -1,4 +1,4 @@
-<form method="post" action="{{ route('admin.test_1.update',['test_1' => $first_test]) }}">
+<form method="post" action="{{ route('admin.test_1.update',['test_1' => $first_test]) }}"enctype="multipart/form-data" >
         @csrf
         @method('put')
             <div class="form-group">

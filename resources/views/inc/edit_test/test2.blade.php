@@ -1,4 +1,4 @@
-<form method="post" action="{{ route('admin.test_2.update',['test_2' => $second_test]) }}">
+<form method="post" action="{{ route('admin.test_2.update',['test_2' => $second_test]) }}" enctype="multipart/form-data">
         @csrf
         @method('put')
             <div class="form-group">
@@ -17,10 +17,10 @@
                 @error('test_title') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
-                <label for="image">Изображение</label>
+                <label for="img">Изображение</label>
                 <img width="100" height="auto" src="{{ $second_test->img }}"> &nbsp;
-                <button name="_method" value="delete" class="delete btn btn-sm btn-outline-danger">X</button>
-                <input type="file" class="form-control" id="image" name="image" >
+             <button disabled name="_method" value="delete" class="delete btn btn-sm btn-outline-danger">X</button>
+                <input type="file" class="form-control" id="img" name="img" >
             </div>
             <div class="form-group">
             <label>Разбейте предложение на 4 части и впишите его с правильными и не правильными словами:</label>

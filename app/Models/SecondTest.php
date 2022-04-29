@@ -15,18 +15,24 @@ class SecondTest extends Model
 
     protected $fillable = [
         'course_id',
-        'test_title',
-        'sentence',
-        'right_answer',
-        'wrong_answer',
+        'test_title' ,
+        'img',
+        'part_sentence_1',
+        'part_sentence_2',
+        'part_sentence_3',
+        'part_sentence_4',
+        'right_word_1',
+        'right_word_2',
+        'right_word_3',
+        'right_word_4',
+        'wrong_word_1',
+        'wrong_word_2',
+        'wrong_word_3',
+        'wrong_word_4',
     ];
 
     public function course() {
         return $this->belongsTo(Course::class);
     }
 
-    protected $casts = [
-        'right_answer' => 'array',
-        'wrong_answer' => 'array',
-    ];
 }

@@ -17,6 +17,7 @@ class FirstTest extends Model
         'course_id',
         'test_title',
         'word',
+        'img',
         'answer_1',
         'answer_2',
         'answer_3',
