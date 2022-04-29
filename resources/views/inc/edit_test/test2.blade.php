@@ -19,7 +19,7 @@
             <div class="form-group">
                 <label for="img">Изображение</label>
                 <img width="100" height="auto" src="{{ $second_test->img }}"> &nbsp;
-             <button disabled name="_method" value="delete" class="delete btn btn-sm btn-outline-danger">X</button>
+             <button  name="_method" value="delete" class="delete btn btn-sm btn-outline-danger">X</button>
                 <input type="file" class="form-control" id="img" name="img" >
             </div>
             <div class="form-group">

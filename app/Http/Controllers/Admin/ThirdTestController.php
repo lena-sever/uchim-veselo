@@ -53,10 +53,11 @@ class ThirdTestController extends Controller
     public function store(CreateRequest $request)
     {
         $validated = $request->validated();
-        $validated['right_sentence']="";
+        $validated['right_sentence']='';
+        $validated['words'] = '';
 
-
-/*            $request->sentence_1,
+        $sentences=[
+            $request->sentence_1,
             $request->sentence_2,
             $request->sentence_3,
             $request->sentence_4,
@@ -65,20 +66,19 @@ class ThirdTestController extends Controller
             $request->sentence_7,
             $request->sentence_8,
             $request->sentence_9,
-            $request->sentence_10*/
+            $request->sentence_10
+        ];
 
-        foreach ($validated['right_sentence'] as $sentence){
-            $sentence = explode(" ",$sentence);
+        for($i=0;$i<=9;$i++){
+            $validated['right_sentence'] = $sentences[$i];
+            $sentence = explode(" ",$validated['right_sentence']);
             shuffle($sentence);
-            join(" ",$sentence);
-            $validated['words'] = $sentence;
-            return $validated['words'] ;
+            $validated['words'] = join("|",$sentence);
+
+            $created = ThirdTest::create($validated);
         }
-        dd($validated);
-        $created = ThirdTest::create( $request->validated());
 
 		if($created) {
-            //нужен правльный ридерект!
 			return redirect()->route('admin.test',['course' =>  $request->course_id])
 				     ->with('success', 'Запись успешно добавлена');
 		}
@@ -126,6 +126,11 @@ class ThirdTestController extends Controller
     public function update(EditRequest $request, ThirdTest $test_3)
     {
         $validated = $request->validated();
+        $validated['words'] = '';
+        $sentence = explode(" ",$validated['right_sentence']);
+        shuffle($sentence);
+        $validated['words'] = join("|",$sentence);
+
         $updated = $test_3->fill($validated)->save();
 
         if($updated) {

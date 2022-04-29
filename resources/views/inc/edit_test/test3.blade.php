@@ -2,6 +2,7 @@
         @csrf
         @method('put')
             <div class="form-group">
+            <input type="text" hidden for="test_title" class="form-control" id="test_title" name="test_title" value="Составьте правильно предложения из имеющегося набора слов">
                 <label for="course_id">Комикс</label>
                 @foreach($courses as $course)
                     @if($course->id === $third_test->course_id)
@@ -17,7 +18,7 @@
                 @error('right_sentence') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <br>
-    <button type="submit" disabled  value="Изменить" class="btn btn-success" style="float: right;">Изменить</button>
+    <button type="submit" value="Изменить" class="btn btn-success" style="float: right;">Изменить</button>
 </form>
 <a href="{{ route('admin.test', ['course' => $third_test->course_id]) }}" type="button" class="btn btn-sm btn-outline-secondary">
         Назад</a>
