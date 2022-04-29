@@ -36,7 +36,7 @@ function LessonsItem() {
     }, []);
     if (!err) {
         return (
-            <>
+            <div className="slider-wrap">
                 <div>
                     {slider1 === "slider1" && (
                         <SliderContainer
@@ -79,7 +79,7 @@ function LessonsItem() {
                 >
                     Назад к комиксам
                 </Button>
-            </>
+            </div>
         );
     } else <>err</>;
 }
