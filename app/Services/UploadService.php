@@ -57,4 +57,15 @@ class UploadService
 
 	   return $completedFile;
    }
+
+   public function start_test_img(UploadedFile $file) : string
+   {
+        $completedFile = $file->storeAs('test_img',$file->hashName());
+
+        if(!$completedFile) {
+            throw new \Exception("Файл не был загружен");
+        }
+
+        return $completedFile;
+   }
 }

@@ -18,7 +18,8 @@ class CreateFirstTestsTable extends Migration
             $table->foreignId('course_id')->constrained('courses')->cascadeOnDelete();
             $table->string('test_title')->comment('название');
             $table->string('img')->nullable();
-            $table->text('word')->comment('слово');
+            $table->string('author')->comment('author');
+            $table->string('word')->comment('слово');
             $table->text('answer_1')->comment('ответ_1');
             $table->text('answer_2')->comment('ответ_2');
             $table->text('answer_3')->comment('ответ_3');

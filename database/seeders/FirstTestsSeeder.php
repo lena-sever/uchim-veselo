@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Faker\Factory;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -22,13 +23,14 @@ class FirstTestsSeeder extends Seeder
     {
         $faker = Factory::create();
         $data = [];
-        $img = Storage::allFiles('img');
+        $img = Storage::allFiles('test_img');
         $courses = DB::table('courses')->get();
 
         $data[] = [
             'course_id' => 1,
             'test_title' => 'Помогите герою, выберите правильне значение слова',
             'img' => $img[0],
+            'author' => 'Админ',
             'word' => 'Нитки',
             'answer_1' => 'это длинное изделие из металла',
             'answer_2' => 'это плетёное орудие лова, используемое для добычи рыбы в большом количестве',
@@ -45,6 +47,7 @@ class FirstTestsSeeder extends Seeder
                 'course_id' => $item->id,
                 'test_title' => 'Помогите герою, выберите правильное значение слова ',
                 'img'=>$img[1],
+                'author' => 'Админ',
                 'word' => $faker->text(mt_rand(5, 10)),
                 'answer_1' => $faker->text(mt_rand(10, 20)),
                 'answer_2' => $faker->text(mt_rand(10, 20)),

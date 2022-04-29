@@ -55,7 +55,7 @@ class SecondTestController extends Controller
         $validated = $request->validated();
 		if($request->hasFile('img')) {
             //добавление картинки локально
-			$validated['img'] = app(UploadService::class)->start($request->file('img'));
+			$validated['img'] = app(UploadService::class)->start_test_img($request->file('img'));
             //добавление картинки в бд
             $validated['img']='/'.$validated['img'];
         }
@@ -113,7 +113,7 @@ class SecondTestController extends Controller
 //пока не передает картинку
 		if($request->hasFile('img')) {
             //добавление картинки локально
-			$validated['img'] = app(UploadService::class)->start($request->file('img'));
+			$validated['img'] = app(UploadService::class)->start_test_img($request->file('img'));
             //добавление картинки в бд
             $validated['img']='/'.$validated['img'];
         }

@@ -8,8 +8,6 @@ use App\Models\Lesson;
 use Illuminate\Support\Facades\Log;
 use App\Models\Slider;
 use App\Services\UploadService;
-use GuzzleHttp\Psr7\UploadedFile;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class SliderController extends Controller
@@ -62,7 +60,7 @@ class SliderController extends Controller
 			$validated['music'] = app(UploadService::class)->start_music($request->file('music'),$validated['music']);
             $validated['music']='/'.$validated['music'];
         }
-
+dd($validated);
         $created = Slider::create($validated);
 
 		if($created) {

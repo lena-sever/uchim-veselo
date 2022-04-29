@@ -1,4 +1,4 @@
-<form method="post" action="{{ route('admin.test_1.store') }}"enctype="multipart/form-data">
+<form method="post" action="{{ route('admin.test_1.store') }}" enctype="multipart/form-data">
         @csrf
             <div class="form-group">
                 <label for="course_id">Комикс</label>
@@ -15,9 +15,14 @@
                 @error('test_title') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
-                <label for="img">Изображение</label>
+                <label for="image">Изображение</label>
                 <img width="100" height="auto" src="{{old('img') }}"> &nbsp;
-                <input type="file" class="form-control" id="img" name="img" >
+                <input type="file" class="form-control" id="image" name="image" >
+            </div>
+            <div class="form-group">
+                <label for="author">Автор</label>
+                <input type="text" class="form-control" id="author" name="author" value="{{ old('author')}}">
+                @error('author') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
                 <label for="word">Слово</label>

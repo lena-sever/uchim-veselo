@@ -27,6 +27,11 @@
                 @error('description') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
+                <label for="author">Автор</label>
+                <input type="text" class="form-control" id="author" name="author" value="{{ $first_test->author}}">
+                @error('author') <strong style="color:red;">{{ $message }}</strong> @enderror
+            </div>
+            <div class="form-group">
                 <label for="image">Изображение</label>
                 <img width="100" height="auto" src="{{ $first_test->img }}"> &nbsp;
                 <button name="_method" value="delete" class="delete btn btn-sm btn-outline-danger">X</button>

@@ -23,7 +23,7 @@ class SecondTestsSeeder extends Seeder
         $faker = Factory::create();
         $data = [];
 
-        $img = Storage::allFiles('img');
+        $img = Storage::allFiles('test_img');
 
         $courses = DB::table('courses')->get();
 

@@ -6,11 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Test\First\EditRequest;
 use App\Http\Requests\Test\First\CreateRequest;
 use App\Models\Course;
-use App\Models\Lesson;
 use App\Models\FirstTest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Services\UploadService;
 use Illuminate\Support\Facades\Storage;
 
 class FirstTestController extends Controller
@@ -58,7 +57,7 @@ class FirstTestController extends Controller
 
 		if($request->hasFile('image')) {
             //добавление картинки локально
-			$validated['img'] = app(UploadService::class)->start($request->file('image'));
+			$validated['img'] = app(UploadService::class)->start_test_img($request->file('image'));
             //добавление картинки в бд
             $validated['img']='/'.$validated['img'];
         }
@@ -115,14 +114,13 @@ class FirstTestController extends Controller
     {
         $validated = $request->validated();
 //пока не передает картинку
-
 		if($request->hasFile('image')) {
             //добавление картинки локально
-			$validated['img'] = app(UploadService::class)->start($request->file('image'));
+			$validated['img'] = app(UploadService::class)->start_test_img($request->file('image'));
             //добавление картинки в бд
             $validated['img']='/'.$validated['img'];
         }
-        dd($validated);
+        dd($request->hasFile('image'),$validated);
         $updated=$test_1->fill($validated)->save();
 
         if($updated) {

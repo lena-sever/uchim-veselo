@@ -23,6 +23,7 @@
                    <th>#ID</th>
                    <th>Название</th>
                    <th>Изображение</th>
+                   <th>Автор</th>
                    <th>Слово</th>
                    <th>Описание Слова</th>
                    <th>Ответы</th>
@@ -37,6 +38,7 @@
                     <td rowspan="5">{{ $testsItem->id }}</td>
                     <td rowspan="5">{{ $testsItem->test_title }}</td>
                     <td rowspan="5">@if(is_null($testsItem->img))Нет изображения@else<img src="{{$testsItem->img}}" width="100" height="100" alt="" class="cart-img-top">@endif</td>
+                    <td rowspan="5">{{$testsItem->author}}</td>
                     <td rowspan="5">{{ $testsItem->word }}</td>
                     <td rowspan="5">{!! $testsItem->description !!}</td>
                     <td>{{$testsItem->answer_1}}</td>
