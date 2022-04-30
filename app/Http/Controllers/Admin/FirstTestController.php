@@ -113,14 +113,13 @@ class FirstTestController extends Controller
     public function update(EditRequest $request,FirstTest $test_1)
     {
         $validated = $request->validated();
-//пока не передает картинку
+
 		if($request->hasFile('image')) {
             //добавление картинки локально
 			$validated['img'] = app(UploadService::class)->start_test_img($request->file('image'));
             //добавление картинки в бд
             $validated['img']='/'.$validated['img'];
         }
-        dd($request->hasFile('image'),$validated);
         $updated=$test_1->fill($validated)->save();
 
         if($updated) {

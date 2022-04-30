@@ -56,7 +56,6 @@ class EditRequest extends FormRequest
 		return [
             'course_id' => 'Комикс',
 			'test_title' => 'Наименование теста',
-			'img' => 'Изображение',
             'part_sentence_1' => 'Часть предложения №1',
             'part_sentence_2' => 'Часть предложения №2',
             'part_sentence_3' => 'Часть предложения №3',

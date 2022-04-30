@@ -110,14 +110,13 @@ class SecondTestController extends Controller
     public function update(EditRequest $request, SecondTest $test_2)
     {
         $validated = $request->validated();
-//пока не передает картинку
-		if($request->hasFile('img')) {
+
+		if($request->hasFile('image')) {
             //добавление картинки локально
-			$validated['img'] = app(UploadService::class)->start_test_img($request->file('img'));
+			$validated['img'] = app(UploadService::class)->start_test_img($request->file('image'));
             //добавление картинки в бд
             $validated['img']='/'.$validated['img'];
         }
-        dd($validated);
         $updated=$test_2->fill($validated)->save();
 
         if($updated) {
