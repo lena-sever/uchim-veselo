@@ -1,3 +1,16 @@
+/*Убираем Header и center Footer*/
+.slider-wrap {
+    position: relative;
+    height: 100vh;
+    margin-top: -175px;
+    margin-bottom: -111px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+    z-index: 5;
+}
+
 .slider {
     min-height: 500px;
     max-height: 700px;
@@ -43,5 +56,13 @@
 @media (max-width: 1024px) {
     .slider {
 margin-top: 35px;
+    }
+}
+
+
+/*Убираем Header и center Footer*/
+@media screen and (max-width: 460px) {
+    .slider-wrap {
+        margin-top: -210px;
     }
 }
