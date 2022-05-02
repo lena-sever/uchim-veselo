@@ -45,7 +45,7 @@ class CrsController extends Controller
         $id = $course->id;
         //получим номер первого урока этого курса
         $les_id = DB::table('lessons')->where('course_id', $id)->orderBy('id')->first();
-        $les_id = $les_id-> id;
+        $les_id = $les_id->id;
 
         $first_slider = DB::table('sliders')
             ->where('lesson_id', $les_id)
@@ -54,13 +54,13 @@ class CrsController extends Controller
         return json_encode($first_slider, JSON_UNESCAPED_UNICODE);
     }
 
-    
+
     public function show_last_slider(Course $course)
     {
         $id = $course->id;
         //получим номер первого урока этого курса
         $les_id = DB::table('lessons')->where('course_id', $id)->orderBy('id', 'desc')->first();
-        $les_id = $les_id-> id;
+        $les_id = $les_id->id;
 
         $first_slider = DB::table('sliders')
             ->where('lesson_id', $les_id)
@@ -80,4 +80,23 @@ class CrsController extends Controller
         return json_encode($first_test, JSON_UNESCAPED_UNICODE);
     }
 
+
+    public function second_test(Course $course)
+    {
+        $id = $course->id;
+
+
+
+        $result = DB::table('second_tests')
+            ->where('course_id', $id)
+            ->get();
+        $third_tests = DB::table('third_tests')
+        ->where('course_id', $id)
+        ->select(['right_sentence', 'words'])
+        ->get();
+        $result['sentences'] = $third_tests;
+        // dd($result);
+
+        return json_encode($result, JSON_UNESCAPED_UNICODE);
+    }
 }
