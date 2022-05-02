@@ -27,7 +27,6 @@ class EditRequest extends FormRequest
     {
         return [
             'course_id' => ['required', 'integer'],
-			'test_title' => ['required', 'string', 'min:5'],
             'img' => ['nullable', 'file', 'image'],
             'word' => ['required', 'string', 'min:5'],
             'answer_1' => ['required', 'string', 'max:1000'],
@@ -51,7 +50,6 @@ class EditRequest extends FormRequest
 	{
 		return [
             'course_id' => 'Комикс',
-			'test_title' => 'Наименование теста',
             'word' => 'Слово',
             'answer_1' => 'Вопрос №1',
             'answer_2' => 'Вопрос №2',

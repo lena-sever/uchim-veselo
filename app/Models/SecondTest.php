@@ -15,7 +15,6 @@ class SecondTest extends Model
 
     protected $fillable = [
         'course_id',
-        'test_title' ,
         'img',
         'part_sentence_1',
         'part_sentence_2',
@@ -29,6 +28,7 @@ class SecondTest extends Model
         'wrong_word_2',
         'wrong_word_3',
         'wrong_word_4',
+        'etymology',
     ];
 
     public function course() {

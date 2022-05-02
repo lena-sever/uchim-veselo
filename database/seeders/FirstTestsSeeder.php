@@ -28,8 +28,7 @@ class FirstTestsSeeder extends Seeder
 
         $data[] = [
             'course_id' => 1,
-            'test_title' => 'Помогите герою, выберите правильне значение слова',
-            'img' => $img[0],
+            'img' => '/test_img/1-1.jpg',
             'author' => 'Админ',
             'word' => 'Нитки',
             'answer_1' => 'это длинное изделие из металла',
@@ -45,8 +44,7 @@ class FirstTestsSeeder extends Seeder
             if ($item->id == 1) continue;
             $data[] = [
                 'course_id' => $item->id,
-                'test_title' => 'Помогите герою, выберите правильное значение слова ',
-                'img'=>$img[1],
+                'img'=>'/'.$img[1],
                 'author' => 'Админ',
                 'word' => $faker->text(mt_rand(5, 10)),
                 'answer_1' => $faker->text(mt_rand(10, 20)),

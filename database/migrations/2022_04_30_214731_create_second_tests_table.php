@@ -17,7 +17,6 @@ class CreateSecondTestsTable extends Migration
             $table->id();
             $table->foreignId('course_id')->constrained('courses')->cascadeOnDelete();
             $table->string('img')->nullable();
-            $table->string('test_title');
             $table->string('part_sentence_1');
             $table->string('right_word_1');
             $table->string('wrong_word_1');
@@ -30,6 +29,7 @@ class CreateSecondTestsTable extends Migration
             $table->string('part_sentence_4');
             $table->string('right_word_4');
             $table->string('wrong_word_4');
+            $table->string('etymology');
             $table->timestamps();
             $table->softDeletes();
 
