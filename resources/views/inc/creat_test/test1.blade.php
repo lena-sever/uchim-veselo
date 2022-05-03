@@ -9,11 +9,7 @@
                 </select>
                 @error('course_id') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
-            <div class="form-group">
-                <label for="test_title">Наименование теста</label>
-                <input type="text" class="form-control" id="test_title" name="test_title" value="{{ old('test_title') }}">
-                @error('test_title') <strong style="color:red;">{{ $message }}</strong> @enderror
-            </div>
+
             <div class="form-group">
                 <label for="image">Изображение</label>
                 <img width="100" height="auto" src="{{old('img') }}"> &nbsp;

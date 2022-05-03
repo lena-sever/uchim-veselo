@@ -9,11 +9,7 @@
                 </select>
                 @error('course_id') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
-            <div class="form-group">
-                <label for="test_title">Наименование теста</label>
-                <input type="text" class="form-control" id="test_title" name="test_title" value="Составьте правильно предложения из имеющегося набора слов">
-                @error('test_title') <strong style="color:red;">{{ $message }}</strong> @enderror
-            </div>
+
             <div class="form-group">
                 <input for="right_sentence" type="text" hidden id="right_sentence" name="right_sentence" value="f">
                 <label for="sentence_1">Предложение №1</label>
