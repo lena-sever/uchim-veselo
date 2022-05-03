@@ -4,7 +4,7 @@ import Lessons from "../Lessons/Lessons";
 import LessonsItem from "../Lessons/LessonsItem";
 import InfoPage from "../InfoPage/InfoPage";
 import CoursPage from "../Сourses/CoursPage";
-import Contacts from "../Contacts/Contacts";
+import  Contacts  from "../Contacts/Contacts";
 import Error_404 from "../Error_404/Error_404";
 import Login from "../Login/Login";
 import SliderContainer from "../common/Slider/Slider";
