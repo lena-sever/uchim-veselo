@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\LessonController as AdminLessonController;
 use App\Http\Controllers\Admin\FirstTestController;
 use App\Http\Controllers\Admin\SecondTestController;
 use App\Http\Controllers\Admin\ThirdTestController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Test\IndexController as TestController;
 use App\Http\Controllers\Admin\CourseReviewController;
 use App\Http\Controllers\Admin\MessengerController;
@@ -47,6 +48,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['as' => 'admin.', 'prefix' => 'admin'], function () {
         Route::view('/', 'admin.index')->name('index');
+
+        Route::resource('/user',AdminUserController::class);
 
         Route::resource('/course', AdminCourseController::class);
         Route::get('/course/destroy/{course}', [AdminCourseController::class, 'destroy'])
@@ -97,6 +100,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/messenger/destroy/{messenger}', [MessengerController::class, 'destroy'])
             ->where('messenger', '\d+')
             ->name('messenger.destroy');
+
     });
 });
 

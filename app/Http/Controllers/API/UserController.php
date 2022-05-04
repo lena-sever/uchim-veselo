@@ -29,7 +29,7 @@ class UserController extends Controller
         $user = User::create($validated);
         if ($user) {
             return json_encode($user, JSON_UNESCAPED_UNICODE);
-        } else return 'ошибка регистрации';
+        } else return 'Ошибка регистрации';
     }
 
     public function login(Request $request)
@@ -45,8 +45,8 @@ class UserController extends Controller
             // dd($user);
             if (password_verify($validated['password'], $user->password)) {
                 return json_encode($user, JSON_UNESCAPED_UNICODE);
-            } else return 'неверный пароль';
-        } else return 'неверный email';
+            } else return 'Неверный пароль';
+        } else return 'Неверный email';
     }
 
     public function auth(Request $request)
@@ -56,7 +56,7 @@ class UserController extends Controller
             'session_token' => 'required|string|min:7',
         ]);
 
-        //получить user по remember_token 
+        //получить user по remember_token
         $user = DB::table('users')
             ->where('session_token',  $validated['session_token'])
             ->select(
@@ -68,7 +68,7 @@ class UserController extends Controller
             ->first();
         if ($user) {
             return json_encode($user, JSON_UNESCAPED_UNICODE);
-        } else return 'неверный токен сессии';
+        } else return 'Неверный токен сессии';
     }
 
     public function messange(Request $request)
@@ -83,6 +83,6 @@ class UserController extends Controller
         $messange = Messenger::create($validated);
         if ($messange) {
             return json_encode($messange, JSON_UNESCAPED_UNICODE);
-        } else return 'ошибка отправки сообщения';
+        } else return 'Ошибка отправки сообщения';
     }
 }
