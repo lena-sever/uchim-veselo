@@ -26,18 +26,7 @@
         @if(Auth::user()->photo)
         <img class="bd-placeholder-img rounded-circle"  style="width:65%;" src="{{ Auth::user()->photo }}"> &nbsp;
         @else
-            <svg class="bd-placeholder-img rounded-circle" width="200" height="200" role="img" aria-label="Фото пользователя" preserveAspectRatio="xMidYMid slice" focusable="false">
-                    <title>Фото</title>
-                    <rect width="100%" height="100%" fill="#777"/>
-                    <text x="50%" y="50%" fill="#777" dy=".3em">Фото</text>
-            </svg>
-            <form action="/profile" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                        <input type="file" class="form-control-file" name="avatar" id="avatarFile" aria-describedby="fileHelp">
-                        <button type="Добавить" class="btn btn-primary">Добавить</button>
-                    </div>
-                </form>
+        {!! Avatar::create(Auth::user()->name)->setDimension(200)->setFontSize(82)->toSvg() !!}
         @endif
         </div>
     </div>

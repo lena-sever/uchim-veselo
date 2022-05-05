@@ -31,7 +31,13 @@
               @forelse($users as $usersItem)
                 <tr id="{{$usersItem->id}}">
                     <td>{{ $usersItem->id }}</td>
-                    <td><img style="width: 100px;" src="{{ $usersItem->photo }}" alt="{{ $usersItem->name }}"></td>
+                    <td>
+                        @if($usersItem->photo)
+                            <img style="width: 100px;" src="{{ $usersItem->photo }}" alt="{{ $usersItem->name }}">
+                        @else
+                        {!! Avatar::create($usersItem->name)->setDimension(85, 85)->toSvg() !!}
+                        @endif
+                    </td>
                     <td>{{ $usersItem->name }}</td>
                     <td>{{ $usersItem->email }}</td>
                     <td>

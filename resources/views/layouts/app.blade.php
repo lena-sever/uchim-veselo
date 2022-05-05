@@ -73,7 +73,9 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{route('account')}}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <img style="width: 50px; height: auto; margin-right: 15px;" src="{{Auth::user()->photo}}" alt="Аватарка"> {{ Auth::user()->name }}
+                                {!! Avatar::create(Auth::user()->name)->setDimension(35)->setFontSize(18)->toSvg() !!}
+                                &nbsp;
+                                {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
