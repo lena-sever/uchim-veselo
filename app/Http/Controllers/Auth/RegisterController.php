@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-use Laravolt\Avatar\Avatar;
+
 
 class RegisterController extends Controller
 {
@@ -68,7 +68,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $avatar = new Avatar(Storage::get('config\laravolt\avatar.php'));
+        //заглушка на библиотека картинок
+        //$avatar = new Avatar(config("laravolt.avatar"));
 
         return User::create([
             'name' => $data['name'],
@@ -76,8 +77,8 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'session_token' => Str::random(60),
             //заглушка на генератор картинок
-            'photo' =>$avatar->create($data['name'])->toBase64(),
-            //'https://imgholder.ru/100x100/6f42c1/f8f9fa&text=ПОЛЬЗОВАТЕЛЬ&font=arial&fz=12',
+            'photo' =>'https://imgholder.ru/100x100/6f42c1/f8f9fa&text=ПОЛЬЗОВАТЕЛЬ&font=arial&fz=12',
+            //$avatar->create($data['name'])->toBase64(),
         ]);
     }
     protected function registered(Request $request, $user)
