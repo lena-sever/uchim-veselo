@@ -17,7 +17,7 @@ class CreateRequest extends FormRequest
         return [
 			'name' => ['required', 'string', 'min:2'],
             'email' => ['required','string','email:rfc,dns'],
-            'password' => ['required', 'string', 'min:7'],,
+            'password' => ['required', 'string', 'min:7'],
             'photo' => ['nullable', 'file', 'image']
         ];
     }

@@ -44,4 +44,5 @@ class User extends Authenticatable
     public function scopeAdmins($query){
         $query->where('is_admin',true);
     }
+
 }

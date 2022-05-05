@@ -26,6 +26,20 @@ class UploadService
 	   return $completedFile;
    }
 
+   public function start_user_photo(UploadedFile $file,$name): string
+   {
+        $newName = explode('.',(string)$file->getClientOriginalName());
+        $newName = end($newName);
+        $newName = $name.'.'.$newName;
+
+        $completedFile = $file->storeAs('photo_profile',$newName);
+        if(!$completedFile) {
+            throw new \Exception("Файл не был загружен");
+        }
+
+        return $completedFile;
+   }
+
    public function rename($file,$lesson_id)
    {
      $last_slider_id = Slider::latest()->first()->id;
