@@ -90,6 +90,32 @@ class CrsController extends Controller
         $result = DB::table('second_tests')
             ->where('course_id', $id)
             ->get();
+
+            $res = [];
+            $res['chooseWords'] = [];
+            $i = 0;
+        foreach($result[0] as $key=>$item) {
+            if ($key=='course_id' || $key=='img' || $key=='etymology') $res[$key] = $item;;
+            if (preg_match('#part_sentence#', $key)) {
+                $res['chooseWords'][$i]['type'] = "text";
+                $res['chooseWords'][$i]['content'] = $item;
+                $i++;    
+            }
+            if (preg_match('#right_word#', $key)) {
+                $res['chooseWords'][$i]['type'] = "button";
+                $res['chooseWords'][$i]['correctText'] = $item;
+            } 
+            if (preg_match('#wrong_word#', $key)) {
+                $res['chooseWords'][$i]['incorrectText'] = $item;
+                $i++;    
+            } 
+        }
+
+        // dd($result);
+        return json_encode($res, JSON_UNESCAPED_UNICODE);
+        dd($res);
+
+
         $third_tests = DB::table('third_tests')
         ->where('course_id', $id)
         ->select(['right_sentence', 'words'])
