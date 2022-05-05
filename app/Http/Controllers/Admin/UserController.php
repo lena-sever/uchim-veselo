@@ -12,14 +12,12 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $users = User::all();
@@ -29,28 +27,25 @@ class UserController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('admin.user.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  CreateRequest  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(CreateRequest $request)
     {
         $validated = $request->validated();
+        $check_email = DB::table('users')
+        ->where('email', $validated['email'])
+        ->first();
+    if ($check_email) 
+    return back()->with('error', 'Такой email уже зарегистрирован. Попробуйте войти.');
+
 
         $validated['is_admin'] = ($request->is_admin == '1')?1:0;
         $validated['password'] = Hash::make($validated['password']);
+        $validated['session_token'] =  Str::random(60);
 
 		if($request->hasFile('photo')) {
             //добавление картинки локально
@@ -70,23 +65,13 @@ class UserController extends Controller
 			->withInput();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(User $user)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(User $user)
     {
         return view('admin.user.edit',[
@@ -94,13 +79,7 @@ class UserController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(EditRequest $request, User $user)
     {
         $validated = $request->validated();
@@ -132,12 +111,7 @@ class UserController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(User $user)
     {
         $page = explode("/", $_SERVER['HTTP_REFERER']);

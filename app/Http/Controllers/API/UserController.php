@@ -23,6 +23,12 @@ class UserController extends Controller
     public function store(CreateRequest $request)
     {
         $validated = $request->validated();
+
+        $check_email = DB::table('users')
+            ->where('email', $validated['email'])
+            ->first();
+        if ($check_email) return 'Такой email уже зарегистрирован. Попробуйте войти.';
+
         $validated['password'] = Hash::make($validated['password']);
         $validated['session_token'] =  Str::random(60);
 
