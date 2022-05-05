@@ -9,13 +9,13 @@ const InfoPage = () => {
     return (
         <section>
             <div className="header__content-wrp">
-                <div className="header-title title">Учим весело</div>
+                <div className="header-title title">СмартКомикс</div>
                 <div className="header-title__react subtitle">
-                    Образовательная платформа для детей
+                Наши комиксы помогут вашему ребенку легче учиться, быстрее разбираться с чем-то новым
                 </div>
 
                 <Link className="try-btn" to="/courses">
-                    Учиться
+                    Начать
                 </Link>
                 <img className="header_img" src={bg2}></img>
             </div>
