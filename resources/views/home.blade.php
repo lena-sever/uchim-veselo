@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Учим весело | домашняя страница')
+@section('title', 'СмартКомикс | домашняя страница')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Учим Весело!') }}</div>
+                <div class="card-header">{{ __('СмартКомикс') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))

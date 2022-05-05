@@ -63,7 +63,7 @@ function Lessons() {
                 <h2>{courses[courseId - 1].title} </h2>
                 <NavLink to="/courses">Вернуться к списку комиксов</NavLink>
                 <NavLink to={`/courses/${courseId}/:slider1`}>
-                    Начать комикс
+                    ПОДРОБНЕЕ
                 </NavLink>
                 {/* <div sx={{ width: "100%", maxWidth: 600 }}>
                     {isLoading ? (

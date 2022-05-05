@@ -22,12 +22,12 @@ const Contacts = (props) => {
   }
     
     function handle(e) {
-    const newdata={...data}
-    newdata[e.target.id] = e.target.value
+    const newdata={...data};
+    newdata[e.target.id] = e.target.value;
     setData(newdata)
     }
 
-    console.log(data)
+    // console.log(data)
   return (
       <>
           <div>

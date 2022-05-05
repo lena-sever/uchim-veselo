@@ -59,7 +59,7 @@ function CoursesItem({ course }) {
                 onClick={ getLessonsList }
                 className={ `products_item_btn ${ classes.btn }` }
             >
-                НАЧАТЬ КОМИКС
+                ПОДРОБНЕЕ
             </ColorButtonOutlined>
         </div>
     );
