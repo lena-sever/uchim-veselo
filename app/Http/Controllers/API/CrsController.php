@@ -85,8 +85,6 @@ class CrsController extends Controller
     {
         $id = $course->id;
 
-
-
         $result = DB::table('second_tests')
             ->where('course_id', $id)
             ->get();
@@ -111,18 +109,19 @@ class CrsController extends Controller
             } 
         }
 
-        // dd($result);
-        return json_encode($res, JSON_UNESCAPED_UNICODE);
-        dd($res);
-
-
+        $res['sentences'] = [];
+        $i = 0;
         $third_tests = DB::table('third_tests')
         ->where('course_id', $id)
         ->select(['right_sentence', 'words'])
         ->get();
-        $result['sentences'] = $third_tests;
-        // dd($result);
 
-        return json_encode($result, JSON_UNESCAPED_UNICODE);
+        foreach($third_tests as $key=>$item) {
+            $res['sentences'][$i]['right_sentence'] = $item->right_sentence;
+            $res['sentences'][$i]['words'] = explode("|", $item->words);
+            $i++;
+        }
+        
+        return json_encode($res, JSON_UNESCAPED_UNICODE);
     }
 }
