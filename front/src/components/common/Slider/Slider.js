@@ -52,6 +52,8 @@ const SliderContainer = ({ sliderList, togleTestActive }) => {
             {/* <div>{button}</div> */}
             
             <SliderItem
+                slideItemId={slideItemId + 1}
+                sliderCoast={sliderList.length + 1}
                 newAudio={newAudio}
                 text={sliderList[slideItemId].text}
                 // title={sliderList[slideItemId].title}
