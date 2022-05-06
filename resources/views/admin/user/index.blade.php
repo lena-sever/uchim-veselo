@@ -33,7 +33,11 @@
                     <td>{{ $usersItem->id }}</td>
                     <td>
                         @if($usersItem->photo)
+                            @if(substr($usersItem->photo,1,3) == 'svg')
+                            {!! $usersItem->photo !!}
+                            @else
                             <img style="width: 100px;" src="{{ $usersItem->photo }}" alt="{{ $usersItem->name }}">
+                            @endif
                         @else
                         {!! Avatar::create($usersItem->name)->setDimension(85, 85)->toSvg() !!}
                         @endif
