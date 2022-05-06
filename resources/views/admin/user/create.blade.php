@@ -35,7 +35,7 @@
             </div>
             <div class="form-group">
                 <label for="password">Пароль</label>
-                <input class="form-control" name="password" id="password" value="{!! old('password') !!}">
+                <input class="form-control" type="password" name="password" id="password" value="{!! old('password') !!}">
                 @error('password') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <br>

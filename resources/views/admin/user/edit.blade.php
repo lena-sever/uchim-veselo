@@ -31,16 +31,17 @@
             </div>
             <div class="form-group">
                 <label for="photo">Изображение</label>
-                <img width="100" height="auto" src="{{$user->photo }}"> &nbsp;
-
+                @if($user->photo)
+                @if(substr($user->photo,1,3) == 'svg')
+                    &nbsp;{!! $user->photo !!} &nbsp;
+                @else
+                    <img style="width: 100px;" src="{{ $user->photo }}" alt="Фото">&nbsp;
+                @endif
                 <button name="_method" value="delete" class="delete btn btn-sm btn-outline-danger">X</button>
+                @endif
                 <input type="file" class="form-control" id="photo" name="photo" >
             </div>
-            <div class="form-group">
-                <label for="password">Пароль(Хэш)</label>
-                <input class="form-control" type="password" name="password" id="password" value="{!! $user->password !!}">
-                @error('password') <strong style="color:red;">{{ $message }}</strong> @enderror
-            </div>
+
             <br>
             <button type="submit"  value="Изменить" class="btn btn-success" style="float: right;">Изменить</button>
         </form>

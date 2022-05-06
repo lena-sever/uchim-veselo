@@ -25,19 +25,12 @@ use App\Http\Controllers\Account\IndexController as AccountController;
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
 Auth::routes();
 
-/*Route::get('/home', [HomeController::class, 'index'])->name('home');*/
+Route::get('/', [HomeController::class, 'index'])
+->name('home');
 
-    Route::get('/', [HomeController::class, 'index'])
-    ->name('home');
-
-
-Route::group(['middleware' => ['auth','isadmin']], function () {
+Route::group(['middleware' => ['auth','is_admin']], function () {
     Route::get('/account', AccountController::class)
         ->name('account');
 

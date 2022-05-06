@@ -39,7 +39,7 @@
                             <img style="width: 100px;" src="{{ $usersItem->photo }}" alt="{{ $usersItem->name }}">
                             @endif
                         @else
-                        {!! Avatar::create($usersItem->name)->setDimension(85, 85)->toSvg() !!}
+                        {!! Avatar::create($usersItem->name)->setBorder(1, '#dc3545', 10)->setDimension(85, 85)->toSvg() !!}
                         @endif
                     </td>
                     <td>{{ $usersItem->name }}</td>

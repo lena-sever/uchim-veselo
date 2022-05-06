@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
-
+use Laravolt\Avatar\Avatar;
 
 class UserController extends Controller
 {
@@ -37,10 +37,10 @@ class UserController extends Controller
     {
         $validated = $request->validated();
         $check_email = DB::table('users')
-        ->where('email', $validated['email'])
-        ->first();
-    if ($check_email) 
-    return back()->with('error', 'Такой email уже зарегистрирован. Попробуйте войти.');
+            ->where('email', $validated['email'])
+            ->first();
+        if ($check_email)
+        return back()->with('error', 'Такой email уже зарегистрирован. Попробуйте войти.');
 
 
         $validated['is_admin'] = ($request->is_admin == '1')?1:0;
@@ -52,6 +52,9 @@ class UserController extends Controller
 			$validated['photo'] = app(UploadService::class)->start_user_photo($request->file('photo'),$validated['name']);
             //добавление картинки в бд
             $validated['photo']='/'.$validated['photo'];
+        } else {
+            $avatar = new Avatar(config("laravolt.avatar"));
+            $validated['photo'] = $avatar->create($validated['name'])->setDimension(85, 85)->toSvg();
         }
         //dd($validated);
         $created = User::create($validated);
@@ -83,13 +86,6 @@ class UserController extends Controller
     public function update(EditRequest $request, User $user)
     {
         $validated = $request->validated();
-
-        //проверка на новый пароль пока не работает
-        /*if($validated['password']){
-            $validated['password'] = Hash::make($validated['password']);
-        }*/
-
-        //$validated['is_admin'] = ($request->is_admin == '1')?1:0;
 
 		if($request->hasFile('photo')) {
             //добавление картинки локально
