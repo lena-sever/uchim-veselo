@@ -314,9 +314,11 @@ body {
     justify-content: center;
     margin-top: 50px;
     padding: 0 20px;
+    display: none;
 }
 
 .design {
+    
     max-width: 1249px;
     width: 100%;
     padding: 140px 20px;
@@ -460,6 +462,7 @@ body {
     align-items: center;
     padding: 0 20px 0 20px;
     box-sizing: border-box;
+    margin-top: 30px;
 }
 
 .footer-wrp {
