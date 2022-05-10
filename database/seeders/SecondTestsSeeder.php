@@ -29,8 +29,7 @@ class SecondTestsSeeder extends Seeder
 
         $data[] = [
             'course_id' => 1,
-            'test_title' => 'Нажимайте на слова так, чтобы получилось предложение',
-            'img' => $img[0],
+            'img' => '/test_img/1-2.jpg',
             'part_sentence_1' => 'Нитка - это',
             'right_word_1' => 'тонкая',
             'wrong_word_1' =>'широкая',
@@ -43,6 +42,7 @@ class SecondTestsSeeder extends Seeder
             'part_sentence_4'=>', шили',
             'right_word_4' =>'одежду',
             'wrong_word_4' =>'автомобиль',
+            'etymology' =>'Существительное «нить» — русское по происхождению и означает «тонко скрученную прядь, используемую для шитья и прочего». Слово закрепилось в русском языке в XI в.',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
 
@@ -51,8 +51,7 @@ class SecondTestsSeeder extends Seeder
             if ($item->id == 1) continue;
             $data[] = [
                 'course_id' => $item->id,
-                'test_title' => 'Нажимайте на слова так, чтобы получилось предложение ',
-                'img'=>$img[$item->id],
+                'img'=>'/'.$faker->randomElement($img),
                 'part_sentence_1' => $faker->sentence($ndWords=3,$variableNbWords = true),
                 'right_word_1' => $faker->word(),
                 'wrong_word_1' =>$faker->word(),
@@ -65,6 +64,7 @@ class SecondTestsSeeder extends Seeder
                 'part_sentence_4'=>$faker->sentence($ndWords=2,$variableNbWords = true),
                 'right_word_4' =>$faker->word(),
                 'wrong_word_4' =>$faker->word(),
+                'etymology' =>$faker->word(),
                 'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
             ];
     }

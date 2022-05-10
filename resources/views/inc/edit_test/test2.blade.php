@@ -11,16 +11,12 @@
                 @endforeach
                 @error('course_id') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
+
             <div class="form-group">
-                <label for="test_title">Наименование теста</label>
-                <input type="text" class="form-control" id="test_title" name="test_title" value="{{ $second_test->test_title }}">
-                @error('test_title') <strong style="color:red;">{{ $message }}</strong> @enderror
-            </div>
-            <div class="form-group">
-                <label for="img">Изображение</label>
+                <label for="image">Изображение</label>
                 <img width="100" height="auto" src="{{ $second_test->img }}"> &nbsp;
              <button  name="_method" value="delete" class="delete btn btn-sm btn-outline-danger">X</button>
-                <input type="file" class="form-control" id="img" name="img" >
+                <input type="file" class="form-control" id="image" name="image" >
             </div>
             <div class="form-group">
             <label>Разбейте предложение на 4 части и впишите его с правильными и не правильными словами:</label>

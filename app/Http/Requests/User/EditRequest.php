@@ -18,7 +18,8 @@ class EditRequest extends FormRequest
         return [
 			'is_admin' => ['nullable', 'integer'],
 			'name' => ['required', 'string', 'min:2'],
-            'email' => ['required','string','email:rfc,dns']
+            'email' => ['required','string','email:rfc,dns'],
+            'photo' => ['nullable', 'file', 'image']
         ];
     }
 
@@ -34,6 +35,7 @@ class EditRequest extends FormRequest
 		return [
 			'name' => 'Ваше Имя',
 			'email' => 'Электронная почта',
+            'photo' => 'Аватар'
 		];
 	}
 }

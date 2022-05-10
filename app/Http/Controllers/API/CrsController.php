@@ -45,7 +45,7 @@ class CrsController extends Controller
         $id = $course->id;
         //получим номер первого урока этого курса
         $les_id = DB::table('lessons')->where('course_id', $id)->orderBy('id')->first();
-        $les_id = $les_id-> id;
+        $les_id = $les_id->id;
 
         $first_slider = DB::table('sliders')
             ->where('lesson_id', $les_id)
@@ -54,13 +54,13 @@ class CrsController extends Controller
         return json_encode($first_slider, JSON_UNESCAPED_UNICODE);
     }
 
-    
+
     public function show_last_slider(Course $course)
     {
         $id = $course->id;
         //получим номер первого урока этого курса
         $les_id = DB::table('lessons')->where('course_id', $id)->orderBy('id', 'desc')->first();
-        $les_id = $les_id-> id;
+        $les_id = $les_id->id;
 
         $first_slider = DB::table('sliders')
             ->where('lesson_id', $les_id)
@@ -80,4 +80,48 @@ class CrsController extends Controller
         return json_encode($first_test, JSON_UNESCAPED_UNICODE);
     }
 
+
+    public function second_test(Course $course)
+    {
+        $id = $course->id;
+
+        $result = DB::table('second_tests')
+            ->where('course_id', $id)
+            ->get();
+
+            $res = [];
+            $res['chooseWords'] = [];
+            $i = 0;
+        foreach($result[0] as $key=>$item) {
+            if ($key=='course_id' || $key=='img' || $key=='etymology') $res[$key] = $item;;
+            if (preg_match('#part_sentence#', $key)) {
+                $res['chooseWords'][$i]['type'] = "text";
+                $res['chooseWords'][$i]['content'] = $item;
+                $i++;    
+            }
+            if (preg_match('#right_word#', $key)) {
+                $res['chooseWords'][$i]['type'] = "button";
+                $res['chooseWords'][$i]['correctText'] = $item;
+            } 
+            if (preg_match('#wrong_word#', $key)) {
+                $res['chooseWords'][$i]['incorrectText'] = $item;
+                $i++;    
+            } 
+        }
+
+        $res['sentences'] = [];
+        $i = 0;
+        $third_tests = DB::table('third_tests')
+        ->where('course_id', $id)
+        ->select(['right_sentence', 'words'])
+        ->get();
+
+        foreach($third_tests as $key=>$item) {
+            $res['sentences'][$i]['right_sentence'] = $item->right_sentence;
+            $res['sentences'][$i]['words'] = explode("|", $item->words);
+            $i++;
+        }
+        
+        return json_encode($res, JSON_UNESCAPED_UNICODE);
+    }
 }

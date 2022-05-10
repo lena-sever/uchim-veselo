@@ -11,11 +11,7 @@
                 @endforeach
                 @error('course_id') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
-            <div class="form-group">
-                <label for="test_title">Наименование теста</label>
-                <input type="text" class="form-control" id="test_title" name="test_title" value="{{ $first_test->test_title }}">
-                @error('test_title') <strong style="color:red;">{{ $message }}</strong> @enderror
-            </div>
+
             <div class="form-group">
                 <label for="word">Слово</label>
                 <input type="text" class="form-control" id="word" name="word" value="{{ $first_test->word}}">

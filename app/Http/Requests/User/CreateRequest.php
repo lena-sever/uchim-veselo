@@ -18,6 +18,7 @@ class CreateRequest extends FormRequest
 			'name' => ['required', 'string', 'min:2'],
             'email' => ['required','string','email:rfc,dns'],
             'password' => ['required', 'string', 'min:7'],
+            'photo' => ['nullable', 'file', 'image']
         ];
     }
 
@@ -34,6 +35,8 @@ class CreateRequest extends FormRequest
 			'name' => 'Ваше Имя',
 			'email' => 'Электронная почта',
             'password' => 'Пароль',
+            'photo' => 'Аватар'
+
 		];
 	}
 }

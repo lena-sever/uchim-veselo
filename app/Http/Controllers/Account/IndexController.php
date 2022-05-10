@@ -3,10 +3,7 @@
 namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\User;
-use App\Http\Requests\User\EditRequest;
-//use Illuminate\Support\Facades\Log;
 
 
 class IndexController extends Controller
@@ -17,9 +14,12 @@ class IndexController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function __invoke(User $user)
     {
-        return view('account.index');
+        $user = User::all();
+        return view('account.index',[
+            'user' => $user,
+        ]);
     }
 
 }

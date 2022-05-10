@@ -6,7 +6,7 @@ function Footer() {
             <footer className="footer">
                 <div className="footer-wrp">
                     <span className="footer-text-polity">
-                        &copy; Copyright Учим Весело 2022, All rights reserved.
+                        &copy; Copyright СмартКомикс 2022, All rights reserved.
                     </span>
                     <div className="footer__social-icon-wrp">
                         <a href="#" className="footer__social-icon-link">

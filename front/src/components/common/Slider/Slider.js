@@ -25,60 +25,62 @@ const SliderContainer = ({ sliderList, togleTestActive }) => {
     }, [ slideItemId ] );
 
     const togleSlide = (slideId) => {
-        if( slideItemId !== slideId ) {
+        if (slideItemId !== slideId) {
             newAudio.muted = true;
-            setSliderItemId( slideId );
+            setSliderItemId(slideId);
         }
     };
 
-    const button = sliderList.map( (item, index) => {
+    const button = sliderList.map((item, index) => {
         return (
             <SliderButton
-                key={ index }
-                numb={ index + 1 }
-                togleSlide={ togleSlide }
-                active={ slideItemId === index }
+                key={index}
+                numb={index + 1}
+                togleSlide={togleSlide}
+                active={slideItemId === index}
             />
         );
-    } );
+    });
 
     const nextSlider = () => {
-        if( slideItemId < sliderList.length ) {
+        if (slideItemId < sliderList.length) {
             newAudio.muted = true;
-            setSliderItemId( slideItemId + 1 );
+            setSliderItemId(slideItemId + 1);
         }
     };
     const prewSlider = () => {
-        if( slideItemId > 0 ) {
+        if (slideItemId > 0) {
             newAudio.muted = true;
-            setSliderItemId( slideItemId - 1 );
+            setSliderItemId(slideItemId - 1);
         }
     };
 
     return (
         <div className="slider">
-            {/* <div>{button}</div> */ }
+            {/* <div>{button}</div> */}
 
             <SliderItem
-                newAudio={ newAudio }
-                text={ sliderList[ slideItemId ].text }
+                slideItemId={slideItemId + 1}
+                sliderCoast={sliderList.length + 1}
+                newAudio={newAudio}
+                text={sliderList[slideItemId].text}
                 // title={sliderList[slideItemId].title}
-                img={ sliderList[ slideItemId ].img }
-                isLastSlider={ slideItemId === sliderList.length - 1 }
-                path={ sliderList[ slideItemId ].path }
-                togleTestActive={ togleTestActive }
+                img={sliderList[slideItemId].img}
+                isLastSlider={slideItemId === sliderList.length - 1}
+                path={sliderList[slideItemId].path}
+                togleTestActive={togleTestActive}
             />
             <SliderButtonsControl
-                buttonsActive={ {
+                buttonsActive={{
                     next: slideItemId < sliderList.length - 1,
                     prew: slideItemId > 0,
-                } }
-                nextSlider={ nextSlider }
-                prewSlider={ prewSlider }
+                }}
+                nextSlider={nextSlider}
+                prewSlider={prewSlider}
             />
 
         </div>
     );
 };
 
-export default React.memo( SliderContainer );
+export default React.memo(SliderContainer);

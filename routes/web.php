@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\LessonController as AdminLessonController;
 use App\Http\Controllers\Admin\FirstTestController;
 use App\Http\Controllers\Admin\SecondTestController;
 use App\Http\Controllers\Admin\ThirdTestController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Test\IndexController as TestController;
 use App\Http\Controllers\Admin\CourseReviewController;
 use App\Http\Controllers\Admin\MessengerController;
@@ -24,19 +25,12 @@ use App\Http\Controllers\Account\IndexController as AccountController;
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
 Auth::routes();
 
-/*Route::get('/home', [HomeController::class, 'index'])->name('home');*/
+Route::get('/', [HomeController::class, 'index'])
+->name('home');
 
-    Route::get('/', [HomeController::class, 'index'])
-    ->name('home');
-
-
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth','is_admin']], function () {
     Route::get('/account', AccountController::class)
         ->name('account');
 
@@ -47,6 +41,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['as' => 'admin.', 'prefix' => 'admin'], function () {
         Route::view('/', 'admin.index')->name('index');
+
+        Route::resource('/user',UserController::class);
+        Route::get('/user/destroy/{user}', [UserController::class, 'destroy'])
+            ->where('user', '\d+')
+            ->name('user.destroy');
+        Route::get('/user/toggleAdmin/{user}', [UserController::class, 'toggleAdmin'])
+            ->where('user', '\d+')
+            ->name('user.toggleAdmin');
 
         Route::resource('/course', AdminCourseController::class);
         Route::get('/course/destroy/{course}', [AdminCourseController::class, 'destroy'])
@@ -97,6 +99,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/messenger/destroy/{messenger}', [MessengerController::class, 'destroy'])
             ->where('messenger', '\d+')
             ->name('messenger.destroy');
+
     });
 });
 

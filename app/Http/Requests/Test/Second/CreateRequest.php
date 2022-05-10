@@ -26,7 +26,6 @@ class CreateRequest extends FormRequest
     {
         return [
             'course_id' => ['required','int'],
-			'test_title' => ['required', 'string'],
             'img' => ['nullable', 'file', 'image'],
             'part_sentence_1' => ['required', 'string'],
             'part_sentence_2' => ['required', 'string'],
@@ -40,6 +39,7 @@ class CreateRequest extends FormRequest
             'wrong_word_2'=> ['required', 'string'],
             'wrong_word_3'=> ['required', 'string'],
             'wrong_word_4'=> ['required', 'string'],
+            'etymology'=> ['required', 'string'],
         ];
     }
 
@@ -68,6 +68,7 @@ class CreateRequest extends FormRequest
             'wrong_word_2'=> 'Не правильное слово №2',
             'wrong_word_3'=> 'Не правильное слово №3',
             'wrong_word_4'=> 'Не правильное слово №4',
+            'etymology'=> 'Происхождение слова',
 		];
 	}
 }

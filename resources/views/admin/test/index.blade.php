@@ -21,7 +21,6 @@
             <a href="{{ route('admin.test_1.create') }}" type="button" class="btn btn-sm btn-outline-secondary">Добавить FirstTest</a>&nbsp;
                <tr>
                    <th>#ID</th>
-                   <th>Название</th>
                    <th>Изображение</th>
                    <th>Автор</th>
                    <th>Слово</th>
@@ -36,7 +35,6 @@
             @if($courseItem->id == $testsItem->course_id)
                 <tr id="{{$testsItem->id}}">
                     <td rowspan="5">{{ $testsItem->id }}</td>
-                    <td rowspan="5">{{ $testsItem->test_title }}</td>
                     <td rowspan="5">@if(is_null($testsItem->img))Нет изображения@else<img src="{{$testsItem->img}}" width="100" height="100" alt="" class="cart-img-top">@endif</td>
                     <td rowspan="5">{{$testsItem->author}}</td>
                     <td rowspan="5">{{ $testsItem->word }}</td>
@@ -114,7 +112,6 @@
         <a href="{{ route('admin.test_2.create') }}" type="button" class="btn btn-sm btn-outline-secondary">Добавить SecondTest</a>&nbsp;
             <tr>
                 <th>#ID</th>
-                <th>Название</th>
                 <th>Изображение</th>
                 <th>Предложение</th>
                 <th>Правильные слова</th>
@@ -127,7 +124,6 @@
         @if($courseItem->id == $testsItem->course_id)
         <tr id="{{$testsItem->id}}">
         <td>{{ $testsItem->id }}</td>
-        <td>{{ $testsItem->test_title }}</td>
         <td>@if(is_null($testsItem->img))Нет изображения@else<img src="{{$testsItem->img}}" width="100" height="100" alt="" class="cart-img-top">@endif</td>
         <td>{{$testsItem->part_sentence_1}} {{$testsItem->right_word_1}} {{$testsItem->part_sentence_2}} {{$testsItem->right_word_2}} {{$testsItem->part_sentence_3}} {{$testsItem->right_word_3}} {{$testsItem->part_sentence_4}} {{$testsItem->right_word_4}}
         </td>

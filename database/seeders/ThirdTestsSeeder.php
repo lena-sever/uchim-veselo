@@ -33,7 +33,7 @@ class ThirdTestsSeeder extends Seeder
         $data[] = [
             'course_id' => 1,
             'right_sentence' => 'Он разрезал нитку острыми ножницами',
-            'words' =>'разрезал|ножницами|Он|я|нитку|острыми',
+            'words' =>'разрезал|ножницами|Он|нитку|острыми',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
         $data[] = [
@@ -51,7 +51,7 @@ class ThirdTestsSeeder extends Seeder
         $data[] = [
             'course_id' => 1,
             'right_sentence' => 'Бабушка попросила вдеть нитку в иголку',
-            'words' =>'иголку|в|Бабушку|вдеть|нитку|попросила',
+            'words' =>'иголку|в|Бабушка|вдеть|нитку|попросила',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
         $data[] = [
@@ -75,7 +75,7 @@ class ThirdTestsSeeder extends Seeder
         $data[] = [
             'course_id' => 1,
             'right_sentence' => 'Из шерстяных ниток вяжут носки и свитера',
-            'words' =>'вяжут|и|шерстяных|из|свитера|носки|ниток',
+            'words' =>'вяжут|и|шерстяных|Из|свитера|носки|ниток',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
         $data[] = [
