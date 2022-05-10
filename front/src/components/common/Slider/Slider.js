@@ -1,20 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import SliderButtonsControl from "./SliderButtonsControl";
 import SliderItem from "./SliderItem";
 import SliderButton from "./SliderButton";
+import { useParams } from "react-router-dom";
+import { getCourseId } from "../../../store/courseId/actions";
+import { useDispatch } from "react-redux";
 
 const SliderContainer = ({ sliderList, togleTestActive }) => {
-    const [slideItemId, setSliderItemId] = React.useState(0);
-    const newAudio = new Audio(sliderList[slideItemId].music);
+    const { courseId } = useParams();
+    const dispatch = useDispatch();
+    const [ slideItemId, setSliderItemId ] = React.useState( 0 );
+    const newAudio = new Audio( sliderList[ slideItemId ].music );
 
-    React.useEffect(() => {
+    useEffect( () => {
+        dispatch( getCourseId( courseId ) );
+    }, [] );
+    React.useEffect( () => {
         newAudio.autoplay = true;
         newAudio.volume = 0.3;
         return () => {
             newAudio.muted = true;
         };
-    }, [slideItemId]);
+    }, [ slideItemId ] );
 
     const togleSlide = (slideId) => {
         if (slideItemId !== slideId) {
@@ -50,7 +58,7 @@ const SliderContainer = ({ sliderList, togleTestActive }) => {
     return (
         <div className="slider">
             {/* <div>{button}</div> */}
-            
+
             <SliderItem
                 slideItemId={slideItemId + 1}
                 sliderCoast={sliderList.length + 1}

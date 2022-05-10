@@ -1,0 +1,45 @@
+.test__correct-button,
+.test__incorrect-button {
+    display: inline-block;
+    margin: 7px 7px;
+    padding: 3px 3px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+@keyframes shadowIncorrect {
+    0% {
+        box-shadow: 0 0 0 transparent
+    }
+    25% {
+        box-shadow: 0 0 10px 10px darkRed;
+    }
+    50% {
+        box-shadow: 0 0 0 transparent
+    }
+    75% {
+        box-shadow: 0 0 10px 10px darkRed;
+    }
+    100% {
+        box-shadow: 0 0 0 transparent
+    }
+}
+
+@keyframes shadowCorrect {
+    0% {
+        box-shadow: 0 0 0 transparent
+    }
+    25% {
+        box-shadow: 0 0 10px 10px green;
+    }
+    50% {
+        box-shadow: 0 0 0 transparent
+    }
+    75% {
+        box-shadow: 0 0 10px 10px green;
+    }
+    100% {
+        box-shadow: 0 0 0 transparent
+    }
+}
