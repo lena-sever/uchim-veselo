@@ -54,6 +54,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     /* padding-bottom: 20px; */
     box-sizing: border-box;
     background-color: #F8F8F8;
@@ -123,7 +124,7 @@
     line-height: 17px;
     position: absolute;
     top: 180px;
-    left: 110px;
+    /*left: 110px;*/
 }
 
 .products_item:hover .products_item_btn {
@@ -163,7 +164,7 @@
 }
 .products_item_btn {
     top: 280px;
-    left: 100px;
+    /*left: 100px;*/
 }
 
 @media screen and (max-width: 1346px) {
@@ -200,6 +201,6 @@
 
     .products_item_btn {
         top: 249px;
-        left: 62px;
+        /*left: 62px;*/
     }
 }

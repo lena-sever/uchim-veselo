@@ -2,8 +2,11 @@
     width: 200px;
     height: 50px !important;
     margin-bottom: 20px !important;
-    padding: 20px;
+    padding: 10px;
     font-size: 30px;
     line-height: 1;
     font-weight: 700;
+    box-sizing: border-box;
 }
+
+
