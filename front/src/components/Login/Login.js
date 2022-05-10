@@ -6,8 +6,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import "./Login.css";
 import LoginForm from "./LoginForm";
 import RegForm from "./RegForm";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles( (theme) => ( {
     btn: {
         textDecoration: "none",
         textTransform: "uppercase",
@@ -17,31 +19,33 @@ const useStyles = makeStyles((theme) => ({
     btnGroup: {
         display: "block",
     },
-}));
+} ) );
 
 const Login = () => {
-    const [alignment, setAlignment] = React.useState(true);
+    const [ alignment, setAlignment ] = React.useState( true );
     const handleChange = (event, newAlignment) => {
-        if (newAlignment !== null) {
-            setAlignment(newAlignment);
+        if( newAlignment !== null ) {
+            setAlignment( newAlignment );
         }
     };
     const classes = useStyles();
     return (
+
         <div>
             <h1 className="title">Login</h1>
             <ToggleButtonGroup
                 color="primary"
-                value={alignment}
+                value={ alignment }
                 exclusive
-                onChange={handleChange}
-                className={classes.btnGroup}
+                onChange={ handleChange }
+                className={ classes.btnGroup }
             >
-                <ToggleButton value={true}>Вход</ToggleButton>
-                <ToggleButton value={false}>Регистрация</ToggleButton>
+                <ToggleButton value={ true }>Вход</ToggleButton>
+                <ToggleButton value={ false }>Регистрация</ToggleButton>
             </ToggleButtonGroup>
-            {alignment ? <LoginForm/> : <RegForm/>}
+            { alignment ? <LoginForm/> : <RegForm/> }
         </div>
+
     );
 };
 

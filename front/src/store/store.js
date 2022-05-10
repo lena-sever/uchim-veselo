@@ -6,6 +6,9 @@ import { lessonsReducer } from "./lessons/lessonsReducer";
 import { reviewsReducer } from "./reviews/reviewsReducer";
 import { historyReducer } from "./history/historyReducer";
 import { testsReducer } from "./tests/testsReducer";
+import { courseIdReducer } from "./courseId/courseIdReducer";
+
+
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -17,6 +20,7 @@ export const store = createStore(
         reviewsReducer,
         historyReducer,
         testsReducer,
+        courseIdReducer
     }),
     composeEnhancers(applyMiddleware(thunk))
 );

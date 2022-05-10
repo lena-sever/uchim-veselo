@@ -1,3 +1,13 @@
+.slider-wrap {
+    position: relative;
+    height: 100vh;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+    z-index: 5;
+}
+
 .slider {
     min-height: 500px;
     max-height: 700px;
@@ -7,6 +17,7 @@
     margin: 0 auto;
     align-items: center;
 }
+
 .slider__img {
     max-width: 500px
 }
@@ -27,21 +38,31 @@
     display: flex;
     justify-content: space-between;
 }
+
 .btn_link {
     flex-grow: 1;
     display: flex;
     align-items: center;
 }
-.btn_link a{
+
+.btn_link a {
     text-decoration: none;
 }
+
 @media (max-width: 1024px) {
     .slider__img {
         width: 100%;
     }
 }
+
 @media (max-width: 1024px) {
     .slider {
-margin-top: 35px;
+        margin-top: 35px;
+    }
+}
+
+@media (max-width: 768px) {
+    .css-1atr9f0-MuiSlider-root {
+        display: none !important;
     }
 }

@@ -41,5 +41,44 @@
         "я шью свою одежду красной ниткой",
         "он разрезал нитку острыми ножницами",
         "учительница достала из сумочки катушку черных ниток"
+    ],
+
+    "chooseWords": [
+        {
+            "type": "text",
+            "content": "Нитки - это"
+        },
+        {
+            "type": "button",
+            "correctText": "тонкая",
+            "incorrectText": "широкая"
+        },
+        {
+            "type": "text",
+            "content": "длинная"
+        },
+        {
+            "type": "button",
+            "incorrectText": "змея",
+            "correctText": "веревочка"
+        },
+        {
+            "type": "text",
+            "content": ", с помощью которой делали"
+        },
+        {
+            "type": "button",
+            "correctText": "ткань",
+            "incorrectText": "помидоры"
+        },
+        {
+            "type": "text",
+            "content": "и шили"
+        },
+        {
+            "type": "button",
+            "incorrectText": "автомобиль",
+            "correctText": "одежду"
+        }
     ]
 }

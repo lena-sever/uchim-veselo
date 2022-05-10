@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, HashRouter, useLocation, useParams } from "react-router-dom";
 import Courses from "../Сourses/Courses";
 import Lessons from "../Lessons/Lessons";
 import LessonsItem from "../Lessons/LessonsItem";
@@ -9,28 +9,48 @@ import Error_404 from "../Error_404/Error_404";
 import Login from "../Login/Login";
 import SliderContainer from "../common/Slider/Slider";
 
-import {sliderList} from "../../constants/forSlider/forSlider";
+import { sliderList } from "../../constants/forSlider/forSlider";
 import Tests from "../Tests/Tests";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
+import { useSelector } from "react-redux";
+import { selectCourseId } from "../../store/courseId/courseIdSelector";
 
 function Router() {
+    const {pathname} = useLocation();
+    const courseId = useSelector( selectCourseId );
+    const path1 = pathname == `/courses/${ courseId }/slider1`;
+    const path2 = pathname == `/courses/${ courseId }/slider2`;
+    const path3 = pathname == `/courses/${ courseId }/tests`;
+
     return (
-        <Routes >
-            <Route path="/" element={<InfoPage />} />
-            <Route path="/courses">
-                <Route index element={<Courses />} />
-                <Route path=":courseId" element={<CoursPage />} />
-                <Route path=":courseId/:slider1" element={<LessonsItem />} />
-                <Route path=":courseId/:slider2" element={<LessonsItem />} />
-                <Route path=":courseId/tests" element={ <Tests/> }/>
-            </Route>
-            <Route path="/contacts" element={<Contacts />} />
-            <Route path="/login" element={<Login />} />
-            <Route
-                path="/slider"
-                element={<SliderContainer sliderList={sliderList} />}
-            />
-            <Route path="*" element={<Error_404 />} />
-        </Routes>
+        <>
+            {
+                path1 || path2 || path3 ? null : <Header/>
+            }
+            <div className="main">
+                <Routes>
+                    <Route path="/" element={ <InfoPage/> }/>
+                    <Route path="/courses">
+                        <Route index element={ <Courses/> }/>
+                        <Route path=":courseId" element={ <CoursPage/> }/>
+                        <Route path=":courseId/tests" element={ <Tests/> }/>
+                        <Route path=":courseId/:slider1" element={ <LessonsItem/> }/>
+                        <Route path=":courseId/:slider2" element={ <LessonsItem/> }/>
+                    </Route>
+                    <Route path="/contacts" element={ <Contacts/> }/>
+                    <Route path="/login" element={ <Login/> }/>
+                    <Route
+                        path="/slider"
+                        element={ <SliderContainer sliderList={ sliderList }/> }
+                    />
+                    <Route path="*" element={ <Error_404/> }/>
+                </Routes>
+            </div>
+            {
+                path1 || path2 || path3 ? null : <Footer/>
+            }
+        </>
     );
 }
 

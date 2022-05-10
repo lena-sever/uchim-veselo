@@ -1,0 +1,11 @@
+.test__title {
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: #282c34;
+}
+
+.test__word {
+    font-size: 22px;
+    font-weight: bold;
+    color: #7532d5;
+}

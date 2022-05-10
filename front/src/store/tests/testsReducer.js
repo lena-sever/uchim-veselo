@@ -1,8 +1,9 @@
-import { TESTS_FAILURE, TESTS_LOADING, TESTS_SUCCESS } from "./actions";
+import { FIRST_TESTS_SUCCESS, SECOND_TESTS_SUCCESS, TESTS_FAILURE, TESTS_LOADING, TESTS_SUCCESS } from "./actions";
 import { STATUS } from "../../constants/status";
 
 const initialTests = {
-    tests: [],
+    firstTests: [],
+    secondTests: [],
     request: {
         status: STATUS.IDLE,
         error: ""
@@ -19,10 +20,21 @@ export const testsReducer = (state = initialTests, { type, payload }) => {
                     status: STATUS.LOADING
                 }
             };
-        case TESTS_SUCCESS:
+
+        case FIRST_TESTS_SUCCESS:
             return {
                 ...state,
-                tests: payload,
+                firstTests: payload,
+                request: {
+                    error: "",
+                    status: STATUS.SUCCESS
+                }
+            };
+
+        case SECOND_TESTS_SUCCESS:
+            return {
+                ...state,
+                secondTests: payload,
                 request: {
                     error: "",
                     status: STATUS.SUCCESS

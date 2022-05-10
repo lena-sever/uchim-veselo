@@ -11,7 +11,7 @@ import VolumeUpSharp from "@mui/icons-material/VolumeUpSharp";
 import "./Slider.css";
 
 const SliderItem = ({ text, newAudio, title, img, isLastSlider, path }) => {
-    console.log(path);
+    // console.log(path);
     const [mute, setMute] = React.useState(0.3);
     console.log(isLastSlider);
     React.useEffect(() => {

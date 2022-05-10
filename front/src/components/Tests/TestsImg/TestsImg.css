@@ -1,0 +1,11 @@
+.test__img-wrap {
+    width: 80%;
+    max-width: 300px;
+    height: 250px;
+    margin-bottom: 20px;
+    border: 1px solid #cccccc;
+}
+
+.test__img {
+    width: 100%;
+}

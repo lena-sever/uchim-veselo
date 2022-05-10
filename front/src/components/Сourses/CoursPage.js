@@ -20,86 +20,91 @@ import "./Cours.css";
 
 import ReviewForm from "../Lessons/ReviewForm/ReviewForm";
 import { selectUser } from "../../store/auth/authSelector";
+import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
+import { getCourseId } from "../../store/courseId/actions";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles( (theme) => ( {
     btn: {
-        margin: theme.spacing(2),
+        margin: theme.spacing( 2 ),
         textDecoration: "none",
         textTransform: "uppercase",
         borderRadius: "5px",
         padding: "10px 20px",
         border: "1px solid #b458bf",
     },
-}));
+} ) );
 
-const ColorButton = styled(Button)(({ theme }) => ({
-    color: theme.palette.getContrastText(purple[500]),
-    backgroundColor: purple[500],
+const ColorButton = styled( Button )( ({ theme }) => ( {
+    color: theme.palette.getContrastText( purple[ 500 ] ),
+    backgroundColor: purple[ 500 ],
     "&:hover": {
-        backgroundColor: purple[700],
+        backgroundColor: purple[ 700 ],
     },
-}));
+} ) );
 
-const ColorButtonOutlined = styled(Button)(({ theme }) => ({
-    color: purple[500],
+const ColorButtonOutlined = styled( Button )( ({ theme }) => ( {
+    color: purple[ 500 ],
     backgroundColor: common.white,
     "&:hover": {
-        color: theme.palette.getContrastText(purple[100]),
-        backgroundColor: purple[100],
+        color: theme.palette.getContrastText( purple[ 100 ] ),
+        backgroundColor: purple[ 100 ],
     },
-}));
+} ) );
 
 const CoursPage = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
-    const courses = useSelector(selectCourses);
-    const requestCours = async (courseId) => {
-        await dispatch(getCourses());
-        await dispatch(getCours(courseId));
+    const courses = useSelector( selectCourses );
+    const requestCours = async(courseId) => {
+        await dispatch( getCourses() );
+        await dispatch( getCours( courseId ) );
     };
-    const cours = useSelector(selectCours);
-    const reviewCourse = useSelector(selectReview);
+    const cours = useSelector( selectCours );
+    const reviewCourse = useSelector( selectReview );
     let { courseId } = useParams();
-    const requestReview = async (courseId) => {
-        dispatch(getReviewTC(courseId));
+    const requestReview = async(courseId) => {
+        dispatch( getReviewTC( courseId ) );
     };
-    React.useEffect(() => {
-        console.log(courseId);
-        requestCours(courseId);
-        requestReview(courseId);
-    }, []);
+    React.useEffect( () => {
+        console.log( courseId );
+        requestCours( courseId );
+        requestReview( courseId );
+        dispatch(getCourseId(courseId))
+    }, [] );
 
-    const user = useSelector(selectUser);
+    const user = useSelector( selectUser );
 
-    let reviewElem = reviewCourse.map((review) => {
-        return <LessonReview key={review.id} review={review} />;
-    });
+    let reviewElem = reviewCourse.map( (review) => {
+        return <LessonReview key={ review.id } review={ review }/>;
+    } );
     const style = {
         maxWidth: "1249px",
         margin: "0 auto",
     };
 
-    return courses.length > parseInt(courseId - 1) ? (
+    return courses.length > parseInt( courseId - 1 ) ? (
+
         <div className="cours__wrp">
-            {cours && (
+            { cours && (
                 <>
-                    <h1 className="title">{cours.title}</h1>
-                    <img className="cours__img" src={cours.img} />
-                    <h2 className="subtitle">{cours.description}</h2>
-                    <p className="text_box_main cours__text">{cours.text}</p>
+                    <h1 className="title">{ cours.title }</h1>
+                    <img className="cours__img" src={ cours.img }/>
+                    <h2 className="subtitle">{ cours.description }</h2>
+                    <p className="text_box_main cours__text">{ cours.text }</p>
                     <div className="cours__btn-wrp">
                         <ColorButton
-                            as={NavLink}
-                            to={`/courses/${courseId}/slider1`}
+                            as={ NavLink }
+                            to={ `/courses/${ courseId }/slider1` }
                             size="large"
-                            className={classes.btn}
+                            className={ classes.btn }
                         >
                             Начать читать комикс
                         </ColorButton>
 
                         <ColorButtonOutlined
-                            as={NavLink}
-                            className={classes.btn}
+                            as={ NavLink }
+                            className={ classes.btn }
                             to="/courses"
                             size="large"
                         >
@@ -108,19 +113,20 @@ const CoursPage = () => {
                     </div>
                     <div>
                         <ReviewForm
-                            user={user}
-                            courseId={courseId}
+                            user={ user }
+                            courseId={ courseId }
                         ></ReviewForm>
                         <h2>Отзывы</h2>
                     </div>
-                    <div style={style}>{reviewElem}</div>
+                    <div style={ style }>{ reviewElem }</div>
                 </>
-            )}
+            ) }
         </div>
+
     ) : (
         <ColorButtonOutlined
-            as={NavLink}
-            className={classes.btn}
+            as={ NavLink }
+            className={ classes.btn }
             to="/courses"
             size="large"
         >
