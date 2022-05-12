@@ -89,8 +89,8 @@ class ThirdTestsSeeder extends Seeder
             if ($item->id == 1) continue;
             $data[] = [
                 'course_id' => $item->id,
-                'right_sentence' =>$faker->randomElement($faker->sentences($nb = 5, $asText = false)),
-                'words' => $faker->randomElement($faker->words($nb = 5, $asText = false)),
+                'right_sentence' => 'Слово_1 слово_2',
+                'words' => 'слово_2|Слово_1',
                 'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
             ];
         }
