@@ -18,16 +18,6 @@
                 <img width="100" height="auto" src="{{old('photo') }}"> &nbsp;
                 <input type="file" class="form-control" id="photo" name="photo" >
             </div>
-            <div class="form-group">
-                <label for="course_id">Комикс</label>
-                <select disabled class="form-control" id="course_id" name="course_id">
-                    @foreach($courses as $course)
-                        <option value="{{ $course->id }}"
-                        @if($course->id === $painter->course_id) selected @endif>{{ $course->title }}</option>
-                    @endforeach
-                </select>
-                @error('course_id') <strong style="color:red;">{{ $message }}</strong> @enderror
-            </div>
             <br>
             <button type="submit"  value="Добавить" class="btn btn-success" style="float: right;">Добавить</button>
         </form>

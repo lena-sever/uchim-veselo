@@ -18,6 +18,6 @@ class Author extends Model
         'photo',
 	];
     public function courses() {
-        return $this->hasOne(Course::class);
+        return $this->hasMany(Course::class,'author_id');
     }
 }

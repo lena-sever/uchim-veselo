@@ -26,16 +26,19 @@
                 @endif
                 <input type="file" class="form-control" id="photo" name="photo" >
             </div>
+            @if($painter->courses == null)
+            @else
             <div class="form-group">
                 <label for="course_id">Комикс</label>
                 <select disabled class="form-control" id="course_id" name="course_id">
                     @foreach($courses as $course)
                         <option value="{{ $course->id }}"
-                        @if($course->id === $painter->course_id) selected @endif>{{ $course->title }}</option>
+                        @if($course->painter_id === $painter->courses->id) selected @endif>{{ $course->title }}</option>
                     @endforeach
                 </select>
                 @error('course_id') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
+            @endif
             <br>
             <button type="submit"  value="Изменить" class="btn btn-success" style="float: right;">Изменить</button>
         </form>

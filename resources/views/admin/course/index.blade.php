@@ -10,6 +10,10 @@
   <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group me-2">
       <a href="{{ route('admin.course.create') }}" type="button" class="btn btn-sm btn-secondary">Добавить комикса
+      </a>&nbsp;
+      <a href="{{ route('admin.author.index') }}" type="button" class="btn btn-sm btn-secondary">Авторы
+      </a>&nbsp;
+      <a href="{{ route('admin.painter.index') }}" type="button" class="btn btn-sm btn-secondary">Художники
       </a>
     </div>
   </div><br>
@@ -33,8 +37,21 @@
             <td>{{ $coursesItem->id }}</td>
             <td>{{ $coursesItem->title }}</td>
             <td><img src="{{$coursesItem->img}}" width="100" height="100" alt="" class="cart-img-top"></td>
-            <td>{{ $coursesItem->painters->name }}</td>
-            <td>{{ $coursesItem->authors->name }}</td>
+            <td>
+                @foreach($painters as $painter)
+                @if($painter->id == $coursesItem->painter_id)
+                {{$painter->name}}
+                @endif
+                @endforeach
+
+            </td>
+            <td>
+                @foreach($authors as $author)
+                @if($author->id == $coursesItem->author_id)
+                {{$author->name}}
+                @endif
+                @endforeach
+            </td>
             <td>{!! $coursesItem->description !!}</td>
             <td>
               <p class="btn-group">

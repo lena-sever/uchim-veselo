@@ -18,7 +18,7 @@ class Painter extends Model
         'photo',
 	];
     public function courses() {
-        return $this->hasOne(Course::class,'painter_id');
+        return $this->hasMany(Course::class,'painter_id');
     }
 
 }

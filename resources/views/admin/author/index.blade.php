@@ -9,7 +9,7 @@
 <h1 class="h2">Панель администратора</h1>
   <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group me-2">
-      <a href="{{ route('account') }}" type="button" class="btn btn-sm btn-secondary">Назад</a>&nbsp;
+      <a href="{{ route('admin.index') }}" type="button" class="btn btn-sm btn-secondary">Назад</a>&nbsp;
       <a href="{{ route('admin.author.create') }}" type="button" class="btn btn-sm btn-secondary">Добавить автора
       </a>
     </div>
@@ -42,7 +42,12 @@
                         @endif
                     </td>
                     <td>{{ $authorsItem->name }}</td>
-                    <td>{{ $authorsItem->courses->title }}</td>
+                    <td>
+                        @foreach($authorsItem->courses as $course)
+                            <a href="{{ route('admin.course.show',['course'=>$course->id]) }}" type="button" class="btn btn-outline-secondary">{{$course->title}}
+                            </a>
+                        @endforeach
+                    </td>
                     <td>
                         <a class="btn  btn-primary" href="{{ route('admin.author.edit', ['author' => $authorsItem]) }}">Редактировать</a> &nbsp;
                         <a class="delete btn  btn-danger" href="{{route('admin.author.destroy',['author' => $authorsItem])}}">Удалить</a>

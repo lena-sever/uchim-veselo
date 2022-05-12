@@ -45,7 +45,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('account') }}">ПРОФИЛЬ</a>
                         </li>
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.index') }}">ДРУГОЕ</a>
+                        </li>
                         @endif
                         @endguest
 
