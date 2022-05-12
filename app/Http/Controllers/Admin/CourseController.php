@@ -21,6 +21,7 @@ class CourseController extends Controller
     {
         $courses = Course::all();
 
+
         return view('admin.course.index',[
             'courses' => $courses
         ]);

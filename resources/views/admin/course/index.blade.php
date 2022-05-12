@@ -11,7 +11,7 @@
     <div class="btn-group me-2">
       <a href="{{ route('admin.course.create') }}" type="button" class="btn btn-sm btn-secondary">Добавить комикса
       </a>
-    </div> 
+    </div>
   </div><br>
   <div class="row">
     <div class="table-responsive">
@@ -21,6 +21,8 @@
             <th>#ID</th>
             <th>Заголовок</th>
             <th>Изображение</th>
+            <th>Художник</th>
+            <th>Автор</th>
             <th>Описание</th>
             <th>Опции</th>
           </tr>
@@ -31,6 +33,8 @@
             <td>{{ $coursesItem->id }}</td>
             <td>{{ $coursesItem->title }}</td>
             <td><img src="{{$coursesItem->img}}" width="100" height="100" alt="" class="cart-img-top"></td>
+            <td>{{ $coursesItem->painters->name }}</td>
+            <td>{{ $coursesItem->authors->name }}</td>
             <td>{!! $coursesItem->description !!}</td>
             <td>
               <p class="btn-group">
@@ -82,3 +86,4 @@
   </div>
 </div>
 @endsection
+

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CourseController as AdminCourseController;
 use App\Http\Controllers\Admin\LessonController as AdminLessonController;
+use App\Http\Controllers\Admin\AuthorController as AdminAuthorController;
+use App\Http\Controllers\Admin\PainterController as AdminPainterController;
 use App\Http\Controllers\Admin\FirstTestController;
 use App\Http\Controllers\Admin\SecondTestController;
 use App\Http\Controllers\Admin\ThirdTestController;
@@ -49,6 +51,16 @@ Route::group(['middleware' => ['auth','is_admin']], function () {
         Route::get('/user/toggleAdmin/{user}', [UserController::class, 'toggleAdmin'])
             ->where('user', '\d+')
             ->name('user.toggleAdmin');
+
+        Route::resource('/author', AdminAuthorController::class);
+        Route::get('/author/destroy/{author}', [AdminAuthorController::class, 'destroy'])
+            ->where('author', '\d+')
+            ->name('author.destroy');
+
+        Route::resource('/painter', AdminPainterController::class);
+        Route::get('/painter/destroy/{painter}', [AdminPainterController::class, 'destroy'])
+            ->where('painter', '\d+')
+            ->name('painter.destroy');
 
         Route::resource('/course', AdminCourseController::class);
         Route::get('/course/destroy/{course}', [AdminCourseController::class, 'destroy'])

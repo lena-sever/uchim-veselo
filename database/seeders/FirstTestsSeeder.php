@@ -23,7 +23,7 @@ class FirstTestsSeeder extends Seeder
     {
         $faker = Factory::create();
         $data = [];
-        $img = Storage::allFiles('test_img');
+        //$img = Storage::allFiles('test_img');
         $courses = DB::table('courses')->get();
 
         $data[] = [
@@ -44,7 +44,7 @@ class FirstTestsSeeder extends Seeder
             if ($item->id == 1) continue;
             $data[] = [
                 'course_id' => $item->id,
-                'img'=>'/'.$img[1],
+                'img'=>'/test_img/1-1.jpg',
                 'author' => 'Админ',
                 'word' => $faker->text(mt_rand(5, 10)),
                 'answer_1' => $faker->text(mt_rand(10, 20)),

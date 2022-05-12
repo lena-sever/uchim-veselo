@@ -20,9 +20,10 @@
             </div>
             <div class="form-group">
                 <label for="course_id">Комикс</label>
-                <select class="form-control" id="course_id" name="course_id">
+                <select disabled class="form-control" id="course_id" name="course_id">
                     @foreach($courses as $course)
-                        <option value="{{ $course->id }}"  @if($course->id == $painter_id) selected @endif> {{ $course->title }}</option>
+                        <option value="{{ $course->id }}"
+                        @if($course->id === $painter->course_id) selected @endif>{{ $course->title }}</option>
                     @endforeach
                 </select>
                 @error('course_id') <strong style="color:red;">{{ $message }}</strong> @enderror

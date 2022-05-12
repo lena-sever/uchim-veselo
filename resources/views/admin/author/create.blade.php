@@ -6,7 +6,7 @@
 
 @include('inc.message')
 <div class="col-md-9 ms-sm-5 col-lg-10 px-md-2">
-        <form method="post" action="{{ route('admin.painter.store') }}" enctype="multipart/form-data">
+        <form method="post" action="{{ route('admin.user.store') }}" enctype="multipart/form-data">
         @csrf
             <div class="form-group">
                 <label for="name">ФИО</label>
@@ -22,7 +22,7 @@
                 <label for="course_id">Комикс</label>
                 <select class="form-control" id="course_id" name="course_id">
                     @foreach($courses as $course)
-                        <option value="{{ $course->id }}"  @if($course->id == $painter_id) selected @endif> {{ $course->title }}</option>
+                        <option value="{{ $course->id }}"  @if($course->id == $author_id) selected @endif> {{ $course->title }}</option>
                     @endforeach
                 </select>
                 @error('course_id') <strong style="color:red;">{{ $message }}</strong> @enderror
@@ -30,7 +30,7 @@
             <br>
             <button type="submit"  value="Добавить" class="btn btn-success" style="float: right;">Добавить</button>
         </form>
-        <a href="{{ route('admin.painter.index') }}" type="button" class="btn btn-sm btn-outline-secondary">
+        <a href="{{ route('admin.user.index') }}" type="button" class="btn btn-sm btn-outline-secondary">
         Назад</a>
     </div>
 @endsection

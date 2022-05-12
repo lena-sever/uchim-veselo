@@ -19,6 +19,8 @@ class CreateCoursesTable extends Migration
             $table->string('description')->nullable();
             $table->text('text');
             $table->string('img')->nullable();
+            $table->foreignId('author_id')->constrained('authors')->cascadeOnDelete();
+            $table->foreignId('painter_id')->constrained('painters')->cascadeOnDelete();
             $table->timestamps();
 
             $table->softDeletes();
@@ -32,6 +34,8 @@ class CreateCoursesTable extends Migration
      */
     public function down()
     {
+        Schema::dropForeign('courses_author_id_foreign');
+        Schema::dropForeign('courses_painter_id_foreign');
         Schema::dropIfExists('courses');
     }
 }
