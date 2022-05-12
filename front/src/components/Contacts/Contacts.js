@@ -13,7 +13,7 @@ const Contacts = (props) => {
   });
   const url = "https://uchim-veselo.ru/api/messange";
 
-let messageEl = document.querySelector("#sendmessage");
+  let messageEl = document.querySelector("#sendmessage");
 
   async function postData() {
     try {
@@ -38,7 +38,7 @@ let messageEl = document.querySelector("#sendmessage");
     setData(newdata);
   }
 
-    return (
+  return (
     <>
       <div>
         <form onSubmit={postData} className={styles.main}>

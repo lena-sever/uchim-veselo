@@ -10,7 +10,7 @@
 
 .slider {
     min-height: 500px;
-    max-height: 700px;
+    /* max-height: 700px; */
     max-width: 1074px;
     display: flex;
     flex-direction: column;
@@ -23,9 +23,9 @@
 }
 
 .slider__text {
-    padding-top: 50px;
+    padding-top: 30px;
     max-width: 500px;
-    margin: 0 auto 50px;
+    margin: 0 auto;
 }
 
 .slider__volue {
