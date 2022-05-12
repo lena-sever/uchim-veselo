@@ -22,12 +22,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-/*************  И С Т О Р И И ************/
+/*************  К О М И К С Ы ************/
 
 // список всех историй
 Route::get('courses', [CrsController::class,'index'])->name('api.course.index');
 // список всех глав и отзывы (надо доделать/переделать)
 Route::get('courses/{course}', [CrsController::class,'show'])->name('api.course.show');
+// поиск по комиксам
+Route::post('courses/search', [CrsController::class,'search'])->name('api.course.search');
 
 
 /*************  С Л А Й Д Е Р Ы ************/

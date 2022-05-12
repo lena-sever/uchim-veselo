@@ -124,4 +124,29 @@ class CrsController extends Controller
         
         return json_encode($res, JSON_UNESCAPED_UNICODE);
     }
+
+    public function search(Request $request)
+    {
+        $validated = $request->validate([
+            'search_phrase' => 'required|string|min:4',
+        ]);
+
+        $searchTerms = explode(' ', $validated['search_phrase']);
+        $query = Course::query();
+
+        if (isset($searchTerms)) {
+            foreach ($searchTerms as $search) {
+                $query->where(function ($q) use ($search) {
+                    $q->where('title', 'like', '%' . $search . '%')
+                        ->orWhere('description', 'like', '%' . $search . '%');
+                });
+            }
+        }
+
+        $results = $query->get();
+
+        return json_encode($results, JSON_UNESCAPED_UNICODE);
+    }
+
+
 }

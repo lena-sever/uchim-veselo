@@ -18,6 +18,7 @@ class CreateAuthorsTable extends Migration
             $table->string('name');
             $table->text('photo')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
