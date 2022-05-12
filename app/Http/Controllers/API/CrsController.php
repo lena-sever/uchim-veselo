@@ -89,39 +89,39 @@ class CrsController extends Controller
             ->where('course_id', $id)
             ->get();
 
-            $res = [];
-            $res['chooseWords'] = [];
-            $i = 0;
-        foreach($result[0] as $key=>$item) {
-            if ($key=='course_id' || $key=='img' || $key=='etymology') $res[$key] = $item;;
+        $res = [];
+        $res['chooseWords'] = [];
+        $i = 0;
+        foreach ($result[0] as $key => $item) {
+            if ($key == 'course_id' || $key == 'img' || $key == 'etymology') $res[$key] = $item;;
             if (preg_match('#part_sentence#', $key)) {
                 $res['chooseWords'][$i]['type'] = "text";
                 $res['chooseWords'][$i]['content'] = $item;
-                $i++;    
+                $i++;
             }
             if (preg_match('#right_word#', $key)) {
                 $res['chooseWords'][$i]['type'] = "button";
                 $res['chooseWords'][$i]['correctText'] = $item;
-            } 
+            }
             if (preg_match('#wrong_word#', $key)) {
                 $res['chooseWords'][$i]['incorrectText'] = $item;
-                $i++;    
-            } 
+                $i++;
+            }
         }
 
         $res['sentences'] = [];
         $i = 0;
         $third_tests = DB::table('third_tests')
-        ->where('course_id', $id)
-        ->select(['right_sentence', 'words'])
-        ->get();
+            ->where('course_id', $id)
+            ->select(['right_sentence', 'words'])
+            ->get();
 
-        foreach($third_tests as $key=>$item) {
+        foreach ($third_tests as $key => $item) {
             $res['sentences'][$i]['right_sentence'] = $item->right_sentence;
             $res['sentences'][$i]['words'] = explode("|", $item->words);
             $i++;
         }
-        
+
         return json_encode($res, JSON_UNESCAPED_UNICODE);
     }
 
@@ -134,19 +134,16 @@ class CrsController extends Controller
         $searchTerms = explode(' ', $validated['search_phrase']);
         $query = Course::query();
 
-        if (isset($searchTerms)) {
+        if ($searchTerms) {
             foreach ($searchTerms as $search) {
                 $query->where(function ($q) use ($search) {
                     $q->where('title', 'like', '%' . $search . '%')
                         ->orWhere('description', 'like', '%' . $search . '%');
                 });
             }
+            $results = $query->get();
+            return json_encode($results, JSON_UNESCAPED_UNICODE);
         }
-
-        $results = $query->get();
-
-        return json_encode($results, JSON_UNESCAPED_UNICODE);
+        else return "нет результатов!";
     }
-
-
 }

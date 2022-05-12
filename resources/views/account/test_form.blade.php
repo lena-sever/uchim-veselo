@@ -66,7 +66,7 @@
 <hr>
 
 <h2>Поиск по комиксам</h2>
-<form method="post" action="courses/search">
+<form method="post" action="https://uchim-veselo.ru/api/courses/search">
 
     <label>Запрос</label>
     <input type="text" name="search_phrase" value="Клим квадрат">
