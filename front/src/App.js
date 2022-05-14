@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { store } from "./store/store";
 import Router from "./components/Routing/Router";
 import { authMe } from "./store/auth/action";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 

@@ -1,11 +1,10 @@
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
 import { selectUser } from "../../store/auth/authSelector";
 import { logout } from "../../store/auth/action";
 import "./Navigation.css";
-
 import logo from "../../img/logo.png";
+import { slide as Menu } from 'react-burger-menu'
 
 function Navigation() {
     const user = useSelector(selectUser);
