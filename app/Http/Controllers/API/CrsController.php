@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\Slider;
 use Illuminate\Support\Facades\DB;
+use App\Models\Author;
+use App\Models\Painter;
 
 
 class CrsController extends Controller
@@ -132,18 +134,57 @@ class CrsController extends Controller
         ]);
 
         $searchTerms = explode(' ', $validated['search_phrase']);
+        $searchTerms = array_slice($searchTerms, 0, 5); //будем искать только по 5 первым словам
+        $author_ids = [];
+        $painter_ids = [];
+
+        // сделать сначала поиск id по таблицам авторов 
+        $queryAuthor = Author::query();
+        if ($searchTerms) {
+            foreach ($searchTerms as $search) {
+                $queryAuthor->where(function ($q) use ($search) {
+                    $q->where('name', 'like', '%' . $search . '%');
+                });
+            }
+            $resAuthor = $queryAuthor->select('id')->get();
+            foreach ($resAuthor as $author) {
+                $author_ids[] = $author->id;
+            }
+        }  
+
+        // поиск id по таблицам художников 
+        $queryPainter = Painter::query();
+        if ($searchTerms) {
+            foreach ($searchTerms as $search) {
+                $queryPainter->where(function ($q) use ($search) {
+                    $q->where('name', 'like', '%' . $search . '%');
+                });
+            }
+            $resPainter = $queryPainter->select('id')->get();
+            foreach ($resPainter as $painter) {
+                $painter_ids[] = $painter->id;
+            }
+        }  
+
+
         $query = Course::query();
 
         if ($searchTerms) {
+            $query->whereIn('author_id', $author_ids);
+            $query->orWhere(function ($pq) use ($painter_ids) {
+                $pq->whereIn('painter_id', $painter_ids);
+            });
+
             foreach ($searchTerms as $search) {
-                $query->where(function ($q) use ($search) {
+                $query->orWhere(function ($q) use ($search) {
                     $q->where('title', 'like', '%' . $search . '%')
-                        ->orWhere('description', 'like', '%' . $search . '%');
+                        ->orWhere('description', 'like', '%' . $search . '%')
+                        ;
                 });
             }
             $results = $query->get();
             return json_encode($results, JSON_UNESCAPED_UNICODE);
         }
-        else return "нет результатов!";
+        else return "нет результатов поиска!";
     }
 }

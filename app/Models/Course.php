@@ -21,10 +21,10 @@ class Course extends Model
         'author_id',
         'painter_id'
 	];
-    public function authors() {
+    public function author() {
         return $this->belongsTo(Author::class,'id');
     }
-    public function painters() {
+    public function painter() {
         return $this->belongsTo(Painter::class,'id');
     }
 

@@ -24,7 +24,7 @@ class CoursesSeeder extends Seeder
 
 			$data[] = [
                 'title' => 'Приключение в лесу',
-                'description' => $faker->text(mt_rand(100, 150)),
+                'description' => 'Клим отправляется на розыски своей пропавшей подруги Софии в лес. Там он встречает там одного из самых опасных монстров в мире Сиренокубоголового. Мальчик пытается убежать от монстра, но тот настигает Клима. Жизнь мальчика висит на волоске.',
                 'text' => $faker->text(mt_rand(300, 500)),
                 'img' => 'https://uchim-veselo.ru/img/1.jpg',
                 'author_id'=> 1,
@@ -36,7 +36,7 @@ class CoursesSeeder extends Seeder
                 'description' => $faker->text(mt_rand(100, 150)),
                 'text' => $faker->text(mt_rand(300, 500)),
                 'img' => 'https://uchim-veselo.ru/img/2.jpg',
-                'author_id'=> 2,
+                'author_id'=> 1,
                 'painter_id'=> 2,
 			];
 			$data[] = [
@@ -45,7 +45,7 @@ class CoursesSeeder extends Seeder
                 'text' => $faker->text(mt_rand(300, 500)),
                 'img' => 'https://uchim-veselo.ru/img/3.jpg',
                 'author_id'=> 3,
-                'painter_id'=> 3,
+                'painter_id'=> 1,
 			];
 			$data[] = [
                 'title' => 'Это не интересно',
