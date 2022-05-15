@@ -7,8 +7,14 @@
 @include('inc.message')
 <div class="container">
 <h1 class="h2">Список глав по комиксу: {{$course->title}}</h1>
+<div style="margin-bottom: 15px;" class="p">
 <a href="{{ route('admin.course.index') }}" type="button" class="btn btn-sm btn-secondary">Назад</a> &nbsp;
-  <a href="{{ route('admin.lesson.create') }}" type="button" class="btn btn-sm btn-secondary">Добавить главу</a>
+  <a href="{{ route('admin.lesson.create') }}" type="button" class="btn btn-sm btn-secondary">Добавить главу</a>&nbsp;
+      <a href="{{ route('admin.author.index') }}" type="button" class="btn btn-sm btn-secondary">Авторы
+      </a>&nbsp;
+      <a href="{{ route('admin.painter.index') }}" type="button" class="btn btn-sm btn-secondary">Художники
+      </a>
+</div>
   <div class="row">
     <div class="table-responsive">
   <table class="table table-bordered">
@@ -67,7 +73,10 @@
             @forelse($reviews as $reviewItem)
                 <tr id="{{$reviewItem->id}}">
                     <td>{{ $reviewItem->id }}</td>
-                    <td>{{ $reviewItem->user_id }}</td>
+                    <td>
+                        {{ $reviewItem->user_id }}
+
+                    </td>
                     <td>{!! $reviewItem->text !!}</td>
                     <td>
                         <p class="btn-group">

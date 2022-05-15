@@ -65,5 +65,14 @@
 </form><br><br>
 <hr>
 
+<h2>Поиск по комиксам</h2>
+<form method="post" action="courses/search">
+
+    <label>Запрос</label>
+    <input type="text" name="search_phrase" value="Клим квадрат">
+
+    <input type="submit" value="Отправить">
+</form><br><br>
+<hr>
 
 @endsection

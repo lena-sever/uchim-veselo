@@ -18,7 +18,15 @@ class Course extends Model
 		'description',
 		'text',
         'img',
+        'author_id',
+        'painter_id'
 	];
+    public function author() {
+        return $this->belongsTo(Author::class,'id');
+    }
+    public function painter() {
+        return $this->belongsTo(Painter::class,'id');
+    }
 
     public function lessons() {
         return $this->hasMany(Lesson::class);
@@ -27,7 +35,7 @@ class Course extends Model
 	public function courseReviews() {
 		return $this->hasMany(CourseReview::class);
 	}
-	
+
     public function first_tests() {
         return $this->hasMany(FirstTest::class);
     }
@@ -37,5 +45,5 @@ class Course extends Model
     public function third_tests() {
         return $this->hasMany(ThirdTest::class);
     }
-		
+
 }

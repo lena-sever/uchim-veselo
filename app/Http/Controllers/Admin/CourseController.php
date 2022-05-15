@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Http\Requests\Course\EditRequest;
 use App\Http\Requests\Course\CreateRequest;
+use App\Models\Author;
+use App\Models\Painter;
 use Illuminate\Support\Facades\Log;
 use App\Services\UploadService;
 use Illuminate\Support\Facades\Storage;
@@ -20,9 +22,13 @@ class CourseController extends Controller
     public function index()
     {
         $courses = Course::all();
+        $authors = Author::all();
+        $painters = Painter::all();
 
         return view('admin.course.index',[
-            'courses' => $courses
+            'courses' => $courses,
+            'authors' =>$authors,
+            'painters'=>$painters,
         ]);
     }
 
@@ -33,7 +39,13 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('admin.course.create');
+        $authors = Author::all();
+        $painters = Painter::all();
+
+        return view('admin.course.create',[
+            'authors' =>$authors,
+            'painters' => $painters
+        ]);
     }
 
 
@@ -53,7 +65,7 @@ class CourseController extends Controller
             //добавление картинки в бд
             $validated['img']='/'.$validated['img'];
         }
-
+//dd($validated,$request);
         $created = Course::create($validated);
 
 		if($created) {
@@ -97,8 +109,13 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
+        $authors = Author::all();
+        $painters = Painter::all();
+
         return view('admin.course.edit',[
-            'course' => $course
+            'course' => $course,
+            'authors' => $authors,
+            'painters' => $painters,
         ]);
     }
 
@@ -120,6 +137,7 @@ class CourseController extends Controller
             $validated['img']='/'.$validated['img'];
 
         }
+        //dd($request,$validated);
         $updated = $course->fill($validated)->save();
 
         if($updated) {

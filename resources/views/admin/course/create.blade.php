@@ -14,6 +14,24 @@
                 @error('title') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
+                <label for="author_id">Автор</label>
+                <select class="form-control" id="author_id" name="author_id">
+                    @foreach($authors as $author)
+                        <option value="{{ $author->id }}">{{ $author->name }}</option>
+                    @endforeach
+                </select>
+                @error('author_id') <strong style="color:red;">{{ $message }}</strong> @enderror
+            </div>
+            <div class="form-group">
+                <label for="painter_id">Художник</label>
+                <select class="form-control" id="painter_id" name="painter_id">
+                    @foreach($painters as $painter)
+                        <option value="{{ $painter->id }}">{{ $painter->name }}</option>
+                    @endforeach
+                </select>
+                @error('painter_id') <strong style="color:red;">{{ $message }}</strong> @enderror
+            </div>
+            <div class="form-group">
                 <label for="description">Краткое описание комикс</label>
                 <textarea class="form-control" name="description" id="description">{!! old('description') !!}</textarea>
                 @error('description') <strong style="color:red;">{{ $message }}</strong> @enderror

@@ -30,7 +30,8 @@ class EditRequest extends FormRequest
             'description' => ['required', 'string',  'min:20', 'max:255'],
             'text' =>['required', 'string', 'min:20'],
             'img' => ['nullable', 'file', 'image'],
-
+            'author_id' => ['required', 'integer' ],
+            'painter_id' => ['required', 'integer' ],
         ];
     }
 
@@ -46,7 +47,9 @@ class EditRequest extends FormRequest
 		return [
 			'title' => 'Наименование комикса',
 			'description' => 'Краткое описание комикса',
-            'text' => 'Полное описание комикса'
+            'text' => 'Полное описание комикса',
+            'author_id' => 'Автор',
+            'painter_id' => 'Художник'
 		];
 	}
 }
