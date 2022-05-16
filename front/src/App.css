@@ -10,6 +10,31 @@
     height: 40vmin;
     pointer-events: none;
 }
+.mainTextWrp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.mainText-head {
+    color: #b458bf;
+    font-size: 40px;
+    margin-top: 40px;
+    padding: 0 30px;
+    max-width: 1249px;
+    box-sizing: border-box;
+    
+}
+.mainText {
+    color: #b458bf;
+    font-size: 30px;
+    /* margin-top: 40px; */
+    padding: 0 30px;
+    max-width: 1249px;
+    text-align: justify;
+    margin: 15px 0px 0px 0px;
+    box-sizing: border-box;
+}
 
 .title {
     color: #b458bf;
@@ -558,7 +583,10 @@ body {
     .design {
         max-width: 950px;
     }
-
+    .mainText {
+        font-size: 25px;
+        padding: 0 20px;
+    }
     
 }
 
@@ -570,6 +598,9 @@ body {
     .title {
        
         font-size: 40px;
+    }
+    .mainText {
+        font-size: 20px;
     }
 }
 

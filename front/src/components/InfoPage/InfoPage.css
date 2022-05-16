@@ -3,6 +3,10 @@
     display: flex;
     justify-content: center;
 }
+    .carousel {
+        max-width: 1249px ;
+        margin: 0 auto;
+    }
 
 .header__content-wrp {
     width: 1249px;
@@ -28,7 +32,8 @@
 }
 
 .try-btn {
-    margin-left: 244px;
+    box-shadow: 0 0 15px rgb(79 50 204 / 40%);
+    margin: 50px auto;
     display: block;
     width: 227px;
     padding: 15px;
@@ -45,6 +50,8 @@
     letter-spacing: 0.025em;
     color: #b458bf;
 }
+
+
 
 .try-btn:hover {
     background-color: #b458bf;
@@ -80,11 +87,6 @@
 
     .header-title__react {
         margin: 35px 0 35px 0;
-    }
-
-    .try-btn {
-        margin: 0 0 30px 0;
-       
     }
 
 }
