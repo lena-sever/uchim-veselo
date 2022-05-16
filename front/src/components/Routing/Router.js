@@ -15,6 +15,7 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { useSelector } from "react-redux";
 import { selectCourseId } from "../../store/courseId/courseIdSelector";
+import PageFoundResults from "../PageFoundResults/PageFoundResults";
 
 function Router() {
     const {pathname} = useLocation();
@@ -44,6 +45,7 @@ function Router() {
                         path="/slider"
                         element={ <SliderContainer sliderList={ sliderList }/> }
                     />
+                    <Route path="/foundResult" element={<PageFoundResults />}/>
                     <Route path="*" element={ <Error_404/> }/>
                 </Routes>
             </div>

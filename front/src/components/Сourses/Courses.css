@@ -124,6 +124,7 @@
     line-height: 17px;
     position: absolute;
     top: 180px;
+    left: auto;
     /*left: 110px;*/
 }
 

@@ -21,3 +21,9 @@
 .header__img {
   width: 200px
 }
+
+@media screen and (max-width: 768px){
+    .header__img {
+        width: 70px
+    }
+}

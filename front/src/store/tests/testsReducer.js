@@ -1,4 +1,4 @@
-import { FIRST_TESTS_SUCCESS, SECOND_TESTS_SUCCESS, TESTS_FAILURE, TESTS_LOADING, TESTS_SUCCESS } from "./actions";
+import { FIRST_TESTS_SUCCESS, SECOND_TESTS_SUCCESS, TESTS_FAILURE, TESTS_LOADING} from "./actions";
 import { STATUS } from "../../constants/status";
 
 const initialTests = {
