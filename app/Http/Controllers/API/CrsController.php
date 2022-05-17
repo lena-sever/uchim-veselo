@@ -16,7 +16,18 @@ class CrsController extends Controller
 
     public function index()
     {
-        $courses = Course::all();
+        // $courses = Course::with('author', 'painter')->get();
+
+        $courses = DB::table('courses')
+            ->join('authors', 'authors.id', '=', 'courses.author_id')
+            ->join('painters', 'painters.id', '=', 'courses.painter_id')
+            ->select(
+                'courses.*',
+                'authors.name as name_author',
+                'painters.name as name_painter',
+            )
+            ->get();
+
         return json_encode($courses, JSON_UNESCAPED_UNICODE);
     }
 
@@ -130,11 +141,17 @@ class CrsController extends Controller
     public function search(Request $request)
     {
         $validated = $request->validate([
-            'search_phrase' => 'required|string|min:4',
+            'search_phrase' => 'required|string|min:3',
         ]);
 
         $searchTerms = explode(' ', $validated['search_phrase']);
         $searchTerms = array_slice($searchTerms, 0, 5); //будем искать только по 5 первым словам
+        $searchTerms[] = $validated['search_phrase'];
+        $searchTerms = array_reverse($searchTerms);
+        foreach ($searchTerms as $key=>$item) {
+            if (mb_strlen($item) < 3) 
+            unset($searchTerms[$key]);
+        }
         $author_ids = [];
         $painter_ids = [];
 
@@ -167,6 +184,7 @@ class CrsController extends Controller
         }  
 
 
+        // поиск id по таблице комиксов 
         $query = Course::query();
 
         if ($searchTerms) {
@@ -183,6 +201,16 @@ class CrsController extends Controller
                 });
             }
             $results = $query->get();
+
+            foreach ($results as $key=>$item) {
+                $name_author = DB::table('authors')->where('id', $item->author_id)->first();
+                $name_author = $name_author->name;
+                $results[$key]->name_author = $name_author;
+                $name_painter = DB::table('painters')->where('id', $item->painter_id)->first();
+                $name_painter = $name_painter->name;
+                $results[$key]->name_painter = $name_painter;
+            }
+
             return json_encode($results, JSON_UNESCAPED_UNICODE);
         }
         else return "нет результатов поиска!";
