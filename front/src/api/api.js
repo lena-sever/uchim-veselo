@@ -8,6 +8,7 @@ import {
     lastPatgHistory,
     urlRegistration,
     urlLogin,
+    urlResultFound,
 } from "../constants/url";
 
 export const coursesAPI = {
@@ -60,6 +61,17 @@ export const auth = {
             } )
             .catch( (err) => err.message );
     },
+};
+
+export const resultFoundAPI = {
+    resultFound(payload) {
+        return axios
+            .post( `${ urlResultFound }`, {search_phrase: payload})
+            .then( data => {
+                return data.data;
+            } )
+            .catch( err => err.message );
+    }
 };
 
 export const lessonsAPI = {

@@ -7,6 +7,8 @@ import { reviewsReducer } from "./reviews/reviewsReducer";
 import { historyReducer } from "./history/historyReducer";
 import { testsReducer } from "./tests/testsReducer";
 import { courseIdReducer } from "./courseId/courseIdReducer";
+import { resultFoundReducer } from "./resultFound/resultFoundReducer";
+import { SearchWordReducer } from "./searchWord/searchWordReducer";
 
 
 
@@ -20,7 +22,9 @@ export const store = createStore(
         reviewsReducer,
         historyReducer,
         testsReducer,
-        courseIdReducer
+        courseIdReducer,
+        resultFoundReducer,
+        SearchWordReducer
     }),
     composeEnhancers(applyMiddleware(thunk))
 );
