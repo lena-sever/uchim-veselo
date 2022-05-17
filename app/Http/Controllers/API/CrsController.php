@@ -215,4 +215,50 @@ class CrsController extends Controller
         }
         else return "нет результатов поиска!";
     }
+
+    public function author(Request $request)
+    {
+        $validated = $request->validate([
+            'author_id' => 'required|integer',
+        ]);
+        $id = $validated['author_id'];
+        
+        $courses = DB::table('courses')
+            ->join('authors', 'authors.id', '=', 'courses.author_id')
+            ->join('painters', 'painters.id', '=', 'courses.painter_id')
+            ->where ('courses.author_id', $id)
+            ->select(
+                'courses.*',
+                'authors.name as name_author',
+                'painters.name as name_painter',
+            )
+            ->get();
+
+        return json_encode($courses, JSON_UNESCAPED_UNICODE);
+    
+    }
+
+    public function painter(Request $request)
+    {
+        $validated = $request->validate([
+            'painter_id' => 'required|integer',
+        ]);
+        $id = $validated['painter_id'];
+
+        $courses = DB::table('courses')
+        ->join('authors', 'authors.id', '=', 'courses.author_id')
+        ->join('painters', 'painters.id', '=', 'courses.painter_id')
+        ->where ('courses.painter_id', $id)
+            ->select(
+                'courses.*',
+                'authors.name as name_author',
+                'painters.name as name_painter',
+            )
+            // ->toSql();
+            ->get();
+
+        return json_encode($courses, JSON_UNESCAPED_UNICODE);
+    
+    }
+
 }
