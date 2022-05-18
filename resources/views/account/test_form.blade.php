@@ -77,4 +77,29 @@
 </form><br><br>
 <hr>
 
+<h2>Поиск по автору</h2>
+<form method="post" action="author">
+<!-- <form method="post" action="https://uchim-veselo.ru/api/author"> -->
+
+
+    <label>Запрос</label>
+    <input type="text" name="author_id" value="1">
+
+    <input type="submit" value="Отправить">
+</form><br><br>
+<hr>
+
+<h2>Поиск по художнику</h2>
+<form method="post" action="painter">
+<!-- <form method="post" action="https://uchim-veselo.ru/api/painter"> -->
+
+
+    <label>Запрос</label>
+    <input type="text" name="painter_id" value="1">
+
+    <input type="submit" value="Отправить">
+</form><br><br>
+<hr>
+
+
 @endsection
