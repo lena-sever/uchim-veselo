@@ -30,7 +30,7 @@
     font-size: 30px;
     /* margin-top: 40px; */
     padding: 0 30px;
-    max-width: 1249px;
+    max-width: 1577px;
     text-align: justify;
     margin: 15px 0px 0px 0px;
     box-sizing: border-box;
@@ -491,7 +491,7 @@ body {
 }
 
 .footer-wrp {
-    max-width: 1249px;
+    max-width: 1577px;
     width: 100%;
     display: flex;
     justify-content: space-between;

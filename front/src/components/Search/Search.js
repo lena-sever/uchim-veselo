@@ -73,7 +73,7 @@ function Search() {
                     type="text"
                     name="search_phrase"
                     value={ searchWord }
-                    placeholder={isSmall ? "Поиск..." : "Название комикса, автор, художник"}
+                    placeholder={  "Комикс, автор, художник"}
                     className="search__input"
                     onChange={ handleChangeSearchWord }
                 />

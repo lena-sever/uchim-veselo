@@ -13,6 +13,7 @@
 .rev_head {
     color: #b458bf;
     font-size: 50px;
+    margin-bottom: 50px;
 }
 
 .rev_name {
@@ -33,11 +34,13 @@
 
 .alice-carousel {
     width: 1280px;
+    margin-top: 50px;
 }
 
 @media screen and (max-width: 460px) {
     .rev_head {
         font-size: 30px;
+        
     }
 
     .img_course {
