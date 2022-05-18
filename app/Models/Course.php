@@ -28,6 +28,10 @@ class Course extends Model
         return $this->belongsTo(Painter::class,'id');
     }
 
+    public function user_course() {
+        return $this->belongsTo(UserCourse::class,'id');
+    }
+
     public function lessons() {
         return $this->hasMany(Lesson::class);
     }

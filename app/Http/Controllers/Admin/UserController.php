@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Http\Requests\User\EditRequest;
 use App\Http\Requests\User\CreateRequest;
+use App\Models\UserCourse;
 use Illuminate\Support\Facades\Log;
 use App\Services\UploadService;
 use Illuminate\Support\Facades\Storage;
@@ -71,7 +72,12 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        //
+        $user_course = UserCourse::where('user_id','=',$user->id)->get();
+
+        return view('admin.user.show',[
+            'user_course' => $user_course,
+            'user' => $user
+        ]);
     }
 
 
