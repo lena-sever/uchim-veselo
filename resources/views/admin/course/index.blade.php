@@ -52,6 +52,7 @@
                 @endif
                 @endforeach
             </td>
+            <td>{{$coursesItem->price}}&#x20bd;</td>
             <td>{!! $coursesItem->description !!}</td>
             <td>
               <p class="btn-group">
