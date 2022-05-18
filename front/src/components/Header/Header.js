@@ -15,9 +15,13 @@ function Header() {
     return (
         <>
             <header className="header-wrp">
+                <div className="header-wrp-cent">
                 <Logo/>
-                <Navigation/>
                 <Search/>
+                <Navigation/>
+                </div>
+              
+                
             </header>
         </>
     );

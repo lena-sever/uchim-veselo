@@ -13,10 +13,10 @@ function Search() {
     const [ isSmall, setSmall ] = useState( true );
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [ windowDimenion, setWindowDimenio ] = useState( {
-        winWidth: window.innerWidth,
-        winHeight: window.innerHeight,
-    } );
+    // const [ windowDimenion, setWindowDimenio ] = useState( {
+    //     winWidth: window.innerWidth,
+    //     winHeight: window.innerHeight,
+    // } );
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -45,21 +45,22 @@ function Search() {
     };
 
     // Определяем размер окна браузера
-    const detectSize = () => {
-        setWindowDimenio( {
-            winWidth: window.innerWidth,
-            winHeight: window.innerHeight,
-        } );
-    };
+    // const detectSize = () => {
+    //     setWindowDimenio( {
+    //         winWidth: window.innerWidth,
+    //         winHeight: window.innerHeight,
+    //     } );
+    // };
 
-    // Определяем размер окна браузера
-    useEffect( () => {
-        window.addEventListener( "resize", detectSize );
+    // // Определяем размер окна браузера
+    // useEffect( () => {
+    //     window.addEventListener( "resize", detectSize );
 
-        if( windowDimenion.winWidth > 768 ) {
-            setSmall( false );
-        }
-    }, [] );
+    //     if(windowDimenion.winWidth > 768){
+    //         setSmall(false)
+    //     }
+    // }, [ windowDimenion ] );
+
 
 
     return (
@@ -72,7 +73,7 @@ function Search() {
                     type="text"
                     name="search_phrase"
                     value={ searchWord }
-                    placeholder={ isSmall ? "Поиск..." : "Название комикса, автор, художник" }
+                    placeholder={  "Комикс, автор, художник"}
                     className="search__input"
                     onChange={ handleChangeSearchWord }
                 />
@@ -89,7 +90,7 @@ function Search() {
                 >
                     <SearchImg className="search__icon"/>
                 </button>
-                { isError && <p className="search__error">Нужно ввести больше 4 символов</p> }
+                { isError  && <p className="search__error">Нужно ввести больше 3 символов</p> }
             </form>
         </>
     );

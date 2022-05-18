@@ -4,16 +4,18 @@
     right: 0px;
     bottom: 0px;
     z-index: 10;
-    display: none;
-    /*display: flex;*/
+    /* display: block; */
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 320px;
-    max-width: 400px;
-    height: fit-content;
+    /*width: 320px;*/
+    width: 100%;
+    /* max-width: 400px; */
+    height: -moz-fit-content;
+    height: 100%;
     margin-top: 0px;
     padding: 100px 20px 50px;
-    /*align-items: stretch;*/
+    /* align-items: stretch; */
     background: radial-gradient(110.67% 538.64% at 5.73% 50%, #b458bf 0%, #1A1A1C 100%), #352f4d;
     transform: translateX(100%);
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -21,12 +23,14 @@
 }
 
 .menu__open {
-    display: flex;
     transform: translateX(0);
+    display: flex;
+    align-items: center;
 }
 
 .menu__link {
-    padding: 12px 0;
+    padding: 12px 10px;
+    box-sizing: border-box;
     font-size: 25px;
     color: white;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
@@ -35,7 +39,7 @@
     text-decoration: none;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 1080px) {
     .menu {
         position: relative;
         display: flex;
@@ -49,5 +53,6 @@
 
     .menu__link {
         /*padding: 15px 0;*/
+        /* font-size: 60px; */
     }
 }

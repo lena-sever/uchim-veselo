@@ -98,5 +98,13 @@
 
     .search__input {
         min-width: 165px;
+        font-size: 15px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .search {
+        position: absolute;
+    top: 135px;
+    left: 25px;
     }
 }
