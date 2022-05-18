@@ -13,15 +13,15 @@ function Search() {
     const [ isSmall, setSmall ] = useState( true );
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [ windowDimenion, setWindowDimenio ] = useState( {
-        winWidth: window.innerWidth,
-        winHeight: window.innerHeight,
-    } );
+    // const [ windowDimenion, setWindowDimenio ] = useState( {
+    //     winWidth: window.innerWidth,
+    //     winHeight: window.innerHeight,
+    // } );
 
     const handleSearch = (e) => {
         e.preventDefault();
 
-        if( searchWord.length < 4 ) {
+        if( searchWord.length < 3 ) {
             setError( true );
             const timeout = setTimeout( () => {
                 setError( false );
@@ -45,21 +45,21 @@ function Search() {
     };
 
     // Определяем размер окна браузера
-    const detectSize = () => {
-        setWindowDimenio( {
-            winWidth: window.innerWidth,
-            winHeight: window.innerHeight,
-        } );
-    };
+    // const detectSize = () => {
+    //     setWindowDimenio( {
+    //         winWidth: window.innerWidth,
+    //         winHeight: window.innerHeight,
+    //     } );
+    // };
 
-    // Определяем размер окна браузера
-    useEffect( () => {
-        window.addEventListener( "resize", detectSize );
+    // // Определяем размер окна браузера
+    // useEffect( () => {
+    //     window.addEventListener( "resize", detectSize );
 
-        if(windowDimenion.winWidth > 768){
-            setSmall(false)
-        }
-    }, [ windowDimenion ] );
+    //     if(windowDimenion.winWidth > 768){
+    //         setSmall(false)
+    //     }
+    // }, [ windowDimenion ] );
 
 
 
@@ -90,7 +90,7 @@ function Search() {
                 >
                     <SearchImg className="search__icon"/>
                 </button>
-                { isError && <p className="search__error">Нужно ввести больше 4 символов</p> }
+                { isError  && <p className="search__error">Нужно ввести больше 3 символов</p> }
             </form>
         </>
     );
