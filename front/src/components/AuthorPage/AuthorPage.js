@@ -1,9 +1,7 @@
 import "./AuthorPage.css";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectCourses, selectCoursesError, selectCoursesLoading } from "../../store/courses/coursesSelectors";
 import { useParams, NavLink } from "react-router-dom";
-import { getCourses } from "../../store/courses/actions";
 import CircularProgress from "../curcularProgress/CircularProgress";
 import { selectAuthor, selectAuthorError, selectAuthorLoading } from "../../store/author/authorSelector";
 import { getAuthorComics } from "../../store/author/actions";
@@ -11,14 +9,12 @@ import { getAuthorComics } from "../../store/author/actions";
 function AuthorPage() {
     const isLoading = useSelector( selectAuthorLoading );
     const error = useSelector( selectAuthorError );
-    // const courses = useSelector( selectCourses );
     const { authorId } = useParams();
-    // const authorCourses = courses.filter( el => el.author_id == authorId );
     const authorCourses = useSelector( selectAuthor );
     const dispatch = useDispatch();
 
-    console.log( authorId );
-    console.log( authorCourses );
+    // console.log( authorId );
+    // console.log( authorCourses );
 
     useEffect( () => {
         dispatch( getAuthorComics( authorId ) );

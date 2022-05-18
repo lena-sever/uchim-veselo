@@ -9,6 +9,9 @@ export const urlReviews = "https://uchim-veselo.ru/api/course_reviews";
 // export const urlLessons = "https://uchim-veselo.ru/api/courses/courseId";
 
 export const urlRegistration = "https://uchim-veselo.ru/api/user";
-export const urlLogin ="https://uchim-veselo.ru/api/user/login";
+export const urlLogin = "https://uchim-veselo.ru/api/user/login";
 
-export const urlResultFound="https://uchim-veselo.ru/api/courses/search"
+export const urlResultFound = "https://uchim-veselo.ru/api/courses/search";
+
+export const urlAuthorComics = "https://uchim-veselo.ru/api/author";
+export const urlPainterComics = "https://uchim-veselo.ru/api/painter";

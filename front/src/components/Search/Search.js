@@ -21,7 +21,7 @@ function Search() {
     const handleSearch = (e) => {
         e.preventDefault();
 
-        if( searchWord.length < 4 ) {
+        if( searchWord.length < 3 ) {
             setError( true );
             const timeout = setTimeout( () => {
                 setError( false );
@@ -56,11 +56,10 @@ function Search() {
     useEffect( () => {
         window.addEventListener( "resize", detectSize );
 
-        if(windowDimenion.winWidth > 768){
-            setSmall(false)
+        if( windowDimenion.winWidth > 768 ) {
+            setSmall( false );
         }
-    }, [ windowDimenion ] );
-
+    }, [] );
 
 
     return (
@@ -73,7 +72,7 @@ function Search() {
                     type="text"
                     name="search_phrase"
                     value={ searchWord }
-                    placeholder={isSmall ? "Поиск..." : "Название комикса, автор, художник"}
+                    placeholder={ isSmall ? "Поиск..." : "Название комикса, автор, художник" }
                     className="search__input"
                     onChange={ handleChangeSearchWord }
                 />

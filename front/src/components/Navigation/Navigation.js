@@ -10,10 +10,15 @@ function Navigation() {
         toggleMenu( !isMenuOpen );
     };
 
+    const handleHideMenu = () => {
+        console.log( "click" );
+        toggleMenu( false );
+    };
+
     return (
         <div className="header__nav-wrp">
-            <BurgerMenu isMenuOpen={ isMenuOpen } toggleMenuMode={ toggleMenuMode }/>
-            <Menu isMenuOpen={isMenuOpen}/>
+            <BurgerMenu isMenuOpen={ isMenuOpen } toggleMenuMode={ toggleMenuMode } />
+            <Menu isMenuOpen={ isMenuOpen } toggleMenuMode={ toggleMenuMode }/>
         </div>
     );
 }

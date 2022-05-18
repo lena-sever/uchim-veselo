@@ -16,6 +16,8 @@ import Footer from "../Footer/Footer";
 import { useSelector } from "react-redux";
 import { selectCourseId } from "../../store/courseId/courseIdSelector";
 import PageFoundResults from "../PageFoundResults/PageFoundResults";
+import AuthorPage from "../AuthorPage/AuthorPage";
+import PainterPage from "../PainterPage/PainterPage";
 
 function Router() {
     const {pathname} = useLocation();
@@ -32,6 +34,8 @@ function Router() {
             <div className="main">
                 <Routes>
                     <Route path="/" element={ <InfoPage/> }/>
+                    <Route path="/author/:authorId" element={ <AuthorPage/> }/>
+                    <Route path="/painter/:painterId" element={ <PainterPage/> }/>
                     <Route path="/courses">
                         <Route index element={ <Courses/> }/>
                         <Route path=":courseId" element={ <CoursPage/> }/>

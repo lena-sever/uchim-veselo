@@ -20,9 +20,9 @@ import "./Cours.css";
 
 import ReviewForm from "../Lessons/ReviewForm/ReviewForm";
 import { selectUser } from "../../store/auth/authSelector";
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
+
 import { getCourseId } from "../../store/courseId/actions";
+import { pathAuthor, pathPainter } from "../../constants/path";
 
 const useStyles = makeStyles( (theme) => ( {
     btn: {
@@ -92,6 +92,16 @@ const CoursPage = () => {
                     <img className="cours__img" src={ cours.img }/>
                     <h2 className="subtitle">{ cours.description }</h2>
                     <p className="text_box_main cours__text">{ cours.text }</p>
+                    <p className="products_item__author">Автор:
+                        <NavLink to={ pathAuthor } className="products_item__author">
+                            <span className="text_box_main ">{ cours.name_author }</span>
+                        </NavLink>
+                    </p>
+                    <p >Художник:
+                        <NavLink to={ pathPainter } className="products_item__author">
+                            <span className="text_box_main ">{ cours.name_painter }</span>
+                        </NavLink>
+                    </p>
                     <div className="cours__btn-wrp">
                         <ColorButton
                             as={ NavLink }

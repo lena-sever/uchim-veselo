@@ -9,6 +9,8 @@ import { testsReducer } from "./tests/testsReducer";
 import { courseIdReducer } from "./courseId/courseIdReducer";
 import { resultFoundReducer } from "./resultFound/resultFoundReducer";
 import { SearchWordReducer } from "./searchWord/searchWordReducer";
+import { authorReducer } from "./author/authorReducer";
+import { painterReducer } from "./painter/painterReducer";
 
 
 
@@ -24,7 +26,9 @@ export const store = createStore(
         testsReducer,
         courseIdReducer,
         resultFoundReducer,
-        SearchWordReducer
+        SearchWordReducer,
+        authorReducer,
+        painterReducer
     }),
     composeEnhancers(applyMiddleware(thunk))
 );
