@@ -216,13 +216,8 @@ class CrsController extends Controller
         else return "нет результатов поиска!";
     }
 
-    public function author(Request $request)
+    public function author($id)
     {
-        $validated = $request->validate([
-            'author_id' => 'required|integer',
-        ]);
-        $id = $validated['author_id'];
-        
         $courses = DB::table('courses')
             ->join('authors', 'authors.id', '=', 'courses.author_id')
             ->join('painters', 'painters.id', '=', 'courses.painter_id')
@@ -238,13 +233,8 @@ class CrsController extends Controller
     
     }
 
-    public function painter(Request $request)
+    public function painter($id)
     {
-        $validated = $request->validate([
-            'painter_id' => 'required|integer',
-        ]);
-        $id = $validated['painter_id'];
-
         $courses = DB::table('courses')
         ->join('authors', 'authors.id', '=', 'courses.author_id')
         ->join('painters', 'painters.id', '=', 'courses.painter_id')

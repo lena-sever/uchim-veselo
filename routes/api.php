@@ -31,9 +31,9 @@ Route::get('courses/{course}', [CrsController::class,'show'])->name('api.course.
 // поиск по комиксам
 Route::post('courses/search', [CrsController::class,'search'])->name('api.course.search');
 // поиск по автору
-Route::post('author', [CrsController::class,'author'])->name('api.author');
+Route::get('author/{author}', [CrsController::class,'author'])->name('api.author');
 // поиск по художнику
-Route::post('painter', [CrsController::class,'painter'])->name('api.painter');
+Route::get('painter/{painter}', [CrsController::class,'painter'])->name('api.painter');
 
 
 
