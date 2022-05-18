@@ -215,4 +215,40 @@ class CrsController extends Controller
         }
         else return "нет результатов поиска!";
     }
+
+    public function author($id)
+    {
+        $courses = DB::table('courses')
+            ->join('authors', 'authors.id', '=', 'courses.author_id')
+            ->join('painters', 'painters.id', '=', 'courses.painter_id')
+            ->where ('courses.author_id', $id)
+            ->select(
+                'courses.*',
+                'authors.name as name_author',
+                'painters.name as name_painter',
+            )
+            ->get();
+
+        return json_encode($courses, JSON_UNESCAPED_UNICODE);
+    
+    }
+
+    public function painter($id)
+    {
+        $courses = DB::table('courses')
+        ->join('authors', 'authors.id', '=', 'courses.author_id')
+        ->join('painters', 'painters.id', '=', 'courses.painter_id')
+        ->where ('courses.painter_id', $id)
+            ->select(
+                'courses.*',
+                'authors.name as name_author',
+                'painters.name as name_painter',
+            )
+            // ->toSql();
+            ->get();
+
+        return json_encode($courses, JSON_UNESCAPED_UNICODE);
+    
+    }
+
 }

@@ -1,49 +1,20 @@
-import { NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { selectUser } from "../../store/auth/authSelector";
-import { logout } from "../../store/auth/action";
 import "./Navigation.css";
-import logo from "../../img/logo.png";
-import { slide as Menu } from 'react-burger-menu'
+import BurgerMenu from "../BurgerMenu/BurgerMenu";
+import Menu from "../Menu/Menu";
+import { useState } from "react";
 
 function Navigation() {
-    const user = useSelector(selectUser);
-    const dispatch = useDispatch();
+    const [ isMenuOpen, toggleMenu ] = useState( false );
 
-    const onLogout = async () => {
-        dispatch(logout());
+    const toggleMenuMode = () => {
+        toggleMenu( !isMenuOpen );
     };
 
     return (
-        <>
-            <NavLink to="/" className="home">
-                <img className="header__img" src={logo} />
-            </NavLink>
-            <NavLink to="/courses" className="home">
-                Комиксы{" "}
-            </NavLink>
-            <NavLink to="/contacts" className="home">
-                Контакты
-            </NavLink>
-            {user.id ? (
-                <>
-                    <div>{user.name}</div>
-                    <NavLink
-                        onClick={() => {
-                            onLogout();
-                        }}
-                        to="/"
-                        className="home"
-                    >
-                        Выйти
-                    </NavLink>
-                </>
-            ) : (
-                <NavLink to="/login" className="home">
-                    Войти
-                </NavLink>
-            )}
-        </>
+        <div className="header__nav-wrp">
+            <BurgerMenu isMenuOpen={ isMenuOpen } toggleMenuMode={ toggleMenuMode }/>
+            <Menu isMenuOpen={isMenuOpen}/>
+        </div>
     );
 }
 

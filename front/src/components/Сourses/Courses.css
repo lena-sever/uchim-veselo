@@ -124,6 +124,7 @@
     line-height: 17px;
     position: absolute;
     top: 180px;
+    left: auto;
     /*left: 110px;*/
 }
 
@@ -160,7 +161,7 @@
 
 .head {
     color: #b458bf;
-
+    margin-top: 25px;
 }
 .products_item_btn {
     top: 280px;

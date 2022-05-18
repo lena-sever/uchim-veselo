@@ -1,7 +1,7 @@
-import { useLocation, useParams } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 import "./Header.css";
-import { useEffect } from "react";
+import Search from "../Search/Search";
+import Logo from "../Logo/Logo";
 
 function Header() {
     // const {  pathname  } = useLocation()
@@ -15,9 +15,13 @@ function Header() {
     return (
         <>
             <header className="header-wrp">
-                <nav className="header__nav-wrp">
-                    <Navigation/>
-                </nav>
+                <div className="header-wrp-cent">
+                <Logo/>
+                <Search/>
+                <Navigation/>
+                </div>
+              
+                
             </header>
         </>
     );

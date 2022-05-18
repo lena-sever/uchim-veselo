@@ -10,3 +10,5 @@ export const urlReviews = "https://uchim-veselo.ru/api/course_reviews";
 
 export const urlRegistration = "https://uchim-veselo.ru/api/user";
 export const urlLogin ="https://uchim-veselo.ru/api/user/login";
+
+export const urlResultFound="https://uchim-veselo.ru/api/courses/search"
