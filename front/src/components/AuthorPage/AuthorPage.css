@@ -1,0 +1,27 @@
+.author {
+    padding: 20px
+}
+
+.author_title {
+    margin: 0 0 30px 0;
+    color: #5d5d5d;
+}
+
+.author_name {
+    margin-left: 7px;
+    color: #2c2c2c;
+}
+
+.author_box {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #cccccc;
+}
+
+.author_link {
+    text-decoration: none;
+}
+
+.author_link:hover {
+    color: #981ac2;
+}

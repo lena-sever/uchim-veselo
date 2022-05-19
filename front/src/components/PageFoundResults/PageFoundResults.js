@@ -40,17 +40,29 @@ function PageFoundResults() {
                             return (
                                 <div className="page-found__result" key={ item.id }>
                                     <img className="page-found__img" src={ item.img } alt=""/>
-                                    <p className="page-found__author">Автор: <span className="page-found__author-name">Лермонтов
-                                        { highlightTheWord(item.author) }
-                                    </span></p>
-                                    <p className="page-found__painter">Художник: <span className="page-found__painter-name">Кукрыниксы
-                                        { highlightTheWord(item.painter) }
-                                    </span></p>
+                                    <p className="page-found__author">Автор:
+                                        <NavLink to={`/author/${item.author_id}`} className="page-found__author-name">
+                                        <span>
+                                        { highlightTheWord( item.name_author ) }
+                                    </span>
+                                        </NavLink>
+                                        </p>
+                                    <p className="page-found__painter">Художник:
+                                        <NavLink to={`/painter/${item.painter_id}`} className="page-found__painter-name">
+                                        <span >
+                                        { highlightTheWord( item.name_painter ) }
+                                    </span>
+                                        </NavLink>
+                                    </p>
                                     <h3 className="page-found__title">
                                         <NavLink to={ `/courses/${ item.id }` }
-                                                 className="page-found__link">{ highlightTheWord(item.title) }</NavLink>
+                                                 className="page-found__link">{ highlightTheWord( item.title ) }</NavLink>
                                     </h3>
-                                    <p className="page-found__text">{ highlightTheWord(item.description) }</p>
+                                    <p className="page-found__text">
+                                        <NavLink to={ `/courses/${ item.id }` }
+                                                 className="page-found__link">{ highlightTheWord( item.description ) }
+                                        </NavLink>
+                                    </p>
                                 </div>
                             );
                         }

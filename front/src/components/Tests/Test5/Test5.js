@@ -7,25 +7,21 @@ import TestTitle from "../TestTitle/TestTitle";
 import TestsImg from "../TestsImg/TestsImg";
 import Button from "@mui/material/Button";
 import styles from "../../Lessons/LessonReview/LessonReview.module.css";
+import ButtonBackToComics from "../../ButtonBackToСomics/ButtonBackToСomics";
 
 function Test5({ path, firstTest, secondTest }) {
-
     const [inputValue, setInputValue] = useState("");
-    // const [ textAreaValue, setTextAreaValue ] = useState( "" );
     const [isWritten, setWritten] = useState(false);
 
     const getValueHandler = (e) => {
         setInputValue(e.target.value);
-        // setTextAreaValue( e.target.value );
     };
 
     useEffect(() => {
         if (inputValue.toLowerCase() == firstTest.word.toLowerCase()) {
-            // if( textAreaValue.toLowerCase() == firstTest.word.toLowerCase() ) {
             setWritten(true);
         }
         setInputValue("");
-        // setTextAreaValue( "" );
     }, [inputValue]);
     // }, [ textAreaValue ] );
 
@@ -54,15 +50,7 @@ function Test5({ path, firstTest, secondTest }) {
                 isWritten &&
                 <div><p className="test__correct center">Молодец! Ты успешно ответил на все вопросы и очень помог нашему
                     герою!</p>
-                    <Button
-                        as={NavLink}
-                        className={styles.btn_link}
-                        variant="contained"
-                        color="secondary"
-                        to={path}
-                    >
-                        Вернуться к комиксу
-                    </Button>
+                    <ButtonBackToComics path={path} text="Вернуться к комиксу"/>
                 </div>
             }
 

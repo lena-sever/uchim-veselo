@@ -168,6 +168,11 @@
     /*left: 100px;*/
 }
 
+.products_item__author {
+    margin-left: 5px;
+    text-decoration: none;
+}
+
 @media screen and (max-width: 1346px) {
     .feature__products_images-wrp {
         display: flex;

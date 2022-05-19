@@ -8,7 +8,7 @@ import {
     lastPatgHistory,
     urlRegistration,
     urlLogin,
-    urlResultFound,
+    urlResultFound, urlAuthorComics, urlPainterComics,
 } from "../constants/url";
 
 export const coursesAPI = {
@@ -66,7 +66,33 @@ export const auth = {
 export const resultFoundAPI = {
     resultFound(payload) {
         return axios
-            .post( `${ urlResultFound }`, {search_phrase: payload})
+            .post( `${ urlResultFound }`, { search_phrase: payload } )
+            .then( data => {
+                return data.data;
+            } )
+            .catch( err => err.message );
+    }
+};
+
+export const authorAPI = {
+    resultAuthor(payload) {
+        return axios
+            .get( `${ urlAuthorComics }/${ payload }`, {
+                author_id: payload
+            } )
+            .then( data => {
+                return data.data;
+            } )
+            .catch( err => err.message );
+    }
+};
+
+export const painterAPI = {
+    resultPainter(payload) {
+        return axios
+            .get( `${ urlPainterComics }/${ payload }`, {
+                painter_id: payload
+            } )
             .then( data => {
                 return data.data;
             } )

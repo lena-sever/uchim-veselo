@@ -18,6 +18,7 @@ function Courses() {
     const courses = useSelector( selectCourses );
     const isLoading = useSelector( selectCoursesLoading );
     const error = useSelector( selectCoursesError );
+    console.log(courses);
 
     const requestCourses = async() => {
         dispatch( getCourses() );
