@@ -17,7 +17,6 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('description')->nullable();
-            $table->text('text');
             $table->string('img')->nullable();
             $table->foreignId('author_id')->constrained('authors')->cascadeOnDelete();
             $table->foreignId('painter_id')->constrained('painters')->cascadeOnDelete();

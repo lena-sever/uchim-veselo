@@ -52,7 +52,7 @@ class CrsController extends Controller
         $course->name_painter = $painter;
 
         $course = json_encode($course, JSON_UNESCAPED_UNICODE);
-       // dd($course);
+
         return $course;
     }
 

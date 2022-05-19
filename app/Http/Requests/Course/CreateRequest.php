@@ -27,7 +27,7 @@ class CreateRequest extends FormRequest
         return [
 			'title' => ['required', 'string', 'min:5'],
             'description' => ['required', 'string',  'min:20', 'max:255'],
-            'text' =>['required', 'string', 'min:20'],
+            'price' =>['required'],
             'img' => ['nullable', 'file', 'image'],
             'author_id' => ['required', 'integer' ],
             'painter_id' => ['required', 'integer' ],
@@ -45,8 +45,8 @@ class CreateRequest extends FormRequest
 	{
 		return [
 			'title' => 'Наименование комикса',
-			'description' => 'Краткое описание комикса',
-            'text' => 'Полное описание комикса',
+			'description' => 'Описание комикса',
+            'price' => 'Стоимость',
             'author_id' => 'Автор',
             'painter_id' => 'Художник'
 		];
