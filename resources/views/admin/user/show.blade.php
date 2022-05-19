@@ -6,7 +6,7 @@
 
 @include('inc.message')
 <div class="container">
-<h1 class="h2">Список глав по комиксу: {{$user->title}}</h1>
+<h1 class="h2">Список комиксов пользователя: {{$user->name}}</h1>
 <div style="margin-bottom: 15px;" class="p">
 <a href="{{ route('admin.user.index') }}" type="button" class="btn btn-sm btn-secondary">Назад</a> &nbsp;
 </div>
