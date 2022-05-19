@@ -29,6 +29,7 @@ class CoursesSeeder extends Seeder
                 'img' => 'https://uchim-veselo.ru/img/1.jpg',
                 'author_id'=> 1,
                 'painter_id'=> 1,
+                'price' => 500
 
 			];
 			$data[] = [
@@ -38,6 +39,7 @@ class CoursesSeeder extends Seeder
                 'img' => 'https://uchim-veselo.ru/img/2.jpg',
                 'author_id'=> 1,
                 'painter_id'=> 2,
+                'price' => 500
 			];
 			$data[] = [
                 'title' => 'Взрослые проказы',
@@ -46,6 +48,7 @@ class CoursesSeeder extends Seeder
                 'img' => 'https://uchim-veselo.ru/img/3.jpg',
                 'author_id'=> 3,
                 'painter_id'=> 1,
+                'price' => 500
 			];
 			$data[] = [
                 'title' => 'Это не интересно',
@@ -54,6 +57,7 @@ class CoursesSeeder extends Seeder
                 'img' => 'https://uchim-veselo.ru/img/4.png',
                 'author_id'=> 4,
                 'painter_id'=> 4,
+                'price' => 500
 			];
 			$data[] = [
                 'title' => 'Забег по кругу',
@@ -62,6 +66,7 @@ class CoursesSeeder extends Seeder
                 'img' => 'https://uchim-veselo.ru/img/5.jpg',
                 'author_id'=> 5,
                 'painter_id'=> 5,
+                'price' => 500
 			];
 			$data[] = [
                 'title' => 'В Африке тоже весело',
@@ -70,6 +75,7 @@ class CoursesSeeder extends Seeder
                 'img' => 'https://uchim-veselo.ru/img/6.png',
                 'author_id'=> 6,
                 'painter_id'=> 6,
+                'price' => 500
 			];
 			$data[] = [
                 'title' => 'Джунгли в деревне',
@@ -78,6 +84,7 @@ class CoursesSeeder extends Seeder
                 'img' => 'https://uchim-veselo.ru/img/7.jpg',
                 'author_id'=> 7,
                 'painter_id'=> 7,
+                'price' => 500
 			];
 			$data[] = [
                 'title' => 'Прятки днём',
@@ -86,6 +93,7 @@ class CoursesSeeder extends Seeder
                 'img' => 'https://uchim-veselo.ru/img/8.jpg',
                 'author_id'=> 8,
                 'painter_id'=> 8,
+                'price' => 500
 			];
 
 		return $data;

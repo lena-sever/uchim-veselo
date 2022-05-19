@@ -199,7 +199,7 @@
 
 @media screen and (max-width: 600px) {
     .rigth_content {
-        padding: 0px 2px 30px 8px;
+        padding: 0px 20px 30px 20px;
     }
 
     .left_content_h4 {
@@ -235,7 +235,7 @@
     }
 
     .rigth_content {
-        padding: 0px 2px 30px 20px;
+        padding: 0px 20px 30px 20px;
     }
 }
 

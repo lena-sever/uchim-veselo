@@ -37,6 +37,7 @@
 }
 
 .title {
+    
     color: #b458bf;
     font-size: 50px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
@@ -633,7 +634,10 @@ body {
 @media screen and (max-width: 500px) {
     .design__form {
        flex-direction: column;
-
+    }
+    .title {
+        margin-top: 25px;
+        font-size: 35px;
     }
 }
 
@@ -643,6 +647,7 @@ body {
        width: 100%;
     }
     .title {
+        margin-top: 25px;
         font-size: 35px;
     }
     .subtitle {
