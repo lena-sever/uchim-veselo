@@ -10,7 +10,7 @@
   <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group me-2">
       <a href="{{ route('account') }}" type="button" class="btn btn-sm btn-secondary">Назад</a>&nbsp;
-      <a style="display: none;" href="{{ route('admin.user.create') }}" type="button" class="btn btn-sm btn-secondary">Добавить пользователя
+      <a href="{{ route('admin.user.create') }}" type="button" class="btn btn-sm btn-secondary">Добавить пользователя
       </a>
     </div>
   </div><br>
