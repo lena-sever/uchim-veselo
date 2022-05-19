@@ -54,6 +54,7 @@
                         @endif
                     </td>
                     <td>
+                    <a class="btn  btn-secondary" href="{{ route('admin.user.show', ['user' => $usersItem]) }}">Курсы</a> &nbsp;
                         <a class="btn  btn-primary" href="{{ route('admin.user.edit', ['user' => $usersItem]) }}">Редактировать</a> &nbsp;
                         <a class="delete btn  btn-danger" href="{{route('admin.user.destroy',['user' => $usersItem])}}">Удалить</a>
                     </td>

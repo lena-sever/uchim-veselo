@@ -46,9 +46,13 @@ class CrsController extends Controller
             ->get();
         $course->lessons =  $lessons;
         $course->reviews =  $reviews;
+        $author = $course->author()->get();
+        $painter = $course->painter()->get();
+        $course->author = $author;
+        $course->painter = $painter;
 
         $course = json_encode($course, JSON_UNESCAPED_UNICODE);
-
+        //dd($course);
         return $course;
     }
 
@@ -149,13 +153,13 @@ class CrsController extends Controller
         $searchTerms[] = $validated['search_phrase'];
         $searchTerms = array_reverse($searchTerms);
         foreach ($searchTerms as $key=>$item) {
-            if (mb_strlen($item) < 3) 
+            if (mb_strlen($item) < 3)
             unset($searchTerms[$key]);
         }
         $author_ids = [];
         $painter_ids = [];
 
-        // сделать сначала поиск id по таблицам авторов 
+        // сделать сначала поиск id по таблицам авторов
         $queryAuthor = Author::query();
         if ($searchTerms) {
             foreach ($searchTerms as $search) {
@@ -167,9 +171,9 @@ class CrsController extends Controller
             foreach ($resAuthor as $author) {
                 $author_ids[] = $author->id;
             }
-        }  
+        }
 
-        // поиск id по таблицам художников 
+        // поиск id по таблицам художников
         $queryPainter = Painter::query();
         if ($searchTerms) {
             foreach ($searchTerms as $search) {
@@ -181,10 +185,10 @@ class CrsController extends Controller
             foreach ($resPainter as $painter) {
                 $painter_ids[] = $painter->id;
             }
-        }  
+        }
 
 
-        // поиск id по таблице комиксов 
+        // поиск id по таблице комиксов
         $query = Course::query();
 
         if ($searchTerms) {
@@ -230,7 +234,7 @@ class CrsController extends Controller
             ->get();
 
         return json_encode($courses, JSON_UNESCAPED_UNICODE);
-    
+
     }
 
     public function painter($id)
@@ -248,7 +252,7 @@ class CrsController extends Controller
             ->get();
 
         return json_encode($courses, JSON_UNESCAPED_UNICODE);
-    
+
     }
 
 }
