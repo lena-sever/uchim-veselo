@@ -9,7 +9,7 @@
 <h1 class="h2">Список комиксов пользователя: {{$user->name}}</h1>
 <div style="margin-bottom: 15px;" class="p">
 <a href="{{ route('admin.user.index') }}" type="button" class="btn btn-sm btn-secondary">Назад</a> &nbsp;
-<a style="display: none;" href="{{ route('admin.usercourse.create') }}" type="button" class="btn btn-sm btn-secondary">Добавить Курс (оплаченный)</a>
+<a href="{{ route('admin.usercourse.create') }}" type="button" class="btn btn-sm btn-secondary">Добавить Курс (оплаченный)</a>
 </div>
   <div class="row">
     <div class="table-responsive">
