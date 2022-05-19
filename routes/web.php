@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\FirstTestController;
 use App\Http\Controllers\Admin\SecondTestController;
 use App\Http\Controllers\Admin\ThirdTestController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\UserCourseController;
 use App\Http\Controllers\Test\IndexController as TestController;
 use App\Http\Controllers\Admin\CourseReviewController;
 use App\Http\Controllers\Admin\MessengerController;
@@ -51,6 +52,14 @@ Route::group(['middleware' => ['auth','is_admin']], function () {
         Route::get('/user/toggleAdmin/{user}', [UserController::class, 'toggleAdmin'])
             ->where('user', '\d+')
             ->name('user.toggleAdmin');
+
+        Route::resource('/usercourse',UserCourseController::class);
+        Route::get('/usercourse/index/{user}',[UserCourseController::class,'index'])
+            ->where('user', '\d+')
+            ->name('usercourse');
+        Route::get('/usercourse/destroy/{userCourse}', [UserCourseController::class, 'destroy'])
+            ->where('userCourse', '\d+')
+            ->name('usercourse.destroy');
 
         Route::resource('/author', AdminAuthorController::class);
         Route::get('/author/destroy/{author}', [AdminAuthorController::class, 'destroy'])

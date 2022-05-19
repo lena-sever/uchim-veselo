@@ -46,13 +46,13 @@ class CrsController extends Controller
             ->get();
         $course->lessons =  $lessons;
         $course->reviews =  $reviews;
-        $author = $course->author()->get();
-        $painter = $course->painter()->get();
-        $course->author = $author;
-        $course->painter = $painter;
+        $author = $course->author()->value('name');
+        $painter = $course->painter()->value('name');
+        $course->name_author = $author;
+        $course->name_painter = $painter;
 
         $course = json_encode($course, JSON_UNESCAPED_UNICODE);
-        //dd($course);
+       // dd($course);
         return $course;
     }
 

@@ -72,13 +72,7 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        //$user_course  = $user->user_course();
-        $user_course = UserCourse::where('user_id','=',$user->id)->get();
 
-        return view('admin.user.show',[
-            'user_course' => $user_course,
-            'user' => $user
-        ]);
     }
 
 

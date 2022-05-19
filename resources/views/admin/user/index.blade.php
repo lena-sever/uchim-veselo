@@ -10,7 +10,7 @@
   <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group me-2">
       <a href="{{ route('account') }}" type="button" class="btn btn-sm btn-secondary">Назад</a>&nbsp;
-      <a href="{{ route('admin.user.create') }}" type="button" class="btn btn-sm btn-secondary">Добавить пользователя
+      <a style="display: none;" href="{{ route('admin.user.create') }}" type="button" class="btn btn-sm btn-secondary">Добавить пользователя
       </a>
     </div>
   </div><br>
@@ -54,7 +54,7 @@
                         @endif
                     </td>
                     <td>
-                    <a class="btn  btn-secondary" href="{{ route('admin.user.show', ['user' => $usersItem]) }}">Курсы</a> &nbsp;
+                    <a class="btn  btn-secondary" href="{{ route('admin.usercourse', ['user' => $usersItem]) }}">Курсы</a> &nbsp;
                         <a class="btn  btn-primary" href="{{ route('admin.user.edit', ['user' => $usersItem]) }}">Редактировать</a> &nbsp;
                         <a class="delete btn  btn-danger" href="{{route('admin.user.destroy',['user' => $usersItem])}}">Удалить</a>
                     </td>
