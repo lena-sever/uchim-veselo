@@ -7,8 +7,10 @@ import "slick-carousel/slick/slick-theme.css";
 import TestTitle from "../TestTitle/TestTitle";
 import TestButton from "../TestButton/TestButton";
 import TestSlider from "./TestSlider";
+import ButtonBackToComics from "../../ButtonBackToСomics/ButtonBackToСomics";
 
 function Test4({ secondTest, getTestsHandler }) {
+    const path = "/courses";
     // Создаем массив из пустых массивов по числу предложений из БД
     const [ answer, setAnswer ] = useState( () => {
         const out = [];
@@ -81,6 +83,7 @@ function Test4({ secondTest, getTestsHandler }) {
                 {
                     isAnswerCorrect && isLastSentence && <TestButton getTestsHandler={ getTestsHandler } num={ 5 }/>
                 }
+                <ButtonBackToComics path={path} text="Назад к комиксам"/>
             </div>
 
         </>

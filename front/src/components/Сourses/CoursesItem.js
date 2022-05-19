@@ -29,7 +29,8 @@ const ColorButtonOutlined = styled( Button )( ({ theme }) => ( {
 function CoursesItem({ course }) {
     const classes = useStyles();
     const path = `/courses/${ course.id }`;
-    // const pathAuthor = `/author/${authorId}`
+    const pathAuthor = `/author/${course.author_id}`
+    const pathPainter = `/painter/${course.painter_id}`
     const dispatch = useDispatch();
 
     const getLessonsList = () => {
@@ -52,17 +53,18 @@ function CoursesItem({ course }) {
             </NavLink>
             <div className="products_item_text_box">
                 <p className="text_box_header">{ course.title }</p>
+
+                <p className="products_item__author">Автор:
+                    <NavLink to={ pathAuthor } className="products_item__author">
+                        <span className="text_box_main ">{ course.name_author }</span>
+                    </NavLink>
+                </p>
+                <p >Художник:
+                    <NavLink to={ pathPainter } className="products_item__author">
+                        <span className="text_box_main ">{ course.name_painter }</span>
+                    </NavLink>
+                </p>
                 <p className="text_box_main">{ course.description }</p>
-                {/*<p className="products_item__author">Автор:*/}
-                {/*    <NavLink to={ pathAuthor } className="products_item__author">*/}
-                {/*        <span className="text_box_main ">{ course.name_author }</span>*/}
-                {/*    </NavLink>*/}
-                {/*</p>*/}
-                {/*<p >Художник:*/}
-                {/*    <NavLink to={ pathPainter } className="products_item__author">*/}
-                {/*        <span className="text_box_main ">{ course.name_painter }</span>*/}
-                {/*    </NavLink>*/}
-                {/*</p>*/}
             </div>
             <ColorButtonOutlined
                 as={ NavLink }

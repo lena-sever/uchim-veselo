@@ -5,9 +5,12 @@ import WordChoice from "./Test3-wordСhoice";
 import TestTitle from "../TestTitle/TestTitle";
 import TestButton from "../TestButton/TestButton";
 import TestsImg from "../TestsImg/TestsImg";
+import ButtonBackToComics from "../../ButtonBackToСomics/ButtonBackToСomics";
+import * as React from "react";
 
 
 function Test3({ secondTest, getTestsHandler }) {
+    const path = "/courses";
     const [ buttonsState, setButtonsState ] = useState( () => {
         return secondTest.chooseWords.reduce( (acc, item, i) => {
             if( item.type !== "button" ) {
@@ -77,8 +80,9 @@ function Test3({ secondTest, getTestsHandler }) {
                     ( isTestCompleted ) ?
                         ( <TestButton getTestsHandler={ getTestsHandler } num={ 4 }/> ) : null
                 }
-
+                <ButtonBackToComics path={path} text="Назад к комиксам"/>
             </div>
+
         </>
     );
 }

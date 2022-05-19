@@ -18,6 +18,7 @@ import SliderContainer from "../common/Slider/Slider";
 import styles from "./LessonReview/LessonReview.module.css";
 import { getPath } from "../../store/courseId/actions";
 import { useEffect } from "react";
+import ButtonBackToComics from "../ButtonBackToСomics/ButtonBackToСomics";
 
 function LessonsItem() {
 
@@ -29,8 +30,8 @@ function LessonsItem() {
     const firstHistoy = useSelector( selectFirstHistory );
     const lastHistoy = useSelector( selectLastHistory );
     const err = useSelector( selectErr );
+    const path = "/courses";
     console.log( err );
-
 
 
     const requestHistory = async() => {
@@ -46,8 +47,6 @@ function LessonsItem() {
     // useEffect( () => {
     //     dispatch( getPath( slider1 ) );
     // }, [ slider1 ] );
-
-
 
 
     if( !err ) {
@@ -86,15 +85,16 @@ function LessonsItem() {
                         />
                     ) }
                 </div>
-                <Button
-                    as={ NavLink }
-                    className={ styles.btn_link }
-                    variant="contained"
-                    color="secondary"
-                    to="/courses"
-                >
-                    Назад к комиксам
-                </Button>
+                <ButtonBackToComics path={path} text="Назад к комиксам" className={styles.btn_link}/>
+                {/*<Button*/ }
+                {/*    as={ NavLink }*/ }
+                {/*    className={ styles.btn_link }*/ }
+                {/*    variant="contained"*/ }
+                {/*    color="secondary"*/ }
+                {/*    to="/courses"*/ }
+                {/*>*/ }
+                {/*    Назад к комиксам*/ }
+                {/*</Button>*/ }
             </div>
         );
     } else <>err</>;

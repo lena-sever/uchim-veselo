@@ -19,6 +19,8 @@
 }
 
 .test__bottom {
+    display: flex;
+    flex-direction: column;
     margin-top: auto;
     margin-bottom: 25%;
 }

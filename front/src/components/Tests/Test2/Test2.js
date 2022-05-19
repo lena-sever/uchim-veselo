@@ -3,8 +3,10 @@ import * as React from "react";
 import TestTitle from "../TestTitle/TestTitle";
 import TestButton from "../TestButton/TestButton";
 import TestsImg from "../TestsImg/TestsImg";
+import ButtonBackToComics from "../../ButtonBackToСomics/ButtonBackToСomics";
 
 function Test2({ firstTest, getTestsHandler }) {
+    const path = "/courses";
 
     return (
         <>
@@ -15,7 +17,9 @@ function Test2({ firstTest, getTestsHandler }) {
             </p>
             <div className="test__bottom">
                 <TestButton getTestsHandler={ getTestsHandler } num={ 3 }/>
+                <ButtonBackToComics path={path} text="Назад к комиксам"/>
             </div>
+
         </>
     );
 }
