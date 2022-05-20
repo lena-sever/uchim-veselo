@@ -71,6 +71,7 @@
             </thead>
             <tbody>
             @forelse($reviews as $reviewItem)
+                @if($reviewItem->publish == 1)
                 <tr id="{{$reviewItem->id}}">
                     <td>{{ $reviewItem->id }}</td>
                     <td>
@@ -84,6 +85,7 @@
                         </p>
                     </td>
                 </tr>
+                @endif
               @empty
                   <tr><td colspan="6">Записей нет</td> </tr>
               @endforelse

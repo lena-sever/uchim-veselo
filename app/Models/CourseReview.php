@@ -11,18 +11,22 @@ class CourseReview extends Model
     use HasFactory;
     use SoftDeletes;
     protected $table = 'course_reviews';
-    
+
     protected $fillable = [
 		'text',
 		'course_id',
-        'user_id'
+        'user_id',
+        'publish'
 	];
+    protected $casts = [
+        'publish' => 'boolean'
+    ];
 
     public function course() {
-        return $this->belongsTo(Course::class);
+        return $this->belongsTo(Course::class,'course_id');
     }
 
     public function user() {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 }
