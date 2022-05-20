@@ -90,7 +90,7 @@ const SliderItem = ({ text, newAudio, slideItemId, sliderCoast, img, isLastSlide
                     </div> */}
                     <img className="slider__img" src={img} />
                     <div className="slider__text">{text}</div>
-                    <div className="slider__text">{slideItemId}/{sliderCoast}</div>
+                    <div className="slider__count">{slideItemId}/{sliderCoast}</div>
                 </>
             )}
         </>
