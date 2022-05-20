@@ -7,10 +7,11 @@ const LessonReview = (props) => {
             <div>
                 <img
                     src={props.review.user.photo}
+                    alt="Фото"
                     className={styles.img_course}
                 />
             </div>
-            <div>
+            <div className={styles.rev_text_box}>
                 <p className={styles.rev_name}>{props.review.user.name}</p>
                 <p className={styles.rev_text}>{props.review.text}</p>
             </div>
