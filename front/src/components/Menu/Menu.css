@@ -7,7 +7,9 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    height: 100vh;
     margin-top: 120px;
+    padding-top: 25px;
     background: radial-gradient(110.67% 538.64% at 5.73% 50%, #b458bf 0%, #1A1A1C 100%), #352f4d;
     box-shadow: inset -6px 0px 9px 0px;
     transform: translateX(100%);
@@ -17,7 +19,7 @@
 }
 
 .menu__open {
-    height: 100vh;
+
     transform: translateX(0);
 }
 
@@ -39,6 +41,7 @@
         flex-direction: row;
         width: 100%;
         max-width: 100%;
+        height: fit-content;
         margin-top: 0;
         padding: 0 20px;
         background: transparent;
@@ -46,10 +49,10 @@
         transform: translateX(0);
     }
 
-    .menu__open {
-        height: fit-content;
+    /*.menu__open {*/
+    /*  */
 
-    }
+    /*}*/
 
     .menu__link {
         /*padding: 15px 0;*/
