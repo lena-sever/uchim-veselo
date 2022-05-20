@@ -12,19 +12,19 @@ import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 
 const ReviewsContainer = () => {
-    const reviews = useSelector(selectReviews);
-    const error = useSelector(selectErrorReviews);
+    const reviews = useSelector( selectReviews );
+    const error = useSelector( selectErrorReviews );
     const dispatch = useDispatch();
-    const requestReviews = async () => {
-        dispatch(getReviewsTC());
+    const requestReviews = async() => {
+        dispatch( getReviewsTC() );
     };
-    useEffect(() => {
+    useEffect( () => {
         requestReviews();
-    }, []);
+    }, [] );
 
-    let reviewElem = reviews.map((review) => {
-        return <Review key={review.id} review={review} />;
-    });
+    let reviewElem = reviews.map( (review) => {
+        return <Review key={ review.id } review={ review }/>;
+    } );
 
     const style = {
         maxWidth: "1577px",
@@ -38,23 +38,23 @@ const ReviewsContainer = () => {
     };
 
     return (
-        <div style={style}>
-            <h1 className={styles.rev_head}>Отзывы</h1>
-            {error ? (
-                <h1>{error}</h1>
+        <div style={ style }>
+            <h1 className={ styles.rev_head }>Отзывы</h1>
+            { error ? (
+                <h1>{ error }</h1>
             ) : (
                 <div>
                     <AliceCarousel
-                        items={reviewElem}
-                        autoPlay
+                        items={ reviewElem }
+                        autoPlay="false"
                         autoPlayInterval="2000"
                         animationType="fadeout"
                         disableButtonsControls
                         infinite
-                        responsive={responsive}
+                        responsive={ responsive }
                     />
                 </div>
-            )}
+            ) }
         </div>
     );
 };

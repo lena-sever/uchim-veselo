@@ -6,8 +6,12 @@
 }
 
 .review {
-    display: flex;
-    text-align: start;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-evenly;
+margin-bottom: 20px;
+padding: 0 10px;
+text-align: start;
 }
 
 .rev_head {
