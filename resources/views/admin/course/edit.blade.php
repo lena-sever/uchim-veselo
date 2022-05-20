@@ -35,14 +35,14 @@
                 @error('painter_id') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
-                <label for="description">Краткое описание комикса</label>
+                <label for="description">Описание комикса</label>
                 <textarea class="form-control" name="description" id="description">{!! $course->description !!}</textarea>
                 @error('description') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
-                <label for="text">Полное описание комикса</label>
-                <textarea class="form-control" name="text" id="text">{!! $course->text !!}</textarea>
-                @error('text') <strong style="color:red;">{{ $message }}</strong> @enderror
+                <label for="price">Стоимость</label>
+                <input class="form-control" name="price" id="price" value="{!! $course->price !!}">
+                @error('price') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
                 <label for="image">Изображение</label>

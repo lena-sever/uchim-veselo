@@ -18,7 +18,7 @@ class EditRequest extends FormRequest
         return [
 			'user_id' => ['required', 'integer'],
             'course_id' => ['required','integer'],
-            'price' => ['required', 'float'],
+            'price' => ['required'],
         ];
     }
 

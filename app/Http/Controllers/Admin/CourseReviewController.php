@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\CourseReview;
 use App\Http\Requests\Review\CreateRequest;
+use App\Models\Course;
+use App\Models\User;
 use Illuminate\Support\Facades\Log;
 
 class CourseReviewController extends Controller
@@ -16,7 +18,15 @@ class CourseReviewController extends Controller
      */
     public function index()
     {
+        $reviews = CourseReview::all();
+        $courses =Course::all();
+        $users =User::all();
 
+        return view('admin.review.index',[
+            'reviews' => $reviews,
+            'courses' => $courses,
+            'users' => $users
+        ]);
     }
 
     /**
@@ -96,6 +106,19 @@ class CourseReviewController extends Controller
             return redirect()->route('admin.course.show',['course' => $courseReview->course_id]);
         }catch(\Exception $e){
             Log::error("Ошибка удаления");
+        }
+    }
+
+    public function moderation(CourseReview $courseReview){
+        try{
+            if ($courseReview->publish == 0){
+                $validated['publish'] = 1;
+                $courseReview->fill($validated)->save();
+                return back();
+
+            }
+        }catch(\Exception $e){
+            Log::error('Ошибка публикации');
         }
     }
 }
