@@ -480,70 +480,7 @@ body {
 
 /* 422072 */
 /* background:  radial-gradient(110.67% 538.64% at 5.73% 50%, #422072 0%, #1A1A1C 100%), #352f4d; */
-.footer {
-    height: 111px;
-    background: radial-gradient(110.67% 538.64% at 5.73% 50%, #b458bf 0%, #1A1A1C 100%), #352f4d;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 20px 0 20px;
-    box-sizing: border-box;
-    margin-top: 30px;
-}
 
-.footer-wrp {
-    max-width: 1577px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.footer-text-polity {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-        "Helvetica Neue", sans-serif;
-    font-size: 20px;
-    line-height: 26px;
-    font-weight: 400;
-    color: white;
-    display: block;
-}
-
-.footer__social-icon-wrp {
-    max-width: 184px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.footer__social-icon-link {
-    display: flex;
-    width: 33px;
-    height: 33px;
-    text-decoration: none;
-    border-radius: 50%;
-    background-color: white;
-    /* displagy: block; */
-    border: 1px solid #fff;
-}
-
-.footer__social-icon {
-    fill: #313030;
-    position: relative;
-    top: 6px;
-    left: 6px;
-}
-
-.footer__social-icon-link:hover {
-    background-color: #b458bf;
-    border: 1px solid #fff;
-}
-
-.footer__social-icon-link:hover .footer__social-icon {
-    fill: #fff;
-}
 
 .text_box_main {
     font-weight: 300;

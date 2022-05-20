@@ -6,8 +6,10 @@
 }
 
 .review {
-    /* display: flex; */
+    display: flex;
+    padding: 0 10px;
     text-align: start;
+
 }
 
 .rev_head {
@@ -40,7 +42,7 @@
 @media screen and (max-width: 460px) {
     .rev_head {
         font-size: 30px;
-        
+
     }
 
     .img_course {
