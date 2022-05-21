@@ -85,6 +85,9 @@ Route::group(['middleware' => ['auth','is_admin']], function () {
         Route::get('/review/destroy/{courseReview}', [CourseReviewController::class, 'destroy'])
             ->where('courseReview', '\d+')
             ->name('review.destroy');
+        Route::get('/courseReview/moderation/{courseReview}', [CourseReviewController::class, 'moderation'])
+            ->where('courseReview', '\d+')
+            ->name('courseReview.moderation');
 
         Route::get('/test/{course}', TestController::class)
         ->where('course', '\d+')

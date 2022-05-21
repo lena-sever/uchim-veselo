@@ -6,7 +6,10 @@ function Footer() {
             <footer className="footer">
                 <div className="footer-wrp">
                     <span className="footer-text-polity">
-                        &copy; Copyright СмартКомикс 2022, All rights reserved.
+                        &copy; СмартКомикс 2022
+                    </span>
+                    <span className="footer-text-polity">
+                       All rights reserved
                     </span>
                     <div className="footer__social-icon-wrp">
                         <a href="#" className="footer__social-icon-link">

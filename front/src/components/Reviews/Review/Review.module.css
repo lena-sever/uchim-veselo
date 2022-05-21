@@ -1,13 +1,26 @@
 .img_course {
-    width: 200px;
-    height: 200px;
+    /*width: 200px;*/
+    /*height: 200px;*/
+    width: 100%;
     object-fit: contain;
     border-radius: 50%;
 }
 
 .review {
-    /* display: flex; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 10px 10px 20px 10px;
+    padding: 0 10px;
     text-align: start;
+    border-radius: 5px;
+    box-shadow: -1px 1px 10px 1px rgba(40, 44, 52, 0.25);
+
+}
+
+.text_wrap {
+    width: 90%;
+    text-align: center;
 }
 
 .rev_head {
@@ -37,10 +50,15 @@
     margin-top: 50px;
 }
 
+.img_wrap {
+    width: 200px;
+    height: 200px;
+}
+
 @media screen and (max-width: 460px) {
     .rev_head {
         font-size: 30px;
-        
+
     }
 
     .img_course {

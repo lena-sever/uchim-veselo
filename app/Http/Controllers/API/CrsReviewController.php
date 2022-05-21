@@ -20,6 +20,7 @@ class CrsReviewController extends Controller
             ->select(
                 'course_reviews.id',
                 'course_reviews.text',
+                'course_reviews.publish',
                 'course_reviews.user_id',
                 'users.name as user_name',
                 'course_reviews.course_id',
@@ -50,6 +51,7 @@ class CrsReviewController extends Controller
             ->select(
                 'course_reviews.id',
                 'course_reviews.text',
+                'course_reviews.publish',
                 'course_reviews.user_id',
                 'users.name as user_name',
                 'course_reviews.course_id',
@@ -57,7 +59,7 @@ class CrsReviewController extends Controller
                 'courses.img',
             )
             ->first();
-        
+
         // $courseReview->user_name = $courseReview->user->name;
         // $courseReview->course_title = $courseReview->course->title;
 

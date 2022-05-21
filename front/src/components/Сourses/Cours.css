@@ -15,16 +15,30 @@
     justify-content: center;
     margin-top: 30px;
 }
+.cours__reviews {
+    padding-top: 50px;
+    border-top: 1px solid #cccccc;
+}
+
+.cours__reviews-title {
+    margin-top: 50px;
+}
 @media screen and (max-width: 682px) {
     .cours__btn-wrp {
         display: flex;
-    }  
+    }
+    .cours__reviews {
+        padding-top: 30px;
+    }
+    .cours__reviews-title {
+        margin-top: 30px;
+    }
 }
 
 @media screen and (max-width: 470px) {
     .cours__btn-wrp {
      flex-direction: column;
-    }  
+    }
     .cours__img {
         width: 100%;
     }

@@ -4,26 +4,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../store/auth/authSelector";
 import { logout } from "../../store/auth/action";
 
-function Menu({isMenuOpen, toggleMenuMode}) {
+function Menu({ isMenuOpen, toggleMenuMode }) {
     const user = useSelector( selectUser );
     const dispatch = useDispatch();
-
-    // const handleHideMenu=()=>{
-    //     console.log("click");
-    // }
 
     const onLogout = async() => {
         dispatch( logout() );
     };
     return (
-        <nav className={isMenuOpen ? "menu menu__open": "menu"}>
-            <NavLink to="/" className="menu__link" onClick={toggleMenuMode}>
+        <nav className={ isMenuOpen ? "menu menu__open" : "menu" }>
+            <NavLink to="/" className="menu__link" onClick={ toggleMenuMode }>
                 Главная
             </NavLink>
-            <NavLink to="/courses" className="menu__link" onClick={toggleMenuMode}>
+            <NavLink to="/courses" className="menu__link" onClick={ toggleMenuMode }>
                 Комиксы
             </NavLink>
-            <NavLink to="/contacts" className="menu__link" onClick={toggleMenuMode}>
+            <NavLink to="/contacts" className="menu__link" onClick={ toggleMenuMode }>
                 Контакты
             </NavLink>
             { user.id ? (
@@ -41,7 +37,7 @@ function Menu({isMenuOpen, toggleMenuMode}) {
                     </NavLink>
                 </>
             ) : (
-                <NavLink to="/login" className="menu__link" onClick={toggleMenuMode}>
+                <NavLink to="/login" className="menu__link" onClick={ toggleMenuMode }>
                     Войти
                 </NavLink>
             ) }

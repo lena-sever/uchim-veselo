@@ -129,12 +129,12 @@ const CoursPage = () => {
                         {/*    Другие комиксы*/}
                         {/*</ColorButtonOutlined>*/}
                     </div>
-                    <div>
+                    <div className="cours__reviews">
                         <ReviewForm
                             user={ user }
                             courseId={ courseId }
                         ></ReviewForm>
-                        <h2>Отзывы</h2>
+                        <h3 className="cours__reviews-title">Отзывы</h3>
                     </div>
                     <div style={ style }>{ reviewElem }</div>
                 </>
