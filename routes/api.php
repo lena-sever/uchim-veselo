@@ -45,9 +45,9 @@ Route::get('courses/last_slider/{course}', [CrsController::class,'show_last_slid
 
 
 /*************  Т Е С Т Ы ************/
-// первый тест 
+// первый тест
 Route::get('courses/first_test/{course}', [CrsController::class,'first_test']);
-// второй тест 
+// второй тест
 Route::get('courses/second_test/{course}', [CrsController::class,'second_test']);
 
 

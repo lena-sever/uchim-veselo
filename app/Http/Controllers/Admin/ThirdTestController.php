@@ -56,6 +56,20 @@ class ThirdTestController extends Controller
         $validated['right_sentence']='';
         $validated['words'] = '';
 
+
+        $variants = [
+            [$request->var_1,$request->var_2],
+            [$request->var_3,$request->var_4],
+            [$request->var_5,$request->var_6],
+            [$request->var_7,$request->var_8],
+            [$request->var_9,$request->var_10],
+            [$request->var_11,$request->var_12],
+            [$request->var_13,$request->var_14],
+            [$request->var_15,$request->var_16],
+            [$request->var_17,$request->var_18],
+            [$request->var_19,$request->var_20]
+        ];
+
         $sentences=[
             $request->sentence_1,
             $request->sentence_2,
@@ -68,13 +82,24 @@ class ThirdTestController extends Controller
             $request->sentence_9,
             $request->sentence_10
         ];
-
+        //dd($variants);
         for($i=0;$i<=9;$i++){
+            $validated['variant_1'] = $variants[$i][0];
+            $validated['variant_2'] = $variants[$i][1];
+
+            if($validated['variant_1'] == null){
+                $validated['variant_1'] ='';
+            }
+            if($validated['variant_2'] == null){
+                $validated['variant_2'] ='';
+            }
+
             $validated['right_sentence'] = $sentences[$i];
             $sentence = explode(" ",$validated['right_sentence']);
             shuffle($sentence);
             $validated['words'] = join("|",$sentence);
 
+            //dd($validated);
             $created = ThirdTest::create($validated);
         }
 

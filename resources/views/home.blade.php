@@ -21,10 +21,12 @@
                 </div>
                 @else
                 <div style="text-align: center;" class="card-body">
-                    <h1>У Вас нет доступа</h1></div>
+                    <h1>У Вас нет доступа</h1>
                 </div>
+
                 @endif
             @endauth
+        </div>
     </div>
 </div>
 @endsection

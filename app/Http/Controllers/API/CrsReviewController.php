@@ -23,6 +23,7 @@ class CrsReviewController extends Controller
                 'course_reviews.publish',
                 'course_reviews.user_id',
                 'users.name as user_name',
+                'users.photo as user_photo',
                 'course_reviews.course_id',
                 'courses.title as course_title',
                 'courses.img',
@@ -54,12 +55,12 @@ class CrsReviewController extends Controller
                 'course_reviews.publish',
                 'course_reviews.user_id',
                 'users.name as user_name',
+                'users.photo as user_photo',
                 'course_reviews.course_id',
                 'courses.title as course_title',
                 'courses.img',
             )
             ->first();
-
         // $courseReview->user_name = $courseReview->user->name;
         // $courseReview->course_title = $courseReview->course->title;
 

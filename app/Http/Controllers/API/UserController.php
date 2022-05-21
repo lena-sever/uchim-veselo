@@ -10,6 +10,7 @@ use App\Http\Requests\User\CreateRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Laravolt\Avatar\Avatar;
 
 
 class UserController extends Controller
@@ -32,6 +33,10 @@ class UserController extends Controller
         $validated['password'] = Hash::make($validated['password']);
         $validated['session_token'] =  Str::random(60);
 
+        $avatar = new Avatar(config("laravolt.avatar"));
+        $validated['photo'] = $avatar->create($validated['name'])->setDimension(85, 85)->toSvg();
+
+        dd($validated);
         $user = User::create($validated);
         if ($user) {
             return json_encode($user, JSON_UNESCAPED_UNICODE);
@@ -70,6 +75,7 @@ class UserController extends Controller
                 'name',
                 'email',
                 'session_token',
+                'photo'
             )
             ->first();
         if ($user) {
