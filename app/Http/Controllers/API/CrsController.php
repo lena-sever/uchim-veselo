@@ -130,11 +130,13 @@ class CrsController extends Controller
         $i = 0;
         $third_tests = DB::table('third_tests')
             ->where('course_id', $id)
-            ->select(['right_sentence', 'words'])
+            ->select(['right_sentence','variant_1','variant_2','words'])
             ->get();
 
         foreach ($third_tests as $key => $item) {
             $res['sentences'][$i]['right_sentence'] = $item->right_sentence;
+            $res['sentences'][$i]['variant_1'] = $item->variant_1;
+            $res['sentences'][$i]['variant_2'] = $item->variant_2;
             $res['sentences'][$i]['words'] = explode("|", $item->words);
             $i++;
         }
