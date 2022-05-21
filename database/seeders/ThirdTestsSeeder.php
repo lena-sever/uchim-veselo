@@ -27,60 +27,80 @@ class ThirdTestsSeeder extends Seeder
         $data[] = [
             'course_id' => 1,
             'right_sentence' => 'Я шью свою одежду красной ниткой',
+            'variant_1'=>'Я свою одежду шью красной ниткой',
+            'variant_2'=>'Я красной ниткой шью свою одежду',
             'words' =>'шью|ниткой|одежду|Я|красной|свою',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
         $data[] = [
             'course_id' => 1,
             'right_sentence' => 'Он разрезал нитку острыми ножницами',
+            'variant_1'=>'Он острыми ножницами разрезал нитку',
+            'variant_2'=>'',
             'words' =>'разрезал|ножницами|Он|нитку|острыми',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
         $data[] = [
             'course_id' => 1,
             'right_sentence' => 'Учительница достала из сумочки катушку черных ниток',
+            'variant_1'=>'Учительница достала катушку черных ниток из сумочки',
+            'variant_2'=>'',
             'words' =>'черных|Учительница|из|достала|ниток|сумочки|катушку',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
         $data[] = [
             'course_id' => 1,
             'right_sentence' => 'На полу лежал клубок шерстяных ниток',
+            'variant_1'=>'',
+            'variant_2'=>'',
             'words' =>'ниток|полу|лежал|шерстяных|клубок|На',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
         $data[] = [
             'course_id' => 1,
             'right_sentence' => 'Бабушка попросила вдеть нитку в иголку',
+            'variant_1'=>'',
+            'variant_2'=>'',
             'words' =>'иголку|в|Бабушка|вдеть|нитку|попросила',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
         $data[] = [
             'course_id' => 1,
             'right_sentence' => 'На брюках торчала белая нитка',
+            'variant_1'=>'',
+            'variant_2'=>'',
             'words' =>'белая|На|нитка|торчала|брюках',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
         $data[] = [
             'course_id' =>1,
             'right_sentence' => 'Я с помощью нитки и иголки зашил себе карман',
+            'variant_1'=>'Я с помощью иголки и нитки зашил себе карман',
+            'variant_2'=>'Я зашил себе карман с помощью иголки и нитки',
             'words' =>'себе|с|иголки|Я|помощью|карман|и|нитки|зашил',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
         $data[] = [
             'course_id' => 1,
             'right_sentence' => 'Она пришила нитками нашивку к рюкзаку',
+            'variant_1'=>'',
+            'variant_2'=>'',
             'words' =>'Она|к|нашивку|пришила|рюкзаку|нитками',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
         $data[] = [
             'course_id' => 1,
             'right_sentence' => 'Из шерстяных ниток вяжут носки и свитера',
+            'variant_1'=>'Из шерстяных ниток вяжут свитера и носки',
+            'variant_2'=>'',
             'words' =>'вяжут|и|шерстяных|Из|свитера|носки|ниток',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
         $data[] = [
             'course_id' => 1,
             'right_sentence' => 'Ткань обычно делается из ниток',
+            'variant_1'=>'Ткань делается обычно из ниток',
+            'variant_2'=>'',
             'words' =>'делается|обычно|из|Ткань|ниток',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
@@ -90,6 +110,8 @@ class ThirdTestsSeeder extends Seeder
             $data[] = [
                 'course_id' => $item->id,
                 'right_sentence' => 'Слово_1 слово_2',
+                'variant_1'=>'Cлово_2 cлово_1',
+                'variant_2'=>'cлово_1 Cлово_2',
                 'words' => 'слово_2|Слово_1',
                 'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
             ];

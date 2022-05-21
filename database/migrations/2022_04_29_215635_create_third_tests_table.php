@@ -17,6 +17,8 @@ class CreateThirdTestsTable extends Migration
             $table->id();
             $table->foreignId('course_id')->constrained('courses')->cascadeOnDelete();
             $table->string('right_sentence');
+            $table->string('variant_1');
+            $table->string('variant_2');
             $table->string('words');
             $table->timestamps();
             $table->softDeletes();

@@ -72,7 +72,11 @@
                         @if(Auth::user()->is_admin)
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="{{route('account')}}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                               @if(Auth::user()->photo)
+                               <img style="width: 50px;" src="{{ Auth::user()->photo }}" alt="{{ Auth::user()->name }}">
+                               @else
                                 {!! Avatar::create(Auth::user()->name)->setDimension(35)->setFontSize(18)->toSvg() !!}
+                              @endif
                                 &nbsp;
                                 {{ Auth::user()->name }}
                                 </a>

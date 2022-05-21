@@ -28,6 +28,8 @@ class EditRequest extends FormRequest
         return [
             'course_id' => ['required','int'],
             'right_sentence' => ['required', 'string', 'max:1000'],
+            'variant_1' => ['max:1000'],
+            'variant_2' => ['max:1000'],
         ];
     }
 
@@ -43,6 +45,8 @@ class EditRequest extends FormRequest
 		return [
             'course_id' => 'Комикс',
 			'right_sentence' => 'Предложения',
+			'variant_1' => 'Вариант 1',
+			'variant_2' => 'Вариант 2',
 		];
 	}
 }

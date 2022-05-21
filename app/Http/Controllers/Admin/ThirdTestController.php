@@ -126,11 +126,19 @@ class ThirdTestController extends Controller
     public function update(EditRequest $request, ThirdTest $test_3)
     {
         $validated = $request->validated();
+
+        if($validated['variant_1'] == null){
+            $validated['variant_1'] ='';
+        }
+        if($validated['variant_2'] == null){
+            $validated['variant_2'] ='';
+        }
         $validated['words'] = '';
         $sentence = explode(" ",$validated['right_sentence']);
         shuffle($sentence);
         $validated['words'] = join("|",$sentence);
 
+        //dd($validated);
         $updated = $test_3->fill($validated)->save();
 
         if($updated) {

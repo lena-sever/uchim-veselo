@@ -149,6 +149,7 @@
             <tr>
                 <th>#ID</th>
                 <th>Предложение</th>
+                <th>Варианты</th>
                 <th>Слова</th>
                 <th>Опции</th>
             </tr>
@@ -159,6 +160,14 @@
         <tr id="{{$testsItem->id}}">
         <td>{{ $testsItem->id }}</td>
         <td>{{$testsItem->right_sentence}}</td>
+        <td>
+            @if($testsItem->variant_1 or $testsItem->variant_2)
+            1. {{$testsItem->variant_1}}<br>
+            2. {{$testsItem->variant_2}}
+            @else
+            <i>Нет вариантов</i>
+            @endif
+        </td>
         <td>{!!str_replace('|',', ',$testsItem->words)!!}</td>
         <td>
                 <p class="btn-group">
