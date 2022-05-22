@@ -20,6 +20,29 @@ class UserController extends Controller
         return view('account.test_form', []);
     }
 
+    public function show(User $user){
+        $course = DB::table('user_courses')
+            ->where('user_id',$user->id)
+            ->join('courses', 'courses.id', '=', 'user_courses.course_id')
+            ->join('authors', 'authors.id', '=', 'courses.author_id')
+            ->join('painters', 'painters.id', '=', 'courses.painter_id')
+            ->select(
+                'user_courses.id as id',
+                'user_courses.price as price',
+                'user_courses.payment as payment',
+                'user_courses.updated_at as updated_at',
+                'courses.title as course_title',
+                'courses.img as course_img',
+                'authors.name as name_author',
+                'painters.name as name_painter',
+            )
+            ->get();
+        $user->course = $course;
+
+        $user = json_encode($user, JSON_UNESCAPED_UNICODE);
+
+        return $user;
+    }
 
     public function store(CreateRequest $request)
     {

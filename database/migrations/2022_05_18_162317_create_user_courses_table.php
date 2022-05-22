@@ -18,6 +18,7 @@ class CreateUserCoursesTable extends Migration
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('course_id')->constrained('courses')->cascadeOnDelete();
             $table->float('price')->default(0);
+            $table->tinyInteger('payment')->default(1);
             $table->timestamps();
         });
     }
