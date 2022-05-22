@@ -50,7 +50,7 @@ class CoursesSeeder extends Seeder
 			$data[] = [
                 'title' => 'Это не интересно',
                 'description' => $faker->text(mt_rand(100, 150)),
-                'img' => 'https://uchim-veselo.ru/img/4.png',
+                'img' => 'https://uchim-veselo.ru/img/4.jpg',
                 'author_id'=> 4,
                 'painter_id'=> 4,
                 'price' => 500
@@ -66,7 +66,7 @@ class CoursesSeeder extends Seeder
 			$data[] = [
                 'title' => 'В Африке тоже весело',
                 'description' => $faker->text(mt_rand(100, 150)),
-                'img' => 'https://uchim-veselo.ru/img/6.png',
+                'img' => 'https://uchim-veselo.ru/img/6.jpg',
                 'author_id'=> 6,
                 'painter_id'=> 6,
                 'price' => 500
