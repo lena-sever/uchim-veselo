@@ -19,10 +19,10 @@ class UserCourse extends Model
 	];
 
     public function course() {
-        return $this->hasMany(Course::class,'id');
+        return $this->hasMany(Course::class);
     }
 
     public function user() {
-        return $this->hasMany(User::class,'id');
+        return $this->hasMany(User::class);
     }
 }
