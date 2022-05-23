@@ -1,13 +1,14 @@
 import "../Tests.css";
 import "./Test3.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import WordChoice from "./Test3-wordСhoice";
 import TestTitle from "../TestTitle/TestTitle";
 import TestButton from "../TestButton/TestButton";
 import TestsImg from "../TestsImg/TestsImg";
 import ButtonBackToComics from "../../ButtonBackToСomics/ButtonBackToСomics";
 import * as React from "react";
-
 
 function Test3({ secondTest, getTestsHandler }) {
     const path = "/courses";
@@ -80,7 +81,7 @@ function Test3({ secondTest, getTestsHandler }) {
                     ( isTestCompleted ) ?
                         ( <TestButton getTestsHandler={ getTestsHandler } num={ 4 }/> ) : null
                 }
-                <ButtonBackToComics path={path} text="Назад к комиксам"/>
+                <ButtonBackToComics path={ path } text="Назад к комиксам"/>
             </div>
 
         </>

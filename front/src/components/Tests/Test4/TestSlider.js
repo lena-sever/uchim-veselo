@@ -22,6 +22,8 @@ function TestSlider(props) {
     return (
         <Slider { ...settings }>
             { props.arr.map( (item, index) => {
+                    console.log(  index );
+
                     return (
                         <div className="test__answers-wrap">
                             <p className="test__sentences-block" key={ index }>
@@ -31,6 +33,7 @@ function TestSlider(props) {
                                                      onClick={ () => {
                                                          props.addWordHandler( index, el, i );
                                                          props.getSlideIndex( index );
+                                                         // props.getNumberOfSlide(index + 1)
                                                      } }>{ el }</span>;
                                     }
                                 ) }
@@ -45,10 +48,12 @@ function TestSlider(props) {
                                               } }>{ it }</span> ) )
                                 }
                             </p>
+                            <span className="test__answers-count">{ index + 1 } / {props.arr.length}</span>
                             { props.isAnswerCorrect && <p className="test__correct center">Молодец!</p> }
                         </div>
-                    );
 
+
+                );
                 }
             ) }
 

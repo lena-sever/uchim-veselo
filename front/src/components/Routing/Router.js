@@ -31,7 +31,7 @@ function Router() {
             {
                 path1 || path2 || path3 ? null : <Header/>
             }
-            <div className="main">
+            <div className={path1 || path2 || path3 ? "main" : "main main-header"}>
                 <Routes>
                     <Route path="/" element={ <InfoPage/> }/>
                     <Route path="/author/:authorId" element={ <AuthorPage/> }/>

@@ -19,12 +19,16 @@ function Test4({ secondTest, getTestsHandler }) {
         }
         return out;
     } );
+// const array =["Я шью свою одежду красной ниткой",
+//    "Я свою одежду шью красной ниткой",
+//     "Я красной ниткой шью свою одежду"]
 
     const [ isAnswerCorrect, setAnswerCorrect ] = useState( false );
     const [ isLastSentence, setLastSentence ] = useState( false );
     const [ index, setIndex ] = useState( 0 );
     const initialArr = secondTest.sentences;
     const [ arr, setArr ] = useState( initialArr );
+    console.log(index);
 
     const addWordHandler = (index, el, i) => {
         answer[ index ].push( el );
@@ -48,9 +52,12 @@ function Test4({ secondTest, getTestsHandler }) {
         setAnswerCorrect( answer );
     };
 
-    useEffect( () => {
+       useEffect( () => {
 
-        if( answer[ index ].join( " " ) === secondTest.sentences[ index ].right_sentence ) {
+        if( answer[ index ].join( " " ) === secondTest.sentences[ index ].right_sentence ||
+            answer[ index ].join( " " ) === secondTest.sentences[ index ].variant_1 ||
+            answer[ index ].join( " " ) === secondTest.sentences[ index ].variant_2 ) {
+        // if( array.some( item => item === answer[ index ].join( " " ) ) ) {
             setAnswerCorrect( true );
 
             if( index == ( secondTest.sentences.length - 1 ) ) {
@@ -83,7 +90,7 @@ function Test4({ secondTest, getTestsHandler }) {
                 {
                     isAnswerCorrect && isLastSentence && <TestButton getTestsHandler={ getTestsHandler } num={ 5 }/>
                 }
-                <ButtonBackToComics path={path} text="Назад к комиксам"/>
+                <ButtonBackToComics path={ path } text="Назад к комиксам"/>
             </div>
 
         </>
