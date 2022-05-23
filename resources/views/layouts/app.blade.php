@@ -57,7 +57,7 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login'))
+                            <!--@if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Войти') }}</a>
                                 </li>
@@ -67,7 +67,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Регистрация') }}</a>
                                 </li>
-                            @endif
+                            @endif-->
                         @else
                         @if(Auth::user()->is_admin)
                             <li class="nav-item dropdown">

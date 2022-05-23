@@ -26,81 +26,81 @@ class ThirdTestsSeeder extends Seeder
 
         $data[] = [
             'course_id' => 1,
-            'right_sentence' => 'Я шью свою одежду красной ниткой',
-            'variant_1'=>'Я свою одежду шью красной ниткой',
-            'variant_2'=>'Я красной ниткой шью свою одежду',
+            'right_sentence_1' => 'Я шью свою одежду красной ниткой',
+            'right_sentence_2'=>'Я свою одежду шью красной ниткой',
+            'right_sentence_3'=>'Я красной ниткой шью свою одежду',
             'words' =>'шью|ниткой|одежду|Я|красной|свою',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
         $data[] = [
             'course_id' => 1,
-            'right_sentence' => 'Он разрезал нитку острыми ножницами',
-            'variant_1'=>'Он острыми ножницами разрезал нитку',
-            'variant_2'=>'',
+            'right_sentence_1' => 'Он разрезал нитку острыми ножницами',
+            'right_sentence_2'=>'Он острыми ножницами разрезал нитку',
+            'right_sentence_3'=>'',
             'words' =>'разрезал|ножницами|Он|нитку|острыми',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
         $data[] = [
             'course_id' => 1,
-            'right_sentence' => 'Учительница достала из сумочки катушку черных ниток',
-            'variant_1'=>'Учительница достала катушку черных ниток из сумочки',
-            'variant_2'=>'',
+            'right_sentence_1' => 'Учительница достала из сумочки катушку черных ниток',
+            'right_sentence_2'=>'Учительница достала катушку черных ниток из сумочки',
+            'right_sentence_3'=>'',
             'words' =>'черных|Учительница|из|достала|ниток|сумочки|катушку',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
         $data[] = [
             'course_id' => 1,
-            'right_sentence' => 'На полу лежал клубок шерстяных ниток',
-            'variant_1'=>'',
-            'variant_2'=>'',
+            'right_sentence_1' => 'На полу лежал клубок шерстяных ниток',
+            'right_sentence_2'=>'',
+            'right_sentence_3'=>'',
             'words' =>'ниток|полу|лежал|шерстяных|клубок|На',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
         $data[] = [
             'course_id' => 1,
-            'right_sentence' => 'Бабушка попросила вдеть нитку в иголку',
-            'variant_1'=>'',
-            'variant_2'=>'',
+            'right_sentence_1' => 'Бабушка попросила вдеть нитку в иголку',
+            'right_sentence_2'=>'',
+            'right_sentence_3'=>'',
             'words' =>'иголку|в|Бабушка|вдеть|нитку|попросила',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
         $data[] = [
             'course_id' => 1,
-            'right_sentence' => 'На брюках торчала белая нитка',
-            'variant_1'=>'',
-            'variant_2'=>'',
+            'right_sentence_1' => 'На брюках торчала белая нитка',
+            'right_sentence_2'=>'',
+            'right_sentence_3'=>'',
             'words' =>'белая|На|нитка|торчала|брюках',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
         $data[] = [
             'course_id' =>1,
-            'right_sentence' => 'Я с помощью нитки и иголки зашил себе карман',
-            'variant_1'=>'Я с помощью иголки и нитки зашил себе карман',
-            'variant_2'=>'Я зашил себе карман с помощью иголки и нитки',
+            'right_sentence_1' => 'Я с помощью нитки и иголки зашил себе карман',
+            'right_sentence_2'=>'Я с помощью иголки и нитки зашил себе карман',
+            'right_sentence_3'=>'Я зашил себе карман с помощью иголки и нитки',
             'words' =>'себе|с|иголки|Я|помощью|карман|и|нитки|зашил',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
         $data[] = [
             'course_id' => 1,
-            'right_sentence' => 'Она пришила нитками нашивку к рюкзаку',
-            'variant_1'=>'',
-            'variant_2'=>'',
+            'right_sentence_1' => 'Она пришила нитками нашивку к рюкзаку',
+            'right_sentence_2'=>'',
+            'right_sentence_3'=>'',
             'words' =>'Она|к|нашивку|пришила|рюкзаку|нитками',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
         $data[] = [
             'course_id' => 1,
-            'right_sentence' => 'Из шерстяных ниток вяжут носки и свитера',
-            'variant_1'=>'Из шерстяных ниток вяжут свитера и носки',
-            'variant_2'=>'',
+            'right_sentence_1' => 'Из шерстяных ниток вяжут носки и свитера',
+            'right_sentence_2'=>'Из шерстяных ниток вяжут свитера и носки',
+            'right_sentence_3'=>'',
             'words' =>'вяжут|и|шерстяных|Из|свитера|носки|ниток',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
         $data[] = [
             'course_id' => 1,
-            'right_sentence' => 'Ткань обычно делается из ниток',
-            'variant_1'=>'Ткань делается обычно из ниток',
-            'variant_2'=>'',
+            'right_sentence_1' => 'Ткань обычно делается из ниток',
+            'right_sentence_2'=>'Ткань делается обычно из ниток',
+            'right_sentence_3'=>'',
             'words' =>'делается|обычно|из|Ткань|ниток',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
@@ -109,9 +109,9 @@ class ThirdTestsSeeder extends Seeder
             if ($item->id == 1) continue;
             $data[] = [
                 'course_id' => $item->id,
-                'right_sentence' => 'Слово_1 слово_2',
-                'variant_1'=>'Cлово_2 cлово_1',
-                'variant_2'=>'cлово_1 Cлово_2',
+                'right_sentence_1' => 'Слово_1 слово_2',
+                'right_sentence_2'=>'Cлово_2 cлово_1',
+                'right_sentence_3'=>'cлово_1 Cлово_2',
                 'words' => 'слово_2|Слово_1',
                 'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
             ];

@@ -26,9 +26,9 @@ class CreateRequest extends FormRequest
     {
         return [
             'course_id' => ['required','int'],
-            'right_sentence' => ['required', 'string', 'max:1000'],
-            'variant_1' => ['max:1000'],
-            'variant_2' => ['max:1000'],
+            'right_sentence_1' => ['required', 'string', 'max:1000'],
+            'right_sentence_2' => ['max:1000'],
+            'right_sentence_3' => ['max:1000'],
         ];
     }
 
@@ -43,9 +43,9 @@ class CreateRequest extends FormRequest
 	{
 		return [
             'course_id' => 'Комикс',
-			'right_sentence' => 'Предложения',
-			'variant_1' => 'Вариант 1',
-			'variant_2' => 'Вариант 2',
+			'right_sentence_1' => 'Предложения',
+			'right_sentence_2' => 'Вариант 1',
+			'right_sentence_3' => 'Вариант 2',
 		];
 	}
 

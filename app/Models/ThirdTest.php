@@ -15,9 +15,9 @@ class ThirdTest extends Model
 
     protected $fillable = [
         'course_id',
-        'right_sentence',
-        'variant_1',
-        'variant_2',
+        'right_sentence_1',
+        'right_sentence_2',
+        'right_sentence_3',
         'words'
     ];
 
