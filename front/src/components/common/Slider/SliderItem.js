@@ -1,31 +1,33 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Button from "@mui/material/Button";
-// import IconButton from "@mui/material/IconButton";
-// import PauseCircleFilledSharp from "@mui/icons-material/PauseCircleFilledSharp";
-// import PlayCircleFilledOutlined from "@mui/icons-material/PlayCircleFilledOutlined";
-// import Slider from "@mui/material/Slider";
-// import VolumeMuteSharp from "@mui/icons-material/VolumeMuteSharp";
-// import VolumeUpSharp from "@mui/icons-material/VolumeUpSharp";
+import IconButton from "@mui/material/IconButton";
+import PauseCircleFilledSharp from "@mui/icons-material/PauseCircleFilledSharp";
+import PlayCircleFilledOutlined from "@mui/icons-material/PlayCircleFilledOutlined";
+import Slider from "@mui/material/Slider";
+import VolumeMuteSharp from "@mui/icons-material/VolumeMuteSharp";
+import VolumeUpSharp from "@mui/icons-material/VolumeUpSharp";
 
 import "./Slider.css";
 
 const SliderItem = ({ text, newAudio, slideItemId, sliderCoast, img, isLastSlider, path }) => {
-    // console.log(path);
-    // const [mute, setMute] = React.useState(0.3);
-    // console.log(isLastSlider);
+    console.log(path);
+    const [mute, setMute] = React.useState(0.3);
+    console.log(isLastSlider);
     React.useEffect(() => {
-        newAudio.autoplay = true;
+        if(slideItemId !== 0) {          
+            newAudio.autoplay = true;
+        }
     }, []);
 
-    // const togleSound = (mute) => {
-    //     newAudio.volume = mute;
-    // };
+    const togleSound = (mute) => {
+        newAudio.volume = mute;
+    };
 
-    // const handleChange = (event, newValue) => {
-    //     setMute(newValue);
-    //     togleSound(newValue);
-    // };
+    const handleChange = (event, newValue) => {
+        setMute(newValue);
+        togleSound(newValue);
+    };
 
     return (
         <>
@@ -43,7 +45,7 @@ const SliderItem = ({ text, newAudio, slideItemId, sliderCoast, img, isLastSlide
                 </div>
             ) : (
                 <>
-                    {/* <div>
+                    <div>
                         <IconButton
                             aria-label="play"
                             onClick={() => {
@@ -87,7 +89,7 @@ const SliderItem = ({ text, newAudio, slideItemId, sliderCoast, img, isLastSlide
                             min={0}
                             max={1}
                         />
-                    </div> */}
+                    </div>
                     <img className="slider__img" src={img} />
                     <div className="slider__text">{text}</div>
                     <div className="slider__count">{slideItemId}/{sliderCoast}</div>

@@ -17,12 +17,17 @@ const SliderContainer = ({ sliderList, togleTestActive }) => {
         dispatch( getCourseId( courseId ) );
     }, [] );
     React.useEffect( () => {
-        newAudio.autoplay = true;
+        newAudio.autoplay = false;
+        if(slideItemId !== 0) {
+            newAudio.autoplay = true;
+        }       
         newAudio.volume = 0.3;
         return () => {
             newAudio.muted = true;
         };
     }, [ slideItemId ] );
+
+
 
     const togleSlide = (slideId) => {
         if (slideItemId !== slideId) {
