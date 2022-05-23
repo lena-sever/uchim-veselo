@@ -59,7 +59,6 @@ class UserController extends Controller
         $avatar = new Avatar(config("laravolt.avatar"));
         $validated['photo'] = $avatar->create($validated['name'])->setDimension(85, 85)->toSvg();
 
-        dd($validated);
         $user = User::create($validated);
         if ($user) {
             return json_encode($user, JSON_UNESCAPED_UNICODE);
