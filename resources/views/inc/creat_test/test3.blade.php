@@ -11,7 +11,7 @@
             </div>
 
             <div class="form-group">
-                <input for="right_sentence" type="text" hidden id="right_sentence" name="right_sentence" value="f">
+                <input for="right_sentence_1" type="text" hidden id="right_sentence_1" name="right_sentence_1" value="f">
                 <label for="sentence_1">Предложение №1</label>
                 <input type="text" class="form-control" id="sentence_1" name="sentence_1" value="{{ old('sentence_1') }}">
                 @error('sentence_1') <strong style="color:red;">{{ $message }}</strong> @enderror

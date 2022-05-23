@@ -13,17 +13,17 @@
                 @error('course_id') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
-                <label for="right_sentence">Предложения</label>
-                <input type="text" class="form-control" id="right_sentence" name="right_sentence" value="{{ $third_test->right_sentence }}">
-                @error('right_sentence') <strong style="color:red;">{{ $message }}</strong> @enderror
+                <label for="right_sentence_1">Предложения</label>
+                <input type="text" class="form-control" id="right_sentence_1" name="right_sentence_1" value="{{ $third_test->right_sentence_1 }}">
+                @error('right_sentence_1') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
-                <label for="variant_1">Доп. варианты приложения:</label><br>
-                1.<input type="text"  class="form-control w-50" id="variant_1" name="variant_1" value="{{  $third_test->variant_1 }}">
-                @error('variant_1') <strong style="color:red;">{{ $message }}</strong> @enderror
-                <label hidden for="variant_2"></label>
-                2. <input type="text" for="variant_2" class="form-control w-50" id="variant_2" name="variant_2" value="{{  $third_test->variant_2 }}">
-                @error('variant_2') <strong style="color:red;">{{ $message }}</strong> @enderror
+                <label for="right_sentence_2">Доп. варианты приложения:</label><br>
+                1.<input type="text"  class="form-control w-50" id="right_sentence_2" name="right_sentence_2" value="{{  $third_test->right_sentence_2 }}">
+                @error('right_sentence_2') <strong style="color:red;">{{ $message }}</strong> @enderror
+                <label hidden for="right_sentence_3"></label>
+                2. <input type="text" for="right_sentence_3" class="form-control w-50" id="right_sentence_3" name="right_sentence_3" value="{{  $third_test->right_sentence_3 }}">
+                @error('right_sentence_3') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <br>
     <button type="submit" value="Изменить" class="btn btn-success" style="float: right;">Изменить</button>

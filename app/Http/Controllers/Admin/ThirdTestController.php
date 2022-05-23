@@ -53,7 +53,7 @@ class ThirdTestController extends Controller
     public function store(CreateRequest $request)
     {
         $validated = $request->validated();
-        $validated['right_sentence']='';
+        $validated['right_sentence_1']='';
         $validated['words'] = '';
 
 
@@ -84,18 +84,18 @@ class ThirdTestController extends Controller
         ];
         //dd($variants);
         for($i=0;$i<=9;$i++){
-            $validated['variant_1'] = $variants[$i][0];
-            $validated['variant_2'] = $variants[$i][1];
+            $validated['right_sentence_2'] = $variants[$i][0];
+            $validated['right_sentence_3'] = $variants[$i][1];
 
-            if($validated['variant_1'] == null){
-                $validated['variant_1'] ='';
+            if($validated['right_sentence_2'] == null){
+                $validated['right_sentence_2'] ='';
             }
-            if($validated['variant_2'] == null){
-                $validated['variant_2'] ='';
+            if($validated['right_sentence_3'] == null){
+                $validated['right_sentence_3'] ='';
             }
 
-            $validated['right_sentence'] = $sentences[$i];
-            $sentence = explode(" ",$validated['right_sentence']);
+            $validated['right_sentence_1'] = $sentences[$i];
+            $sentence = explode(" ",$validated['right_sentence_1']);
             shuffle($sentence);
             $validated['words'] = join("|",$sentence);
 
@@ -152,14 +152,14 @@ class ThirdTestController extends Controller
     {
         $validated = $request->validated();
 
-        if($validated['variant_1'] == null){
-            $validated['variant_1'] ='';
+        if($validated['right_sentence_2'] == null){
+            $validated['right_sentence_2'] ='';
         }
-        if($validated['variant_2'] == null){
-            $validated['variant_2'] ='';
+        if($validated['right_sentence_3'] == null){
+            $validated['right_sentence_3'] ='';
         }
         $validated['words'] = '';
-        $sentence = explode(" ",$validated['right_sentence']);
+        $sentence = explode(" ",$validated['right_sentence_1']);
         shuffle($sentence);
         $validated['words'] = join("|",$sentence);
 
