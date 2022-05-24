@@ -21,10 +21,10 @@ class UserCourse extends Model
 	];
 
     public function course() {
-        return $this->hasMany(Course::class);
+        return $this->belongsTo(Course::class);
     }
 
     public function user() {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 }
