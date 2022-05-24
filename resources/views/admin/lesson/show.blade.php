@@ -21,9 +21,9 @@
                 <th>Опции</th>
                 </tr>
 
-                @if(count($sliders) < 4)
+                @if(count($sliders) < 3)
                 <tr><td style="color: #dc3545;text-align: center;font-size: 30px;" colspan="6">
-                    Нужно добавить ещё {{4-count($sliders)}} слайдер(а)
+                    Нужно добавить ещё {{3-count($sliders)}} слайдер(а)
                 </td> </tr>
                 @endif
             @forelse($sliders as $slidersItem)

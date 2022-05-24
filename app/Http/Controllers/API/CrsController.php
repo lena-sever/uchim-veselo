@@ -42,11 +42,11 @@ class CrsController extends Controller
     {
         $lessons = $course->lessons()->get();
 
-        //условие на 4 слайдера в главе
+        //условие на 3 слайдера в главе
         foreach($lessons as $key => $lesson){
             $sliders = DB::table('sliders')->where('lesson_id',$lesson->id)->count();
 
-            if($sliders < 4){
+            if($sliders < 3){
                unset($lessons[$key]);
             }
         }
