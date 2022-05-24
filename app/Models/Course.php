@@ -19,7 +19,9 @@ class Course extends Model
 		'price',
         'img',
         'author_id',
-        'painter_id'
+        'painter_id',
+        'payment',
+        'like'
 	];
     public function author() {
         return $this->belongsTo(Author::class,'id');

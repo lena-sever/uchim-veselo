@@ -2,12 +2,9 @@ import "../Tests.css";
 import "./Test1.css";
 import * as React from "react";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
 import TestButton from "../TestButton/TestButton";
 import RadioButtons from "./RadioButtons";
 import TestTitle from "../TestTitle/TestTitle";
-import styles from "../../Lessons/LessonReview/LessonReview.module.css";
-import Button from "@mui/material/Button";
 import ButtonBackToComics from "../../ButtonBackToСomics/ButtonBackToСomics";
 
 function Test1({ path, firstTest, getTestsHandler }) {
@@ -33,15 +30,7 @@ function Test1({ path, firstTest, getTestsHandler }) {
                         <p>Спасибо за помощь!</p>
 
                         <ButtonBackToComics path={path} text="Назад к комиксам"/>
-                        {/*<Button*/}
-                        {/*    as={ NavLink }*/}
-                        {/*    className={ styles.btn_link }*/}
-                        {/*    variant="contained"*/}
-                        {/*    color="secondary"*/}
-                        {/*    to={ path }*/}
-                        {/*>*/}
-                        {/*    Назад к комиксам*/}
-                        {/*</Button>*/}
+
                     </div>
                 ) : ( value != firstTest.right_answer && value != "" ) ? (
                     <div className="test__bottom">

@@ -25,8 +25,8 @@ function Lessons() {
     const { courseId } = useParams();
     const courses = useSelector(selectCourses);
     const lessons = useSelector(selectLessons);
-    const isLoading = useSelector(selectLessonsLoading);
-    const error = useSelector(selectCoursesError);
+    // const isLoading = useSelector(selectLessonsLoading);
+    // const error = useSelector(selectCoursesError);
 
     const requestCourses = async () => {
         dispatch(getCourses());
@@ -34,7 +34,7 @@ function Lessons() {
     };
 
     const reviewCourse = useSelector(selectReview);
-    const error_review = useSelector(selectErrorReview);
+    // const error_review = useSelector(selectErrorReview);
     const dispatch = useDispatch();
     const requestReview = async (courseId) => {
         dispatch(getReviewTC(courseId));
@@ -65,25 +65,7 @@ function Lessons() {
                 <NavLink to={`/courses/${courseId}/:slider1`}>
                     ПОДРОБНЕЕ
                 </NavLink>
-                {/* <div sx={{ width: "100%", maxWidth: 600 }}>
-                    {isLoading ? (
-                        <CircularProgress />
-                    ) : error ? (
-                        <>{!!error && <h3>{error}</h3>}</>
-                    ) : (
-                        Object.keys(lessons).map((i) => {
-                            return (
-                                <p key={i}>
-                                    <NavLink
-                                        to={`/courses/${courseId}/${lessons[i].id}/:slider1`}
-                                    >
-                                        {lessons[i].title}
-                                    </NavLink>
-                                </p>
-                            );
-                        })
-                    )}
-                </div> */}
+
                 <ReviewForm courseId={courseId}></ReviewForm>
                 <div>
                     <h2>Отзывы</h2>

@@ -31,11 +31,10 @@ class LessonController extends Controller
 
     public function store(CreateRequest $request)
     {
-
         $created = Lesson::create($request->validated());
 
 		if($created) {
-			return redirect()->route('admin.lesson.index')
+			return redirect()->route('admin.course.show',['course' => $request->course_id])
 				     ->with('success', 'Запись успешно добавлена');
 		}
 

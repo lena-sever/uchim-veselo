@@ -40,6 +40,8 @@ Route::get('painter/{painter}', [CrsController::class,'painter'])->name('api.pai
 /*************  С Л А Й Д Е Р Ы ************/
 // первый слайдер истории
 Route::get('courses/first_slider/{course}', [CrsController::class,'show_first_slider']);
+// второй слайдер истории
+Route::get('courses/second_slider/{course}', [CrsController::class,'show_second_slider']);
 // последний слайдер истории
 Route::get('courses/last_slider/{course}', [CrsController::class,'show_last_slider']);
 

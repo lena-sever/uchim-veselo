@@ -30,6 +30,7 @@ class UserController extends Controller
                 'user_courses.id as id',
                 'user_courses.price as price',
                 'user_courses.payment as payment',
+                'user_courses.like as like',
                 'user_courses.updated_at as updated_at',
                 'courses.title as course_title',
                 'courses.img as course_img',
@@ -59,7 +60,6 @@ class UserController extends Controller
         $avatar = new Avatar(config("laravolt.avatar"));
         $validated['photo'] = $avatar->create($validated['name'])->setDimension(85, 85)->toSvg();
 
-        dd($validated);
         $user = User::create($validated);
         if ($user) {
             return json_encode($user, JSON_UNESCAPED_UNICODE);

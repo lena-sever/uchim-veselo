@@ -159,11 +159,11 @@
         @if($courseItem->id == $testsItem->course_id)
         <tr id="{{$testsItem->id}}">
         <td>{{ $testsItem->id }}</td>
-        <td>{{$testsItem->right_sentence}}</td>
+        <td>{{$testsItem->right_sentence_1}}</td>
         <td>
-            @if($testsItem->variant_1 or $testsItem->variant_2)
-            1. {{$testsItem->variant_1}}<br>
-            2. {{$testsItem->variant_2}}
+            @if($testsItem->right_sentence_2 or $testsItem->right_sentence_3)
+            1. {{$testsItem->right_sentence_2}}<br>
+            2. {{$testsItem->right_sentence_3}}
             @else
             <i>Нет вариантов</i>
             @endif

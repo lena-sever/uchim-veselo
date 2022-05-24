@@ -29,7 +29,6 @@ class EditRequest extends FormRequest
 
 			'title' => ['required', 'string', 'min:5'],
             'description' => ['required', 'string',  'min:20', 'max:255'],
-            'text' =>['required', 'string', 'min:20'],
             'course_id' => ['required', 'integer' ],
         ];
     }
@@ -45,8 +44,7 @@ class EditRequest extends FormRequest
 	{
 		return [
 			'title' => 'Наименование главы',
-			'description' => 'Краткое описание главы',
-            'text' => 'Полное описание главы',
+			'description' => 'Описание главы',
             'course_id' => 'Комикс'
 		];
 	}

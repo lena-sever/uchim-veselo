@@ -10,11 +10,14 @@
         @csrf
             <div class="form-group">
                 <label for="course_id">Комикс</label>
-                <select class="form-control" id="course_id" name="course_id">
+
                     @foreach($courses as $course)
-                        <option value="{{ $course->id }}"  @if($course->id == $course_id) selected @endif> {{ $course->title }}</option>
+                        @if($course->id == $course_id)
+                            <input hidden type="text" class="form-control" id="course_id" name="course_id" value="{{ $course->id }}">
+                            <input disabled type="text" class="form-control" value="{{ $course->title }}">
+                        @endif
                     @endforeach
-                </select>
+
                 @error('course_id') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
@@ -23,14 +26,9 @@
                 @error('title') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
-                <label for="description">Краткое описание главы</label>
+                <label for="description">Описание главы</label>
                 <textarea class="form-control" name="description" id="description">{!! old('description') !!}</textarea>
                 @error('description') <strong style="color:red;">{{ $message }}</strong> @enderror
-            </div>
-            <div class="form-group">
-                <label for="text">Полное описание главы</label>
-                <textarea class="form-control" name="text" id="text">{!! old('text') !!}</textarea>
-                @error('text') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <br>
             <button type="submit"  value="Добавить" class="btn btn-success" style="float: right;">Добавить</button>

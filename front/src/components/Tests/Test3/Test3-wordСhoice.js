@@ -12,7 +12,7 @@ function WordChoice(props) {
         className="test__correct-button"
         onClick={ () => setCorrectBlink( true ) }
         style={ isCorrectBlink ? {
-            animation: "shadowCorrect  2s  ease-in-out"
+            animation: "shadowCorrect  1.2s  ease-in-out"
         } : {} }
     >
         { props.item.correctText }
@@ -23,7 +23,7 @@ function WordChoice(props) {
         className="test__incorrect-button"
         onClick={ () => setIncorrectBlink( true ) }
         style={ isIncorrectBlink ? {
-            animation: "shadowIncorrect  2s  ease-in-out"
+            animation: "shadowIncorrect  1.2s  ease-in-out"
         } : {} }
     >
         { props.item.incorrectText }

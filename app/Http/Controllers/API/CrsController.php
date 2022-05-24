@@ -41,6 +41,16 @@ class CrsController extends Controller
     public function show(Course $course)
     {
         $lessons = $course->lessons()->get();
+
+        //условие на 4 слайдера в главе
+        foreach($lessons as $key => $lesson){
+            $sliders = DB::table('sliders')->where('lesson_id',$lesson->id)->count();
+
+            if($sliders < 4){
+               unset($lessons[$key]);
+            }
+        }
+
         $reviews =  $course->courseReviews()
             ->with('user')
             ->get();
@@ -71,6 +81,19 @@ class CrsController extends Controller
         return json_encode($first_slider, JSON_UNESCAPED_UNICODE);
     }
 
+    public function show_second_slider(Course $course)
+    {
+        $id = $course->id;
+        //получим номер первого урока этого курса
+        $les_id = DB::table('lessons')->where('course_id', $id)->orderBy('id')->find(2);
+        $les_id = $les_id->id;
+
+        $first_slider = DB::table('sliders')
+            ->where('lesson_id', $les_id)
+            ->get();
+
+        return json_encode($first_slider, JSON_UNESCAPED_UNICODE);
+    }
 
     public function show_last_slider(Course $course)
     {
@@ -130,13 +153,13 @@ class CrsController extends Controller
         $i = 0;
         $third_tests = DB::table('third_tests')
             ->where('course_id', $id)
-            ->select(['right_sentence','variant_1','variant_2','words'])
+            ->select(['right_sentence_1','right_sentence_2','right_sentence_3','words'])
             ->get();
 
         foreach ($third_tests as $key => $item) {
-            $res['sentences'][$i]['right_sentence'] = $item->right_sentence;
-            $res['sentences'][$i]['variant_1'] = $item->variant_1;
-            $res['sentences'][$i]['variant_2'] = $item->variant_2;
+            $res['sentences'][$i]['right_sentence_1'] = $item->right_sentence_1;
+            $res['sentences'][$i]['right_sentence_2'] = $item->right_sentence_2;
+            $res['sentences'][$i]['right_sentence_3'] = $item->right_sentence_3;
             $res['sentences'][$i]['words'] = explode("|", $item->words);
             $i++;
         }

@@ -28,34 +28,23 @@ class LessonsSeeder extends Seeder
 
             'title' => 'Первая встреча с монстром',
             'description' => $faker->text(mt_rand(10, 30)),
-            'text' => $faker->text(mt_rand(350, 550)),
+
             'course_id' => 1,
             'created_at' => $faker->dateTime('now','Europe/Moscow'),
         ];
 
         foreach ($courses as $item) {
-            for($i=1; $i < 3; $i++) {
+            for($i=1; $i < 4; $i++) {
                 if ($item->id == 1 AND $i == 1) continue;
                 $data[] = [
                     'title' => 'Глава '.$i.'. комиксы: '.$item->title,
                     'description' => $faker->text(mt_rand(10, 30)),
-                    'text' => $faker->text(mt_rand(350, 550)),
+
                     'course_id' => $item->id,
                     'created_at' => $faker->dateTime('now','Europe/Moscow'),
                 ];
             }
         }
-
-		// for($i=0; $i < 15; $i++) {
-		// 	$data[] = [
-        //         'title' => $faker->sentence(mt_rand(3,10)),
-        //         'description' => $faker->text(mt_rand(10, 30)),
-        //         'text' => $faker->text(mt_rand(350, 550)),
-        //         'course_id' => $faker->randomElement($course_id),
-        //         'created_at' => $faker->dateTime('now','Europe/Moscow'),
-        //     ];
-		// }
-
 
 		return $data;
 	}
