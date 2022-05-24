@@ -61,6 +61,19 @@ class UserController extends Controller
         $validated['photo'] = $avatar->create($validated['name'])->setDimension(85, 85)->toSvg();
 
         $user = User::create($validated);
+        $user_id = $user->id;
+
+        $user = DB::table('users')
+        ->where('id',  $user_id)
+        ->select(
+            'id',
+            'name',
+            'email',
+            'session_token',
+            // 'photo'
+        )
+        ->first();
+
         if ($user) {
             return json_encode($user, JSON_UNESCAPED_UNICODE);
         } else return 'Ошибка регистрации';
@@ -98,7 +111,7 @@ class UserController extends Controller
                 'name',
                 'email',
                 'session_token',
-                'photo'
+                // 'photo'
             )
             ->first();
 
@@ -111,6 +124,7 @@ class UserController extends Controller
                 'user_courses.id as id',
                 'user_courses.price as price',
                 'user_courses.payment as payment',
+                'user_courses.like as like',
                 'user_courses.updated_at as updated_at',
                 'courses.title as course_title',
                 'courses.img as course_img',

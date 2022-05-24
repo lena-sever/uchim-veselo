@@ -3,7 +3,8 @@
 @section('content')
 
 <h2>Регистрация</h2>
-<form method="post" action="https://uchim-veselo.ru/api/user">
+<form method="post" action="user">
+<!-- <form method="post" action="https://uchim-veselo.ru/api/user"> -->
 
     <label>name</label>
     <input type="text" name="name" value="Имя">
