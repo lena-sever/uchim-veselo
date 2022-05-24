@@ -24,7 +24,7 @@
                 <th>Главы</th>
                 <th>Описание</th>
                 <th>Опции</th>
-                <th style="vertical-align:middle; text-align:center;" rowspan="3">
+                <th style="vertical-align:middle; text-align:center;" rowspan="{{count($lessons)+1}}">
                     <a class="btn btn-lg btn-secondary" href="{{ route('admin.test',['course' => $course->id]) }}">ТЕСТЫ</a> &nbsp;
                 </th>
                 </tr>
@@ -46,7 +46,7 @@
               @endforelse
             </tbody>
         </table>
-       <h1 class="h2">Список отзывов по комиксу: {{$course->title}}</h1>
+    <!--   <h1 class="h2">Список отзывов по комиксу: {{$course->title}}</h1>
         <form method="post" action="{{route('admin.courseReview.store')}}">
         @csrf
             <div class="row g-3">
@@ -90,10 +90,8 @@
                   <tr><td colspan="6">Записей нет</td> </tr>
               @endforelse
             </tbody>
-        </table>
+        </table>-->
     </div>
   </div>
-  <br>
-<hr>
 </div>
 @endsection

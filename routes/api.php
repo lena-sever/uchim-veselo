@@ -67,7 +67,7 @@ Route::put('course_reviews/{course_review}', [CrsReviewController::class,'update
 Route::delete('course_reviews/{course_review}', [CrsReviewController::class,'destroy']);
 
 //информация по одному пользователю
-//Route::get('user/{user}', [UserController::class,'show'])->name('api.user.show');
+Route::get('user/{user}', [UserController::class,'show'])->name('api.user.show');
 // test user
 Route::get('user', [UserController::class,'test_form']);
 // регистрация

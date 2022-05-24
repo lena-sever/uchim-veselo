@@ -30,6 +30,7 @@ class UserController extends Controller
                 'user_courses.id as id',
                 'user_courses.price as price',
                 'user_courses.payment as payment',
+                'user_courses.like as like',
                 'user_courses.updated_at as updated_at',
                 'courses.title as course_title',
                 'courses.img as course_img',

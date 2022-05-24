@@ -72,7 +72,7 @@
       </table>
     </div>
   </div>
-
+<!--
   <hr class="my-4">
   <div class="px-3">
     <form method="post" action="{{route('admin.messenger.store')}}">
@@ -100,7 +100,7 @@
 
         <button class="w-25 btn btn-primary btn-lg" type="submit">Отправить</button>
     </form>
-
+-->
 
   </div>
 </div>

@@ -21,6 +21,7 @@ class CreateUserCoursesTable extends Migration
             $table->tinyInteger('payment')->default(1);
             $table->tinyInteger('like')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
