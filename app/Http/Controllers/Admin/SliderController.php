@@ -60,7 +60,7 @@ class SliderController extends Controller
 			$validated['music'] = app(UploadService::class)->start_music($request->file('music'),$validated['music']);
             $validated['music']='/'.$validated['music'];
         }
-dd($validated);
+//dd($validated);
         $created = Slider::create($validated);
 
 		if($created) {
@@ -111,13 +111,14 @@ dd($validated);
     {
         $validated = $request->validated();
 
-		if($request->hasFile('img')) {
-			$validated['img'] = app(UploadService::class)->start_2($request->file('img'));
+		if($request->hasFile('img')) {$validated['img'] = app(UploadService::class)->rename($request->file('img'),$validated['lesson_id']);
+			$validated['img'] = app(UploadService::class)->start_slider_img($request->file('img'),$validated['img']);
             $validated['img']='/'.$validated['img'];
 
         }
         if ($request->hasFile('music')){
-            $validated['music'] = app(UploadService::class)->start_music($request->file('music'));
+            $validated['music'] = app(UploadService::class)->rename($request->file('music'),$validated['lesson_id']);
+			$validated['music'] = app(UploadService::class)->start_music($request->file('music'),$validated['music']);
             $validated['music']='/'.$validated['music'];
         }
 

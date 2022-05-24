@@ -25,14 +25,9 @@
                 @error('title') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <div class="form-group">
-                <label for="description">Краткое описание главы</label>
+                <label for="description">Описание главы</label>
                 <textarea class="form-control" name="description" id="description">{!! $lesson->description !!}</textarea>
                 @error('description') <strong style="color:red;">{{ $message }}</strong> @enderror
-            </div>
-            <div class="form-group">
-                <label for="text">Полное описание главы</label>
-                <textarea class="form-control" name="text" id="text">{!! $lesson->text !!}</textarea>
-                @error('text') <strong style="color:red;">{{ $message }}</strong> @enderror
             </div>
             <br>
             <button type="submit"  value="Изменить" class="btn btn-success" style="float: right;">Изменить</button>

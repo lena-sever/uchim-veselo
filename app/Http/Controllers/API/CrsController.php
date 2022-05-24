@@ -41,6 +41,16 @@ class CrsController extends Controller
     public function show(Course $course)
     {
         $lessons = $course->lessons()->get();
+
+        //условие на 4 слайдера в главе
+        foreach($lessons as $key => $lesson){
+            $sliders = DB::table('sliders')->where('lesson_id',$lesson->id)->count();
+
+            if($sliders < 4){
+               unset($lessons[$key]);
+            }
+        }
+
         $reviews =  $course->courseReviews()
             ->with('user')
             ->get();
