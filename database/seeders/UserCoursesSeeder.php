@@ -35,6 +35,16 @@ class UserCoursesSeeder extends Seeder
                 ];
 
         }
+        foreach ($courses as $item) {
+            $data[] = [
+                'price' => $price,
+                'user_id' => $faker->randomElement($user_id),
+                'course_id' => $item->id,
+                'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
+                'payment' => 1
+            ];
+
+    }
 
         return $data;
     }

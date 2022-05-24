@@ -39,7 +39,7 @@
 <form method="post" action="user/auth">
 
     <label>session_token</label>
-    <input type="text" name="session_token" value="06EhYd6sw4FZYXEdn88ghatZDrtUE0yOQbYlQ2pvjLBbJrY749znVZoXlnfn">
+    <input type="text" name="session_token" value="u4jmpZ8P38oyA9zslzCsilrA6JFxQU328rahl6vdpyBEc4fyUZSLaeVgHIhe">
 
     <input type="submit" value="Отправить">
 </form><br><br>

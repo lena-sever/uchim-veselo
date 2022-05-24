@@ -20,6 +20,7 @@ class CreateUserCoursesTable extends Migration
             $table->float('price')->default(0);
             $table->tinyInteger('payment')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

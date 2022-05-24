@@ -45,7 +45,7 @@ class User extends Authenticatable
         $query->where('is_admin',true);
     }
 
-    public function user_course() {
-        return $this->belongsTo(UserCourse::class,'user_id');
+    public function user_courses() {
+        return $this->hasMany(UserCourse::class,'user_id');
     }
 }
