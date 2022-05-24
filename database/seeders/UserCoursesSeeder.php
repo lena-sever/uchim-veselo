@@ -31,7 +31,8 @@ class UserCoursesSeeder extends Seeder
                     'user_id' => $faker->randomElement($user_id),
                     'course_id' => $item->id,
                     'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
-                    'payment' => 1
+                    'payment' => 1,
+                    'like' => 1
                 ];
 
         }

@@ -34,7 +34,7 @@ class LessonsSeeder extends Seeder
         ];
 
         foreach ($courses as $item) {
-            for($i=1; $i < 3; $i++) {
+            for($i=1; $i < 4; $i++) {
                 if ($item->id == 1 AND $i == 1) continue;
                 $data[] = [
                     'title' => 'Глава '.$i.'. комиксы: '.$item->title,
