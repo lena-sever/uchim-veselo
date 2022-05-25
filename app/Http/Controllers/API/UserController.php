@@ -122,13 +122,14 @@ class UserController extends Controller
             ->join('authors', 'authors.id', '=', 'courses.author_id')
             ->join('painters', 'painters.id', '=', 'courses.painter_id')
             ->select(
-                'user_courses.id as id',
-                'user_courses.price as price',
-                'user_courses.payment as payment',
-                'user_courses.like as like',
-                'user_courses.updated_at as updated_at',
-                'courses.title as title',
-                'courses.img as img',
+                'user_courses.id',
+                'user_courses.price',
+                'user_courses.payment',
+                'user_courses.like',
+                'user_courses.course_id',
+                'user_courses.updated_at',
+                'courses.title',
+                'courses.img',
                 'authors.name as name_author',
                 'painters.name as name_painter',
             )
