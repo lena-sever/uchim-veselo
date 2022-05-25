@@ -80,8 +80,8 @@
 <hr>
 
 <h2>Переключение лайков</h2>
-<form method="post" action="like">
-<!-- <form method="post" action="https://uchim-veselo.ru/api/user/like"> -->
+<!-- <form method="post" action="like"> -->
+<form method="post" action="https://uchim-veselo.ru/api/like">
 
     <label>User_id</label>
     <input type="text" name="user_id" value="2">

@@ -33,8 +33,8 @@ class UserController extends Controller
                 'user_courses.payment as payment',
                 'user_courses.like as like',
                 'user_courses.updated_at as updated_at',
-                'courses.title as course_title',
-                'courses.img as course_img',
+                'courses.title as title',
+                'courses.img as img',
                 'authors.name as name_author',
                 'painters.name as name_painter',
             )
@@ -127,8 +127,8 @@ class UserController extends Controller
                 'user_courses.payment as payment',
                 'user_courses.like as like',
                 'user_courses.updated_at as updated_at',
-                'courses.title as course_title',
-                'courses.img as course_img',
+                'courses.title as title',
+                'courses.img as img',
                 'authors.name as name_author',
                 'painters.name as name_painter',
             )
