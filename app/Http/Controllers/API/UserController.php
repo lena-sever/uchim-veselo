@@ -20,9 +20,10 @@ class UserController extends Controller
         return view('account.test_form', []);
     }
 
-    public function show(User $user){
+    public function show(User $user)
+    {
         $course = DB::table('user_courses')
-            ->where('user_id',$user->id)
+            ->where('user_id', $user->id)
             ->join('courses', 'courses.id', '=', 'user_courses.course_id')
             ->join('authors', 'authors.id', '=', 'courses.author_id')
             ->join('painters', 'painters.id', '=', 'courses.painter_id')
@@ -64,15 +65,15 @@ class UserController extends Controller
         $user_id = $user->id;
 
         $user = DB::table('users')
-        ->where('id',  $user_id)
-        ->select(
-            'id',
-            'name',
-            'email',
-            'session_token',
-            // 'photo'
-        )
-        ->first();
+            ->where('id',  $user_id)
+            ->select(
+                'id',
+                'name',
+                'email',
+                'session_token',
+                // 'photo'
+            )
+            ->first();
 
         if ($user) {
             return json_encode($user, JSON_UNESCAPED_UNICODE);
@@ -115,8 +116,8 @@ class UserController extends Controller
             )
             ->first();
 
-            $course = DB::table('user_courses')
-            ->where('user_id',$user->id)
+        $course = DB::table('user_courses')
+            ->where('user_id', $user->id)
             ->join('courses', 'courses.id', '=', 'user_courses.course_id')
             ->join('authors', 'authors.id', '=', 'courses.author_id')
             ->join('painters', 'painters.id', '=', 'courses.painter_id')
@@ -142,7 +143,7 @@ class UserController extends Controller
     public function messange(Request $request)
     {
         $validated = $request->validate([
-            'user_id' => '',
+            'user_id' => 'required|',
             'name' => 'required|string|min:2',
             'email' => 'required|string|email:rfc,dns',
             'message' => 'required|string|min:2',
@@ -152,5 +153,57 @@ class UserController extends Controller
         if ($messange) {
             return json_encode($messange, JSON_UNESCAPED_UNICODE);
         } else return 'Ошибка отправки сообщения';
+    }
+
+
+    public function like(Request $request)
+    {
+        $validated = $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'course_id' => 'required|exists:courses,id',
+        ]);
+
+        $user_id = $validated['user_id'];
+        $course_id = $validated['course_id'];
+
+        $like = DB::table('user_courses')
+            ->where('user_id', $user_id)
+            ->where('course_id', $course_id)
+            // ->select('like', 'course_id')
+            ->first();
+        if ($like) $like = $like->like;
+        // dd($like);
+
+        if (is_null($like)) {
+            $price = DB::table('courses')
+            ->where('id', $course_id)
+            ->select('price')
+            ->first();
+            if ($price) $price = $price->price;
+
+            DB::table('user_courses')->insert([
+                'user_id' => $user_id,
+                'course_id' => $course_id,
+                'price' => $price,
+                'payment' => 0,
+                'like' => 1,
+                'created_at' => now() 
+            ]);
+            return 'Создали строку и Лайк поставили';
+        } elseif ($like === 0) {
+            DB::table('user_courses')
+                ->where('user_id', $user_id)
+                ->where('course_id', $course_id)
+                ->update(['like' => 1]);
+            return 'Лайк поставили';
+        } elseif ($like === 1) {
+            DB::table('user_courses')
+                ->where('user_id', $user_id)
+                ->where('course_id', $course_id)
+                ->update(['like' => 0]);
+            return 'Лайк убрали';
+        } else {
+            return 'Что-то не то с лайками';
+        }
     }
 }
