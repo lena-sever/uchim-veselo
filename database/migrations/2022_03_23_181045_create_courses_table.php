@@ -21,8 +21,6 @@ class CreateCoursesTable extends Migration
             $table->foreignId('author_id')->constrained('authors')->cascadeOnDelete();
             $table->foreignId('painter_id')->constrained('painters')->cascadeOnDelete();
             $table->float('price')->default(0);
-            $table->tinyInteger('payment')->default(0);
-            $table->tinyInteger('like')->default(0);
             $table->timestamps();
 
             $table->softDeletes();
