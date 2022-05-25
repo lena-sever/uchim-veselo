@@ -55,7 +55,8 @@ class UserController extends Controller
             $validated['photo']='/'.$validated['photo'];
         } else {
             $avatar = new Avatar(config("laravolt.avatar"));
-            $validated['photo'] = $avatar->create($validated['name'])->setDimension(85, 85)->toSvg();
+            $validated['photo'] = $avatar->create($validated['name'])->toBase64();
+            //$validated['photo'] = $avatar->create($validated['name'])->setDimension(85, 85)->toSvg();
         }
         //dd($validated);
         $created = User::create($validated);

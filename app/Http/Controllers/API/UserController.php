@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Messenger;
 use App\Http\Requests\User\CreateRequest;
+use App\Services\UploadService;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Laravolt\Avatar\Avatar;
-
 
 class UserController extends Controller
 {
@@ -59,7 +59,7 @@ class UserController extends Controller
         $validated['session_token'] =  Str::random(60);
 
         $avatar = new Avatar(config("laravolt.avatar"));
-        $validated['photo'] = $avatar->create($validated['name'])->setDimension(85, 85)->toSvg();
+        $validated['photo'] = $avatar->create($validated['name'])->toBase64();
 
         $user = User::create($validated);
         $user_id = $user->id;
@@ -71,7 +71,7 @@ class UserController extends Controller
                 'name',
                 'email',
                 'session_token',
-                // 'photo'
+                'photo'
             )
             ->first();
 
@@ -187,7 +187,7 @@ class UserController extends Controller
                 'price' => $price,
                 'payment' => 0,
                 'like' => 1,
-                'created_at' => now() 
+                'created_at' => now()
             ]);
             return 'Создали строку и Лайк поставили';
         } elseif ($like === 0) {
