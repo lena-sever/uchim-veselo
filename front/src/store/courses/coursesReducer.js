@@ -1,13 +1,20 @@
-import { COURSES_FAILURE, COURSES_LOADING, COURSES_SUCCESS, GET_COURS } from "./actions";
+import {
+    COURSES_FAILURE,
+    COURSES_LOADING,
+    COURSES_SUCCESS,
+    GET_COURS,
+    LIKED_COURSES,
+} from "./actions";
 import { STATUS } from "../../constants/status";
 
 const initialCourses = {
     courses: [],
-    cours:{},
+    cours: {},
     request: {
         status: STATUS.IDLE,
         error: "",
     },
+    likedCourses: [],
 };
 
 export const coursesReducer = (state = initialCourses, { type, payload }) => {
@@ -48,16 +55,18 @@ export const coursesReducer = (state = initialCourses, { type, payload }) => {
         //       status: STATUS.FAILURE
         //     }
         //   };
-    case GET_COURS:
-      return {
-          ...state,
-          cours: payload,
-          request: {
-              error: "",
-              status: STATUS.SUCCESS,
-          },
-      };
-    default:
-      return state;
-  }
+        case GET_COURS:
+            return {
+                ...state,
+                cours: payload,
+                request: {
+                    error: "",
+                    status: STATUS.SUCCESS,
+                },
+            };
+        case LIKED_COURSES:
+            return {};
+        default:
+            return state;
+    }
 };

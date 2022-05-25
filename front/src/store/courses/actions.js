@@ -5,6 +5,8 @@ export const COURSES_FAILURE = "COURSES::COURSES_FAILURE";
 export const COURSES_SUCCESS = "COURSES::COURSES_SUCCESS";
 export const GET_COURS = "COURSES::GET_COURS_SUCCESS";
 
+export const LIKED_COURSES = "LIKED_COURSES";
+
 export const getCoursesLoading = () => ({
     type: COURSES_LOADING,
 });
@@ -23,33 +25,38 @@ const getCoursSuccess = (cours) => ({
     payload: cours,
 });
 
-export const getCourses = () => async(dispatch) => {
-  dispatch( getCoursesLoading() );
-  try {
-    const response = await coursesAPI.getCourses();
-    if( !response.data  ) {
-      throw new Error( "Some mistake has occurred. We are already working on it" );
+export const likedCourses = () => ({
+    type: LIKED_COURSES,
+});
+
+export const getCourses = () => async (dispatch) => {
+    dispatch(getCoursesLoading());
+    try {
+        const response = await coursesAPI.getCourses();
+        if (!response.data) {
+            throw new Error(
+                "Some mistake has occurred. We are already working on it"
+            );
+        }
+        dispatch(getCoursesSuccess(response.data));
+    } catch (err) {
+        console.log(err);
+        dispatch(getCoursesFailure(err.message));
     }
-    dispatch(getCoursesSuccess(response.data));
-  } catch( err ) {
-    console.log( err );
-    dispatch( getCoursesFailure( err.message ) );
-  }
 };
 
-export const getCours = (coursId) => async(dispatch) => {
-  dispatch(getCoursesLoading());
-  try {
-      const response = await coursesAPI.getCours(coursId);
-      if (!response.data) {
-          throw new Error(
-              "Some mistake has occurred. We are already working on it"
-          );
-      }
-      dispatch(getCoursSuccess(response.data));
-  } catch (err) {
-      console.log(err);
-      dispatch(getCoursesFailure(err.message));
-  }
-}
-
+export const getCours = (coursId) => async (dispatch) => {
+    dispatch(getCoursesLoading());
+    try {
+        const response = await coursesAPI.getCours(coursId);
+        if (!response.data) {
+            throw new Error(
+                "Some mistake has occurred. We are already working on it"
+            );
+        }
+        dispatch(getCoursSuccess(response.data));
+    } catch (err) {
+        console.log(err);
+        dispatch(getCoursesFailure(err.message));
+    }
+};
