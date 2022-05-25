@@ -19,7 +19,7 @@ class Course extends Model
 		'price',
         'img',
         'author_id',
-        'painter_id'
+        'painter_id',
 	];
     public function author() {
         return $this->belongsTo(Author::class,'id');
@@ -28,8 +28,8 @@ class Course extends Model
         return $this->belongsTo(Painter::class,'id');
     }
 
-    public function user_course() {
-        return $this->belongsTo(UserCourse::class,'course_id');
+    public function user_courses() {
+        return $this->hasMany(UserCourse::class,'course_id');
     }
 
     public function lessons() {

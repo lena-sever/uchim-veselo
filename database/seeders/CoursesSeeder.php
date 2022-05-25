@@ -29,7 +29,8 @@ class CoursesSeeder extends Seeder
                 'author_id'=> 1,
                 'painter_id'=> 1,
                 'price' => 500,
-                'payment' => 0,
+
+
 			];
 			$data[] = [
                 'title' => 'Набег на школу',
@@ -38,7 +39,8 @@ class CoursesSeeder extends Seeder
                 'author_id'=> 1,
                 'painter_id'=> 2,
                 'price' => 500,
-                'payment' => 0,
+
+
 			];
 			$data[] = [
                 'title' => 'Взрослые проказы',
@@ -47,7 +49,8 @@ class CoursesSeeder extends Seeder
                 'author_id'=> 3,
                 'painter_id'=> 1,
                 'price' => 500,
-                'payment' => 0,
+
+
 			];
 			$data[] = [
                 'title' => 'Это не интересно',
@@ -56,7 +59,8 @@ class CoursesSeeder extends Seeder
                 'author_id'=> 4,
                 'painter_id'=> 4,
                 'price' => 500,
-                'payment' => 0,
+
+
 			];
 			$data[] = [
                 'title' => 'Забег по кругу',
@@ -65,7 +69,8 @@ class CoursesSeeder extends Seeder
                 'author_id'=> 5,
                 'painter_id'=> 5,
                 'price' => 500,
-                'payment' => 0,
+
+
 			];
 			$data[] = [
                 'title' => 'В Африке тоже весело',
@@ -74,7 +79,8 @@ class CoursesSeeder extends Seeder
                 'author_id'=> 6,
                 'painter_id'=> 6,
                 'price' => 500,
-                'payment' => 0,
+
+
 			];
 			$data[] = [
                 'title' => 'Джунгли в деревне',
@@ -83,7 +89,8 @@ class CoursesSeeder extends Seeder
                 'author_id'=> 7,
                 'painter_id'=> 7,
                 'price' => 500,
-                'payment' => 0,
+
+
 			];
 			$data[] = [
                 'title' => 'Прятки днём',
@@ -92,7 +99,8 @@ class CoursesSeeder extends Seeder
                 'author_id'=> 8,
                 'painter_id'=> 8,
                 'price' => 500,
-                'payment' => 0,
+
+
 			];
 
 		return $data;

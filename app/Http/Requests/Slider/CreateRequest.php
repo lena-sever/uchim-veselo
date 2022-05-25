@@ -27,8 +27,8 @@ class CreateRequest extends FormRequest
         return [
 
             'text' => ['required', 'string', 'max:1000'],
-            'img' => ['nullable', 'file', 'image'],
-            'music' => ['nullable', 'file',],
+            'img' => ['required', 'file', 'image'],
+            'music' => ['required', 'file',],
             'lesson_id' => ['required' ],
         ];
     }

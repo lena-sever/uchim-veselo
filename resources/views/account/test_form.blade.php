@@ -3,7 +3,8 @@
 @section('content')
 
 <h2>Регистрация</h2>
-<form method="post" action="https://uchim-veselo.ru/api/user">
+<form method="post" action="user">
+<!-- <form method="post" action="https://uchim-veselo.ru/api/user"> -->
 
     <label>name</label>
     <input type="text" name="name" value="Имя">
@@ -36,10 +37,11 @@
 <hr>
 
 <h2>Аутентификация</h2>
-<form method="post" action="user/auth">
+<!-- <form method="post" action="user/auth"> -->
+<form method="post" action="https://uchim-veselo.ru/api/user/auth">
 
     <label>session_token</label>
-    <input type="text" name="session_token" value="06EhYd6sw4FZYXEdn88ghatZDrtUE0yOQbYlQ2pvjLBbJrY749znVZoXlnfn">
+    <input type="text" name="session_token" value="S5rIGCMmEotYUxP4CPNxrAq4M3q15Tb5vDhSRJ69a0oVbPQJpMxOzDTibi5M">
 
     <input type="submit" value="Отправить">
 </form><br><br>
@@ -76,6 +78,22 @@
     <input type="submit" value="Отправить">
 </form><br><br>
 <hr>
+
+<h2>Переключение лайков</h2>
+<!-- <form method="post" action="like"> -->
+<form method="post" action="https://uchim-veselo.ru/api/like">
+
+    <label>User_id</label>
+    <input type="text" name="user_id" value="2">
+
+    <label>Course_id</label>
+    <input type="text" name="course_id" value="1">
+
+    <input type="submit" value="Отправить">
+</form><br><br>
+<hr>
+
+
 
 <!--  -->
 

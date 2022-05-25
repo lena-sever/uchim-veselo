@@ -17,7 +17,6 @@ class CreateLessonsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->text('text');
             $table->foreignId('course_id')->constrained('courses')->cascadeOnDelete();
             $table->timestamps();
 

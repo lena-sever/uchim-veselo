@@ -40,6 +40,8 @@ Route::get('painter/{painter}', [CrsController::class,'painter'])->name('api.pai
 /*************  С Л А Й Д Е Р Ы ************/
 // первый слайдер истории
 Route::get('courses/first_slider/{course}', [CrsController::class,'show_first_slider']);
+// второй слайдер истории
+Route::get('courses/second_slider/{course}', [CrsController::class,'show_second_slider']);
 // последний слайдер истории
 Route::get('courses/last_slider/{course}', [CrsController::class,'show_last_slider']);
 
@@ -52,7 +54,7 @@ Route::get('courses/second_test/{course}', [CrsController::class,'second_test'])
 
 
 
-/*************  ОТЗЫВЫ ************/
+/*************  О Т З Ы В Ы  ************/
 // отзывы на главной
 Route::get('course_reviews', [CrsReviewController::class,'index']);
 // отдельный отзыв к истории
@@ -64,6 +66,8 @@ Route::put('course_reviews/{course_review}', [CrsReviewController::class,'update
 // удаление отдельного отзыва
 Route::delete('course_reviews/{course_review}', [CrsReviewController::class,'destroy']);
 
+
+/*************  Ю З Е Р Ы  ************/
 //информация по одному пользователю
 Route::get('user/{user}', [UserController::class,'show'])->name('api.user.show');
 // test user
@@ -76,3 +80,5 @@ Route::post('user/login', [UserController::class,'login']);
 Route::post('user/auth', [UserController::class,'auth']);
 // сообщение с сайта
 Route::post('messange', [UserController::class,'messange']);
+//переключение лайков
+Route::post('like', [UserController::class,'like']);

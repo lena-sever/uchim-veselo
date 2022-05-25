@@ -32,7 +32,7 @@ class ThirdTestsSeeder extends Seeder
             'words' =>'шью|ниткой|одежду|Я|красной|свою',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
-        $data[] = [
+/*       $data[] = [
             'course_id' => 1,
             'right_sentence_1' => 'Он разрезал нитку острыми ножницами',
             'right_sentence_2'=>'Он острыми ножницами разрезал нитку',
@@ -71,7 +71,7 @@ class ThirdTestsSeeder extends Seeder
             'right_sentence_3'=>'',
             'words' =>'белая|На|нитка|торчала|брюках',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
-        ];
+        ];*/
         $data[] = [
             'course_id' =>1,
             'right_sentence_1' => 'Я с помощью нитки и иголки зашил себе карман',
@@ -80,7 +80,7 @@ class ThirdTestsSeeder extends Seeder
             'words' =>'себе|с|иголки|Я|помощью|карман|и|нитки|зашил',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
         ];
-        $data[] = [
+  /*      $data[] = [
             'course_id' => 1,
             'right_sentence_1' => 'Она пришила нитками нашивку к рюкзаку',
             'right_sentence_2'=>'',
@@ -95,7 +95,7 @@ class ThirdTestsSeeder extends Seeder
             'right_sentence_3'=>'',
             'words' =>'вяжут|и|шерстяных|Из|свитера|носки|ниток',
             'created_at' => $faker->dateTime('now', 'Europe/Moscow'),
-        ];
+        ];*/
         $data[] = [
             'course_id' => 1,
             'right_sentence_1' => 'Ткань обычно делается из ниток',

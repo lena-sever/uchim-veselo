@@ -76,9 +76,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'session_token' => Str::random(60),
-            //заглушка на генератор картинок
-            //'https://imgholder.ru/100x100/6f42c1/f8f9fa&text=ПОЛЬЗОВАТЕЛЬ&font=arial&fz=12',
-            'photo' =>$avatar->create($data['name'])->setDimension(85, 85)->toSvg(),
+            'photo' => $avatar->create($data['name'])->toBase64(),
+            //'photo' =>$avatar->create($data['name'])->setDimension(85, 85)->toSvg(),
         ]);
     }
     protected function registered(Request $request, $user)
