@@ -26,7 +26,7 @@ function Tests() {
     const secondTest = useSelector( selectSecondTests );
     const [ renderTests, setRenderTest ] = useState( 0 );
     const dispatch = useDispatch();
-    const path = `/courses/${ courseId }/slider2`;
+    const path = `/courses/${ courseId }/slider3`;
 
     const requestFirstTests = async() => {
         dispatch( getFirstTest( courseId ) );

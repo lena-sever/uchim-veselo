@@ -19,8 +19,9 @@
 }
 
 .slider__img {
-    max-width: 500px;
-    min-height: 375px;
+    max-width: 100%;
+    /*max-width: 500px;*/
+    /*min-height: 375px;*/
 }
 
 .slider__text {

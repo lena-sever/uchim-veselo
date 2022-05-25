@@ -19,9 +19,7 @@ function Test4({ secondTest, getTestsHandler }) {
         }
         return out;
     } );
-// const array =["Я шью свою одежду красной ниткой",
-//    "Я свою одежду шью красной ниткой",
-//     "Я красной ниткой шью свою одежду"]
+
 
     const [ isAnswerCorrect, setAnswerCorrect ] = useState( false );
     const [ isLastSentence, setLastSentence ] = useState( false );
@@ -54,10 +52,9 @@ function Test4({ secondTest, getTestsHandler }) {
 
        useEffect( () => {
 
-        if( answer[ index ].join( " " ) === secondTest.sentences[ index ].right_sentence ||
-            answer[ index ].join( " " ) === secondTest.sentences[ index ].variant_1 ||
-            answer[ index ].join( " " ) === secondTest.sentences[ index ].variant_2 ) {
-        // if( array.some( item => item === answer[ index ].join( " " ) ) ) {
+        if( answer[ index ].join( " " ) === secondTest.sentences[ index ].right_sentence_1 ||
+            answer[ index ].join( " " ) === secondTest.sentences[ index ].right_sentence_2 ||
+            answer[ index ].join( " " ) === secondTest.sentences[ index ].right_sentence_3 ) {
             setAnswerCorrect( true );
 
             if( index == ( secondTest.sentences.length - 1 ) ) {
