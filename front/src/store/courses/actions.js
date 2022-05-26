@@ -1,11 +1,10 @@
 import { coursesAPI } from "../../api/api";
+import { authMe } from "../auth/action";
 
 export const COURSES_LOADING = "COURSES::COURSES_LOADING";
 export const COURSES_FAILURE = "COURSES::COURSES_FAILURE";
 export const COURSES_SUCCESS = "COURSES::COURSES_SUCCESS";
 export const GET_COURS = "COURSES::GET_COURS_SUCCESS";
-
-export const LIKED_COURSES = "LIKED_COURSES";
 
 export const getCoursesLoading = () => ({
     type: COURSES_LOADING,
@@ -23,10 +22,6 @@ export const getCoursesSuccess = (courses) => ({
 const getCoursSuccess = (cours) => ({
     type: GET_COURS,
     payload: cours,
-});
-
-export const likedCourses = () => ({
-    type: LIKED_COURSES,
 });
 
 export const getCourses = () => async (dispatch) => {
@@ -60,3 +55,11 @@ export const getCours = (coursId) => async (dispatch) => {
         dispatch(getCoursesFailure(err.message));
     }
 };
+
+export const addLikeComics = (like) => {
+    return coursesAPI.likeComics(like);
+};
+
+// export const addLikeComics = (like) => {
+//     return coursesAPI.likeComics(like).then(() => authMe());
+// };

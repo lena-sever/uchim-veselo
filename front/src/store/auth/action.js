@@ -29,11 +29,16 @@ export const login = (payload) => async (dispatch) => {
     try {
         const res = await auth.sigIn(payload);
         if (!res.id) {
-            console.log(res)
+            console.log(res);
             dispatch(setErr(res));
         } else {
             dispatch(
-                authSuccess({ name: res.name, email: res.email, id: res.id })
+                authSuccess({
+                    name: res.name,
+                    email: res.email,
+                    id: res.id,
+                    course: res.course,
+                })
             );
         }
     } catch (err) {
@@ -42,6 +47,7 @@ export const login = (payload) => async (dispatch) => {
 };
 
 export const authMe = () => async (dispatch) => {
+    debugger;
     try {
         const res = await auth.me();
         if (!res) {
@@ -49,7 +55,15 @@ export const authMe = () => async (dispatch) => {
                 "Some mistake has occurred. We are already working on it"
             );
         } else {
-            dispatch(authSuccess({ name: res.name, email: res.email, id: res.id }));
+            // debugger;
+            dispatch(
+                authSuccess({
+                    name: res.name,
+                    email: res.email,
+                    id: res.id,
+                    course: res.course,
+                })
+            );
         }
     } catch (err) {
         dispatch(setErr(err));
@@ -64,7 +78,14 @@ export const reghMe = (payload) => async (dispatch) => {
                 "Some mistake has occurred. We are already working on it"
             );
         } else {
-            dispatch(authSuccess({ name: res.name, email: res.email, id: res.id }));
+            dispatch(
+                authSuccess({
+                    name: res.name,
+                    email: res.email,
+                    id: res.id,
+                    course: res.course,
+                })
+            );
         }
     } catch (err) {
         dispatch(setErr(err.message));

@@ -3,7 +3,6 @@ import {
     COURSES_LOADING,
     COURSES_SUCCESS,
     GET_COURS,
-    LIKED_COURSES,
 } from "./actions";
 import { STATUS } from "../../constants/status";
 
@@ -14,7 +13,6 @@ const initialCourses = {
         status: STATUS.IDLE,
         error: "",
     },
-    likedCourses: [],
 };
 
 export const coursesReducer = (state = initialCourses, { type, payload }) => {
@@ -47,14 +45,6 @@ export const coursesReducer = (state = initialCourses, { type, payload }) => {
                 },
             };
 
-        // case COURSES_FAILURE:
-        //   return {
-        //     ...state,
-        //     request: {
-        //       error: payload,
-        //       status: STATUS.FAILURE
-        //     }
-        //   };
         case GET_COURS:
             return {
                 ...state,
@@ -64,8 +54,7 @@ export const coursesReducer = (state = initialCourses, { type, payload }) => {
                     status: STATUS.SUCCESS,
                 },
             };
-        case LIKED_COURSES:
-            return {};
+
         default:
             return state;
     }
