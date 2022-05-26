@@ -1,4 +1,5 @@
 import { coursesAPI } from "../../api/api";
+import { authMe } from "../auth/action";
 
 export const COURSES_LOADING = "COURSES::COURSES_LOADING";
 export const COURSES_FAILURE = "COURSES::COURSES_FAILURE";
@@ -23,33 +24,42 @@ const getCoursSuccess = (cours) => ({
     payload: cours,
 });
 
-export const getCourses = () => async(dispatch) => {
-  dispatch( getCoursesLoading() );
-  try {
-    const response = await coursesAPI.getCourses();
-    if( !response.data  ) {
-      throw new Error( "Some mistake has occurred. We are already working on it" );
+export const getCourses = () => async (dispatch) => {
+    dispatch(getCoursesLoading());
+    try {
+        const response = await coursesAPI.getCourses();
+        if (!response.data) {
+            throw new Error(
+                "Some mistake has occurred. We are already working on it"
+            );
+        }
+        dispatch(getCoursesSuccess(response.data));
+    } catch (err) {
+        console.log(err);
+        dispatch(getCoursesFailure(err.message));
     }
-    dispatch(getCoursesSuccess(response.data));
-  } catch( err ) {
-    console.log( err );
-    dispatch( getCoursesFailure( err.message ) );
-  }
 };
 
-export const getCours = (coursId) => async(dispatch) => {
-  dispatch(getCoursesLoading());
-  try {
-      const response = await coursesAPI.getCours(coursId);
-      if (!response.data) {
-          throw new Error(
-              "Some mistake has occurred. We are already working on it"
-          );
-      }
-      dispatch(getCoursSuccess(response.data));
-  } catch (err) {
-      console.log(err);
-      dispatch(getCoursesFailure(err.message));
-  }
-}
+export const getCours = (coursId) => async (dispatch) => {
+    dispatch(getCoursesLoading());
+    try {
+        const response = await coursesAPI.getCours(coursId);
+        if (!response.data) {
+            throw new Error(
+                "Some mistake has occurred. We are already working on it"
+            );
+        }
+        dispatch(getCoursSuccess(response.data));
+    } catch (err) {
+        console.log(err);
+        dispatch(getCoursesFailure(err.message));
+    }
+};
 
+export const addLikeComics = (like) => {
+    return coursesAPI.likeComics(like);
+};
+
+// export const addLikeComics = (like) => {
+//     return coursesAPI.likeComics(like).then(() => authMe());
+// };
