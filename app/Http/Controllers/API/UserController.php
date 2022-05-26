@@ -207,4 +207,53 @@ class UserController extends Controller
             return 'Что-то не то с лайками';
         }
     }
+
+
+    public function payment(Request $request)
+    {
+        $validated = $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'course_id' => 'required|exists:courses,id',
+        ]);
+
+        $user_id = $validated['user_id'];
+        $course_id = $validated['course_id'];
+
+        $payment = DB::table('user_courses')
+            ->where('user_id', $user_id)
+            ->where('course_id', $course_id)
+            // ->select('like', 'course_id')
+            ->first();
+        if ($payment) $payment = $payment->payment;
+        // dd($payment);
+
+        if (is_null($payment)) {
+            $price = DB::table('courses')
+            ->where('id', $course_id)
+            ->select('price')
+            ->first();
+            if ($price) $price = $price->price;
+
+            DB::table('user_courses')->insert([
+                'user_id' => $user_id,
+                'course_id' => $course_id,
+                'price' => $price,
+                'payment' => 1,
+                'like' => 0,
+                'created_at' => now()
+            ]);
+            return 'Создали строку и Оплату поставили';
+        } elseif ($payment === 0) {
+            DB::table('user_courses')
+                ->where('user_id', $user_id)
+                ->where('course_id', $course_id)
+                ->update(['payment' => 1]);
+            return 'Оплату поставили';
+        } elseif ($payment === 1) {
+            return 'Комикс оплачен ранее';
+        } else {
+            return 'Что-то не то с оплатой';
+        }
+    }
+
 }
