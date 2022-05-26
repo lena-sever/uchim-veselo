@@ -96,6 +96,7 @@ function Courses() {
                     <>
                         {Object.keys(array).map((i) => (
                             <CoursesItem
+                                filter={filter}
                                 coursesMe={coursesMe}
                                 key={i}
                                 course={array[i]}
