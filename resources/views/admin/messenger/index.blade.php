@@ -13,7 +13,7 @@
     @endif
     <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group me-2">
-        <a href="{{ route('account') }}"
+        <a href="{{ route('admin.index') }}"
                type="button" class="btn btn-sm btn-secondary">Назад
             </a>
         </div>
