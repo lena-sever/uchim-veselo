@@ -1,9 +1,9 @@
 import { Routes, Route, HashRouter, useLocation, useParams } from "react-router-dom";
-import Courses from "../Сourses/Courses";
+import Courses from "../Courses/Courses";
 import Lessons from "../Lessons/Lessons";
 import LessonsItem from "../Lessons/LessonsItem";
 import InfoPage from "../InfoPage/InfoPage";
-import CoursPage from "../Сourses/CoursPage";
+import CoursPage from "../Courses/CoursPage";
 import  Contacts  from "../Contacts/Contacts";
 import Error_404 from "../Error_404/Error_404";
 import Login from "../Login/Login";
