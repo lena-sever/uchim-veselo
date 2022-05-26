@@ -2,7 +2,8 @@
     /*width: 200px;*/
     /*height: 200px;*/
     width: 100%;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
     border-radius: 50%;
 }
 
@@ -11,7 +12,7 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     margin: 10px 10px 20px 10px;
-    padding: 0 10px;
+    padding: 10px;
     text-align: start;
     border-radius: 5px;
     box-shadow: -1px 1px 10px 1px rgba(40, 44, 52, 0.25);
@@ -51,8 +52,9 @@
 }
 
 .img_wrap {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 10px;
 }
 
 @media screen and (max-width: 460px) {
@@ -61,9 +63,14 @@
 
     }
 
-    .img_course {
+    .img_wrap {
         width: 125px;
-        height: 200px;
-        object-fit: contain;
+        height: 125px;
+    }
+
+    .img_course {
+        /*width: 125px;*/
+        /*height: 200px;*/
+        /*object-fit: cover;*/
     }
 }
