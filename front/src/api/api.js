@@ -8,140 +8,150 @@ import {
     lastPatgHistory,
     urlRegistration,
     urlLogin,
-    urlResultFound, urlAuthorComics, urlPainterComics,
+    urlResultFound,
+    urlAuthorComics,
+    urlPainterComics,
+    urlLikeComics,
 } from "../constants/url";
 
 export const coursesAPI = {
     getCourses() {
         return axios
-            .get( urlCourses )
-            .then( (response) => response )
-            .catch( (err) => err );
+            .get(urlCourses)
+            .then((response) => response)
+            .catch((err) => err);
     },
     getCours(coursId) {
         return axios
-            .get( `${ urlCourses }/${ coursId }` )
-            .then( (response) => response )
-            .catch( (err) => err );
+            .get(`${urlCourses}/${coursId}`)
+            .then((response) => response)
+            .catch((err) => err);
+    },
+    likeComics(like) {
+        debugger;
+        return axios
+            .post(urlLikeComics, like)
+            .then(() => "ok")
+            .catch((err) => err);
     },
 };
 
 export const auth = {
     me() {
         return axios
-            .post( urlAuth, {
-                session_token: localStorage.getItem( "token" ),
-            } )
-            .then( (data) => {
+            .post(urlAuth, {
+                session_token: localStorage.getItem("token"),
+            })
+            .then((data) => {
                 return data.data;
-            } )
-            .catch( (res) => {
+            })
+            .catch((res) => {
                 return res;
-            } );
+            });
     },
     sigIn(payload) {
         return axios
-            .post( `${ urlLogin }`, payload )
-            .then( (data) => {
-                localStorage.setItem( "token", data.data.session_token );
+            .post(`${urlLogin}`, payload)
+            .then((data) => {
+                localStorage.setItem("token", data.data.session_token);
                 return data.data;
-            } )
-            .catch( (err) => err );
+            })
+            .catch((err) => err);
     },
     sigUp(payload) {
         return axios
-            .post( `${ urlRegistration }`, payload, {
+            .post(`${urlRegistration}`, payload, {
                 credentials: "include",
                 "Access-Control-Allow-Origin": "*",
                 Accept: "application/json",
                 "Content-Type": "application/json",
-            } )
-            .then( (data) => {
+            })
+            .then((data) => {
                 return data.data;
-            } )
-            .catch( (err) => err.message );
+            })
+            .catch((err) => err.message);
     },
 };
 
 export const resultFoundAPI = {
     resultFound(payload) {
         return axios
-            .post( `${ urlResultFound }`, { search_phrase: payload } )
-            .then( data => {
+            .post(`${urlResultFound}`, { search_phrase: payload })
+            .then((data) => {
                 return data.data;
-            } )
-            .catch( err => err.message );
-    }
+            })
+            .catch((err) => err.message);
+    },
 };
 
 export const authorAPI = {
     resultAuthor(payload) {
         return axios
-            .get( `${ urlAuthorComics }/${ payload }`, {
-                author_id: payload
-            } )
-            .then( data => {
+            .get(`${urlAuthorComics}/${payload}`, {
+                author_id: payload,
+            })
+            .then((data) => {
                 return data.data;
-            } )
-            .catch( err => err.message );
-    }
+            })
+            .catch((err) => err.message);
+    },
 };
 
 export const painterAPI = {
     resultPainter(payload) {
         return axios
-            .get( `${ urlPainterComics }/${ payload }`, {
-                painter_id: payload
-            } )
-            .then( data => {
+            .get(`${urlPainterComics}/${payload}`, {
+                painter_id: payload,
+            })
+            .then((data) => {
                 return data.data;
-            } )
-            .catch( err => err.message );
-    }
+            })
+            .catch((err) => err.message);
+    },
 };
 
 export const lessonsAPI = {
     getCourse(courseId) {
         return axios
-            .get( `${ urlCourses }/${ courseId }` )
-            .then( (response) => response )
-            .catch( (err) => err );
+            .get(`${urlCourses}/${courseId}`)
+            .then((response) => response)
+            .catch((err) => err);
     },
     getFistPartHistory(id) {
         return axios
-            .get( `${ firstPatgHistory }/${ id }` )
-            .then( (response) => response );
+            .get(`${firstPatgHistory}/${id}`)
+            .then((response) => response);
     },
     getLastPartHistory(id) {
         return axios
-            .get( `${ lastPatgHistory }/${ id }` )
-            .then( (response) => response );
+            .get(`${lastPatgHistory}/${id}`)
+            .then((response) => response);
     },
 };
 
 export const reviewsAPI = {
     getReviews() {
-        return axios.get( urlReviews ).then( (res) => res );
+        return axios.get(urlReviews).then((res) => res);
     },
     getReview(courseId) {
-        return axios.get( `${ urlCourses }/${ courseId }` ).then( (res) => res );
+        return axios.get(`${urlCourses}/${courseId}`).then((res) => res);
     },
     addReview(review) {
-        return axios.post( `${ urlReviews }`, review ).then( () => "ok" );
+        return axios.post(`${urlReviews}`, review).then(() => "ok");
     },
 };
 
 export const testsAPI = {
     getFirstTest(courseId) {
         return axios
-            .get( `${ urlCourses }/first_test/${ courseId }` )
-            .then( (response) => response )
-            .catch( (err) => err );
+            .get(`${urlCourses}/first_test/${courseId}`)
+            .then((response) => response)
+            .catch((err) => err);
     },
     getSecondTest(courseId) {
         return axios
-            .get( `${ urlCourses }/second_test/${ courseId }` )
-            .then( (response) => response )
-            .catch( (err) => err );
-    }
+            .get(`${urlCourses}/second_test/${courseId}`)
+            .then((response) => response)
+            .catch((err) => err);
+    },
 };

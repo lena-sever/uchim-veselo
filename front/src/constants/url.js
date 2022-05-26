@@ -15,3 +15,5 @@ export const urlResultFound = "https://uchim-veselo.ru/api/courses/search";
 
 export const urlAuthorComics = "https://uchim-veselo.ru/api/author";
 export const urlPainterComics = "https://uchim-veselo.ru/api/painter";
+
+export const urlLikeComics = "https://uchim-veselo.ru/api/like";
