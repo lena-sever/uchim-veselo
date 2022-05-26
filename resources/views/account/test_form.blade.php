@@ -41,7 +41,7 @@
 <form method="post" action="https://uchim-veselo.ru/api/user/auth">
 
     <label>session_token</label>
-    <input type="text" name="session_token" value="S5rIGCMmEotYUxP4CPNxrAq4M3q15Tb5vDhSRJ69a0oVbPQJpMxOzDTibi5M">
+    <input type="text" name="session_token" value="bsBPcDivPjrd18zXAliZRA0HLsqEGPEno3j2hEDdPgrYmLZ5bGGOx9gCi5Yn">
 
     <input type="submit" value="Отправить">
 </form><br><br>
@@ -93,6 +93,20 @@
 </form><br><br>
 <hr>
 
+
+<h2>Оплата комикса</h2>
+<!-- <form method="post" action="payment"> -->
+<form method="post" action="https://uchim-veselo.ru/api/payment">
+
+    <label>User_id</label>
+    <input type="text" name="user_id" value="1">
+
+    <label>Course_id</label>
+    <input type="text" name="course_id" value="1">
+
+    <input type="submit" value="Отправить">
+</form><br><br>
+<hr>
 
 
 <!--  -->

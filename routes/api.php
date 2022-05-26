@@ -82,3 +82,5 @@ Route::post('user/auth', [UserController::class,'auth']);
 Route::post('messange', [UserController::class,'messange']);
 //переключение лайков
 Route::post('like', [UserController::class,'like']);
+// подтвердить оплату курса
+Route::post('payment', [UserController::class,'payment']);
