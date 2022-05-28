@@ -47,7 +47,7 @@ export const login = (payload) => async (dispatch) => {
 };
 
 export const authMe = () => async (dispatch) => {
-    debugger;
+    // debugger;
     try {
         const res = await auth.me();
         if (!res) {
