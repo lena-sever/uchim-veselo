@@ -28,7 +28,7 @@ export const coursesAPI = {
             .catch((err) => err);
     },
     likeComics(like) {
-        debugger;
+        // debugger;
         return axios
             .post(urlLikeComics, like)
             .then(() => "ok")
