@@ -47,7 +47,7 @@ function CoursesItem({ course, coursesMe, filter }) {
 
     // MARK
     const click = () => {
-        debugger;
+        // debugger;
         let obj = new Object();
         if (filter == "All") {
             obj.course_id = course.id;
