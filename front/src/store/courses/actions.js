@@ -1,4 +1,4 @@
-import { coursesAPI } from "../../api/api";
+import { coursesAPI, likesAPI } from "../../api/api";
 import { authMe } from "../auth/action";
 
 export const COURSES_LOADING = "COURSES::COURSES_LOADING";
@@ -59,6 +59,8 @@ export const getCours = (coursId) => async (dispatch) => {
 export const addLikeComics = (like) => {
     return coursesAPI.likeComics(like);
 };
+
+
 
 // export const addLikeComics = (like) => {
 //     return coursesAPI.likeComics(like).then(() => authMe());

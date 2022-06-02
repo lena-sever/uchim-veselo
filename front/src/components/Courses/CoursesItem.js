@@ -8,7 +8,7 @@ import { styled } from "@mui/material/styles";
 import { purple, common } from "@mui/material/colors";
 
 import { selectUser } from "../../store/auth/authSelector";
-import img from "../../img/gui_like_icon_157110.png";
+import img from "../../img/heart.svg";
 import { addLikeComics } from "../../store/courses/actions";
 import { authMe } from "../../store/auth/action";
 
@@ -32,6 +32,7 @@ const ColorButtonOutlined = styled(Button)(({ theme }) => ({
 }));
 
 function CoursesItem({ course, coursesMe }) {
+    console.log(course, coursesMe)
     // debugger;
     const classes = useStyles();
     const path = `/courses/${course.id}`;
@@ -50,7 +51,7 @@ function CoursesItem({ course, coursesMe }) {
         let obj = new Object();
         obj.course_id = course.id;
         obj.user_id = userId.id;
-        debugger;
+        // debugger;
         addLikeComics(obj);
     };
 
@@ -119,8 +120,8 @@ function CoursesItem({ course, coursesMe }) {
                 ПОДРОБНЕЕ
             </ColorButtonOutlined>
 
-            <div>
-                <img onClick={click} src={img} style={proverka()}></img>
+            <div className="products_icon-heart-wrap">
+                <img onClick={click} src={img} style={proverka()} className="products_icon-heart" />
             </div>
         </div>
     );

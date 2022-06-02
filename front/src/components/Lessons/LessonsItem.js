@@ -22,7 +22,7 @@ import styles from "./LessonReview/LessonReview.module.css";
 import ButtonBackToComics from "../ButtonBackToСomics/ButtonBackToСomics";
 
 function LessonsItem() {
-    const payment = false;
+    const payment = true;
     console.log(!payment);
     const { slider1 } = useParams();
     console.log( slider1 );

@@ -7,7 +7,7 @@ import {
     selectCoursesError,
     selectCoursesLoading,
 } from "../../store/courses/coursesSelectors";
-import CoursesItem from "./CoursesItem";
+import CoursesItem from "./CoursesItem-copy";
 import "./Courses.css";
 import CircularProgress from "../curcularProgress/CircularProgress";
 import Footer from "../Footer/Footer";
@@ -28,7 +28,8 @@ function Courses() {
     const courses = useSelector(selectCourses);
     const isLoading = useSelector(selectCoursesLoading);
     const error = useSelector(selectCoursesError);
-    console.log(courses);
+    const [filter, setFilter] = React.useState("All");
+    // console.log(courses);
 
     const requestCourses = async () => {
         dispatch(getCourses());
@@ -37,9 +38,9 @@ function Courses() {
     useEffect(() => {
         requestCourses();
     }, []);
-    const coursesMe = useSelector(selectUser);
 
-    const [filter, setFilter] = React.useState("All");
+    const userCourses = useSelector(selectUser);
+    // console.log(userCourses);
 
     const handleChange = (event) => {
         setFilter(event.target.value);
@@ -56,12 +57,13 @@ function Courses() {
     if (filter == "All") {
         array = courses;
     } else if (filter == "Like") {
-        let arrayLiked = coursesMe.course;
+        let arrayLiked = userCourses.course;
+        console.log(arrayLiked.course);
         array = arrayLiked.filter((fill) => {
             return fill.like == 1;
         });
     } else if (filter == "Buy") {
-        let arrayBuy = coursesMe.course;
+        let arrayBuy = userCourses.course;
         array = arrayBuy.filter((fill) => {
             return fill.payment == 1;
         });
@@ -96,9 +98,10 @@ function Courses() {
                     <>
                         {Object.keys(array).map((i) => (
                             <CoursesItem
-                                coursesMe={coursesMe}
+                                userCourses={userCourses}
                                 key={i}
                                 course={array[i]}
+                                filter={filter}
                             />
                         ))}
                     </>

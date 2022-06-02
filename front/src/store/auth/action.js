@@ -1,4 +1,5 @@
 import { auth } from "../../api/api";
+import { getCourses } from "../courses/actions";
 
 export const AUTH_SUCCESS = "AUTH_SUCCESS";
 export const LOGOUT = "LOGOUT";
@@ -46,16 +47,39 @@ export const login = (payload) => async (dispatch) => {
     }
 };
 
-export const authMe = () => async (dispatch) => {
-    debugger;
+// export const authMe = () => async (dispatch) => {
+//     // debugger;
+//     try {
+//         const res = await auth.me();
+//         if (!res) {
+//             throw new Error(
+//                 "Some mistake has occurred. We are already working on it"
+//             );
+//         } else {
+//             // debugger;
+//             dispatch(
+//                 authSuccess({
+//                     name: res.name,
+//                     email: res.email,
+//                     id: res.id,
+//                     course: res.course,
+//                 })
+//             );
+//         }
+//     } catch (err) {
+//         dispatch(setErr(err));
+//     }
+// };
+
+export const authMe = (payload) => async (dispatch) => {
     try {
-        const res = await auth.me();
-        if (!res) {
+        const res = await auth.me(payload);
+        if (!res.id) {
             throw new Error(
                 "Some mistake has occurred. We are already working on it"
             );
         } else {
-            // debugger;
+            console.log(res);
             dispatch(
                 authSuccess({
                     name: res.name,
@@ -64,6 +88,7 @@ export const authMe = () => async (dispatch) => {
                     course: res.course,
                 })
             );
+            dispatch(getCourses())
         }
     } catch (err) {
         dispatch(setErr(err));

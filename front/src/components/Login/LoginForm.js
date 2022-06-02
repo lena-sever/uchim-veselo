@@ -60,7 +60,8 @@ const LoginForm = () => {
     });
 
     if (user.id) {
-        navigate("/courses", { replace: true });
+        navigate("/", { replace: true });
+        // navigate("/courses", { replace: true });
     }
 
     return (

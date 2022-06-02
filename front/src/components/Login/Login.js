@@ -6,8 +6,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import "./Login.css";
 import LoginForm from "./LoginForm";
 import RegForm from "./RegForm";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
 
 const useStyles = makeStyles( (theme) => ( {
     btn: {
