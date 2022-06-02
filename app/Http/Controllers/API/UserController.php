@@ -74,6 +74,7 @@ class UserController extends Controller
                 'photo'
             )
             ->first();
+        $user->course = [];    
 
         if ($user) {
             return json_encode($user, JSON_UNESCAPED_UNICODE);
@@ -89,6 +90,26 @@ class UserController extends Controller
 
         //получить id по email и сравнить с хешем пароля
         $user = DB::table('users')->where('email',  $validated['email'])->first();
+
+        $course = DB::table('user_courses')
+            ->where('user_id', $user->id)
+            ->join('courses', 'courses.id', '=', 'user_courses.course_id')
+            ->join('authors', 'authors.id', '=', 'courses.author_id')
+            ->join('painters', 'painters.id', '=', 'courses.painter_id')
+            ->select(
+                'user_courses.id',
+                'user_courses.price',
+                'user_courses.payment',
+                'user_courses.like',
+                'user_courses.course_id',
+                'user_courses.updated_at',
+                'courses.title',
+                'courses.img',
+                'authors.name as name_author',
+                'painters.name as name_painter',
+            )
+            ->get();
+        $user->course = $course;        
         if ($user) {
             // dd($user);
             if (password_verify($validated['password'], $user->password)) {
