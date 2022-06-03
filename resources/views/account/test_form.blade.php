@@ -21,8 +21,8 @@
 <hr>
 
 <h2>Логин</h2>
-<!-- <form method="post" action="user/login"> -->
-<form method="post" action="https://uchim-veselo.ru/api/user/login">
+<form method="post" action="user/login">
+<!-- <form method="post" action="https://uchim-veselo.ru/api/user/login"> -->
 
 
     <label>email</label>
