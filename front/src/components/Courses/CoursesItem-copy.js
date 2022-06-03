@@ -13,7 +13,7 @@ import { ReactComponent as HeartImg } from "../../img/heart.svg";
 import { addLikeComics } from "../../store/courses/actions";
 // import { authMe } from "../../store/auth/action";
 import { useEffect, useState } from "react";
-import { selectLikes } from "../../store/likes/likesSelector";
+// import { selectLikes } from "../../store/likes/likesSelector";
 
 const useStyles = makeStyles( (theme) => ( {
     btn: {
@@ -38,7 +38,8 @@ function CoursesItem({ course,filter }) {
     // const userCourses = useSelector( selectUser );
     // console.log( userCourses );
     const classes = useStyles();
-    const path = `/courses/${ course.id }`;
+    const pathCourse = `/courses/${ course.id }`;
+    const pathPay = "/pay";
     const pathAuthor = `/author/${ course.author_id }`;
     const pathPainter = `/painter/${ course.painter_id }`;
     const dispatch = useDispatch();
@@ -119,7 +120,7 @@ function CoursesItem({ course,filter }) {
     return (
         <div className="products_item">
             <NavLink
-                to={ path }
+                to={ pathCourse }
                 className="products_item_img"
                 onClick={ getLessonsList }
             >
@@ -152,12 +153,21 @@ function CoursesItem({ course,filter }) {
             </div>
             <ColorButtonOutlined
                 as={ NavLink }
-                to={ path }
+                to={ pathCourse }
                 size="small"
                 onClick={ getLessonsList }
                 className={ `products_item_btn ${ classes.btn }` }
             >
                 ПОДРОБНЕЕ
+            </ColorButtonOutlined>
+            <ColorButtonOutlined
+                as={NavLink}
+                to={pathPay}
+                size="small"
+                onClick={getLessonsList}
+                className={`products_item_btn ${classes.btn}`}
+            >
+                КУПИТЬ
             </ColorButtonOutlined>
 
             <div className="products_icon-heart-wrap">

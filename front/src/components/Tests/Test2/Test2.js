@@ -17,7 +17,7 @@ function Test2({ firstTest, getTestsHandler }) {
             </p>
             <div className="test__bottom">
                 <TestButton getTestsHandler={ getTestsHandler } num={ 3 }/>
-                <ButtonBackToComics path={path} text="Назад к комиксам"/>
+                <ButtonBackToComics path={path} text="Назад к комиксам" color="secondary"/>
             </div>
 
         </>

@@ -94,32 +94,37 @@ const CoursPage = () => {
         <div className="cours__wrp">
             { cours && (
                 <>
-                    <h1 className="title">{ cours.title }</h1>
-                    <img className="cours__img" src={ cours.img }/>
-                    {/*<h2 className="subtitle">{ cours.description }</h2>*/ }
+                    <div className="cours__img-wrap">
+                        <img className="cours__img" src={ cours.img }/>
+                        <ButtonBackToComics path="/pay" text="Купить комикс" color="error"/>
+                    </div>
+                    <div className="cours__description-wrap">
+                        <h1 className="title">{ cours.title }</h1>
 
-                    <p className="products_item__author">Автор:
-                        <NavLink to={ pathAuthor } className="products_item__author">
-                            <span className="text_box_main ">{ cours.name_author }</span>
-                        </NavLink>
-                    </p>
-                    <p>Художник:
-                        <NavLink to={ pathPainter } className="products_item__author">
-                            <span className="text_box_main ">{ cours.name_painter }</span>
-                        </NavLink>
-                    </p>
-                    <p className="text_box_main cours__text">{ cours.description }</p>
-                    <div className="cours__btn-wrp">
-                        <ColorButton
-                            as={ NavLink }
-                            to={ `/courses/${ courseId }/slider1` }
-                            size="large"
-                            className={ classes.btn }
-                        >
-                            Начать читать комикс
-                        </ColorButton>
+                        <p className="products_item__author">Автор:
+                            <NavLink to={ pathAuthor } className="products_item__author">
+                                <span className="text_box_main ">{ cours.name_author }</span>
+                            </NavLink>
+                        </p>
+                        <p>Художник:
+                            <NavLink to={ pathPainter } className="products_item__author">
+                                <span className="text_box_main ">{ cours.name_painter }</span>
+                            </NavLink>
+                        </p>
+                        <p className="text_box_main cours__text">{ cours.description }</p>
+                        <div className="cours__btn-wrp">
+                            <ColorButton
+                                as={ NavLink }
+                                to={ `/courses/${ courseId }/slider1` }
+                                size="large"
+                                className={ classes.btn }
+                            >
+                                Начать читать комикс
+                            </ColorButton>
+                    </div>
 
-                        <ButtonBackToComics path="/courses" text='Другие комиксы' />
+
+                        <ButtonBackToComics path="/courses" text='Другие комиксы' color="secondary"/>
                         {/*<ColorButtonOutlined*/}
                         {/*    as={ NavLink }*/}
                         {/*    className={ classes.btn }*/}

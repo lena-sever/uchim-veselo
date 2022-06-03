@@ -50,7 +50,7 @@ function Test5({ path, firstTest, secondTest }) {
                 isWritten &&
                 <div><p className="test__correct center">Молодец! Ты успешно ответил на все вопросы и очень помог нашему
                     герою!</p>
-                    <ButtonBackToComics path={path} text="Вернуться к комиксу"/>
+                    <ButtonBackToComics path={path} text="Вернуться к комиксу" color="secondary"/>
                 </div>
             }
 

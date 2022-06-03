@@ -29,7 +29,7 @@ function Test1({ path, firstTest, getTestsHandler }) {
                         </p>
                         <p>Спасибо за помощь!</p>
 
-                        <ButtonBackToComics path={path} text="Назад к комиксам"/>
+                        <ButtonBackToComics path={path} text="Назад к комиксам" color="secondary"/>
 
                     </div>
                 ) : ( value != firstTest.right_answer && value != "" ) ? (

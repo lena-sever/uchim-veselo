@@ -21,91 +21,90 @@ import Select from "@mui/material/Select";
 
 import { selectUser } from "../../store/auth/authSelector";
 import { fill } from "lodash";
+
 // import { likedCourses } from "../../store/auth/action";
 
 function Courses() {
     const dispatch = useDispatch();
-    const courses = useSelector(selectCourses);
-    const isLoading = useSelector(selectCoursesLoading);
-    const error = useSelector(selectCoursesError);
-    const [filter, setFilter] = React.useState("All");
-    // console.log(courses);
+    const courses = useSelector( selectCourses );
+    const isLoading = useSelector( selectCoursesLoading );
+    const error = useSelector( selectCoursesError );
+    const coursesMe = useSelector( selectUser );
+    const [ filter, setFilter ] = React.useState( "All" );
 
-    const requestCourses = async () => {
-        dispatch(getCourses());
+    const requestCourses = async() => {
+        dispatch( getCourses() );
     };
-
-    useEffect(() => {
-        requestCourses();
-    }, []);
-
-    const userCourses = useSelector(selectUser);
-    // console.log(userCourses);
 
     const handleChange = (event) => {
-        setFilter(event.target.value);
+        setFilter( event.target.value );
     };
+
+    useEffect( () => {
+        requestCourses();
+    }, [ coursesMe ] );
 
     const style = {
         maxWidth: "250px",
         margin: "0 auto",
-        marginBottom: "10px",
+        marginBottom: "20px",
     };
 
     let array = "";
 
-    if (filter == "All") {
+    if( filter == "All" ) {
         array = courses;
-    } else if (filter == "Like") {
-        let arrayLiked = userCourses.course;
-        console.log(arrayLiked.course);
-        array = arrayLiked.filter((fill) => {
+    } else if( filter == "Like" ) {
+        let arrayLiked = coursesMe.course;
+        array = arrayLiked.filter( (fill) => {
             return fill.like == 1;
-        });
-    } else if (filter == "Buy") {
-        let arrayBuy = userCourses.course;
-        array = arrayBuy.filter((fill) => {
+        } );
+    } else if( filter == "Buy" ) {
+        let arrayBuy = coursesMe.course;
+        array = arrayBuy.filter( (fill) => {
             return fill.payment == 1;
-        });
+        } );
     }
 
     return (
         <>
             <h1 className="head">Выберите комикс:</h1>
 
-            <Box style={style}>
-                <FormControl fullWidth>
-                    <InputLabel id="filter">Filter</InputLabel>
-                    <Select
-                        labelId="filter"
-                        label="filter"
-                        value={filter}
-                        onChange={handleChange}
-                    >
-                        <MenuItem value="All">All</MenuItem>
-                        <MenuItem value="Like">Like</MenuItem>
-                        <MenuItem value="Buy">Buy</MenuItem>
-                    </Select>
-                </FormControl>
-            </Box>
+            { coursesMe.id ? (
+                <Box style={ style }>
+                    <FormControl fullWidth>
+                        <InputLabel id="filter">Filter</InputLabel>
+                        <Select
+                            labelId="filter"
+                            label="filter"
+                            value={ filter }
+                            onChange={ handleChange }
+                        >
+                            <MenuItem value="All">All</MenuItem>
+                            <MenuItem value="Like">Like</MenuItem>
+                            <MenuItem value="Buy">Buy</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Box> ) : null
+            }
 
             <section className="products">
-                {isLoading ? (
-                    <CircularProgress />
+                { isLoading ? (
+                    <CircularProgress/>
                 ) : error ? (
-                    <>{!!error && <h3>{error}</h3>}</>
+                    <>{ !!error && <h3>{ error }</h3> }</>
                 ) : (
                     <>
-                        {Object.keys(array).map((i) => (
+                        { Object.keys( array ).map( (i) => (
                             <CoursesItem
-                                userCourses={userCourses}
-                                key={i}
-                                course={array[i]}
-                                filter={filter}
+                                coursesMe={ coursesMe }
+                                key={ i }
+                                course={ array[ i ] }
+                                filter={ filter }
                             />
-                        ))}
+                        ) ) }
                     </>
-                )}
+                ) }
             </section>
         </>
     );

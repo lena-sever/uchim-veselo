@@ -87,7 +87,7 @@ function Test4({ secondTest, getTestsHandler }) {
                 {
                     isAnswerCorrect && isLastSentence && <TestButton getTestsHandler={ getTestsHandler } num={ 5 }/>
                 }
-                <ButtonBackToComics path={ path } text="Назад к комиксам"/>
+                <ButtonBackToComics path={ path } text="Назад к комиксам" color="secondary"/>
             </div>
 
         </>

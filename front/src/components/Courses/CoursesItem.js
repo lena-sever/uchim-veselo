@@ -31,8 +31,7 @@ const ColorButtonOutlined = styled(Button)(({ theme }) => ({
     },
 }));
 
-function CoursesItem({ course, coursesMe }) {
-    console.log(course, coursesMe)
+function CoursesItem({ course, coursesMe, filter }) {
     // debugger;
     const classes = useStyles();
     const path = `/courses/${course.id}`;
@@ -49,7 +48,10 @@ function CoursesItem({ course, coursesMe }) {
     // MARK
     const click = () => {
         let obj = new Object();
-        obj.course_id = course.id;
+        if (filter == "All") {
+            obj.course_id = course.id;
+        } else obj.course_id = course.course_id;
+
         obj.user_id = userId.id;
         // debugger;
         addLikeComics(obj);

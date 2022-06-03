@@ -81,7 +81,7 @@ function Test3({ secondTest, getTestsHandler }) {
                     ( isTestCompleted ) ?
                         ( <TestButton getTestsHandler={ getTestsHandler } num={ 4 }/> ) : null
                 }
-                <ButtonBackToComics path={ path } text="Назад к комиксам"/>
+                <ButtonBackToComics path={ path } text="Назад к комиксам" color="secondary"/>
             </div>
 
         </>

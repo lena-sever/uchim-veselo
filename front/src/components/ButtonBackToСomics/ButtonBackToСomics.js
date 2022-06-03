@@ -4,15 +4,13 @@ import styles from "../Lessons/LessonReview/LessonReview.module.css";
 import Button from "@mui/material/Button";
 import * as React from "react";
 
-function ButtonBackToComics({ path, text, className }) {
+function ButtonBackToComics({ path, text, color}) {
     return (
         <Button
             as={ NavLink }
-            // className={ styles.btn_link }
-            // className={ className }
             className="btn__comics"
             variant="contained"
-            color="secondary"
+            color={color}
             to={ path }
         >
             { text }

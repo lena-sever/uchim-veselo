@@ -18,6 +18,7 @@ import { selectCourseId } from "../../store/courseId/courseIdSelector";
 import PageFoundResults from "../PageFoundResults/PageFoundResults";
 import AuthorPage from "../AuthorPage/AuthorPage";
 import PainterPage from "../PainterPage/PainterPage";
+import Pay from "../Pay/Pay";
 
 function Router() {
     const { pathname } = useLocation();
@@ -47,6 +48,7 @@ function Router() {
                     </Route>
                     <Route path="/contacts" element={ <Contacts/> }/>
                     <Route path="/login" element={ <Login/> }/>
+                    <Route path="/pay" element={ <Pay/> }/>
                     <Route
                         path="/slider"
                         element={ <SliderContainer sliderList={ sliderList }/> }

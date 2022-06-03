@@ -85,7 +85,7 @@ function LessonsItem() {
                         />
                     ) }
                 </div>
-                <ButtonBackToComics path={path} text="Назад к комиксам" className={styles.btn_link}/>
+                <ButtonBackToComics path={path} text="Назад к комиксам" className={styles.btn_link} color="secondary"/>
             </div>
         );
     } else <>err</>;
