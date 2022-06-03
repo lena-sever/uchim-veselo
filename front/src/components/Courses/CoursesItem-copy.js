@@ -13,10 +13,13 @@ import { ReactComponent as HeartImg } from "../../img/heart.svg";
 import { addLikeComics } from "../../store/courses/actions";
 // import { authMe } from "../../store/auth/action";
 import { useEffect, useState } from "react";
+import { authMe } from "../../store/auth/action";
 // import { selectLikes } from "../../store/likes/likesSelector";
 
 const useStyles = makeStyles( (theme) => ( {
     btn: {
+        fontSize: "12px",
+        lineHeight: 1.1,
         textDecoration: "none",
         textTransform: "uppercase",
         borderRadius: "5px",
@@ -34,9 +37,7 @@ const ColorButtonOutlined = styled( Button )( ({ theme }) => ( {
     },
 } ) );
 
-function CoursesItem({ course,filter }) {
-    // const userCourses = useSelector( selectUser );
-    // console.log( userCourses );
+function CoursesItem({ course, filter }) {
     const classes = useStyles();
     const pathCourse = `/courses/${ course.id }`;
     const pathPay = "/pay";
@@ -45,9 +46,9 @@ function CoursesItem({ course,filter }) {
     const dispatch = useDispatch();
     const [ message, setMessage ] = useState( false );
     const user = useSelector( selectUser );
-    console.log(user);
-    const [ isLike, setLike ] = useState( 0);  //  Изменение цвета сердечка в зависимости от лайка
-    const heartClass = user.id !== "" ? filter== "All" ? isLike  ? ( "products_icon-heart_active products_icon-heart" ) : ( "products_icon-heart" ) : ( "products_icon-heart" ) : ( "products_icon-heart" ) // Класс для изменения сердечка
+    console.log( user );
+    const [ isLike, setLike ] = useState( 0 );  //  Изменение цвета сердечка в зависимости от лайка
+    const heartClass = user.id !== "" ? filter == "All" ? isLike ? ( "products_icon-heart_active products_icon-heart" ) : ( "products_icon-heart" ) : ( "products_icon-heart" ) : ( "products_icon-heart" ); // Класс для изменения сердечка
 
     const getLessonsList = () => {
         dispatch( getLessons( course.id ) );
@@ -56,13 +57,13 @@ function CoursesItem({ course,filter }) {
     useEffect( () => {
         // const ob = userCourses.length > 0  ? userCourses.course.filter( val => val.course_id == course.id ) : [];
         // const like = ob.length > 0  ? ob[0].like : 0 ;
-        if(user.course){
+        if( user.course ) {
             const ob = user.course.filter( val => val.course_id == course.id ) || [];
             const like = ob[ 0 ] ? ob[ 0 ].like : 0;
 
             setLike( like );
         }
-        return null
+        return null;
 
     }, [ user ] );
 
@@ -102,7 +103,7 @@ function CoursesItem({ course,filter }) {
     //     width: "30px",
     // };
 
-    const handleToggleLike = async () => {
+    const handleToggleLike = async() => {
 
         if( user.id == "" ) {
             setMessage( true );
@@ -111,8 +112,18 @@ function CoursesItem({ course,filter }) {
             }, 2000 );
 
         }
-        setLike( isLike==0 ? 1 : 0 );
-        await addLikeComics( { course_id: course.id, user_id: user.id } ) ;
+        setLike( isLike == 0 ? 1 : 0 );
+        console.log( course );
+        console.log( course.id );
+        console.log( user.id );
+        if( user.id && filter === "All" ) {
+            await addLikeComics( { course_id: course.id, user_id: user.id } );
+            dispatch( authMe() );
+        } else if( user.id && filter === "Like" ) {
+            await addLikeComics( { course_id: course.course_id, user_id: user.id } );
+            dispatch( authMe() );
+        }
+
 
     };
 
@@ -151,27 +162,30 @@ function CoursesItem({ course,filter }) {
                 </p>
                 <p className="text_box_main">{ course.description }</p>
             </div>
-            <ColorButtonOutlined
-                as={ NavLink }
-                to={ pathCourse }
-                size="small"
-                onClick={ getLessonsList }
-                className={ `products_item_btn ${ classes.btn }` }
-            >
-                ПОДРОБНЕЕ
-            </ColorButtonOutlined>
-            <ColorButtonOutlined
-                as={NavLink}
-                to={pathPay}
-                size="small"
-                onClick={getLessonsList}
-                className={`products_item_btn ${classes.btn}`}
-            >
-                КУПИТЬ
-            </ColorButtonOutlined>
+           <div className="products_item_btn-wrap">
+               <ColorButtonOutlined
+                   as={ NavLink }
+                   to={ pathCourse }
+                   size="small"
+                   onClick={ getLessonsList }
+                   className={ classes.btn }
+               >
+                   ПОДРОБНЕЕ
+               </ColorButtonOutlined>
+               <ColorButtonOutlined
+                   as={ NavLink }
+                   to={ pathPay }
+                   size="small"
+                   onClick={ getLessonsList }
+                   className={ classes.btn  }
+               >
+                   КУПИТЬ
+               </ColorButtonOutlined>
+           </div>
 
             <div className="products_icon-heart-wrap">
                 <HeartImg
+                    title={isLike ? ("Удалить из Избранного") : ("Добавить в Избранное") }
                     className={ heartClass }
                     onClick={ handleToggleLike }/>
 

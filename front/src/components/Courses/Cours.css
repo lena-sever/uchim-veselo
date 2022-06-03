@@ -24,6 +24,7 @@
 
 .cours__description-wrap {
     flex-basis: 300px;
+    /*border-bottom: 1px solid #cccccc;*/
 }
 
 .cours__text {
@@ -39,7 +40,7 @@
 }
 .cours__reviews {
     padding-top: 50px;
-    border-top: 1px solid #cccccc;
+    /*border-top: 1px solid #cccccc;*/
 }
 
 .cours__reviews-title {

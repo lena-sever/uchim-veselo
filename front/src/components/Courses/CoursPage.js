@@ -134,14 +134,16 @@ const CoursPage = () => {
                         {/*    Другие комиксы*/}
                         {/*</ColorButtonOutlined>*/}
                     </div>
-                    <div className="cours__reviews">
-                        <ReviewForm
-                            user={ user }
-                            courseId={ courseId }
-                        ></ReviewForm>
-                        <h3 className="cours__reviews-title">Отзывы</h3>
-                    </div>
-                    <div style={ style }>{ reviewElem }</div>
+                   <div className="cours__review-wrap">
+                       <div className="cours__reviews">
+                           <ReviewForm
+                               user={ user }
+                               courseId={ courseId }
+                           ></ReviewForm>
+                           <h3 className="cours__reviews-title">Отзывы</h3>
+                       </div>
+                       <div style={ style }>{ reviewElem }</div>
+                   </div>
                 </>
             ) }
         </div>

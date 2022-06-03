@@ -1,0 +1,15 @@
+.pay{
+    padding: 20px;
+}
+
+.pay__title {
+    margin-bottom: 25px;
+}
+
+.pay__text {
+    font-size: 20px;
+}
+
+.pay__link {
+    text-decoration: none;
+}
