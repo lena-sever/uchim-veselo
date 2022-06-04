@@ -28,7 +28,6 @@ export const coursesAPI = {
             .catch( (err) => err );
     },
     likeComics(like) {
-        // debugger;
         return axios
             .post( urlLikeComics, like )
             .then( () => "ok" )
@@ -157,13 +156,4 @@ export const testsAPI = {
 };
 
 
-// export const likesAPI = {
-//     getLikes(payload) {
-//         return axios
-//             .post( urlLikeComics, payload
-//              )
-//             .then( response => response.data )
-//             .catch( err => err.message );
-//     }
-// };
 

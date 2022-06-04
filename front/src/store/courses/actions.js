@@ -62,6 +62,3 @@ export const addLikeComics = (like) => {
 
 
 
-// export const addLikeComics = (like) => {
-//     return coursesAPI.likeComics(like).then(() => authMe());
-// };

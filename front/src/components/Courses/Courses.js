@@ -1,28 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getCourses } from "../../store/courses/actions";
-import React, { useEffect } from "react";
-
+import React, { useEffect, useState } from "react";
 import {
     selectCourses,
     selectCoursesError,
     selectCoursesLoading,
 } from "../../store/courses/coursesSelectors";
-import CoursesItem from "./CoursesItem-copy";
+import CoursesItem from "./CoursesItem";
 import "./Courses.css";
 import CircularProgress from "../curcularProgress/CircularProgress";
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
-
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-
 import { selectUser } from "../../store/auth/authSelector";
-import { fill } from "lodash";
-
-// import { likedCourses } from "../../store/auth/action";
 
 function Courses() {
     const dispatch = useDispatch();
@@ -30,7 +22,7 @@ function Courses() {
     const isLoading = useSelector( selectCoursesLoading );
     const error = useSelector( selectCoursesError );
     const coursesMe = useSelector( selectUser );
-    const [ filter, setFilter ] = React.useState( "All" );
+    const [ filter, setFilter ] = useState( "All" );
 
     const requestCourses = async() => {
         dispatch( getCourses() );
@@ -42,7 +34,7 @@ function Courses() {
 
     useEffect( () => {
         requestCourses();
-    }, [ coursesMe ] );
+    }, [ filter ] );
 
     const style = {
         maxWidth: "250px",
@@ -65,7 +57,7 @@ function Courses() {
             return fill.payment == 1;
         } );
     }
-
+    console.log(array);
     return (
         <>
             <h1 className="head">Выберите комикс:</h1>
