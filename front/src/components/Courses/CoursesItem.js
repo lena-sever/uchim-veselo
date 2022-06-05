@@ -44,10 +44,10 @@ function CoursesItem({ course, filter }) {
     const [ message, setMessage ] = useState( false );
     const user = useSelector( selectUser );
     const isLike = useSelector( selectUserCourses ).find( item => {   //  Изменение лайка
-        return item.course_id === course.id;
+        return item.course_id === course.id || item.course_id===course.course_id;
     } )?.like;
 
-    const heartClass = user.id !== "" ? filter == "All" ? isLike ? ( "products_icon-heart_active products_icon-heart" ) : ( "products_icon-heart" ) : ( "products_icon-heart" ) : ( "products_icon-heart" ); // Класс для изменения сердечка
+    const heartClass = user.id !== "" ? isLike ? ( "products_icon-heart_active products_icon-heart" ) : ( "products_icon-heart" ) : ( "products_icon-heart" ) ; // Класс для изменения сердечка
 
     const getLessonsList = () => {
         dispatch( getLessons( course.id ) );

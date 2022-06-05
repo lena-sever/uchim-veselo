@@ -4,7 +4,7 @@ export const AUTH_SUCCESS = "AUTH_SUCCESS";
 export const LOGOUT = "LOGOUT";
 export const ERR = "ERR";
 export const TOGGLE_LIKE = "TOGGLE_LIKE";
-// export const DISLIKE = "DISLIKE";
+
 
 export const authSuccess = (login) => {
     return {
@@ -37,21 +37,32 @@ export const toggleLike =(courseId)=>{
 export const login = (payload) => async(dispatch) => {
     try {
         const res = await auth.sigIn( payload );
-        if( !res.id ) {
-            console.log( res );
-            dispatch( setErr( res ) );
+        if( !res) {
+            throw new Error( res.message  );
+            dispatch( setErr( res.message ) );
+
         } else {
-            dispatch(
-                authSuccess( {
-                    name: res.name,
-                    email: res.email,
-                    id: res.id,
-                    course: res.course,
-                } )
-            );
+            console.log( res );
+            if(res==="Неверный пароль") {
+                dispatch( setErr( "Неверный пароль" ) );
+            } else if(res.name==="Error") {
+                dispatch( setErr( "Неверный логин" ) );
+            } else {
+                dispatch(
+                    authSuccess( {
+                        name: res.name,
+                        email: res.email,
+                        id: res.id,
+                        course: res.course,
+                        err: res.err
+                    } )
+                );
+            }
+
         }
     } catch( err ) {
-        dispatch( setErr( err ) );
+        dispatch( setErr( err.message ) );
+        console.log(err.message);
     }
 };
 
