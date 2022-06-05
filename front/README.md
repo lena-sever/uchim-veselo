@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+Этот проект задуман как образовательная платформа «СмартКомикс»".
+Основная аудитория пользователей разрабатываемой образовательной  платформы это дети в возрасте от 7 лет. Также данная платформа будет интересна начинающим художникам и писателям, которые хотят реализовать свои истории в жизнь.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Цель проекта - создание полностью работающего приложения с возможностью просматривать, проходить тесты, покупать и помечать понравившиеся комиксы. 
 
-## Available Scripts
+Задачи проекта (фронт):
 
-In the project directory, you can run:
+Адаптивная верстка
+Навигация по страницам
+Вывод комиксов на странице
+Вывод на страницу информации по конкретному комиксу (название, автор, художник, описание, стоимость)
+Скрытие / показ Header и Footer при роутинге в зависимости от выводимого компонента.
+Просмотр текста комиксов у бесплатных и оплаченных — полностью, у неоплаченных — несколько страниц. Затем — предложение оплатить комикс.
+Механизм оплаты комикса
+Тестирование знаний по изучаемому слову
+Вывод на страницу комиксов конкретного автора или художника
+Регистрация и вход
+В личном кабинете информация по оплаченным комиксам
+Возможность написать отзыв о комиксах и вывод отзывов на главной странице и странице комикса
+Страница контактов с возможностью написать сообщение
 
-### `npm start`
+Задачи проекта (бэк):
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Создание структуры БД и Models;
+Создание контроллера для Комиксов, Отзывов, Глав, Тестов (3шт), Сообщений, Авторов, Художников, Слайдеров, Оплаченных комиксов для бэка (web) и фронта (api):
+Request,
+Migrations,
+Seeds,
+Views,
+CRUD.
+Реализация загрузки и сохранения изображений в БД и локально;
+Добавление “is_admin”:
+создание админки на бэке,
+условие на вход в админку на бэке.
+Реализация правильного отображения изображений при добавлении нового комикса;
+Реализация загрузки аудио и изображения для слайдеров локально и в БД;
+Реализация заглушки для автаркии при регистрации или добавлении пользователя (web и api);
+Добавления изменений в структуре таблиц Тестов, Комиксов, Пользователей, Оплаченных Комиксов;
+Модерация отзывов (web и api);
+Условия на вывод глав в комиксах (web и api).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Используемый стек технологий:
 
-### `npm test`
+На frontend:
+React,
+Redux,
+Redux-Thunk,
+React Router,
+REST API,
+Material-UI,
+React-slick-slider,
+Formik ,
+Git,
+Scram
+На backend:
+Laravel:
+Debugbar,
+Avatar,
+MySQL,
+PHP.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Выполненные задачи:
 
-### `npm run build`
+Адаптивная верстка.
+Навигация по страницам.
+Добавление, удаление, редактирование комиксов на бэке
+Вывод комиксов на странице.
+Вывод на страницу информацию по конкретному комиксу (название, автор, художник, описание).
+Скрытие / показ Header и Footer  при роутинге в зависимости от выводимого компонента.
+Просмотр текста комиксов у бесплатных   и оплаченных — полностью, у неоплаченных — несколько страниц. Затем — предложение оплатить комикс.
+Тестирование знаний по изучаемому слову.
+Поиск по названию комикса, слову в описании или ФИО автора или художника.
+Вывод на страницу комиксов конкретного автора или художника.
+Регистрация и вход.
+Возможность написать отзыв о комиксах и вывод отзывов на главной странице и странице комикса.
+Страница контактов с возможностью написать сообщение.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Оставшиеся задачи:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Вывод на страницу информацию по конкретному комиксу (стоимость).
+Механизм оплаты комикса.
+Зарегистрированному пользователю возможность отмечать понравившиеся комиксы.
+Зарегистрированному пользователю возможность увидеть понравившиеся и оплаченные комиксы.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

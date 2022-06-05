@@ -21,7 +21,7 @@ function Courses() {
     const courses = useSelector( selectCourses );
     const isLoading = useSelector( selectCoursesLoading );
     const error = useSelector( selectCoursesError );
-    const coursesMe = useSelector( selectUser );
+    const user = useSelector( selectUser );
     const [ filter, setFilter ] = useState( "All" );
 
     const requestCourses = async() => {
@@ -47,22 +47,22 @@ function Courses() {
     if( filter == "All" ) {
         array = courses;
     } else if( filter == "Like" ) {
-        let arrayLiked = coursesMe.course;
+        let arrayLiked = user.course;
         array = arrayLiked.filter( (fill) => {
             return fill.like == 1;
         } );
     } else if( filter == "Buy" ) {
-        let arrayBuy = coursesMe.course;
+        let arrayBuy = user.course;
         array = arrayBuy.filter( (fill) => {
             return fill.payment == 1;
         } );
     }
-    console.log(array);
+    // console.log(array);
     return (
         <>
             <h1 className="head">Выберите комикс:</h1>
 
-            { coursesMe.id ? (
+            { user.id ? (
                 <Box style={ style }>
                     <FormControl fullWidth>
                         <InputLabel id="filter">Filter</InputLabel>
@@ -89,7 +89,6 @@ function Courses() {
                     <>
                         { Object.keys( array ).map( (i) => (
                             <CoursesItem
-                                coursesMe={ coursesMe }
                                 key={ i }
                                 course={ array[ i ] }
                                 filter={ filter }

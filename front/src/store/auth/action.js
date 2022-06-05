@@ -4,7 +4,7 @@ export const AUTH_SUCCESS = "AUTH_SUCCESS";
 export const LOGOUT = "LOGOUT";
 export const ERR = "ERR";
 export const TOGGLE_LIKE = "TOGGLE_LIKE";
-// export const DISLIKE = "DISLIKE";
+
 
 export const authSuccess = (login) => {
     return {
@@ -51,7 +51,7 @@ export const login = (payload) => async(dispatch) => {
             );
         }
     } catch( err ) {
-        dispatch( setErr( err ) );
+        dispatch( setErr( err.message ) );
     }
 };
 
