@@ -33,19 +33,19 @@ function Menu({ isMenuOpen, toggleMenuMode }) {
                 Контакты
             </NavLink>
             {user.id ? (
-                <>
-                    <div>{user.name}</div>
+                <div className="menu__user-wrap">
+                    <div className="menu__user">Вы вошли как {user.name}</div>
                     <NavLink
                         onClick={() => {
                             toggleMenuMode();
                             onLogout();
                         }}
                         to="/"
-                        className="menu__link"
+                        className="menu__user-link"
                     >
                         Выйти
                     </NavLink>
-                </>
+                </div>
             ) : (
                 <NavLink
                     to="/login"
