@@ -56,6 +56,8 @@ class UserCourseController extends Controller
     public function store(CreateRequest $request)
     {
         $validated = $request->validated();
+        $validated['payment'] = 1;
+        // dd($validated);
 
         $created = UserCourse::create($validated);
 
