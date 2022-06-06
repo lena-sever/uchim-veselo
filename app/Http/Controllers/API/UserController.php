@@ -28,13 +28,14 @@ class UserController extends Controller
             ->join('authors', 'authors.id', '=', 'courses.author_id')
             ->join('painters', 'painters.id', '=', 'courses.painter_id')
             ->select(
-                'user_courses.id as id',
-                'user_courses.price as price',
-                'user_courses.payment as payment',
-                'user_courses.like as like',
-                'user_courses.updated_at as updated_at',
-                'courses.title as title',
-                'courses.img as img',
+                'user_courses.id',
+                'user_courses.price',
+                'user_courses.payment',
+                'user_courses.like',
+                'user_courses.course_id',
+                'user_courses.updated_at',
+                'courses.title',
+                'courses.img',
                 'authors.name as name_author',
                 'painters.name as name_painter',
             )
@@ -74,7 +75,7 @@ class UserController extends Controller
                 'photo'
             )
             ->first();
-        $user->course = [];    
+        $user->course = [];
 
         if ($user) {
             return json_encode($user, JSON_UNESCAPED_UNICODE);
@@ -109,7 +110,7 @@ class UserController extends Controller
                 'painters.name as name_painter',
             )
             ->get();
-        $user->course = $course;        
+        $user->course = $course;
         if ($user) {
             // dd($user);
             if (password_verify($validated['password'], $user->password)) {

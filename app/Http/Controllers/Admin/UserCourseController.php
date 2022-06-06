@@ -19,8 +19,14 @@ class UserCourseController extends Controller
      */
     public function index(User $user)
     {
-        $user_course = UserCourse::where('user_id','=',$user->id)->get();
-
+        $user_course = UserCourse::where('user_id','=',$user->id)
+        ->join('courses', 'courses.id', '=', 'user_courses.course_id')
+        ->select(
+            'user_courses.*',
+            'courses.title',
+        )
+        ->get();
+        //dd($user_course);
         return view('admin.usercourse.index',[
             'user_course' => $user_course,
             'user' => $user,
@@ -38,7 +44,7 @@ class UserCourseController extends Controller
         $user_id = end($user_id);
         $users = User::all();
         $courses = Course::all();
-        //dd($user_id,$user);
+        //dd($user_id,$users);
 
         return view('admin.usercourse.create',[
             'users' => $users,
@@ -57,7 +63,8 @@ class UserCourseController extends Controller
     {
         $validated = $request->validated();
         $validated['payment'] = 1;
-        // dd($validated);
+        $validated['like'] = 0;
+        //dd($validated,$request->validated(),$request);
 
         $created = UserCourse::create($validated);
 
@@ -101,7 +108,19 @@ class UserCourseController extends Controller
      */
     public function update(EditRequest $request, UserCourse $userCourse)
     {
-        //
+        $validated = $request->validated();
+
+        $validated['payment'] = 1;
+        dd($request,$validated,$validated['user_id']);
+        $updated = $userCourse->fill($validated)->save();
+
+        if($updated) {
+            return redirect()->route('admin.usercourse',['user'=> $validated['user_id']])
+                ->with('success', 'Запись успешно обновлена');
+        }
+
+        return back()->with('error', 'Не удалось обновить запись')
+                ->withInput();
     }
 
     /**
