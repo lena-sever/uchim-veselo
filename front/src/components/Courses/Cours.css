@@ -20,16 +20,25 @@
 
 .cours__img {
     width: 300px;
+    margin-bottom: 15px;
 }
 
 .cours__description-wrap {
     flex-basis: 300px;
-    /*border-bottom: 1px solid #cccccc;*/
 }
 
 .cours__text {
     font-size: 20px;
     line-height: 1.5em;
+}
+
+.cours__price {
+    margin: 12px 0 18px 0;
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 17px;
+    color: #5d5d5d;
+
 }
 
 .cours__btn-wrp {
@@ -40,7 +49,6 @@
 }
 .cours__reviews {
     padding-top: 50px;
-    /*border-top: 1px solid #cccccc;*/
 }
 
 .cours__reviews-title {

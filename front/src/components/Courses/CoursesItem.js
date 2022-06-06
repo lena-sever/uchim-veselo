@@ -44,10 +44,10 @@ function CoursesItem({ course, filter }) {
     const [ message, setMessage ] = useState( false );
     const user = useSelector( selectUser );
     const isLike = useSelector( selectUserCourses ).find( item => {   //  Изменение лайка
-        return item.course_id === course.id || item.course_id===course.course_id;
+        return item.course_id === course.id || item.course_id === course.course_id;
     } )?.like;
 
-    const heartClass = user.id !== "" ? isLike ? ( "products_icon-heart_active products_icon-heart" ) : ( "products_icon-heart" ) : ( "products_icon-heart" ) ; // Класс для изменения сердечка
+    const heartClass = user.id !== "" ? isLike ? ( "products_icon-heart_active products_icon-heart" ) : ( "products_icon-heart" ) : ( "products_icon-heart" ); // Класс для изменения сердечка
 
     const getLessonsList = () => {
         dispatch( getLessons( course.id ) );
@@ -105,26 +105,29 @@ function CoursesItem({ course, filter }) {
                     </NavLink>
                 </p>
                 <p className="text_box_main">{ course.description }</p>
+                <p>Стоимость: <span className="text_box_main ">{ course.price } руб.</span></p>
             </div>
             <div className="products_item_btn-wrap">
                 <ColorButtonOutlined
                     as={ NavLink }
-                    to={ pathCourse }
+                    to={ filter === "All" ? pathCourse : `/courses/${ course.course_id }` }
                     size="small"
                     onClick={ getLessonsList }
                     className={ classes.btn }
                 >
                     ПОДРОБНЕЕ
                 </ColorButtonOutlined>
-                <ColorButtonOutlined
-                    as={ NavLink }
-                    to={ pathPay }
-                    size="small"
-                    onClick={ getLessonsList }
-                    className={ classes.btn }
-                >
-                    КУПИТЬ
-                </ColorButtonOutlined>
+                { (filter === "All" || filter === "Like") && (
+                    <ColorButtonOutlined
+                        as={ NavLink }
+                        to={ pathPay }
+                        size="small"
+                        onClick={ getLessonsList }
+                        className={ classes.btn }
+                    >
+                        КУПИТЬ
+                    </ColorButtonOutlined>
+                ) }
             </div>
 
             <div className="products_icon-heart-wrap">
