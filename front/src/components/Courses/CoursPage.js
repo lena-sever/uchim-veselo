@@ -96,6 +96,7 @@ const CoursPage = () => {
                 <>
                     <div className="cours__img-wrap">
                         <img className="cours__img" src={ cours.img }/>
+                        <p>Стоимость: <span className="cours__price">{cours.price}  руб.</span></p>
                         <ButtonBackToComics path="/pay" text="Купить комикс" color="error"/>
                     </div>
                     <div className="cours__description-wrap">
