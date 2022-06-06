@@ -58,6 +58,12 @@
     font-size: 16px;
 }
 
+/*@media screen and (max-width: 1160px){*/
+/*    .menu__user-wrap {*/
+/*        width: 200px;*/
+/*    }*/
+/*}*/
+
 .menu__user {
     width: 140px;
     color: #FFFFFF;
@@ -70,7 +76,7 @@
 }
 
 
-@media screen and (min-width: 1080px) {
+@media screen and (min-width: 1160px) {
     .menu {
         position: relative;
         display: flex;
@@ -85,13 +91,10 @@
         transform: translateX(0);
     }
 
-    /*.menu__open {*/
-    /*  */
-    /*}*/
-    .menu__link {
-        /*padding: 15px 0;*/
-        /* font-size: 60px; */
+    .menu__user-wrap {
+        width: 225px;
     }
+
 }
 
 @media screen and (max-width: 600px) {

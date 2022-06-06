@@ -1,4 +1,4 @@
-import { coursesAPI, likesAPI } from "../../api/api";
+import { coursesAPI, likesAPI, paymentAPI } from "../../api/api";
 import { authMe } from "../auth/action";
 
 export const COURSES_LOADING = "COURSES::COURSES_LOADING";
@@ -60,5 +60,7 @@ export const addLikeComics = (like) => {
     return coursesAPI.likeComics(like);
 };
 
-
+export const getPaymentedCourses =(userId, courseId)=>{
+    return paymentAPI.getPayment(userId, courseId)
+}
 

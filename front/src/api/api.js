@@ -11,7 +11,7 @@ import {
     urlResultFound,
     urlAuthorComics,
     urlPainterComics,
-    urlLikeComics,
+    urlLikeComics, urlPaymentComics,
 } from "../constants/url";
 
 export const coursesAPI = {
@@ -155,5 +155,15 @@ export const testsAPI = {
     },
 };
 
-
+export const paymentAPI = {
+    getPayment(userId, courseId) {
+        return axios
+            .post( urlPaymentComics, {
+                user_id: userId,
+                course_id: courseId
+            } )
+            .then( response => response )
+            .catch( err => err );
+    }
+};
 
