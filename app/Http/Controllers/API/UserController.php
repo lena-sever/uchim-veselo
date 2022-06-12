@@ -23,7 +23,8 @@ class UserController extends Controller
     public function show(User $user)
     {
         $course = DB::table('user_courses')
-            ->where('user_id', $user->id)
+            ->where('user_id',$user->id)
+            ->where('user_courses.deleted_at',NULL)
             ->join('courses', 'courses.id', '=', 'user_courses.course_id')
             ->join('authors', 'authors.id', '=', 'courses.author_id')
             ->join('painters', 'painters.id', '=', 'courses.painter_id')
@@ -94,6 +95,7 @@ class UserController extends Controller
 
         $course = DB::table('user_courses')
             ->where('user_id', $user->id)
+            ->where('user_courses.deleted_at',NULL)
             ->join('courses', 'courses.id', '=', 'user_courses.course_id')
             ->join('authors', 'authors.id', '=', 'courses.author_id')
             ->join('painters', 'painters.id', '=', 'courses.painter_id')
@@ -140,6 +142,7 @@ class UserController extends Controller
 
         $course = DB::table('user_courses')
             ->where('user_id', $user->id)
+            ->where('user_courses.deleted_at',NULL)
             ->join('courses', 'courses.id', '=', 'user_courses.course_id')
             ->join('authors', 'authors.id', '=', 'courses.author_id')
             ->join('painters', 'painters.id', '=', 'courses.painter_id')
